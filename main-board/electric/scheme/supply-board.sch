@@ -40,7 +40,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "17 aug 2013"
+Date "19 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -120,9 +120,9 @@ Jumper here tells MCU to never turn 5V \nconverter off.
 Text Notes 1300 9900 0    60   ~ 0
 Analog \ntemperature\nsensor
 Text Label 14100 4450 0    60   ~ 0
-v-temp
+buck-current
 Text Label 2300 11100 0    60   ~ 0
-v-temp
+temperature
 $Comp
 L GND #PWR?
 U 1 1 520E8635
@@ -239,15 +239,15 @@ F 3 "" H 18650 1700 60  0001 C CNN
 	1    18650 1700
 	1    0    0    -1  
 $EndComp
-Text Label 14200 5250 0    60   ~ 0
+Text Label 14000 9550 0    60   ~ 0
 moto4
-Text Label 14200 5050 0    60   ~ 0
+Text Label 14000 9750 0    60   ~ 0
 moto3
-Text Label 14200 4850 0    60   ~ 0
+Text Label 13950 8750 0    60   ~ 0
 moto2
-Text Label 14200 5450 0    60   ~ 0
+Text Label 13950 8550 0    60   ~ 0
 moto1
-Text Label 14100 4650 0    60   ~ 0
+Text Label 14100 2750 0    60   ~ 0
 moto-en
 Text Label 22350 12500 0    60   ~ 0
 moto-en
@@ -477,9 +477,8 @@ F 3 "" H 1350 13400 60  0001 C CNN
 	1    1350 13400
 	-1   0    0    -1  
 $EndComp
-NoConn ~ 13650 3050
 Text Label 14100 4250 0    60   ~ 0
-current-fb
+boost-current
 Text Label 18650 3400 1    60   ~ 0
 buck-out-5v
 $Comp
@@ -705,11 +704,11 @@ buck-pwm
 Text Label 14000 3250 0    60   ~ 0
 boost-pwm
 Text Label 14100 4050 0    60   ~ 0
-buck-fb
+buck-volt
 Text Label 14100 3850 0    60   ~ 0
-boost-fb
+boost-volt
 Text Label 14100 3650 0    60   ~ 0
-solar-fb
+solar-volt
 Text Label 24150 6550 1    60   ~ 0
 solar
 $Comp
@@ -1280,8 +1279,6 @@ F 3 "" H 19050 1900 60  0001 C CNN
 	1    19050 1900
 	1    0    0    -1  
 $EndComp
-NoConn ~ 9050 7050
-NoConn ~ 9050 6350
 Text Label 13950 8350 0    60   ~ 0
 sda-rpi
 Text Label 13950 8150 0    60   ~ 0
@@ -1684,7 +1681,6 @@ F 3 "" H 2050 15750 60  0001 C CNN
 $EndComp
 NoConn ~ 13650 6850
 NoConn ~ 13650 6650
-NoConn ~ 13650 6450
 $Comp
 L GND #PWR?
 U 1 1 520E86E4
@@ -1784,9 +1780,7 @@ F 3 "" H 8650 5450 60  0001 C CNN
 	1    8650 5450
 	0    -1   -1   0   
 $EndComp
-Text Label 14100 9750 0    60   ~ 0
-led2
-Text Label 14100 9550 0    60   ~ 0
+Text Label 8400 6350 0    60   ~ 0
 led1
 Text Label 13950 9150 0    60   ~ 0
 sda-int
@@ -1939,11 +1933,7 @@ F 3 "" H 14900 1550 60  0001 C CNN
 	1    14900 1550
 	1    0    0    -1  
 $EndComp
-NoConn ~ 13650 8550
-NoConn ~ 13650 8750
 NoConn ~ 13650 7600
-NoConn ~ 13650 7400
-NoConn ~ 13650 2750
 $Comp
 L GND #PWR?
 U 1 1 520EA3B2
@@ -1966,8 +1956,6 @@ F 3 "" H 29350 21450 60  0001 C CNN
 	1    29350 21450
 	1    0    0    -1  
 $EndComp
-Text HLabel 29350 18400 1    60   Input ~ 0
-VBus
 $Comp
 L R R?
 U 1 1 520EA3BF
@@ -3598,4 +3586,61 @@ Text Label 1650 17350 0    60   ~ 0
 buck-out-5v
 Text Notes 950  17200 0    60   ~ 0
 Socket for powering external devices.
+Wire Wire Line
+	13650 7400 14350 7400
+Text Label 14000 7400 0    60   ~ 0
+temperature
+Wire Wire Line
+	9050 6350 8350 6350
+Wire Wire Line
+	9050 7050 8350 7050
+Text Label 8400 7050 0    60   ~ 0
+led2
+Wire Wire Line
+	13650 6450 14350 6450
+Text Label 14000 6450 0    60   ~ 0
+usb-connected
+Text Label 14400 5250 0    60   ~ 0
+d-
+Text Label 14400 5450 0    60   ~ 0
+d+
+Wire Wire Line
+	13650 2750 14500 2750
+Wire Wire Line
+	13650 3050 14500 3050
+Wire Wire Line
+	13650 8550 14300 8550
+Wire Wire Line
+	13650 8750 14300 8750
+Text Label 14400 4850 0    60   ~ 0
+tx
+Text Label 14400 5050 0    60   ~ 0
+rx
+NoConn ~ 14500 3050
+NoConn ~ 14500 4650
+$Comp
+L CONN_2 P?
+U 1 1 5212922E
+P 29450 18050
+F 0 "P?" V 29400 18050 40  0000 C CNN
+F 1 "PWR-IN" V 29500 18050 40  0000 C CNN
+F 2 "" H 29450 18050 60  0001 C CNN
+F 3 "" H 29450 18050 60  0001 C CNN
+	1    29450 18050
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	29550 18400 29550 18500
+Wire Wire Line
+	29550 18500 29850 18500
+Wire Wire Line
+	29850 18500 29850 17850
+Text Label 29850 18100 1    60   ~ 0
+batt+
+Text Notes 28900 17750 0    60   ~ 0
+Optionally could be USB powered
+Text Notes 13550 13400 0    60   ~ 0
+This capacitor gives cutoff frequency at about 170kHz.
+Text Notes 13900 19050 0    60   ~ 0
+This capacitor gives cutoff frequency at about 170kHz.
 $EndSCHEMATC
