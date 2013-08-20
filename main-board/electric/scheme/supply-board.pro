@@ -1,11 +1,6 @@
-update=Fri 16 Aug 2013 11:14:17 PM MSK
+update=20/08/2013 18:23:58
 version=1
-last_client=eeschema
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
+last_client=cvpcb
 [pcbnew]
 version=1
 LastNetListRead=
@@ -26,7 +21,6 @@ DrawSegmentWidth=0.200000000000
 BoardOutlineThickness=0.100000000000
 ModuleOutlineThickness=0.150000000000
 [pcbnew/libraries]
-LibDir=
 LibName1=sockets
 LibName2=connect
 LibName3=discret
@@ -43,6 +37,11 @@ LibName13=led
 LibName14=dip_sockets
 LibName15=pga_sockets
 LibName16=valves
+LibName17=my_foots
+LibName18=IRFL024
+LibName19=lga28
+LibName20=lqfp48
+LibDir=../libs
 [general]
 version=1
 [eeschema]
@@ -88,3 +87,8 @@ LibName31=24lc16b
 LibName32=lsm303dlhc
 LibName33=my_comps
 LibName34=tc1047a
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
