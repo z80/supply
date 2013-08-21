@@ -40,7 +40,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "20 aug 2013"
+Date "21 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -2055,9 +2055,9 @@ in1+
 Text Label 15950 17200 0    60   ~ 0
 in1-
 Text Label 15950 17500 0    60   ~ 0
-out2+
+in2+
 Text Label 15950 17900 0    60   ~ 0
-out2-
+in2-
 Text Label 17950 17000 0    60   ~ 0
 buck-current
 Text Label 17950 17700 0    60   ~ 0
@@ -3678,10 +3678,10 @@ F 3 "" H 30150 16500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PWR_FLAG #FLG?
+L PWR_FLAG #FLG089
 U 1 1 52138FDD
 P 29100 18400
-F 0 "#FLG?" H 29100 18495 30  0001 C CNN
+F 0 "#FLG089" H 29100 18495 30  0001 C CNN
 F 1 "PWR_FLAG" H 29100 18580 30  0000 C CNN
 F 2 "" H 29100 18400 60  0001 C CNN
 F 3 "" H 29100 18400 60  0001 C CNN
@@ -3693,4 +3693,83 @@ Wire Wire Line
 Wire Wire Line
 	29100 18600 29350 18600
 Connection ~ 29350 18600
+$Comp
+L TST P16
+U 1 1 5214C64E
+P 3700 5650
+F 0 "P16" H 3700 5950 40  0000 C CNN
+F 1 "TST" H 3700 5900 30  0000 C CNN
+F 2 "~" H 3700 5650 60  0000 C CNN
+F 3 "~" H 3700 5650 60  0000 C CNN
+	1    3700 5650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3700 5650
+$Comp
+L TST P17
+U 1 1 5214C655
+P 3950 5650
+F 0 "P17" H 3950 5950 40  0000 C CNN
+F 1 "TST" H 3950 5900 30  0000 C CNN
+F 2 "~" H 3950 5650 60  0000 C CNN
+F 3 "~" H 3950 5650 60  0000 C CNN
+	1    3950 5650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3950 5650
+$Comp
+L TST P18
+U 1 1 5214C65C
+P 4200 5650
+F 0 "P18" H 4200 5950 40  0000 C CNN
+F 1 "TST" H 4200 5900 30  0000 C CNN
+F 2 "~" H 4200 5650 60  0000 C CNN
+F 3 "~" H 4200 5650 60  0000 C CNN
+	1    4200 5650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 4200 5650
+$Comp
+L TST P19
+U 1 1 5214C663
+P 4450 5650
+F 0 "P19" H 4450 5950 40  0000 C CNN
+F 1 "TST" H 4450 5900 30  0000 C CNN
+F 2 "~" H 4450 5650 60  0000 C CNN
+F 3 "~" H 4450 5650 60  0000 C CNN
+	1    4450 5650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 4450 5650
+Text Notes 3450 5250 0    60   ~ 0
+And four for screws at board corners.
+$Comp
+L C C?
+U 1 1 5214CC60
+P 9000 2000
+F 0 "C?" H 9050 2100 50  0000 L CNN
+F 1 "100n" H 9050 1900 50  0000 L CNN
+F 2 "" H 9000 2000 60  0001 C CNN
+F 3 "" H 9000 2000 60  0001 C CNN
+	1    9000 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9550 1700 9000 1700
+Wire Wire Line
+	9000 1700 9000 1800
+Connection ~ 9550 1700
+Wire Wire Line
+	9000 2200 9000 2300
+$Comp
+L GND #PWR?
+U 1 1 5214D059
+P 9000 2300
+F 0 "#PWR?" H 9000 2300 30  0001 C CNN
+F 1 "GND" H 9000 2230 30  0001 C CNN
+F 2 "" H 9000 2300 60  0001 C CNN
+F 3 "" H 9000 2300 60  0001 C CNN
+	1    9000 2300
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

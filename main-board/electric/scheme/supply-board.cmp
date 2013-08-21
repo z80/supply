@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 20/08/2013 18:30:18
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 21/08/2013 18:16:17
 
 BeginCmp
 TimeStamp = /520E86DA;
@@ -155,6 +155,13 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
+TimeStamp = /5214CC60;
+Reference = C23;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
 TimeStamp = /520E86DE;
 Reference = D1;
 ValeurCmp = LED;
@@ -172,14 +179,14 @@ BeginCmp
 TimeStamp = /520E86D3;
 Reference = D3;
 ValeurCmp = 1N5819;
-IdModule  = SO8E;
+IdModule  = D3;
 EndCmp
 
 BeginCmp
 TimeStamp = /520E8487;
 Reference = D4;
 ValeurCmp = AD8607;
-IdModule  = C2V8;
+IdModule  = SO8E;
 EndCmp
 
 BeginCmp
@@ -214,14 +221,14 @@ BeginCmp
 TimeStamp = /520E86A3;
 Reference = L2;
 ValeurCmp = INDUCTOR;
-IdModule  = my_inductance;
+IdModule  = inductance_25mH_3A;
 EndCmp
 
 BeginCmp
 TimeStamp = /520E868B;
 Reference = L3;
 ValeurCmp = INDUCTOR;
-IdModule  = my_inductance;
+IdModule  = inductance_25mH_3A;
 EndCmp
 
 BeginCmp
@@ -249,7 +256,7 @@ BeginCmp
 TimeStamp = /5210031F;
 Reference = P4;
 ValeurCmp = CONN_10;
-IdModule  = ;
+IdModule  = PIN_ARRAY-10X1;
 EndCmp
 
 BeginCmp
@@ -291,14 +298,14 @@ BeginCmp
 TimeStamp = /52100708;
 Reference = P10;
 ValeurCmp = TST;
-IdModule  = PINTST;
+IdModule  = m3-screw-hole;
 EndCmp
 
 BeginCmp
 TimeStamp = /52100721;
 Reference = P11;
 ValeurCmp = TST;
-IdModule  = PINTST;
+IdModule  = m3-screw-hole;
 EndCmp
 
 BeginCmp
@@ -330,6 +337,34 @@ IdModule  = PIN_ARRAY_4x1;
 EndCmp
 
 BeginCmp
+TimeStamp = /5214C64E;
+Reference = P16;
+ValeurCmp = TST;
+IdModule  = m3-screw-hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /5214C655;
+Reference = P17;
+ValeurCmp = TST;
+IdModule  = m3-screw-hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /5214C65C;
+Reference = P18;
+ValeurCmp = TST;
+IdModule  = m3-screw-hole;
+EndCmp
+
+BeginCmp
+TimeStamp = /5214C663;
+Reference = P19;
+ValeurCmp = TST;
+IdModule  = m3-screw-hole;
+EndCmp
+
+BeginCmp
 TimeStamp = /520E8649;
 Reference = Q1;
 ValeurCmp = BC847;
@@ -354,7 +389,7 @@ BeginCmp
 TimeStamp = /520E864D;
 Reference = Q4;
 ValeurCmp = MOS_P;
-IdModule  = SOT223;
+IdModule  = SOT23GDS;
 EndCmp
 
 BeginCmp
@@ -396,21 +431,21 @@ BeginCmp
 TimeStamp = /520E86A2;
 Reference = Q10;
 ValeurCmp = MOS_N;
-IdModule  = SOT223;
+IdModule  = SOT223-GDSD;
 EndCmp
 
 BeginCmp
 TimeStamp = /520E8692;
 Reference = Q11;
 ValeurCmp = MOS_P;
-IdModule  = SOT223;
+IdModule  = SOT223-GDSD;
 EndCmp
 
 BeginCmp
 TimeStamp = /520E8678;
 Reference = Q12;
 ValeurCmp = MOS_P;
-IdModule  = SOT223;
+IdModule  = SOT23GDS;
 EndCmp
 
 BeginCmp
