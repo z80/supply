@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-05-18 BZR 4017)-stable date = Sun 25 Aug 2013 12:02:09 AM MSK
+Cmp-Mod V01 Created by CvPcb (2013-05-18 BZR 4017)-stable date = Sun 25 Aug 2013 10:23:00 PM MSK
 
 BeginCmp
 TimeStamp = /520E86DA;
@@ -102,7 +102,7 @@ BeginCmp
 TimeStamp = /520E86A6;
 Reference = C15;
 ValeurCmp = 1m;
-IdModule  = C2V10;
+IdModule  = C2V8;
 EndCmp
 
 BeginCmp
@@ -144,7 +144,7 @@ BeginCmp
 TimeStamp = /520E868E;
 Reference = C21;
 ValeurCmp = 1m;
-IdModule  = C2V10;
+IdModule  = C2V8;
 EndCmp
 
 BeginCmp
@@ -253,10 +253,10 @@ IdModule  = PIN_ARRAY_4x1;
 EndCmp
 
 BeginCmp
-TimeStamp = /5210031F;
+TimeStamp = /521A4F4E;
 Reference = P4;
-ValeurCmp = CONN_10;
-IdModule  = PIN_ARRAY-10X1;
+ValeurCmp = cross board conn;
+IdModule  = PIN_ARRAY-11X1;
 EndCmp
 
 BeginCmp
@@ -494,13 +494,6 @@ BeginCmp
 TimeStamp = /520E86E2;
 Reference = R8;
 ValeurCmp = 1k;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /520E8652;
-Reference = R9;
-ValeurCmp = 30k;
 IdModule  = SM0805;
 EndCmp
 
@@ -927,6 +920,13 @@ EndCmp
 BeginCmp
 TimeStamp = /520E86B5;
 Reference = R70;
+ValeurCmp = 10k;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /521A4F65;
+Reference = R71;
 ValeurCmp = 10k;
 IdModule  = SM0805;
 EndCmp

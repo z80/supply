@@ -40,7 +40,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "24 aug 2013"
+Date "25 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -672,7 +672,6 @@ F 3 "" H 3200 7700 60  0001 C CNN
 	1    3200 7700
 	1    0    0    -1  
 $EndComp
-NoConn ~ 13650 7950
 Text Label 14000 3450 0    60   ~ 0
 buck-pwm
 Text Label 14000 3250 0    60   ~ 0
@@ -1153,10 +1152,10 @@ $EndComp
 Text Label 29050 7100 0    60   ~ 0
 batt-volt
 $Comp
-L GND #PWR83
+L GND #PWR82
 U 1 1 520E86B4
 P 29600 7900
-F 0 "#PWR83" H 29600 7900 30  0001 C CNN
+F 0 "#PWR82" H 29600 7900 30  0001 C CNN
 F 1 "GND" H 29600 7830 30  0001 C CNN
 F 2 "" H 29600 7900 60  0001 C CNN
 F 3 "" H 29600 7900 60  0001 C CNN
@@ -1671,7 +1670,7 @@ L R R12
 U 1 1 520E86E5
 P 8350 8000
 F 0 "R12" V 8430 8000 50  0000 C CNN
-F 1 "10k" V 8350 8000 50  0000 C CNN
+F 1 "30k" V 8350 8000 50  0000 C CNN
 F 2 "" H 8350 8000 60  0001 C CNN
 F 3 "" H 8350 8000 60  0001 C CNN
 	1    8350 8000
@@ -1693,7 +1692,7 @@ L R R13
 U 1 1 520E86E7
 P 8550 8500
 F 0 "R13" V 8630 8500 50  0000 C CNN
-F 1 "10k" V 8550 8500 50  0000 C CNN
+F 1 "30k" V 8550 8500 50  0000 C CNN
 F 2 "" H 8550 8500 60  0001 C CNN
 F 3 "" H 8550 8500 60  0001 C CNN
 	1    8550 8500
@@ -1907,7 +1906,6 @@ F 3 "" H 14900 1550 60  0001 C CNN
 	1    14900 1550
 	1    0    0    -1  
 $EndComp
-NoConn ~ 13650 7600
 $Comp
 L GND #PWR80
 U 1 1 520EA3B2
@@ -3456,17 +3454,6 @@ F 3 "" H 3400 7750 60  0001 C CNN
 	1    3400 7750
 	1    0    0    -1  
 $EndComp
-$Comp
-L CONN_10 P4
-U 1 1 5210031F
-P 1350 7850
-F 0 "P4" V 1300 7850 60  0000 C CNN
-F 1 "CONN_10" V 1400 7850 60  0000 C CNN
-F 2 "" H 1350 7850 60  0000 C CNN
-F 3 "" H 1350 7850 60  0000 C CNN
-	1    1350 7850
-	-1   0    0    -1  
-$EndComp
 Text Notes 1100 6050 0    60   ~ 0
 Cross board communication socket.\nThere is one at this board. But there should \nbe two neighbour such sockets on all other \nboards to be able to stack them together.
 $Comp
@@ -3627,10 +3614,10 @@ rx
 Wire Wire Line
 	30150 16400 30150 16500
 $Comp
-L GND #PWR84
+L GND #PWR83
 U 1 1 52138616
 P 30150 16500
-F 0 "#PWR84" H 30150 16500 30  0001 C CNN
+F 0 "#PWR83" H 30150 16500 30  0001 C CNN
 F 1 "GND" H 30150 16430 30  0001 C CNN
 F 2 "" H 30150 16500 60  0000 C CNN
 F 3 "" H 30150 16500 60  0000 C CNN
@@ -3732,4 +3719,37 @@ F 3 "" H 9000 2300 60  0001 C CNN
 	1    9000 2300
 	1    0    0    -1  
 $EndComp
+$Comp
+L CONN_11 P4
+U 1 1 521A4F4E
+P 1350 7800
+F 0 "P4" V 1300 7800 60  0000 C CNN
+F 1 "cross board conn" V 1400 7800 60  0000 C CNN
+F 2 "" H 1350 7800 60  0000 C CNN
+F 3 "" H 1350 7800 60  0000 C CNN
+	1    1350 7800
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R71
+U 1 1 521A4F65
+P 2400 7300
+F 0 "R71" V 2480 7300 50  0000 C CNN
+F 1 "10k" V 2400 7300 50  0000 C CNN
+F 2 "" H 2400 7300 60  0001 C CNN
+F 3 "" H 2400 7300 60  0001 C CNN
+	1    2400 7300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1700 7300 2150 7300
+Wire Wire Line
+	2650 7300 3000 7300
+Text Label 2700 7300 0    60   ~ 0
+wakeup
+NoConn ~ 13650 7950
+Wire Wire Line
+	13650 7600 14300 7600
+Text Label 14000 7600 0    60   ~ 0
+wakeup
 $EndSCHEMATC
