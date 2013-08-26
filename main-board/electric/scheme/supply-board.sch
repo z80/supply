@@ -40,7 +40,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "25 aug 2013"
+Date "26 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -3570,9 +3570,9 @@ Wire Wire Line
 Wire Wire Line
 	29850 18500 29850 17850
 Text Label 29850 18100 1    60   ~ 0
-batt+
-Text Notes 28900 17750 0    60   ~ 0
-Optionally could be USB powered
+solar+
+Text Notes 28850 17500 0    60   ~ 0
+Optionally could be USB powered \nthrough "solar+". It is because of \nability to control current through \n"solar+".
 Text Notes 13550 13400 0    60   ~ 0
 This capacitor gives cutoff frequency at about 170kHz.
 Text Notes 13900 19050 0    60   ~ 0
@@ -3639,42 +3639,6 @@ F 3 "~" H 3700 5650 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 3700 5650
-$Comp
-L TST P17
-U 1 1 5214C655
-P 3950 5650
-F 0 "P17" H 3950 5950 40  0000 C CNN
-F 1 "TST" H 3950 5900 30  0000 C CNN
-F 2 "~" H 3950 5650 60  0000 C CNN
-F 3 "~" H 3950 5650 60  0000 C CNN
-	1    3950 5650
-	1    0    0    -1  
-$EndComp
-NoConn ~ 3950 5650
-$Comp
-L TST P18
-U 1 1 5214C65C
-P 4200 5650
-F 0 "P18" H 4200 5950 40  0000 C CNN
-F 1 "TST" H 4200 5900 30  0000 C CNN
-F 2 "~" H 4200 5650 60  0000 C CNN
-F 3 "~" H 4200 5650 60  0000 C CNN
-	1    4200 5650
-	1    0    0    -1  
-$EndComp
-NoConn ~ 4200 5650
-$Comp
-L TST P19
-U 1 1 5214C663
-P 4450 5650
-F 0 "P19" H 4450 5950 40  0000 C CNN
-F 1 "TST" H 4450 5900 30  0000 C CNN
-F 2 "~" H 4450 5650 60  0000 C CNN
-F 3 "~" H 4450 5650 60  0000 C CNN
-	1    4450 5650
-	1    0    0    -1  
-$EndComp
-NoConn ~ 4450 5650
 Text Notes 3450 5250 0    60   ~ 0
 And four for screws at board corners.
 $Comp

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-05-18 BZR 4017)-stable date = Sun 25 Aug 2013 10:23:00 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-05-18 BZR 4017)-stable date = Mon 26 Aug 2013 11:08:04 PM MSK
 
 BeginCmp
 TimeStamp = /520E86DA;
@@ -332,27 +332,6 @@ EndCmp
 BeginCmp
 TimeStamp = /5214C64E;
 Reference = P16;
-ValeurCmp = TST;
-IdModule  = m3-screw-hole;
-EndCmp
-
-BeginCmp
-TimeStamp = /5214C655;
-Reference = P17;
-ValeurCmp = TST;
-IdModule  = m3-screw-hole;
-EndCmp
-
-BeginCmp
-TimeStamp = /5214C65C;
-Reference = P18;
-ValeurCmp = TST;
-IdModule  = m3-screw-hole;
-EndCmp
-
-BeginCmp
-TimeStamp = /5214C663;
-Reference = P19;
 ValeurCmp = TST;
 IdModule  = m3-screw-hole;
 EndCmp
