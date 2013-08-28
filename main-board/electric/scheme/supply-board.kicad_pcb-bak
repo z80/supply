@@ -2,11 +2,11 @@
 
   (general
     (links 287)
-    (no_connects 168)
+    (no_connects 163)
     (area 127.606667 112.000001 242.964763 190.8)
     (thickness 1.6)
     (drawings 45)
-    (tracks 294)
+    (tracks 300)
     (zones 0)
     (modules 136)
     (nets 86)
@@ -32,7 +32,7 @@
   )
 
   (setup
-    (last_trace_width 0.5)
+    (last_trace_width 0.7)
     (user_trace_width 0.35)
     (user_trace_width 0.5)
     (user_trace_width 0.7)
@@ -5116,6 +5116,12 @@
   (segment (start 200.23 173.941) (end 199.39 173.101) (width 0.5) (layer F.Cu) (net 1) (tstamp 521BB31C))
   (segment (start 201.803 166.878) (end 201.803 165.4175) (width 0.5) (layer F.Cu) (net 1))
   (segment (start 201.803 165.4175) (end 201.676 165.2905) (width 0.5) (layer F.Cu) (net 1) (tstamp 521BB2F6))
+  (segment (start 195.1795 163.787) (end 195.1795 161.787) (width 0.7) (layer B.Cu) (net 3) (status C00000))
+  (segment (start 195.1795 165.787) (end 195.1795 163.787) (width 0.7) (layer B.Cu) (net 3) (status C00000))
+  (segment (start 195.1795 167.787) (end 195.1795 165.787) (width 0.7) (layer B.Cu) (net 3) (status C00000))
+  (segment (start 195.1795 169.787) (end 195.1795 167.787) (width 0.7) (layer B.Cu) (net 3) (status C00000))
+  (segment (start 198.0565 165.989) (end 195.3815 165.989) (width 0.5) (layer B.Cu) (net 3) (status C00000))
+  (segment (start 195.3815 165.989) (end 195.1795 165.787) (width 0.5) (layer B.Cu) (net 3) (tstamp 521D032F) (status C00000))
   (segment (start 199.39 161.798) (end 199.39 162.6235) (width 0.5) (layer B.Cu) (net 4) (status 400000))
   (segment (start 199.39 162.6235) (end 199.136 162.8775) (width 0.5) (layer B.Cu) (net 4) (tstamp 521D0327))
   (segment (start 198.0565 163.957) (end 199.136 162.8775) (width 0.5) (layer B.Cu) (net 4) (status 400000))
