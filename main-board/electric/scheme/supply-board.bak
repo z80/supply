@@ -40,7 +40,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "26 aug 2013"
+Date "29 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -239,9 +239,9 @@ F 3 "" H 18650 1700 60  0001 C CNN
 	1    18650 1700
 	1    0    0    -1  
 $EndComp
-Text Label 14000 9550 0    60   ~ 0
+Text Label 8400 6350 0    60   ~ 0
 moto4
-Text Label 14000 9750 0    60   ~ 0
+Text Label 8400 7050 0    60   ~ 0
 moto3
 Text Label 13950 8750 0    60   ~ 0
 moto2
@@ -503,7 +503,7 @@ F 3 "" H 18250 2300 60  0001 C CNN
 	1    18250 2300
 	1    0    0    -1  
 $EndComp
-Text Label 14100 9350 0    60   ~ 0
+Text Label 13950 7950 0    60   ~ 0
 light
 Text Label 23950 16300 0    60   ~ 0
 light
@@ -1742,7 +1742,7 @@ F 3 "" H 8650 5450 60  0001 C CNN
 	1    8650 5450
 	0    -1   -1   0   
 $EndComp
-Text Label 8400 6350 0    60   ~ 0
+Text Label 14100 9550 0    60   ~ 0
 led1
 Text Label 13950 9150 0    60   ~ 0
 sda-int
@@ -3528,11 +3528,9 @@ Wire Wire Line
 	9050 6350 8350 6350
 Wire Wire Line
 	9050 7050 8350 7050
-Text Label 8400 7050 0    60   ~ 0
+Text Label 14100 9750 0    60   ~ 0
 led2
-Wire Wire Line
-	13650 6450 14350 6450
-Text Label 14000 6450 0    60   ~ 0
+Text Label 14100 4650 0    60   ~ 0
 usb-connected
 Text Label 14400 5250 0    60   ~ 0
 d-
@@ -3551,7 +3549,6 @@ tx
 Text Label 14400 5050 0    60   ~ 0
 rx
 NoConn ~ 14500 3050
-NoConn ~ 14500 4650
 $Comp
 L CONN_2 P14
 U 1 1 5212922E
@@ -3571,8 +3568,8 @@ Wire Wire Line
 	29850 18500 29850 17850
 Text Label 29850 18100 1    60   ~ 0
 solar+
-Text Notes 28900 17750 0    60   ~ 0
-Optionally could be USB powered
+Text Notes 28850 17500 0    60   ~ 0
+Optionally could be USB powered \nthrough "solar+". It is because of \nability to control current through \n"solar+".
 Text Notes 13550 13400 0    60   ~ 0
 This capacitor gives cutoff frequency at about 170kHz.
 Text Notes 13900 19050 0    60   ~ 0
@@ -3698,11 +3695,13 @@ Wire Wire Line
 	2650 7300 3000 7300
 Text Label 2700 7300 0    60   ~ 0
 wakeup
-NoConn ~ 13650 7950
 Wire Wire Line
 	13650 7600 14300 7600
 Text Label 14000 7600 0    60   ~ 0
 wakeup
 Text Notes 600  7100 0    60   ~ 0
 Pin 1 is for waking up \nall other boards.
+NoConn ~ 13650 6450
+Wire Wire Line
+	13650 7950 14300 7950
 $EndSCHEMATC
