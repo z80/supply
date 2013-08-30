@@ -40,7 +40,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "29 aug 2013"
+Date "30 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -243,21 +243,21 @@ Text Label 8400 6350 0    60   ~ 0
 moto4
 Text Label 8400 7050 0    60   ~ 0
 moto3
-Text Label 13950 8750 0    60   ~ 0
-moto2
 Text Label 13950 8550 0    60   ~ 0
+moto2
+Text Label 13950 8750 0    60   ~ 0
 moto1
 Text Label 14100 2750 0    60   ~ 0
 moto-en
 Text Label 22350 12500 0    60   ~ 0
 moto-en
-Text Label 27550 13300 0    60   ~ 0
-out4
-Text Label 27550 13400 0    60   ~ 0
-out3
 Text Label 27550 13100 0    60   ~ 0
-out2
+out4
 Text Label 27550 13200 0    60   ~ 0
+out3
+Text Label 27550 13400 0    60   ~ 0
+out2
+Text Label 27550 13300 0    60   ~ 0
 out1
 $Comp
 L CONN_4 P13
