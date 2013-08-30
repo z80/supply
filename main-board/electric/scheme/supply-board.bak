@@ -255,9 +255,9 @@ Text Label 27550 13100 0    60   ~ 0
 out4
 Text Label 27550 13200 0    60   ~ 0
 out3
-Text Label 27550 13300 0    60   ~ 0
-out2
 Text Label 27550 13400 0    60   ~ 0
+out2
+Text Label 27550 13300 0    60   ~ 0
 out1
 $Comp
 L CONN_4 P13
@@ -665,11 +665,11 @@ Text Label 14000 3450 0    60   ~ 0
 buck-pwm
 Text Label 14000 3250 0    60   ~ 0
 boost-pwm
-Text Label 14100 4050 0    60   ~ 0
+Text Label 14000 3850 0    60   ~ 0
 buck-volt
-Text Label 14100 3850 0    60   ~ 0
+Text Label 14000 3650 0    60   ~ 0
 batt-volt
-Text Label 14100 3650 0    60   ~ 0
+Text Label 14000 4050 0    60   ~ 0
 solar-volt
 Text Label 24150 6550 1    60   ~ 0
 solar
@@ -3307,8 +3307,6 @@ NoConn ~ 1650 5000
 Wire Wire Line
 	2450 5000 2900 5000
 Wire Wire Line
-	2900 5100 2450 5100
-Wire Wire Line
 	1650 5100 1150 5100
 Wire Wire Line
 	1650 5200 1150 5200
@@ -3316,9 +3314,6 @@ Wire Wire Line
 	2450 5200 2900 5200
 Wire Wire Line
 	2900 5200 2900 5300
-Wire Wire Line
-	2900 4700 2900 5100
-Connection ~ 2900 5000
 Text Label 2100 20950 1    60   ~ 0
 batt+
 $Comp
@@ -3704,4 +3699,7 @@ Pin 1 is for waking up \nall other boards.
 NoConn ~ 13650 6450
 Wire Wire Line
 	13650 7950 14300 7950
+Wire Wire Line
+	2900 5000 2900 4350
+NoConn ~ 2450 5100
 $EndSCHEMATC
