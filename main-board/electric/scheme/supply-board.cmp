@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-05-18 BZR 4017)-stable date = Mon 26 Aug 2013 11:08:04 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-05-18 BZR 4017)-stable date = Sat 31 Aug 2013 06:01:13 PM MSK
 
 BeginCmp
 TimeStamp = /520E86DA;
@@ -162,6 +162,34 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
+TimeStamp = /52220518;
+Reference = C24;
+ValeurCmp = 4u7;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5222052E;
+Reference = C25;
+ValeurCmp = 220n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /52220524;
+Reference = C26;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5222051E;
+Reference = C27;
+ValeurCmp = 10u;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
 TimeStamp = /520E86DE;
 Reference = D1;
 ValeurCmp = LED;
@@ -229,6 +257,13 @@ TimeStamp = /520E868B;
 Reference = L3;
 ValeurCmp = INDUCTOR;
 IdModule  = inductance_25mH_3A;
+EndCmp
+
+BeginCmp
+TimeStamp = /52220512;
+Reference = lsm1;
+ValeurCmp = LSM303DLHC;
+IdModule  = lga14-0.3mm;
 EndCmp
 
 BeginCmp
