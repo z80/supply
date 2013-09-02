@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Sun 01 Sep 2013 08:24:32 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Mon 02 Sep 2013 11:06:57 PM MSK
 
 BeginCmp
 TimeStamp = /52227A74;
@@ -106,17 +106,31 @@ IdModule  = PIN_ARRAY_3X1;
 EndCmp
 
 BeginCmp
+TimeStamp = /522516B2;
+Reference = K7;
+ValeurCmp = CONN_3;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /522516C5;
+Reference = K8;
+ValeurCmp = CONN_3;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
 TimeStamp = /52227DDF;
 Reference = P1;
 ValeurCmp = TST;
-IdModule  = PIN_ARRAY_1;
+IdModule  = m3-screw-hole;
 EndCmp
 
 BeginCmp
 TimeStamp = /52227E40;
 Reference = P2;
 ValeurCmp = TST;
-IdModule  = PIN_ARRAY_1;
+IdModule  = m3-screw-hole;
 EndCmp
 
 BeginCmp
@@ -158,7 +172,7 @@ BeginCmp
 TimeStamp = /52227DE6;
 Reference = P8;
 ValeurCmp = TST;
-IdModule  = PIN_ARRAY_1;
+IdModule  = m3-screw-hole;
 EndCmp
 
 BeginCmp
@@ -169,10 +183,10 @@ IdModule  = PIN_ARRAY_4x1;
 EndCmp
 
 BeginCmp
-TimeStamp = /52236903;
+TimeStamp = /52250ECF;
 Reference = P10;
-ValeurCmp = CONN_6;
-IdModule  = PIN_ARRAY-6X1;
+ValeurCmp = CONN_8;
+IdModule  = PIN_ARRAY-8X1;
 EndCmp
 
 BeginCmp
@@ -396,6 +410,20 @@ BeginCmp
 TimeStamp = /52229D7A;
 Reference = U3;
 ValeurCmp = 74HC165;
+IdModule  = SO16E;
+EndCmp
+
+BeginCmp
+TimeStamp = /5224DD25;
+Reference = U4;
+ValeurCmp = 74HC595_MY;
+IdModule  = SO16E;
+EndCmp
+
+BeginCmp
+TimeStamp = /5224DD34;
+Reference = U5;
+ValeurCmp = 74HC595_MY;
 IdModule  = SO16E;
 EndCmp
 
