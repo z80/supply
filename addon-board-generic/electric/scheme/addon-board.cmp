@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Mon 02 Sep 2013 11:06:57 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Sat 07 Sep 2013 12:21:37 AM MSK
 
 BeginCmp
 TimeStamp = /52227A74;
@@ -45,7 +45,28 @@ EndCmp
 BeginCmp
 TimeStamp = /5222B6BC;
 Reference = C7;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /522A3633;
+Reference = C8;
 ValeurCmp = 10u;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /522A4B77;
+Reference = C9;
+ValeurCmp = 18p;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /522A4B71;
+Reference = C10;
+ValeurCmp = 18p;
 IdModule  = SM0805;
 EndCmp
 
@@ -386,6 +407,13 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
+TimeStamp = /522A4B5F;
+Reference = R20;
+ValeurCmp = 50;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
 TimeStamp = /52227A88;
 Reference = stm1;
 ValeurCmp = STM32F102C8T6;
@@ -425,6 +453,13 @@ TimeStamp = /5224DD34;
 Reference = U5;
 ValeurCmp = 74HC595_MY;
 IdModule  = SO16E;
+EndCmp
+
+BeginCmp
+TimeStamp = /522A4B6B;
+Reference = X1;
+ValeurCmp = 8MHz;
+IdModule  = C2;
 EndCmp
 
 EndListe
