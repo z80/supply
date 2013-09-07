@@ -43,7 +43,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "6 sep 2013"
+Date "7 sep 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -427,8 +427,6 @@ F 3 "" H 2400 15750 60  0001 C CNN
 	1    2400 15750
 	0    1    1    0   
 $EndComp
-NoConn ~ 10450 6950
-NoConn ~ 10450 6750
 $Comp
 L GND #PWR019
 U 1 1 52227A0B
@@ -1185,9 +1183,9 @@ Text Label 21750 2800 0    60   ~ 0
 servo-en
 Text Label 10800 8050 0    60   ~ 0
 servo1
-Text Label 10800 8250 0    60   ~ 0
+Text Label 10950 6750 0    60   ~ 0
 servo2
-Text Label 10800 8450 0    60   ~ 0
+Text Label 10950 6950 0    60   ~ 0
 servo3
 Text Label 10800 8650 0    60   ~ 0
 servo4
@@ -2333,17 +2331,17 @@ Text Label 20950 10800 0    60   ~ 0
 moto8
 Text Label 20950 11000 0    60   ~ 0
 servo-en
-Text Label 11000 4750 0    60   ~ 0
+Text Label 11000 5550 0    60   ~ 0
 mr
 Text Label 11000 4950 0    60   ~ 0
 oe
-Text Label 11000 5150 0    60   ~ 0
-shcp
 Text Label 11000 5350 0    60   ~ 0
+shcp
+Text Label 11000 5150 0    60   ~ 0
 stcp
 Text Label 15800 11600 0    60   ~ 0
 ds
-Text Label 11000 5550 0    60   ~ 0
+Text Label 11000 4750 0    60   ~ 0
 ds
 NoConn ~ 5150 7150
 Text Label 10800 7500 0    60   ~ 0
@@ -2474,10 +2472,10 @@ F 3 "" H 25050 3350 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R?
+L R R20
 U 1 1 522A4B5F
 P 5450 5550
-F 0 "R?" V 5530 5550 50  0000 C CNN
+F 0 "R20" V 5530 5550 50  0000 C CNN
 F 1 "50" V 5450 5550 50  0000 C CNN
 F 2 "" H 5450 5550 60  0001 C CNN
 F 3 "" H 5450 5550 60  0001 C CNN
@@ -2485,10 +2483,10 @@ F 3 "" H 5450 5550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR?
+L GND #PWR064
 U 1 1 522A4B65
 P 4350 5700
-F 0 "#PWR?" H 4350 5700 30  0001 C CNN
+F 0 "#PWR064" H 4350 5700 30  0001 C CNN
 F 1 "GND" H 4350 5630 30  0001 C CNN
 F 2 "" H 4350 5700 60  0001 C CNN
 F 3 "" H 4350 5700 60  0001 C CNN
@@ -2496,10 +2494,10 @@ F 3 "" H 4350 5700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CRYSTAL X?
+L CRYSTAL X1
 U 1 1 522A4B6B
 P 5050 5200
-F 0 "X?" H 5050 5350 60  0000 C CNN
+F 0 "X1" H 5050 5350 60  0000 C CNN
 F 1 "8MHz" H 5050 5050 60  0000 C CNN
 F 2 "" H 5050 5200 60  0001 C CNN
 F 3 "" H 5050 5200 60  0001 C CNN
@@ -2507,10 +2505,10 @@ F 3 "" H 5050 5200 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L C C?
+L C C10
 U 1 1 522A4B71
 P 4650 5550
-F 0 "C?" H 4700 5650 50  0000 L CNN
+F 0 "C10" H 4700 5650 50  0000 L CNN
 F 1 "18p" H 4700 5450 50  0000 L CNN
 F 2 "" H 4650 5550 60  0001 C CNN
 F 3 "" H 4650 5550 60  0001 C CNN
@@ -2518,10 +2516,10 @@ F 3 "" H 4650 5550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L C C?
+L C C9
 U 1 1 522A4B77
 P 4650 4850
-F 0 "C?" H 4700 4950 50  0000 L CNN
+F 0 "C9" H 4700 4950 50  0000 L CNN
 F 1 "18p" H 4700 4750 50  0000 L CNN
 F 2 "" H 4650 4850 60  0001 C CNN
 F 3 "" H 4650 4850 60  0001 C CNN
@@ -2547,4 +2545,12 @@ Wire Wire Line
 	4350 5550 4450 5550
 Wire Wire Line
 	5700 5550 5850 5550
+Text Label 10800 8450 0    60   ~ 0
+sda-int
+Text Label 10800 8250 0    60   ~ 0
+scl-int
+Wire Wire Line
+	10450 6750 11300 6750
+Wire Wire Line
+	10450 6950 11300 6950
 $EndSCHEMATC

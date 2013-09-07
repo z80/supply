@@ -43,7 +43,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "6 sep 2013"
+Date "7 sep 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -427,8 +427,6 @@ F 3 "" H 2400 15750 60  0001 C CNN
 	1    2400 15750
 	0    1    1    0   
 $EndComp
-NoConn ~ 10450 6950
-NoConn ~ 10450 6750
 $Comp
 L GND #PWR019
 U 1 1 52227A0B
@@ -1183,11 +1181,11 @@ F 3 "" H 23000 3700 60  0000 C CNN
 $EndComp
 Text Label 21750 2800 0    60   ~ 0
 servo-en
-Text Label 10800 8050 0    60   ~ 0
+Text Label 10950 6750 0    60   ~ 0
 servo1
-Text Label 10800 8250 0    60   ~ 0
+Text Label 10950 6950 0    60   ~ 0
 servo2
-Text Label 10800 8450 0    60   ~ 0
+Text Label 10800 8050 0    60   ~ 0
 servo3
 Text Label 10800 8650 0    60   ~ 0
 servo4
@@ -2333,17 +2331,17 @@ Text Label 20950 10800 0    60   ~ 0
 moto8
 Text Label 20950 11000 0    60   ~ 0
 servo-en
-Text Label 11000 4750 0    60   ~ 0
+Text Label 11000 5550 0    60   ~ 0
 mr
 Text Label 11000 4950 0    60   ~ 0
 oe
-Text Label 11000 5150 0    60   ~ 0
-shcp
 Text Label 11000 5350 0    60   ~ 0
+shcp
+Text Label 11000 5150 0    60   ~ 0
 stcp
 Text Label 15800 11600 0    60   ~ 0
 ds
-Text Label 11000 5550 0    60   ~ 0
+Text Label 11000 4750 0    60   ~ 0
 ds
 NoConn ~ 5150 7150
 Text Label 10800 7500 0    60   ~ 0
@@ -2547,4 +2545,12 @@ Wire Wire Line
 	4350 5550 4450 5550
 Wire Wire Line
 	5700 5550 5850 5550
+Text Label 10800 8450 0    60   ~ 0
+sda-int
+Text Label 10800 8250 0    60   ~ 0
+scl-int
+Wire Wire Line
+	10450 6750 11300 6750
+Wire Wire Line
+	10450 6950 11300 6950
 $EndSCHEMATC
