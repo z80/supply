@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-05-18 BZR 4017)-stable date = Sat 31 Aug 2013 06:01:13 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Tue 10 Sep 2013 10:45:02 PM MSK
 
 BeginCmp
 TimeStamp = /520E86DA;
@@ -395,7 +395,7 @@ EndCmp
 BeginCmp
 TimeStamp = /520E864D;
 Reference = Q4;
-ValeurCmp = MOS_P;
+ValeurCmp = IRLML2244;
 IdModule  = SOT23GDS;
 EndCmp
 
@@ -437,21 +437,21 @@ EndCmp
 BeginCmp
 TimeStamp = /520E86A2;
 Reference = Q10;
-ValeurCmp = MOS_N;
-IdModule  = SOT223-GDSD;
+ValeurCmp = IRLML2502;
+IdModule  = SOT23GDS;
 EndCmp
 
 BeginCmp
 TimeStamp = /520E8692;
 Reference = Q11;
-ValeurCmp = MOS_P;
-IdModule  = SOT223-GDSD;
+ValeurCmp = IRLML2244;
+IdModule  = SOT23GDS;
 EndCmp
 
 BeginCmp
 TimeStamp = /520E8678;
 Reference = Q12;
-ValeurCmp = MOS_P;
+ValeurCmp = IRLML2244;
 IdModule  = SOT23GDS;
 EndCmp
 
