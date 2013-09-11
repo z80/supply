@@ -1,0 +1,6 @@
+
+This is a firmware whith analyzes "trigger" input on supply board. And if it is tied to ground it initiates DFU firmware.
+
+
+
+
