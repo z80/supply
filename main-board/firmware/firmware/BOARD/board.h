@@ -61,7 +61,7 @@
 #define GPIOC_MMCWP             6
 #define GPIOC_MMCCP             7
 #define GPIOC_CAN_CNTL          10
-#define GPIOC_USB_DISC          11
+#define GPIOA_USB_DISC          8
 #define GPIOC_LED               12
 
 /*
@@ -95,8 +95,8 @@
  * PA2  - Alternate output  (USART2 TX).
  * PA3  - Normal input      (USART2 RX).
  */
-#define VAL_GPIOACRL            0x88884B84      /*  PA7...PA0 */
-#define VAL_GPIOACRH            0x88888888      /* PA15...PA8 */
+#define VAL_GPIOACRL            0x44444444      /*  PA7...PA0 */
+#define VAL_GPIOACRH            0x44444444      /* PA15...PA8 */
 #define VAL_GPIOAODR            0xFFFFFFFF
 
 /*
@@ -106,8 +106,8 @@
  * PB14 - Normal input      (MMC SPI2 MISO).
  * PB15 - Alternate output  (MMC SPI2 MOSI).
  */
-#define VAL_GPIOBCRL            0x88888888      /*  PB7...PB0 */
-#define VAL_GPIOBCRH            0xB4B88888      /* PB15...PB8 */
+#define VAL_GPIOBCRL            0x44444444      /*  PB7...PB0 */
+#define VAL_GPIOBCRH            0x44444444      /* PB15...PB8 */
 #define VAL_GPIOBODR            0xFFFFFFFF
 
 /*
@@ -120,8 +120,8 @@
  * PC11 - Push Pull output (USB DISC).
  * PC12 - Push Pull output (LED).
  */
-#define VAL_GPIOCCRL            0x44848888      /*  PC7...PC0 */
-#define VAL_GPIOCCRH            0x88833388      /* PC15...PC8 */
+#define VAL_GPIOCCRL            0x44444444      /*  PC7...PC0 */
+#define VAL_GPIOCCRH            0x44444444      /* PC15...PC8 */
 #define VAL_GPIOCODR            0xFFFFFFFF
 
 /*
@@ -130,8 +130,8 @@
  * PD0  - Normal input (XTAL).
  * PD1  - Normal input (XTAL).
  */
-#define VAL_GPIODCRL            0x88888844      /*  PD7...PD0 */
-#define VAL_GPIODCRH            0x88888888      /* PD15...PD8 */
+#define VAL_GPIODCRL            0x44444444      /*  PD7...PD0 */
+#define VAL_GPIODCRH            0x44444444      /* PD15...PD8 */
 #define VAL_GPIODODR            0xFFFFFFFF
 
 /*
@@ -145,12 +145,12 @@
 /*
  * USB bus activation macro, required by the USB driver.
  */
-#define usb_lld_connect_bus(usbp) //palClearPad(GPIOC, GPIOC_USB_DISC)
+#define usb_lld_connect_bus(usbp) palSetPad(GPIOA, GPIOA_USB_DISC)
 
 /*
  * USB bus de-activation macro, required by the USB driver.
  */
-#define usb_lld_disconnect_bus(usbp) //palSetPad(GPIOC, GPIOC_USB_DISC)
+#define usb_lld_disconnect_bus(usbp) palClearPad(GPIOA, GPIOA_USB_DISC)
 
 #if !defined(_FROM_ASM_)
 #ifdef __cplusplus
