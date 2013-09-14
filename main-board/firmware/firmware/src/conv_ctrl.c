@@ -2,7 +2,7 @@
 
 #include "conv_ctrl.h"
 #include "hal.h"
-#include "hdw_ctrl.h"
+#include "hdw_cfg.h"
 
 static uint8_t convRunning = 0;
 
@@ -34,7 +34,7 @@ static void contAdcReadyCb( ADCDriver * adcp, adcsample_t * buffer, size_t n )
     if ( buffer[ BUCK_CURR_IND ] > buckCurr )
     {
         buckPwm -= buckGain;
-	if ( buckPwn < 0 )
+	if ( buckPwm < 0 )
 	    buckPwm = 0;
 	pwmEnableChannelI(&CONV_PWM, PWM_BUCK_CHAN, PWM_PERCENTAGE_TO_WIDTH( &CONV_PWM, buckPwm ) );
     }
@@ -47,7 +47,7 @@ static void contAdcReadyCb( ADCDriver * adcp, adcsample_t * buffer, size_t n )
     	        buckPwm = 10000;
             pwmEnableChannelI(&CONV_PWM, PWM_BUCK_CHAN, PWM_PERCENTAGE_TO_WIDTH( &CONV_PWM, buckPwm ) );
         }
-        else if ( buffer[ BUCK_IND ] > buckVolt )
+        else if ( buffer[ BUCK_VOLT_IND ] > buckVolt )
         {
     	    buckPwm -= buckGain;
 	    if ( buckPwm < 0 )
@@ -65,16 +65,16 @@ static void contAdcReadyCb( ADCDriver * adcp, adcsample_t * buffer, size_t n )
     }
     else
     {
-        if ( buffer[ SOLAR_IND ] >= solarVolt )
+        if ( buffer[ SOLAR_VOLT_IND ] >= solarVolt )
         {
-            if ( buffer[ BOOST_IND ] < boostVolt )
+            if ( buffer[ BOOST_VOLT_IND ] < boostVolt )
             {
                 boostPwm += boostGain;
 		if ( boostPwm > 10000 )
 		    boostPwm = 10000;
                 pwmEnableChannelI(&CONV_PWM, PWM_BOOST_CHAN, PWM_PERCENTAGE_TO_WIDTH( &CONV_PWM, boostPwm ) );
             }
-            else if ( buffer[ BOOST_IND ] > boostVolt )
+            else if ( buffer[ BOOST_VOLT_IND ] > boostVolt )
             {
                 boostPwm -= boostGain;
 		if ( boostPwm < 0 )

@@ -87,7 +87,7 @@ CSRC = $(PORTSRC) \
        ../src/stm32f10x_flash.c \
        ../src/misc.c \
        ../src/usb_ctrl.c \
-       ../src/conf_ctrl.c \
+       ../src/conv_ctrl.c \
        ../pawn/amx.c \
        ../pawn/amxcore.c \
        ../pawn/pawn_ctrl.c \

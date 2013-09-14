@@ -42,6 +42,7 @@
 #define mA2Adc(mA)         (mA)
 #define Adc2mA(adc)        (adc)
 
+#define Adc2T(adc)         (adc)
 
 
 
