@@ -8,7 +8,7 @@
 // *****************************************************************
 #define PWM_CLOCK_FREQ     8000000  // 8MHz clock
 #define PWM_PERIOD         40       // 200kHz
-#define BOOST_MAX_FILL_DEF 7000
+#define BOOST_MAX_PWM      7000
 
 #define CONV_PORT          GPIOA
 #define CONV_BOOST_PIN     1
@@ -19,26 +19,28 @@
 #define PWM_BUCK_CHAN      2
 
 #define CONV_ADC_PORT      GPIOA
- #define CONV_ADC_BATT_VOLT     3
-#define CONV_ADC_BUCK_VOLT     4
-#define CONV_ADC_SOLAR_VOLT    5
-#define CONV_ADC_BOOST_CURR    6
-#define CONV_ADC_BUCK_CURR     7
-#define CONV_ADC_BOOST_CURR    8
+#define CONV_ADC_BOOST_VOLT_PIN    3
+#define CONV_ADC_BUCK_VOLT_PIN     4
+#define CONV_ADC_SOLAR_VOLT_PIN    5
+#define CONV_ADC_BOOST_CURR_PIN    6
+#define CONV_ADC_BUCK_CURR_PIN     7
 
-#define CONV_ADC_PORT_TEMP     GPIOB
-#define CONV_ADC_TEMPERATURE   0
+#define CONV_ADC_PORT_TEMP         GPIOB
+#define CONV_ADC_TEMP_PIN          0
 
-#define ADC_NUM_CHANNELS   6
+#define ADC_NUM_CHANNELS   5
 #define ADC_BUF_DEPTH      2
-#define SOLAR_IND          0
-#define BOOST_IND          1
-#define BUCK_IND           2
+#define SOLAR_VOLT_IND     0
+#define BOOST_VOLT_IND     1
+#define BUCK_VOLT_IND      2
+#define BOOST_CURR_IND     3
+#define BUCK_CURR_IND      4
 
 #define mV2Adc(mV)         ( (int)mV * 10 * 4095 / ( 3300 * 78 ) )
 #define Adc2mV(adc)        ( (int)adc * 3300 * 78 / ( 10 * 4095 ) )
 
-
+#define mA2Adc(mA)         (mA)
+#define Adc2mA(adc)        (adc)
 
 
 

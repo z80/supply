@@ -4,11 +4,10 @@
 
 #include "ch.h"
 
+void convInit( void );
+
 void convStart( void );
 void convStop( void );
-
-void convSetBoostEn( uint8_t en )
-void convSetBuckEn( uint8_t en );
 
 void convSetBuck( int mv );
 void convSetBoost( int mv );
@@ -16,18 +15,18 @@ void convSetBoost( int mv );
 void convSetMinBoostVolt( int vmin );
 void convSetMaxBoostFill( int percentOverTen );
 
-void convSetMaxBoostCurr( int ma );
-void convSetMaxBuckCurr( int ma );
+void convSetBoostCurr( int ma );
+void convSetBuckCurr( int ma );
 
 void convSetBuckGain( int val );
 void convSetBoostGain( int val );
 
-int adcCurrent( void );
-int adcTemperature( void );
+int adcTemp( void );
 int adcBatteryVolt( void );
 int adcBuckVolt( void );
 int adcSolarVolt( void );
-
+int adcBuckCurr( void );
+int adcBoostCurr( void );
 
 
 
