@@ -11,7 +11,7 @@ void initMoto( void )
 {
 }
 
-void motoSet( int en )
+void setMoto( int en )
 {
     // If motor is on the nfirst turn power and outEn on.
     if ( en )

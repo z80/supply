@@ -224,6 +224,20 @@ void convSetBoost( int mv )
     convRunStop();
 }
 
+void convSetMinBoostVolt( int vmin )
+{
+    chSysLock();
+        solarVolt = mV2Adc( vmin );
+    chSysUnlock();
+}
+
+void convSetMaxBoostFill( int percentOverTen )
+{
+    chSysLock();
+        boostMaxPwm = percentOverTen;
+    chSysUnlock();
+}
+
 void convSetBoostCurr( int ma )
 {
     chSysLock();
@@ -235,6 +249,20 @@ void convSetBuckCurr( int ma )
 {
     chSysLock();
         buckCurr = mA2Adc( ma );
+    chSysUnlock();
+}
+
+void convSetBuckGain( int val )
+{
+    chSysLock();
+        buckGain = val;
+    chSysUnlock();
+}
+
+void convSetBoostGain( int val )
+{
+    chSysLock();
+        boostGain = val;
     chSysUnlock();
 }
 
@@ -285,6 +313,17 @@ int adcBuckVolt( void )
 int adcSolarVolt( void )
 {
     return 3;
+}
+
+int adcBuckCurr( void )
+{
+    return 4;
+}
+
+
+int adcBoostCurr( void )
+{
+    return 5;
 }
 
 

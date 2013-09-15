@@ -2,6 +2,7 @@
 #include "pawn_ctrl.h"
 #include "amx.h"
 #include "pawn_config.h"
+#include "pawn_binding.h"
 
 #include "stm32f10x_flash.h"
 
@@ -18,13 +19,30 @@ typedef struct
 
 Pawn g_pawn;
 
-static cell n_io( AMX * amx, const cell * params );
-static cell n_setIo( AMX * amx, const cell * params );
+static cell pawn_io( AMX * amx, const cell * params );
+static cell pawn_setIo( AMX * amx, const cell * params );
 
 AMX_NATIVE const g_nativetable[] =
 {
-    n_io,
-    n_setIo
+    pawn_io,
+    pawn_setIo, 
+
+    pawn_setLed, 
+    pawn_setMoto, 
+    pawn_convSetBuck, 
+    pawn_convSetBoost, 
+    pawn_convSetMinBoostVolt, 
+    pawn_convSetMaxBoostFill, 
+    pawn_convSetBoostCurr, 
+    pawn_convSetBuckCurr, 
+    pawn_convSetBuckGain, 
+    pawn_convSetBoostGain, 
+    pawn_adcTemp, 
+    pawn_adcBatteryVolt, 
+    pawn_adcBuckVolt, 
+    pawn_adcSolarVolt, 
+    pawn_adcBuckCurr, 
+    pawn_adcBoostCurr
 };
 
 
@@ -66,7 +84,7 @@ static void pawnExec( Pawn * pawn )
 
 
 
-static cell n_io( AMX * amx, const cell * params )
+static cell pawn_io( AMX * amx, const cell * params )
 {
     (void)amx;
     uint32_t index;
@@ -74,7 +92,7 @@ static cell n_io( AMX * amx, const cell * params )
     return (cell)( g_pawn.ioblock[ index ] );
 }
 
-static cell n_setIo( AMX * amx, const cell * params )
+static cell pawn_setIo( AMX * amx, const cell * params )
 {
     (void)amx;
     uint32_t index;

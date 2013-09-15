@@ -6,7 +6,7 @@
 #include "shell.h"
 
 void initMoto( void );
-void motoSet( int en );
+void setMoto( int en );
 
 
 

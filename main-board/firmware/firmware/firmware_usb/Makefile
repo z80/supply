@@ -90,9 +90,10 @@ CSRC = $(PORTSRC) \
        ../src/conv_ctrl.c \
        ../src/led_ctrl.c \
        ../src/moto_ctrl.c \
+       ../src/pawn_binding.c \
+       ../src/pawn_ctrl.c \
        ../pawn/amx.c \
        ../pawn/amxcore.c \
-       ../pawn/pawn_ctrl.c \
        ./src/main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
