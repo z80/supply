@@ -1,66 +1,31 @@
 
 #include "led_ctrl.h"
 #include "hal.h"
+#include "hdw_cfg.h"
 
-uint8_t leds = 0;
-static void applyLed( uint16_t arg );
-
-static WORKING_AREA( waLeds, 256 );
-static msg_t Leds( void *arg )
-{
-    (void)arg;
-
-    chRegSetThreadName( "pwr" );
-
-    // Configure LED outputs.
-    palSetPadMode( GPIOB, 13, PAL_MODE_OUTPUT_PUSHPULL );
-    palSetPadMode( GPIOB, 14, PAL_MODE_OUTPUT_PUSHPULL );
-
-    while ( 1 )
-    {
-        applyLed( 0 );
-        chThdSleepMilliseconds( 20 );
-
-        applyLed( 3 );
-        chThdSleepMilliseconds( 20 );
-
-        applyLed( leds );
-        chThdSleepMilliseconds( 4960 );
-
-    }
-    return 0;
-}
 
 
 void initLed( void )
 {
+    palClearPad( LED_PORT, LED1_PIN );
+    palClearPad( LED_PORT, LED2_PIN );
+
     // Configure LED outputs.
-    palSetPadMode( GPIOB, 13, PAL_MODE_OUTPUT_PUSHPULL );
-    palSetPadMode( GPIOB, 14, PAL_MODE_OUTPUT_PUSHPULL );
-
-    palClearPad( GPIOB, 13 );
-    palClearPad( GPIOB, 14 );
-
-    chThdCreateStatic( waLeds, sizeof(waLeds), NORMALPRIO, Leds, NULL );
+    palSetPadMode( LED_PORT, LED1_PIN, PAL_MODE_OUTPUT_PUSHPULL );
+    palSetPadMode( LED_PORT, LED2_PIN, PAL_MODE_OUTPUT_PUSHPULL );
 }
 
-void setLed( uint32_t arg )
-{
-    leds = arg;
-    applyLed( arg );
-}
-
-static void applyLed( uint16_t arg )
+void setLed( int arg )
 {
     if ( arg & 1 )
-        palSetPad( GPIOB, 13 );
+        palSetPad( LED_PORT, LED1_PIN );
     else
-        palClearPad( GPIOB, 13 );
+        palClearPad( LED_PORT, LED1_PIN );
 
     if ( arg & 2 )
-        palSetPad( GPIOB, 14 );
+        palSetPad( LED_PORT, LED2_PIN );
     else
-        palClearPad( GPIOB, 14 );
+        palClearPad( LED_PORT, LED2_PIN );
 }
 
 

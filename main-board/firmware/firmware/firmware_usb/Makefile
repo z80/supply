@@ -88,6 +88,8 @@ CSRC = $(PORTSRC) \
        ../src/misc.c \
        ../src/usb_ctrl.c \
        ../src/conv_ctrl.c \
+       ../src/led_ctrl.c \
+       ../src/moto_ctrl.c \
        ../pawn/amx.c \
        ../pawn/amxcore.c \
        ../pawn/pawn_ctrl.c \

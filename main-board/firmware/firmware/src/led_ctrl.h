@@ -5,7 +5,7 @@
 #include "ch.h"
 
 void initLed( void );
-void setLed( uint32_t arg );
+void setLed( int arg );
 
 
 
