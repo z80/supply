@@ -4,6 +4,7 @@
 
 #include "amx.h"
 
+// RTC control.
 
 // LED control.
 cell pawn_setLed( AMX * amx, const cell * params );
