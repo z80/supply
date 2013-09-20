@@ -163,8 +163,8 @@ void DFU_Button_Config(void)
 *******************************************************************************/
 uint8_t DFU_Button_Read (void)
 {
-  if ( GPIO_ReadInputDataBit( GPIOB, GPIO_Pin_15 ) )
-      0;
+  if ( GPIO_ReadInputDataBit( GPIOB, GPIO_Pin_15 ) != Bit_RESET )
+      return 0;
   return 1;
 
 }
