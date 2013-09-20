@@ -1,4 +1,5 @@
-OPTIMIZATION = s 
+#OPTIMIZATION = s 
+OPTIMIZATION = 0
 #CROSS_PATH   = c:/programs/codesourcery/arm-2011.09-70
 #CROSS_PATH   = c:/programs/codesourcery/arm-2011.03-41
 CROSS_PATH   = ~/programs/code-sourcery/2011.03-42
