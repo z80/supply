@@ -20,8 +20,8 @@ int main(void)
     chSysInit();
 
     initLed();
-    //initLight();
-    //initMoto();
+    initLight();
+    initMoto();
 
 
     /*
@@ -39,9 +39,12 @@ int main(void)
     while ( 1 )
     {
     	setLed( 1 );
-    	//chThdSleepMilliseconds( 500 );
+    	setLight( 1 );
+    	chThdSleepMilliseconds( 500 );
+
     	setLed( 2 );
-    	//chThdSleepMilliseconds( 500 );
+    	setLight( 0 );
+    	chThdSleepMilliseconds( 500 );
     }
 
     return 0;
