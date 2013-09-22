@@ -4,10 +4,7 @@
 
 #include "ch.h"
 
-void convInit( void );
-
-void convStart( void );
-void convStop( void );
+void initConv( void );
 
 void convSetBuck( int mv );
 void convSetBoost( int mv );

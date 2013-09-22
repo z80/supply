@@ -5,6 +5,7 @@
 #include "led_ctrl.h"
 #include "light_ctrl.h"
 #include "moto_ctrl.h"
+#include "conv_ctrl.h"
 #include "usb_ctrl.h"
 #include "pawn_ctrl.h"
 #include "misc.h"
@@ -22,6 +23,9 @@ int main(void)
     initLed();
     initLight();
     initMoto();
+    initConv();
+
+    convSetBuck( 5000 );
 
 
     /*

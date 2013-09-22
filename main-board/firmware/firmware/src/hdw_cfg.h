@@ -30,9 +30,10 @@
 
 #define ADC_NUM_CHANNELS   5
 #define ADC_BUF_DEPTH      2
-#define SOLAR_VOLT_IND     0
-#define BOOST_VOLT_IND     1
-#define BUCK_VOLT_IND      2
+
+#define BOOST_VOLT_IND     0
+#define BUCK_VOLT_IND      1
+#define SOLAR_VOLT_IND     2
 #define BOOST_CURR_IND     3
 #define BUCK_CURR_IND      4
 

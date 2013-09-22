@@ -8,22 +8,25 @@ static uint8_t convRunning = 0;
 
 static int buckPwm   = 0;
 static int buckGain  = 1000; // Gain is 10%
-static int buckVolt  = ( ( 4095 * 5000 ) / ( 3 * 3300 ) );
+static int buckVolt  = 0;
 static int buckCurr  = 65535;
 
 static int boostMaxPwm = BOOST_MAX_PWM;
 static int boostPwm    = 0;
-static int boostVolt   = ( ( 4095 * 7000 ) / ( 3 * 3300 ) );
+static int boostVolt   = 0;
 static int boostCurr   = 65535;
 static int boostGain   = 1000; // Gain is 10%
 
 // Was 4.9V but with diode decreased on voltage drop on diode which is 0.65V.
 // So now solar setpoint is 4.2V.
-static int solarVolt  = ( ( 4095 * 4200 ) / ( 3 * 3300 ) );
+static int solarVolt  = 0;
 //static int buckVoltSave = 0;
 
 
 static Mutex mutex;
+
+static void convStart( void );
+static void convStop( void );
 
 static void convAdcReadyCb( ADCDriver * adcp, adcsample_t * buffer, size_t n )
 {
@@ -160,7 +163,7 @@ static void convRunStop( void )
     }
 }
 
-void convInit( void )
+void initConv( void )
 {
     chMtxInit( &mutex );
 
@@ -173,12 +176,12 @@ void convInit( void )
     	                            PAL_PORT_BIT( CONV_ADC_BOOST_VOLT_PIN ) | 
     	                            PAL_PORT_BIT( CONV_ADC_SOLAR_VOLT_PIN ) | 
     	                            PAL_PORT_BIT( CONV_ADC_BOOST_CURR_PIN ) | 
-				    PAL_PORT_BIT( CONV_ADC_BUCK_CURR_PIN )  | 
+				                    PAL_PORT_BIT( CONV_ADC_BUCK_CURR_PIN )  |
     	                            PAL_PORT_BIT( CONV_ADC_TEMP_PIN ),
                                     0, PAL_MODE_INPUT_ANALOG );
 }
 
-void convStart( void )
+static void convStart( void )
 {
     chMtxLock( &mutex );
         // Start PWM peripherial.
@@ -195,7 +198,7 @@ void convStart( void )
     chMtxUnlock();
 }
 
-void convStop( void )
+static void convStop( void )
 {
     chMtxLock( &mutex );
         pwmStop( &CONV_PWM );
