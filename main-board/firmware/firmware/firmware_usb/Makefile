@@ -5,8 +5,8 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -Os -ggdb -fomit-frame-pointer -falign-functions=16
-  #USE_OPT = -O0 -g -ggdb -fomit-frame-pointer -falign-functions=16
+  #USE_OPT = -Os -ggdb -fomit-frame-pointer -falign-functions=16
+  USE_OPT = -O0 -g -ggdb -fomit-frame-pointer -falign-functions=16
 endif
 
 # C specific options here (added to USE_OPT).
@@ -89,6 +89,7 @@ CSRC = $(PORTSRC) \
        ../src/usb_ctrl.c \
        ../src/conv_ctrl.c \
        ../src/led_ctrl.c \
+       ../src/light_ctrl.c \
        ../src/moto_ctrl.c \
        ../src/pawn_binding.c \
        ../src/pawn_ctrl.c \

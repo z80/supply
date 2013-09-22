@@ -3,8 +3,7 @@
 #include "ch.h"
 #include "hal.h"
 
-#define LIGHT_PORT  GPIOB
-#define LIGHT_PIN   12
+#include "hdw_cfg.h"
 
 void initLight( void )
 {
