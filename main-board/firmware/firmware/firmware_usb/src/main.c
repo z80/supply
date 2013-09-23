@@ -30,6 +30,7 @@ int main(void)
 
     /*
     pawnInit();
+    initI2c();
     initUsb();
 
     pawnRun();

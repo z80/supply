@@ -7,6 +7,7 @@
 #include "moto_ctrl.h"
 #include "conv_ctrl.h"
 #include "serial_ctrl.h"
+#include "i2c_ctrl.h"
 
 #include "hdw_cfg.h"
 
@@ -84,16 +85,6 @@ cell pawn_setI2cSlaveAddr( AMX * amx, const cell * params )
 }
 
 cell pawn_setI2cSlaveEn( AMX * amx, const cell * params )
-{
-    return 0;
-}
-
-cell pawn_setI2CSlaveOut( AMX * amx, const cell * params )
-{
-    return 0;
-}
-
-cell pawn_i2cSlaveIn( AMX * amx, const cell * params )
 {
     return 0;
 }

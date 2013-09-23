@@ -16,8 +16,6 @@ cell pawn_serialReceive( AMX * amx, const cell * params );
 
 // I2C slave control.
 cell pawn_setI2cSlaveEn( AMX * amx, const cell * params );
-cell pawn_setI2CSlaveOut( AMX * amx, const cell * params );
-cell pawn_i2cSlaveIn( AMX * amx, const cell * params );
 
 // I2C master control.
 cell pawn_setI2cEn( AMX * amx, const cell * params );

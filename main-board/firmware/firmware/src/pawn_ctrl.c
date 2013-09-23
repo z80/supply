@@ -32,10 +32,7 @@ AMX_NATIVE const g_nativetable[] =
     pawn_serialSend,
     pawn_serialReceive,
 
-    pawn_setI2cSlaveAddr,
     pawn_setI2cSlaveEn,
-    pawn_setI2CSlaveOut,
-    pawn_i2cSlaveIn,
 
     pawn_setI2cEn,
     pawn_i2cIo,

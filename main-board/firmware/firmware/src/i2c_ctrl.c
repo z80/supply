@@ -1,5 +1,5 @@
 
-#include "i2c_slave_ctrl.h"
+#include "i2c_ctrl.h"
 #include "hal.h"
 
 #include "hdw_cfg.h"
@@ -28,13 +28,8 @@ static msg_t execThread( void *arg );
 
 
 
-void initI2cSlave( void )
+void initI2c( void )
 {
-    //palSetPadMode( GPIOB, 6, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-    //palSetPadMode( GPIOB, 7, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-    palSetPadMode( GPIOB, 6, PAL_MODE_INPUT );
-    palSetPadMode( GPIOB, 7, PAL_MODE_INPUT );
-
     // Initialize mailbox.
     chIQInit( &inputQueue, queue, I2C_IN_BUFFER_SZ * EXEC_QUEUE_SIZE, NULL );
     // Creating thread.
@@ -126,103 +121,6 @@ static msg_t execThread( void *arg )
         // Parse inBuffer
         switch ( buffer[0] )
         {
-        /*
-        case CMD_SET_POWER_TIMEOUT:
-            setPowerTimeout( puvalue16In[0] );
-            break;
-        case CMD_POWER_RESET:
-            powerOffReset();
-            break;
-        case CMD_SHUTDOWN_RESET:
-            powerOffReset();
-            break;
-        case CMD_SET_SECONDS_PER_DAY:
-            setSecondsPerDay( buffer[1] + (buffer[2] << 8) + (buffer[3] << 16) + (buffer[4] << 24) );
-            break;
-        case CMD_SET_CURRENT_TIME:
-            setCurrentTime( buffer[1] + (buffer[2] << 8) + (buffer[3] << 16) + (buffer[4] << 24) );
-            break;
-        case CMD_CURRENT_TIME:
-            uvalue32Out = currentTime();
-            outBuffer[1] = uvalue32Out & 255;
-            outBuffer[2] = (uvalue32Out >> 8) & 255;
-            outBuffer[3] = (uvalue32Out >> 16) & 255;
-            outBuffer[4] = (uvalue32Out >> 24) & 255;
-            outBuffer[0] = CMD_CURRENT_TIME;
-            break;
-        case CMD_SET_WAKEUPS_CNT:
-            setWakeupsCnt( buffer[1] );
-            break;
-        case CMD_SET_WAKEUP:
-            setWakeup( buffer[1], buffer[2] + (buffer[3] >> 8) + (buffer[4] >> 16) + (buffer[5] >> 24) );
-            break;
-        case CMD_TEMP:
-            uvalue16Out = adcTemperature();
-            outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-            outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-            outBuffer[0]  = CMD_TEMP;
-            break;
-        case CMD_CURR:
-            uvalue16Out = adcCurrent();
-            outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-            outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-            outBuffer[0]  = CMD_CURR;
-            break;
-        case CMD_BUCK_FB:
-            uvalue16Out = adcBuckFb();
-            outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-            outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-            outBuffer[0]  = CMD_BUCK_FB;
-            break;
-        case CMD_BOOST_FB:
-            uvalue16Out = adcBoostFb();
-            outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-            outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-            outBuffer[0]  = CMD_BOOST_FB;
-            break;
-        case CMD_SOLAR_FB:
-            uvalue16Out = adcSolarFb();
-            outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-            outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-            outBuffer[0]  = CMD_SOLAR_FB;
-            break;
-        case CMD_SET_SOLAR_VOLT:
-            convSetSolar( *puvalue16In );
-            break;
-        case CMD_SET_CHARGE_VOLT:
-            convSetBoost( *puvalue16In );
-            break;
-        case CMD_SET_MOTO_EN:
-            motoSetEn( *puvalue16In );
-            break;
-        case CMD_SET_MOTO:
-            motoSet( *puvalue16In );
-            break;
-        case CMD_SET_LIGHT:
-            setLight( *puvalue16In );
-            break;
-        case CMD_SET_LED:
-            setLed( *puvalue16In );
-            break;
-        // Pawn commands.
-        case CMD_SETUP_OSC:
-            oscSetup( *puvalue16In, buffer[3] );
-            break;
-        case CMD_OSC_STATUS:
-            uvalue16Out = oscMeasuresCnt( &uvalue8Out );
-            outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-            outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-            outBuffer[3] = uvalue8Out;
-            outBuffer[0] = CMD_OSC_STATUS;
-            break;
-        case CMD_OSC:
-            uvalue16Out = oscValue( *puvalue16In );
-            outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-            outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-            outBuffer[0]  = CMD_OSC;
-            break;
-        */
-
         case I2C_CMD_PAWN_SET_IO:
             pawnSetIo( buffer[1], &buffer[2] );
             outBuffer[0] = I2C_CMD_PAWN_SET_IO;
@@ -281,25 +179,46 @@ static msg_t execThread( void *arg )
 
 
 
-int setI2cEn( uint8_t en )
+void setI2cEn( uint8_t en )
 {
+	if ( en )
+	{
+        palSetPadMode( GPIOB, 10, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
+        palSetPadMode( GPIOB, 11, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
 
-	return 0;
+        i2cStart( &I2CD2, &i2cfg1 );
+	}
+	else
+	{
+        i2cStop( &I2CD2 );
+
+        palSetPadMode( GPIOB, 10, PAL_MODE_INPUT );
+        palSetPadMode( GPIOB, 11, PAL_MODE_INPUT );
+	}
 }
 
 int i2cIo( uint8_t addr,
 		   uint8_t * outBuffer, int outSz,
 		   uint8_t * inBuffer,  int inSz, int timeoutMs )
 {
-	int status;
+	msg_t status;
+	systime_t tmo;
+	tmo = MS2ST( timeoutMs );
+
 	if ( outSz > 0 )
 	{
-
+        status = i2cMasterTransmitTimeout( &I2CD2,    addr,
+                                           outBuffer, outSz,
+                                           inBuffer,  inSz,
+                                           tmo );
 	}
 	else
 	{
-
+        status = i2cMasterReceiveTimeout( &I2CD2,   addr,
+                                          inBuffer, inSz,
+                                          tmo );
 	}
+	return status;
 }
 
 
