@@ -269,7 +269,7 @@ void convSetBoostGain( int val )
     chSysUnlock();
 }
 
-int adcTemp( void )
+static int adcSingle( uint32_t mask1, uint32_t mask2 )
 {
     chMtxLock( &mutex );
         uint8_t en = convRunning;
@@ -287,10 +287,10 @@ int adcTemp( void )
         NULL,
         0, 0,
         0,
-        ADC_SMPR2_SMP_AN8( ADC_SAMPLING ),
+        mask1, //ADC_SMPR2_SMP_AN8( ADC_SAMPLING ),
         ADC_SQR1_NUM_CH( 1 ),
         0,
-        ADC_SQR3_SQ1_N( ADC_CHANNEL_IN8 )
+        mask2 //ADC_SQR3_SQ1_N( ADC_CHANNEL_IN8 )
     };
 
     adcsample_t adcRes;
@@ -303,30 +303,35 @@ int adcTemp( void )
     return Adc2T( adcRes );
 }
 
+int adcTemp( void )
+{
+    return adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN8 ) );
+}
+
 int adcBatteryVolt( void )
 {
-    return 1;
+	return adcSingle( ADC_SMPR2_SMP_AN3( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN3 ) );
 }
 
 int adcBuckVolt( void )
 {
-    return 2;
+	return adcSingle( ADC_SMPR2_SMP_AN4( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN4 ) );
 }
 
 int adcSolarVolt( void )
 {
-    return 3;
+	return adcSingle( ADC_SMPR2_SMP_AN5( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN5 ) );
 }
 
 int adcBuckCurr( void )
 {
-    return 4;
+	return adcSingle( ADC_SMPR2_SMP_AN7( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN7 ) );
 }
 
 
 int adcBoostCurr( void )
 {
-    return 5;
+	return adcSingle( ADC_SMPR2_SMP_AN6( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN6 ) );
 }
 
 
