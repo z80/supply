@@ -106,6 +106,7 @@
 // *****************************************************************
 #define I2C_OUT_BUFFER_SZ       32
 #define I2C_IN_BUFFER_SZ        16  // Command id as 1 byte and up to 2 two byte numbers = 5 bytes.
+#define I2C_IO_BUFFER_SZ        32  // I2C master buffer size.
 #define EXEC_QUEUE_SIZE         3
 #define I2C_ADDRESS             1
 #define I2C_TIMEOUT             500

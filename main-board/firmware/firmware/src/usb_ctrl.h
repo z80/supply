@@ -5,6 +5,7 @@
 void initUsb( void );
 void finitUsb( void );
 void processShell( void );
+void usbWrite( char * stri );
 
 #endif
 

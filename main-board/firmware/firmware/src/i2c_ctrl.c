@@ -70,6 +70,7 @@ int setI2cSlaveEn( uint8_t en, uint8_t addr )
 	    i2cStop( &I2CD1 );
 	    palSetPadMode( GPIOB, 6, PAL_MODE_INPUT );
 	    palSetPadMode( GPIOB, 7, PAL_MODE_INPUT );
+	    return 0;
 	}
 }
 
@@ -109,7 +110,6 @@ static msg_t execThread( void *arg )
         static uint8_t buffer[ I2C_IN_BUFFER_SZ ];
         sz = chIQReadTimeout( &inputQueue, buffer, I2C_IN_BUFFER_SZ, TIME_INFINITE );
 
-        static uint32_t uvalue32Out;
         static uint16_t uvalue16Out;
         static uint8_t  uvalue8Out;
 

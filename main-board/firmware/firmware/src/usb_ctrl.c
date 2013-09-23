@@ -429,7 +429,7 @@ static void cmd_pawnIsRunning(BaseChannel *chp, int argc, char *argv[])
         chprintf( chp, "false\r\n" );
 }
 
-static void cmd_pawnStop(BaseChannel *chp, int argc, char *argv[])
+static void cmd_pawnStop( BaseChannel *chp, int argc, char *argv[] )
 {
     (void)argc;
     (void)argv;
@@ -572,5 +572,9 @@ void processShell( void )
     }
 }
 
+void usbWrite( char * stri )
+{
+    chprintf( (BaseChannel *)&SDU1, stri );
+}
 
 

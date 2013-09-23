@@ -8,18 +8,15 @@
 
 static int baud = SERIAL_BAUD;
 
-void setSerialBaud( int newBaud )
-{
-    baud = newBaud;
-}
-
-void setSerialEn( uint8_t en )
+void setSerialEn( uint8_t en, int newBaud )
 {
 	if ( en )
 	{
         palSetPadMode( GPIOB, 10, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
         palSetPadMode( GPIOB, 11, PAL_MODE_INPUT );
 
+        if ( newBaud > 0 )
+        	baud = newBaud;
         static SerialConfig config =
         {
             baud,

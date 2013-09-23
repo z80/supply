@@ -8,6 +8,7 @@
 #include "conv_ctrl.h"
 #include "serial_ctrl.h"
 #include "i2c_ctrl.h"
+#include "usb_ctrl.h"
 
 #include "hdw_cfg.h"
 
@@ -35,14 +36,7 @@ cell pawn_rtc( AMX * amx, const cell * params )
 cell pawn_setSerialEn( AMX * amx, const cell * params )
 {
 	(void)amx;
-    setSerialEn( params[1] );
-    return 0;
-}
-
-cell pawn_setSerialBaud( AMX * amx, const cell * params )
-{
-	(void)amx;
-    setSerialBaud( params[1] );
+    setSerialEn( params[1], params[2] );
     return 0;
 }
 
@@ -79,28 +73,56 @@ cell pawn_serialReceive( AMX * amx, const cell * params )
     return cnt;
 }
 
-cell pawn_setI2cSlaveAddr( AMX * amx, const cell * params )
-{
-    return 0;
-}
-
 cell pawn_setI2cSlaveEn( AMX * amx, const cell * params )
 {
-    return 0;
+	(void)amx;
+	int status;
+	status = setI2cSlaveEn( (uint8_t)params[1], (uint8_t)params[2] );
+    return status;
 }
 
 cell pawn_setI2cEn( AMX * amx, const cell * params )
 {
+	(void)amx;
+	setI2cEn( (uint8_t)params[1] );
     return 0;
 }
 
+static uint8_t i2cWriteBuffer[ I2C_IO_BUFFER_SZ ];
+static uint8_t i2cReadBuffer[ I2C_IO_BUFFER_SZ ];
 cell pawn_i2cIo( AMX * amx, const cell * params )
 {
-    return 0;
+	(void)amx;
+	uint8_t addr = params[1];
+	cell * dataIo = amx_Address( amx, params[2] );
+	int writeCnt  = params[3];
+	int readCnt   = params[5];
+	int timeoutMs = params[6];
+    int i;
+    for ( i=0; i<writeCnt; i++ )
+    	i2cWriteBuffer[i] = dataIo[i];
+    int status =i2cIo( addr, i2cWriteBuffer, writeCnt,
+    		                 i2cReadBuffer,  readCnt,
+    		                 timeoutMs );
+    if ( readCnt > 0 )
+    {
+    	dataIo = amx_Address( amx, params[4] );
+    	for ( i=0; i<readCnt; i++ )
+    		dataIo[i] = (cell)i2cReadBuffer;
+    }
+    return status;
 }
 
 cell pawn_usbWrite( AMX * amx, const cell * params )
 {
+	(void)amx;
+	int length;
+	amx_StrLen( (cell*)params[1], &length );
+	#define STR_LEN  32
+	static char stri[ STR_LEN ];
+	amx_GetString( stri, (cell *)params[1], 0, length );
+	stri[ STR_LEN-1 ] = '\0';
+	usbWrite( stri );
     return 0;
 }
 

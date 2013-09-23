@@ -28,7 +28,6 @@ AMX_NATIVE const g_nativetable[] =
     pawn_rtc,
 
     pawn_setSerialEn,
-    pawn_setSerialBaud,
     pawn_serialSend,
     pawn_serialReceive,
 

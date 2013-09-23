@@ -10,7 +10,6 @@ cell pawn_rtc( AMX * amx, const cell * params );
 
 // UART control.
 cell pawn_setSerialEn( AMX * amx, const cell * params );
-cell pawn_setSerialBaud( AMX * amx, const cell * params );
 cell pawn_serialSend( AMX * amx, const cell * params );
 cell pawn_serialReceive( AMX * amx, const cell * params );
 

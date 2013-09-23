@@ -30,29 +30,29 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   5 .bss          000007cc  20000848  08005db4  00010848  2**3
                   ALLOC
-  6 .debug_abbrev 00005da3  00000000  00000000  00010844  2**0
+  6 .debug_abbrev 00005dba  00000000  00000000  00010844  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   0001df27  00000000  00000000  000165e7  2**0
+  7 .debug_info   0001df8b  00000000  00000000  000165fe  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000b9bc  00000000  00000000  0003450e  2**0
+  8 .debug_line   0000bb5a  00000000  00000000  00034589  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    000053e5  00000000  00000000  0003feca  2**0
+  9 .debug_loc    000053f5  00000000  00000000  000400e3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_pubnames 000027c7  00000000  00000000  000452af  2**0
+ 10 .debug_pubnames 000027a4  00000000  00000000  000454d8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_pubtypes 00004d39  00000000  00000000  00047a76  2**0
+ 11 .debug_pubtypes 00004d39  00000000  00000000  00047c7c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_aranges 000017c0  00000000  00000000  0004c7af  2**0
+ 12 .debug_aranges 000017b8  00000000  00000000  0004c9b5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00001410  00000000  00000000  0004df6f  2**0
+ 13 .debug_ranges 00001408  00000000  00000000  0004e16d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0000584f  00000000  00000000  0004f37f  2**0
+ 14 .debug_str    0000585c  00000000  00000000  0004f575  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .comment      0000002a  00000000  00000000  00054bce  2**0
+ 15 .comment      0000002a  00000000  00000000  00054dd1  2**0
                   CONTENTS, READONLY
- 16 .ARM.attributes 00000031  00000000  00000000  00054bf8  2**0
+ 16 .ARM.attributes 00000031  00000000  00000000  00054dfb  2**0
                   CONTENTS, READONLY
- 17 .debug_frame  000040f4  00000000  00000000  00054c2c  2**2
+ 17 .debug_frame  00004100  00000000  00000000  00054e2c  2**2
                   CONTENTS, READONLY, DEBUGGING
 SYMBOL TABLE:
 08000000 l    d  startup	00000000 startup
@@ -403,7 +403,6 @@ SYMBOL TABLE:
 08002aa0 g     F .text	00000048 Vector7C
 08002cf0 g     F .text	00000084 dmaStreamRelease
 08001050 g     F .text	00000034 chMtxInit
-00000000         *UND*	00000000 setSerialBaud
 08000500 g     F .text	00000018 _idle_thread
 08001750 g     F .text	000000d0 chOQWriteTimeout
 08001c40 g     F .text	00000018 pwmObjectInit
