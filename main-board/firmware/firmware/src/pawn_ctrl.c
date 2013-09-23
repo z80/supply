@@ -183,6 +183,8 @@ uint8_t pawnMem( uint16_t at )
 
 uint16_t pawnWriteFlash( uint8_t page )
 {
+	if ( page >= PAWN_PAGES_CNT )
+		return 30;
     FLASH_Unlock();
     uint32_t flashD = PAWN_FLASH_START + PAWN_PAGE_SIZE * ( page + PAWN_START_PAGE );
     FLASH_Status st = FLASH_ErasePage( flashD );

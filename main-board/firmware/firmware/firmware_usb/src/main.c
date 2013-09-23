@@ -23,14 +23,12 @@ int main(void)
     initLed();
     initLight();
     initMoto();
+    initI2c();
     initConv();
 
-    convSetBuck( 5000 );
+    //convSetBuck( 5000 );
 
-
-    /*
     pawnInit();
-    initI2c();
     initUsb();
 
     pawnRun();
@@ -39,8 +37,8 @@ int main(void)
         processShell();
         chThdSleepMilliseconds( 250 );
     }
-    */
 
+    /*
     while ( 1 )
     {
     	setLed( 1 );
@@ -51,7 +49,7 @@ int main(void)
     	setLight( 0 );
     	chThdSleepMilliseconds( 500 );
     }
-
+    */
     return 0;
 }
 

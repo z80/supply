@@ -6,7 +6,7 @@
 
 #include "hal.h"
 
-static int baud = SERIAL_BAUD;
+#include "hdw_cfg.h"
 
 void setSerialEn( uint8_t en, int newBaud )
 {
@@ -15,15 +15,16 @@ void setSerialEn( uint8_t en, int newBaud )
         palSetPadMode( GPIOB, 10, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
         palSetPadMode( GPIOB, 11, PAL_MODE_INPUT );
 
-        if ( newBaud > 0 )
-        	baud = newBaud;
         static SerialConfig config =
         {
-            baud,
+        	SERIAL_BAUD,
             0,
             0,
             0
         };
+        if ( newBaud > 0 )
+        	config.sc_speed = (uint32_t)newBaud;
+
         sdStart( &SERIAL_UART, &config );
 	}
 	else
@@ -42,7 +43,7 @@ void setSerialEn( uint8_t en, int newBaud )
     */
 }
 
-void serialSend( uint8_t * data, int sz )
+int serialSend( uint8_t * data, int sz )
 {
 	int cnt = sdWrite( &SERIAL_UART, (const uint8_t *)data, sz );
 	return cnt;
