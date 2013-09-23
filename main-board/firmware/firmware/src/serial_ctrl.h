@@ -4,8 +4,10 @@
 
 #include "ch.h"
 
-void initSerial( void );
-void processSerial( void );
+void setSerialBaud( int newBaud );
+void setSerialEn( uint8_t en );
+int  serialSend( uint8_t * data, int sz );
+int  serialReceive( uint_8_t * data, int maxSz );
 
 
 #endif

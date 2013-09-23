@@ -10,6 +10,8 @@
 #include "shell.h"
 #include "chprintf.h"
 
+#include "usb_ctrl.h"
+#include "hdw_cfg.h"
 #include "pawn_ctrl.h"
 
 /*===========================================================================*/
@@ -451,6 +453,31 @@ static void cmd_pawnError( BaseChannel *chp, int argc, char *argv[] )
     chprintf( chp, "%d\r\n", res );
 }
 
+typedef  void (*pFunction)(void);
+static void cmd_dfu( BaseChannel *chp, int argc, char *argv[] )
+{
+	(void)argc;
+	(void)argv;
+	if ( ((*(__IO uint32_t*)DFU_ADDRESS) & 0x2FFE0000 ) != 0x20000000 )
+	{
+		chprintf( chp, "err: no DFU firmware found\r\n" );
+	}
+	else
+	{
+		// Detach USB.
+		finitUsb();
+        chThdSleepSeconds( 1 );
+
+        pFunction Jump_To_Application;
+        uint32_t JumpAddress;
+
+	    JumpAddress = *(__IO uint32_t*) (DFU_ADDRESS + 4);
+	    Jump_To_Application = (pFunction) JumpAddress;
+	    // Initialize user application's Stack Pointer
+	    __set_MSP(*(__IO uint32_t*) DFU_ADDRESS);
+	    Jump_To_Application();
+	}
+}
 
 
 
@@ -471,6 +498,8 @@ static const ShellCommand commands[] =
     { "pawnStop",       cmd_pawnStop }, 
     { "pawnResult",     cmd_pawnResult }, 
     { "pawnError",      cmd_pawnError }, 
+
+    { "dfu",            cmd_dfu },
 
     { NULL,             NULL }
 };

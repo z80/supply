@@ -5,55 +5,35 @@
 #include "moto_ctrl.h"
 
 #include "hal.h"
-#include "shell.h"
-#include "chprintf.h"
 
-#define SERIAL_UART       SD3
-#define SERIAL_BAUD       9600
+static int baud = SERIAL_BAUD;
 
-static SerialConfig config =
+void setSerialBaud( int newBaud )
 {
-    SERIAL_BAUD,
-    0,
-    0,
-    0
-};
+    baud = newBaud;
+}
 
-
-static void cmd_mem( BaseChannel * chp, int argc, char * argv[] );
-static void cmd_temperature( BaseChannel * chp, int argc, char * argv[] );
-static void cmd_current( BaseChannel * chp, int argc, char * argv[] );
-static void cmd_light( BaseChannel * chp, int argc, char * argv[] );
-static void cmd_motoEn( BaseChannel * chp, int argc, char * argv[] );
-static void cmd_moto( BaseChannel * chp, int argc, char * argv[] );
-
-#define SHELL_WA_SIZE   THD_WA_SIZE( 2048 )
-static const ShellCommand commands[] =
+void setSerialEn( uint8_t en )
 {
-    { "mem",  cmd_mem },
-    { "cur",  cmd_current },
-    { "tem",  cmd_temperature },
-    { "li",   cmd_light },
-    { "moen", cmd_motoEn },
-    { "mo",   cmd_moto },
-    { NULL,          NULL }
-};
+	if ( en )
+	{
+        palSetPadMode( GPIOB, 10, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
+        palSetPadMode( GPIOB, 11, PAL_MODE_INPUT );
 
-Thread * shelltp = NULL;
+        static SerialConfig config =
+        {
+            baud,
+            0,
+            0,
+            0
+        };
+        sdStart( &SERIAL_UART, &config );
+	}
+	else
+	{
+		sdStop( &SERIAL_UART );
+	}
 
-static const ShellConfig shell_cfg =
-{
-    (BaseChannel *)&SERIAL_UART,
-    commands
-};
-
-void initSerial( void )
-{
-    palSetPadMode( GPIOB, 10, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
-    palSetPadMode( GPIOB, 11, PAL_MODE_INPUT );
-    sdStart( &SERIAL_UART, &config );
-
-    chprintf( (BaseChannel *)&SERIAL_UART, "Hello!\r\n" );
     /*
     uint32_t i;
     for ( i=0; i<128; i++ )
@@ -65,103 +45,17 @@ void initSerial( void )
     */
 }
 
-void processSerial( void )
+void serialSend( uint8_t * data, int sz )
 {
-    if ( !shelltp )
-        shelltp = shellCreate( &shell_cfg, SHELL_WA_SIZE, NORMALPRIO );
-    else if ( chThdTerminated( shelltp ) )
-    {
-        chThdRelease( shelltp );  // Recovers memory of the previous shell.
-        shelltp = NULL;           // Triggers spawning of a new shell.
-    }
+	int cnt = sdWrite( &SERIAL_UART, (const uint8_t *)data, sz );
+	return cnt;
 }
 
-static void cmd_mem( BaseChannel * chp, int argc, char * argv[] )
+int  serialReceive( uint_8_t * data, int maxSz )
 {
-    (void)argc;
-    (void)argv;
-    size_t n, size;
-    n = chHeapStatus( NULL, &size );
-    chprintf( chp, "core free memory : %u bytes\r\n", chCoreStatus() );
-    chprintf( chp, "heap fragments   : %u\r\n", n );
-    chprintf( chp, "heap free total  : %u bytes\r\n", size );
+    int cnt = sdRead( &SERIAL_UART, data, maxSz );
+    return cnt;
 }
-
-static void cmd_temperature( BaseChannel * chp, int argc, char * argv[] )
-{
-    (void)argc;
-    (void)argv;
-    chprintf( chp, "temperature: %u\r\n", adcTemperature() );
-}
-
-static void cmd_current( BaseChannel * chp, int argc, char * argv[] )
-{
-    (void)argc;
-    (void)argv;
-    chprintf( chp, "current: %u\r\n", adcCurrent() );
-}
-
-static void cmd_light( BaseChannel * chp, int argc, char * argv[] )
-{
-    (void)chp;
-    if ( argc > 0 )
-    {
-        if ( argv[0][0] != '0' )
-        {
-            setLight( 1 );
-            return;
-        }
-    }
-    setLight( 0 );
-}
-
-static void cmd_motoEn( BaseChannel * chp, int argc, char * argv[] )
-{
-    (void)chp;
-    if ( argc > 0 )
-    {
-        if ( argv[0][0] != '0' )
-        {
-            motoSetEn( 1 );
-            return;
-        }
-    }
-    motoSetEn( 0 );
-}
-
-static void cmd_moto( BaseChannel * chp, int argc, char * argv[] )
-{
-    (void)chp;
-    uint16_t en = 0;
-    if ( argc > 0 )
-    {
-        if ( argv[0][0] != '0' )
-            en |= 1;
-    }
-    if ( argc > 1 )
-    {
-        if ( argv[1][0] != '0' )
-            en |= 2;
-    }
-    if ( argc > 2 )
-    {
-        if ( argv[2][0] != '0' )
-            en |= 4;
-    }
-    if ( argc > 3 )
-    {
-        if ( argv[3][0] != '0' )
-            en |= 8;
-    }
-    motoSet( en );
-}
-
-
-
-
-
-
-
 
 
 

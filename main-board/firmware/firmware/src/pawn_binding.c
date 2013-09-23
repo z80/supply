@@ -1,11 +1,89 @@
 
 #include "pawn_binding.h"
+#include "ch.h"
+#include "hal.h"
 
 #include "led_ctrl.h"
 #include "moto_ctrl.h"
 #include "conv_ctrl.h"
+#include "serial_ctrl.h"
 
+cell pawn_setRtc( AMX * amx, const cell * params )
+{
+    RTCTime rtc;
+    rtc.tv_sec  = params[1];
+    rtc.tv_msec = params[2];
+    rtcSetTime( &RTCD1, &rtc );
+    return 0;
+}
 
+cell pawn_rtc( AMX * amx, const cell * params )
+{
+    RTCTime rtc;
+    rtcGetTime( &RTCD1, &rtc );
+    cell * msec;
+    msec = amx_Address( amx, params[1] );
+    if ( msec )
+    	*msec = rtc.tv_msec;
+    return rtc.tv_sec;
+}
+
+cell pawn_setSerialEn( AMX * amx, const cell * params )
+{
+    setSerialEn( params[1] );
+    return 0;
+}
+
+cell pawn_setSerialBaud( AMX * amx, const cell * params )
+{
+    setSerialBaud( params[1] );
+    return 0;
+}
+
+cell pawn_serialSend( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_serialReceive( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_setI2cSlaveAddr( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_setI2cSlaveEn( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_setI2CSlaveOut( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_i2cSlaveIn( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_setI2cEn( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_i2cIo( AMX * amx, const cell * params )
+{
+    return 0;
+}
+
+cell pawn_usbWrite( AMX * amx, const cell * params )
+{
+    return 0;
+}
 
 cell pawn_setLed( AMX * amx, const cell * params )
 {

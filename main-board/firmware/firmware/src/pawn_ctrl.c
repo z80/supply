@@ -24,6 +24,24 @@ static cell pawn_setIo( AMX * amx, const cell * params );
 
 AMX_NATIVE const g_nativetable[] =
 {
+    pawn_setRtc,
+    pawn_rtc,
+
+    pawn_setSerialEn,
+    pawn_setSerialBaud,
+    pawn_serialSend,
+    pawn_serialReceive,
+
+    pawn_setI2cSlaveAddr,
+    pawn_setI2cSlaveEn,
+    pawn_setI2CSlaveOut,
+    pawn_i2cSlaveIn,
+
+    pawn_setI2cEn,
+    pawn_i2cIo,
+
+    pawn_usbWrite,
+
     pawn_io,
     pawn_setIo, 
 

@@ -5,6 +5,27 @@
 #include "amx.h"
 
 // RTC control.
+cell pawn_setRtc( AMX * amx, const cell * params );
+cell pawn_rtc( AMX * amx, const cell * params );
+
+// UART control.
+cell pawn_setSerialEn( AMX * amx, const cell * params );
+cell pawn_setSerialBaud( AMX * amx, const cell * params );
+cell pawn_serialSend( AMX * amx, const cell * params );
+cell pawn_serialReceive( AMX * amx, const cell * params );
+
+// I2C slave control.
+cell pawn_setI2cSlaveAddr( AMX * amx, const cell * params );
+cell pawn_setI2cSlaveEn( AMX * amx, const cell * params );
+cell pawn_setI2CSlaveOut( AMX * amx, const cell * params );
+cell pawn_i2cSlaveIn( AMX * amx, const cell * params );
+
+// I2C master control.
+cell pawn_setI2cEn( AMX * amx, const cell * params );
+cell pawn_i2cIo( AMX * amx, const cell * params );
+
+// USB control.
+cell pawn_usbWrite( AMX * amx, const cell * params );
 
 // LED control.
 cell pawn_setLed( AMX * amx, const cell * params );
