@@ -30,29 +30,29 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   5 .bss          000007cc  20000848  08005db4  00010848  2**3
                   ALLOC
-  6 .debug_abbrev 00005b2d  00000000  00000000  00010844  2**0
+  6 .debug_abbrev 00005dd0  00000000  00000000  00010844  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   0001cdc8  00000000  00000000  00016371  2**0
+  7 .debug_info   0001df7c  00000000  00000000  00016614  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000b5db  00000000  00000000  00033139  2**0
+  8 .debug_line   0000b9e0  00000000  00000000  00034590  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    00005115  00000000  00000000  0003e714  2**0
+  9 .debug_loc    0000540d  00000000  00000000  0003ff70  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_pubnames 000026a9  00000000  00000000  00043829  2**0
+ 10 .debug_pubnames 000027f8  00000000  00000000  0004537d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_pubtypes 00004a67  00000000  00000000  00045ed2  2**0
+ 11 .debug_pubtypes 00004d39  00000000  00000000  00047b75  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_aranges 00001718  00000000  00000000  0004a939  2**0
+ 12 .debug_aranges 000017d0  00000000  00000000  0004c8ae  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00001378  00000000  00000000  0004c051  2**0
+ 13 .debug_ranges 00001420  00000000  00000000  0004e07e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0000570b  00000000  00000000  0004d3c9  2**0
+ 14 .debug_str    0000587e  00000000  00000000  0004f49e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .comment      0000002a  00000000  00000000  00052ad4  2**0
+ 15 .comment      0000002a  00000000  00000000  00054d1c  2**0
                   CONTENTS, READONLY
- 16 .ARM.attributes 00000031  00000000  00000000  00052afe  2**0
+ 16 .ARM.attributes 00000031  00000000  00000000  00054d46  2**0
                   CONTENTS, READONLY
- 17 .debug_frame  00003f1c  00000000  00000000  00052b30  2**2
+ 17 .debug_frame  0000410c  00000000  00000000  00054d78  2**2
                   CONTENTS, READONLY, DEBUGGING
 SYMBOL TABLE:
 08000000 l    d  startup	00000000 startup
@@ -205,6 +205,7 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 stm32f10x_flash.c
 00000000 l    df *ABS*	00000000 misc.c
 00000000 l    df *ABS*	00000000 usb_ctrl.c
+00000000 l    df *ABS*	00000000 i2c_slave_ctrl.c
 00000000 l    df *ABS*	00000000 pawn_binding.c
 00000000 l    df *ABS*	00000000 pawn_ctrl.c
 00000000 l    df *ABS*	00000000 amx.c
@@ -294,6 +295,7 @@ SYMBOL TABLE:
 080018e0 g     F .text	0000002c _heap_init
 08002a00 g     F .text	00000048 Vector74
 08001910 g     F .text	0000003c halInit
+00000000         *UND*	00000000 serialReceive
 20000848 g       .bss	00000000 _bss_start
 08000200  w    F .text	00000002 UsageFaultVector
 20005000 g       *ABS*	00000000 __heap_end__
@@ -309,6 +311,7 @@ SYMBOL TABLE:
 08001aa0 g     F .text	00000084 adcStartConversionI
 08002de0 g     F .text	00000090 hal_lld_init
 08004e10 g     F .text	00000034 usb_lld_start_out
+00000000         *UND*	00000000 setSerialEn
 080053d0 g     F .text	0000003c initConv
 08000fd0 g     F .text	00000074 chThdExitS
 08002950 g     F .text	00000008 rtcInit
@@ -374,6 +377,7 @@ SYMBOL TABLE:
 08000200  w    F .text	00000002 HardFaultVector
 080002d0 g     F .text	00000068 _port_irq_epilogue
 08001850 g     F .text	00000026 chCoreAlloc
+00000000         *UND*	00000000 serialSend
 080054c0 g     F .text	00000048 convSetBuck
 080007d0 g     F .text	00000028 chDbgCheckClassS
 08001c30 g     F .text	00000008 pwmInit
@@ -399,6 +403,7 @@ SYMBOL TABLE:
 08002aa0 g     F .text	00000048 Vector7C
 08002cf0 g     F .text	00000084 dmaStreamRelease
 08001050 g     F .text	00000034 chMtxInit
+00000000         *UND*	00000000 setSerialBaud
 08000500 g     F .text	00000018 _idle_thread
 08001750 g     F .text	000000d0 chOQWriteTimeout
 08001c40 g     F .text	00000018 pwmObjectInit

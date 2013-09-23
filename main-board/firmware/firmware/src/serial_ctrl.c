@@ -51,7 +51,7 @@ void serialSend( uint8_t * data, int sz )
 	return cnt;
 }
 
-int  serialReceive( uint_8_t * data, int maxSz )
+int  serialReceive( uint8_t * data, int maxSz )
 {
     int cnt = sdRead( &SERIAL_UART, data, maxSz );
     return cnt;

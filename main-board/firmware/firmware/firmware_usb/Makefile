@@ -91,6 +91,7 @@ CSRC = $(PORTSRC) \
        ../src/led_ctrl.c \
        ../src/light_ctrl.c \
        ../src/moto_ctrl.c \
+       ../src/i2c_slave_ctrl.c \
        ../src/pawn_binding.c \
        ../src/pawn_ctrl.c \
        ../pawn/amx.c \

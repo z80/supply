@@ -4,11 +4,13 @@
 
 #include "ch.h"
 
-void initI2cSlave( void );
-void startI2cSlave( void );
-void stopI2cSlave( void );
+void initI2c( void );
+int  setI2cSlaveEn( uint8_t en, uint8_t addr );
 
-
+int setI2cEn( uint8_t en );
+int i2cIo( uint8_t addr,
+		   uint8_t * outBuffer, int outSz,
+		   uint8_t * inBuffer,  int inSz, int timeoutMs );
 
 #endif
 

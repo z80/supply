@@ -2,14 +2,8 @@
 #include "i2c_slave_ctrl.h"
 #include "hal.h"
 
-#include "i2c_slave_conf.h"
-
-#include "moto_ctrl.h"
-#include "light_ctrl.h"
-#include "led_ctrl.h"
-#include "conv_ctrl.h"
-#include "power_ctrl.h"
-#include "osc_ctrl.h"
+#include "hdw_cfg.h"
+#include "pawn_ctrl.h"
 
 static uint8_t outBuffer[ I2C_OUT_BUFFER_SZ ];
 static uint8_t inBuffer[ I2C_IN_BUFFER_SZ ];
@@ -47,37 +41,41 @@ void initI2cSlave( void )
     chThdCreateStatic( waExec, sizeof(waExec), NORMALPRIO, execThread, NULL );
 }
 
-void startI2cSlave( void )
+int setI2cSlaveEn( uint8_t en, uint8_t addr )
 {
-    static msg_t status;
-    static systime_t tmo;
-    tmo = MS2ST( I2C_TIMEOUT );
+	if ( en )
+	{
+		static msg_t status;
+		static systime_t tmo;
+		tmo = MS2ST( I2C_TIMEOUT );
 
-    palSetPadMode( GPIOB, 6, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-    palSetPadMode( GPIOB, 7, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-    while ( 1 )
-    {
-        i2cStart( &I2CD1, &i2cfg1 );
+		palSetPadMode( GPIOB, 6, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
+		palSetPadMode( GPIOB, 7, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
+		while ( 1 )
+		{
+			i2cStart( &I2CD1, &i2cfg1 );
 
-        status = i2cSlaveIoTimeout( &I2CD1, I2C_ADDRESS,
-                                    inBuffer,  I2C_IN_BUFFER_SZ,
-                                    outBuffer, I2C_OUT_BUFFER_SZ,
-                                    i2cRxCb,
-                                    i2cTxCb,
-                                    tmo );
-        if ( status )
-            i2cStop( &I2CD1 );
-        else
-            break;
-        chThdSleepMilliseconds( 2000 );
-    }
-}
-
-void stopI2cSlave( void )
-{
-    i2cStop( &I2CD1 );
-    palSetPadMode( GPIOB, 6, PAL_MODE_INPUT );
-    palSetPadMode( GPIOB, 7, PAL_MODE_INPUT );
+			addr = ( addr != 0 ) ? addr : I2C_ADDRESS;
+			status = i2cSlaveIoTimeout( &I2CD1,    addr,
+										inBuffer,  I2C_IN_BUFFER_SZ,
+										outBuffer, I2C_OUT_BUFFER_SZ,
+										i2cRxCb,
+										i2cTxCb,
+										tmo );
+			if ( status )
+			{
+				i2cStop( &I2CD1 );
+				return status;
+			}
+			return 0;
+		}
+	}
+	else
+	{
+	    i2cStop( &I2CD1 );
+	    palSetPadMode( GPIOB, 6, PAL_MODE_INPUT );
+	    palSetPadMode( GPIOB, 7, PAL_MODE_INPUT );
+	}
 }
 
 static void i2cRxCb( I2CDriver * i2cp )
@@ -121,10 +119,14 @@ static msg_t execThread( void *arg )
         static uint8_t  uvalue8Out;
 
         static uint16_t * puvalue16In;
+        static int i;
+
+
         puvalue16In = (uint16_t *)(&buffer[1]);
         // Parse inBuffer
         switch ( buffer[0] )
         {
+        /*
         case CMD_SET_POWER_TIMEOUT:
             setPowerTimeout( puvalue16In[0] );
             break;
@@ -219,22 +221,90 @@ static msg_t execThread( void *arg )
             outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
             outBuffer[0]  = CMD_OSC;
             break;
-            /*
-        case CMD_PAWN_SET_IO:
-        case CMD_PAWN_IO:
-        case CMD_PAWN_SET_MEM:
-        case CMD_PAWN_WRITE_FLASH:
-        case CMD_PAWN_RUN:
-        case CMD_PAWN_IS_RUNNING:
-        case CMD_PAWN_STOP:
+        */
+
+        case I2C_CMD_PAWN_SET_IO:
+            pawnSetIo( buffer[1], &buffer[2] );
+            outBuffer[0] = I2C_CMD_PAWN_SET_IO;
             break;
-            */
+        case I2C_CMD_PAWN_IO:
+        	pawnIo( buffer[1], &outBuffer[1] );
+        	outBuffer[0] = I2C_CMD_PAWN_IO;
+        	break;
+        case I2C_CMD_PAWN_SET_MEM:
+        	uvalue8Out = buffer[1];
+        	uvalue16Out = (uint16_t)buffer[2] + ( ((uint16_t)buffer[3]) << 8 );
+        	pawnSetMem( uvalue8Out, uvalue16Out, &buffer[4] );
+        	outBuffer[0] = I2C_CMD_PAWN_SET_MEM;
+        	break;
+        case I2C_CMD_PAWN_WRITE_FLASH:
+        	puvalue16In = (uint16_t *)(&buffer[1]);
+        	uvalue16Out = pawnWriteFlash( puvalue16In[0] );
+        	outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
+        	outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
+        	outBuffer[0] = I2C_CMD_PAWN_WRITE_FLASH;
+        	break;
+        case I2C_CMD_PAWN_RUN:
+        	pawnRun();
+        	outBuffer[0] = I2C_CMD_PAWN_RUN;
+        	break;
+        case I2C_CMD_PAWN_IS_RUNNING:
+        	uvalue8Out = pawnIsRunning();
+        	outBuffer[1] = uvalue8Out;
+        	outBuffer[0] = I2C_CMD_PAWN_IS_RUNNING;
+        	break;
+        case I2C_CMD_PAWN_STOP:
+        	pawnStop();
+        	outBuffer[0] = I2C_CMD_PAWN_STOP;
+        	break;
+        case I2C_CMD_PAWN_RESULT:
+        	i = pawnResult();
+        	outBuffer[1] = (uint8_t)( i & 0xFF );
+        	outBuffer[2] = (uint8_t)( (i >> 8) & 0xFF );
+        	outBuffer[3] = (uint8_t)( (i >> 16) & 0xFF );
+        	outBuffer[4] = (uint8_t)( (i >> 24) & 0xFF );
+        	outBuffer[0] = I2C_CMD_PAWN_RESULT;
+        case I2C_CMD_PAWN_ERROR:
+        	i = pawnError();
+        	outBuffer[1] = (uint8_t)( i & 0xFF );
+        	outBuffer[2] = (uint8_t)( (i >> 8) & 0xFF );
+        	outBuffer[3] = (uint8_t)( (i >> 16) & 0xFF );
+        	outBuffer[4] = (uint8_t)( (i >> 24) & 0xFF );
+        	outBuffer[0] = I2C_CMD_PAWN_ERROR;
+            break;
+
         }
-        // Reset counting down at any I2C interaction.
-        powerOffReset();
     }
     return 0;
 }
+
+
+
+
+int setI2cEn( uint8_t en )
+{
+
+	return 0;
+}
+
+int i2cIo( uint8_t addr,
+		   uint8_t * outBuffer, int outSz,
+		   uint8_t * inBuffer,  int inSz, int timeoutMs )
+{
+	int status;
+	if ( outSz > 0 )
+	{
+
+	}
+	else
+	{
+
+	}
+}
+
+
+
+
 
 
 

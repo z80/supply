@@ -99,6 +99,32 @@
 #define SERIAL_BAUD       9600
 #define SERIAL_TX_PAD     1
 #define SERIAL_RX_PAD     2
+#define SERIAL_BUF_SZ     32
+
+// *****************************************************************
+//                        I2C parameters.
+// *****************************************************************
+#define I2C_OUT_BUFFER_SZ       32
+#define I2C_IN_BUFFER_SZ        16  // Command id as 1 byte and up to 2 two byte numbers = 5 bytes.
+#define EXEC_QUEUE_SIZE         3
+#define I2C_ADDRESS             1
+#define I2C_TIMEOUT             500
+
+
+#define I2C_CMD_VERSION          1
+#define I2C_CMD_PAWN_SET_IO      2
+#define I2C_CMD_PAWN_IO          3
+#define I2C_CMD_PAWN_SET_MEM     4
+#define I2C_CMD_PAWN_WRITE_FLASH 5
+#define I2C_CMD_PAWN_RUN         6
+#define I2C_CMD_PAWN_IS_RUNNING  7
+#define I2C_CMD_PAWN_STOP        8
+#define I2C_CMD_PAWN_RESULT      9
+#define I2C_CMD_PAWN_ERROR       10
+
+
+
+#define FIRMWARE_VERSION         1
 
 #endif
 

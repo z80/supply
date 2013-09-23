@@ -8,8 +8,11 @@
 #include "conv_ctrl.h"
 #include "serial_ctrl.h"
 
+#include "hdw_cfg.h"
+
 cell pawn_setRtc( AMX * amx, const cell * params )
 {
+	(void)amx;
     RTCTime rtc;
     rtc.tv_sec  = params[1];
     rtc.tv_msec = params[2];
@@ -30,24 +33,49 @@ cell pawn_rtc( AMX * amx, const cell * params )
 
 cell pawn_setSerialEn( AMX * amx, const cell * params )
 {
+	(void)amx;
     setSerialEn( params[1] );
     return 0;
 }
 
 cell pawn_setSerialBaud( AMX * amx, const cell * params )
 {
+	(void)amx;
     setSerialBaud( params[1] );
     return 0;
 }
 
+static uint8_t serialBuffer[SERIAL_BUF_SZ];
 cell pawn_serialSend( AMX * amx, const cell * params )
 {
-    return 0;
+	int i = 0;
+	int cnt = 0;
+	cell * data = amx_Address( amx, params[1] );
+	while ( i < params[2] )
+	{
+		int j;
+        for ( j=0; j<SERIAL_BUF_SZ; j++, i++ )
+        {
+        	if ( i >= params[2] )
+        		break;
+        	serialBuffer[j] = (uint8_t)data[i];
+        }
+        cnt += serialSend( serialBuffer, j );
+	}
+    return cnt;
 }
 
 cell pawn_serialReceive( AMX * amx, const cell * params )
 {
-    return 0;
+	int cnt = ( params[2] < SERIAL_BUF_SZ ) ? params[2] : SERIAL_BUF_SZ;
+	cnt = serialReceive( serialBuffer, cnt );
+	int i;
+	cell * data = amx_Address( amx, params[1] );
+	if ( !data )
+		return 0;
+	for ( i=0; i<cnt; i++)
+		data[i] = serialBuffer[i];
+    return cnt;
 }
 
 cell pawn_setI2cSlaveAddr( AMX * amx, const cell * params )
