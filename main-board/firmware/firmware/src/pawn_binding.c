@@ -3,6 +3,7 @@
 #include "ch.h"
 #include "hal.h"
 
+#include "dfu_ctrl.h"
 #include "led_ctrl.h"
 #include "moto_ctrl.h"
 #include "conv_ctrl.h"
@@ -11,6 +12,13 @@
 #include "usb_ctrl.h"
 
 #include "hdw_cfg.h"
+
+cell pawn_trigger( AMX * amx, const cell * params )
+{
+    (void)amx;
+    (void)params;
+    return (cell)trigger();
+}
 
 cell pawn_setRtc( AMX * amx, const cell * params )
 {

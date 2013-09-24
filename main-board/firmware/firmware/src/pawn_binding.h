@@ -4,6 +4,8 @@
 
 #include "amx.h"
 
+cell pawn_trigger( AMX * amx, const cell * params );
+
 // RTC control.
 cell pawn_setRtc( AMX * amx, const cell * params );
 cell pawn_rtc( AMX * amx, const cell * params );

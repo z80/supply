@@ -24,6 +24,8 @@ static cell pawn_setIo( AMX * amx, const cell * params );
 
 AMX_NATIVE const g_nativetable[] =
 {
+	pawn_trigger,
+
     pawn_setRtc,
     pawn_rtc,
 
