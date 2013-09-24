@@ -24,20 +24,8 @@
 #include "hw_config.h"
 #include "platform_config.h"
 
-/* Private typedef -----------------------------------------------------------*/
-typedef  void (*pFunction)(void);
-
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Extern variables ----------------------------------------------------------*/
 uint8_t DeviceState;
 uint8_t DeviceStatus[6];
-pFunction Jump_To_Application;
-uint32_t JumpAddress;
-
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
 
 /*******************************************************************************
 * Function Name  : main.
@@ -48,25 +36,6 @@ uint32_t JumpAddress;
 *******************************************************************************/
 int main(void)
 {
-  DFU_Button_Config();
-
-  /* Check if the Key push-button on STM3210x-EVAL Board is pressed */
-  // If button is not pressed jumt to application.
-  // And if presset goto DFU init mode.
-  if ( DFU_Button_Read() == 0 )
-  { /* Test if user code is programmed starting from address 0x8003000 */
-    if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FFE0000 ) == 0x20000000)
-    { /* Jump to user application */
-
-      JumpAddress = *(__IO uint32_t*) (ApplicationAddress + 4);
-      Jump_To_Application = (pFunction) JumpAddress;
-      /* Initialize user application's Stack Pointer */
-      __set_MSP(*(__IO uint32_t*) ApplicationAddress);
-      // NVIC_SetVectorTable( NVIC_VectTab_FLASH, 0x3000 ); // This should be done in target shifted firmware :)
-      Jump_To_Application();
-    }
-  } /* Otherwise enters DFU mode to allow user to program his application */
-
   /* Enter DFU mode */
   DeviceState = STATE_dfuERROR;
   DeviceStatus[0] = STATUS_ERRFIRMWARE;
