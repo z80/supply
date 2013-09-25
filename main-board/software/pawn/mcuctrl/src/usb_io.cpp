@@ -42,7 +42,7 @@ const int UsbIo::PD::EP_IN  = 0x81;
 
 const int UsbIo::PD::STRI_MIN_LEN = 64;
 
-const int UsbIo::PD::ATTEMPTS_CNT = 128;
+const int UsbIo::PD::ATTEMPTS_CNT = 10;
 const int UsbIo::PD::DELAY_MS = 10;
 
 
@@ -129,9 +129,9 @@ int UsbIo::write( const std::string & stri )
         int res = libusb_bulk_transfer( pd->handle, 
                           PD::EP_OUT,     &(data[cnt]), stri.size(), 
                           &actual_length, pd->timeout );
+        cnt += actual_length;
         if ( res == LIBUSB_SUCCESS )
             break;
-        cnt += actual_length;
         msleep( PD::DELAY_MS );
         attempts++;
     }

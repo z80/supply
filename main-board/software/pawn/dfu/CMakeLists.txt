@@ -1,6 +1,6 @@
 
 if ( UNIX )
-    include( "../cmake/findlibusb-1.0.cmake" )
+    include( "${ROOT}/3dparty/cmake/findlibusb-1.0.cmake" )
     message( STATUS ${LIBUSB_1_DEFINITIONS} )
 endif ( UNIX )
 

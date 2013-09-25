@@ -38,7 +38,18 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
             out << static_cast<int>( data[i] );
             out << "\r\n";
             // qDebug() << out.str().c_str();
-            this->write( out.str() );
+            if ( !this->write( out.str() ) )
+            {
+                this->close();
+                this->open();
+                if ( !write( out.c_str() ) )
+                {
+                    fclose( fp );
+                    result = "failed to write data to USB";
+                    return false;
+                }
+            }
+                ;
             //msleep( 30 );
         }
         std::ostringstream out;

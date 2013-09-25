@@ -22,7 +22,7 @@ int main(void)
     halInit();
     chSysInit();
 
-    checkDfu();
+    //checkDfu();
 
     initLed();
     initLight();
@@ -30,12 +30,10 @@ int main(void)
     initI2c();
     initConv();
 
-    //convSetBuck( 5000 );
-
     pawnInit();
     initUsb();
 
-    pawnRun();
+    //pawnRun();
     while ( 1 )
     {
         processShell();
