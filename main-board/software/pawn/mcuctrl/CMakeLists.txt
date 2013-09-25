@@ -1,9 +1,4 @@
 
-#find_package( Qt4 )
-#set( QT_USE_QTCORE    True )
-#set( QT_USE_QTGUI     True )
-#include( ${QT_USE_FILE} )
-
 set( Boost_USE_STATIC_LIBS True )
 set( Boost_USE_MULTITHREADED True )
 find_package( Boost COMPONENTS regex REQUIRED )
@@ -11,8 +6,10 @@ find_package( Boost COMPONENTS regex REQUIRED )
 aux_source_directory( "./src" src )
 message( STATUS "src: \"${src}\"" )
 
-include( "${ROOT}/3dparty/cmake/findlibusb-1.0.cmake" )
-message( STATUS ${LIBUSB_1_DEFINITIONS} )
+if ( UNIX )
+    include( "${ROOT}/3dparty/cmake/findlibusb-1.0.cmake" )
+    message( STATUS ${LIBUSB_1_DEFINITIONS} )
+endif ( UNIX )
 
 include_directories( "./src" 
                      ${GLOB_BIN_DIR}

@@ -6,10 +6,10 @@
 
 #ifdef WIN32
     #include <windows.h>
-    #define  delay( arg ) Sleep( arg )
+    #define  _msleep( arg ) Sleep( arg )
 #else
     #include <unistd.h>
-    #define delay( arg ) usleep( 1000 * (arg) )
+    #define _msleep( arg ) usleep( 1000 * (arg) )
 #endif
 
 class UsbIo::PD
@@ -28,6 +28,9 @@ public:
     static const int EP_OUT;
     static const int EP_IN;
     static const int STRI_MIN_LEN;
+
+    static const int ATTEMPTS_CNT;
+    static const int DELAY_MS;
 };
 
 const int UsbIo::PD::VENDOR_ID  = 0x0483;
@@ -38,6 +41,10 @@ const int UsbIo::PD::EP_OUT = 0x03;
 const int UsbIo::PD::EP_IN  = 0x81;
 
 const int UsbIo::PD::STRI_MIN_LEN = 64;
+
+const int UsbIo::PD::ATTEMPTS_CNT = 128;
+const int UsbIo::PD::DELAY_MS = 10;
+
 
 void UsbIo::PD::clearOutput()
 {
@@ -115,17 +122,25 @@ int UsbIo::write( const std::string & stri )
 	pd->clearOutput();
     int actual_length;
     unsigned char * data = reinterpret_cast<unsigned char *>( const_cast<char *>( stri.data() ) );
-    int res = libusb_bulk_transfer( pd->handle, 
-                      PD::EP_OUT, data, stri.size(), 
-                      &actual_length, pd->timeout );
-    if ( res != LIBUSB_SUCCESS )
-        return res;
-    return actual_length;
+    unsigned int cnt = 0;
+    unsigned int attempts = 0;
+    while ( ( cnt < stri.size() ) && ( attempts < PD::ATTEMPTS_CNT ) )
+    {
+        int res = libusb_bulk_transfer( pd->handle, 
+                          PD::EP_OUT,     &(data[cnt]), stri.size(), 
+                          &actual_length, pd->timeout );
+        if ( res == LIBUSB_SUCCESS )
+            break;
+        cnt += actual_length;
+        msleep( PD::DELAY_MS );
+        attempts++;
+    }
+    return cnt;
 }
 
 int UsbIo::read( std::string & stri )
 {
-	int len = 0;
+	unsigned int len = 0;
 	int timeout = pd->timeout;
 	if ( stri.size() < PD::STRI_MIN_LEN )
 		stri.resize( PD::STRI_MIN_LEN );
@@ -156,7 +171,7 @@ int UsbIo::read( std::string & stri )
             len = static_cast<int>( TIMEOUT );
             break;
         }
-        delay( 1 );
+        msleep( 1 );
 	}
 	stri.resize( len );
     return len;
@@ -170,7 +185,7 @@ int UsbIo::setTimeout( int ms )
 
 void UsbIo::msleep( int ms )
 {
-    delay( ms );
+    _msleep( ms );
 }
 
 

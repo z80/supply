@@ -3,14 +3,6 @@
 #include <sstream>
 #include <boost/regex.hpp>
 
-#ifdef WIN32
-    #include <windows.h>
-    #define  delay( arg ) Sleep( arg )
-#else
-    #include <unistd.h>
-    #define delay( arg ) usleep( 1000 * (arg) )
-#endif
-
 
 McuCtrl::McuCtrl()
 : UsbIo()
@@ -31,11 +23,11 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
     data.resize( SZ );
     int cnt = 0;
     FILE * fp = fopen( fileName.c_str(), "r" );
+    int flashPage = 0;
     do
     {
         if ( !fp )
             return false;
-        int flashPage = 0;
         cnt = fread( const_cast<unsigned char *>( data.data() ), 1, SZ, fp );
         for ( int i=0; i<cnt; i++ )
         {
@@ -47,7 +39,7 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
             out << "\r\n";
             // qDebug() << out.str().c_str();
             this->write( out.str() );
-            delay( 30 );
+            //msleep( 30 );
         }
         std::ostringstream out;
         out << "pawnWriteFlash ";
@@ -55,7 +47,7 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
         out << "\r\n";
         // qDebug() << out.str().c_str();
         this->write( out.str() );
-        delay( 30 );
+        //msleep( 30 );
 
         // Read back result.
         // ......
