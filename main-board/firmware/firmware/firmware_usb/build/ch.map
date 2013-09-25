@@ -545,7 +545,7 @@ Discarded input sections
  .data          0x00000000        0x0 build/obj/usb_ctrl.o
  .bss           0x00000000        0x0 build/obj/usb_ctrl.o
  .text.finitUsb
-                0x00000000       0x20 build/obj/usb_ctrl.o
+                0x00000000       0x30 build/obj/usb_ctrl.o
  .text          0x00000000        0x0 build/obj/conv_ctrl.o
  .data          0x00000000        0x0 build/obj/conv_ctrl.o
  .bss           0x00000000        0x0 build/obj/conv_ctrl.o
@@ -1699,365 +1699,365 @@ destructors     0x080000ec        0x0
                 0x08008a70       0x30 build/obj/usb_ctrl.o
  .text.cmd_pawnError
                 0x08008aa0       0x30 build/obj/usb_ctrl.o
- .text.initUsb  0x08008ad0       0x40 build/obj/usb_ctrl.o
+ .text.initUsb  0x08008ad0       0x60 build/obj/usb_ctrl.o
                 0x08008ad0                initUsb
  .text.processShell
-                0x08008b10       0x60 build/obj/usb_ctrl.o
-                0x08008b10                processShell
+                0x08008b30       0x60 build/obj/usb_ctrl.o
+                0x08008b30                processShell
  .text.usbWrite
-                0x08008b70       0x20 build/obj/usb_ctrl.o
-                0x08008b70                usbWrite
+                0x08008b90       0x20 build/obj/usb_ctrl.o
+                0x08008b90                usbWrite
  .text.convAdcReadyCb
-                0x08008b90      0x270 build/obj/conv_ctrl.o
+                0x08008bb0      0x270 build/obj/conv_ctrl.o
  .text.convRunStop
-                0x08008e00       0x50 build/obj/conv_ctrl.o
+                0x08008e20       0x50 build/obj/conv_ctrl.o
  .text.initConv
-                0x08008e50       0x40 build/obj/conv_ctrl.o
-                0x08008e50                initConv
+                0x08008e70       0x40 build/obj/conv_ctrl.o
+                0x08008e70                initConv
  .text.convStart
-                0x08008e90       0x70 build/obj/conv_ctrl.o
+                0x08008eb0       0x70 build/obj/conv_ctrl.o
  .text.convStop
-                0x08008f00       0x40 build/obj/conv_ctrl.o
+                0x08008f20       0x40 build/obj/conv_ctrl.o
  .text.convSetBuck
-                0x08008f40       0x50 build/obj/conv_ctrl.o
-                0x08008f40                convSetBuck
+                0x08008f60       0x50 build/obj/conv_ctrl.o
+                0x08008f60                convSetBuck
  .text.convSetBoost
-                0x08008f90       0x50 build/obj/conv_ctrl.o
-                0x08008f90                convSetBoost
+                0x08008fb0       0x50 build/obj/conv_ctrl.o
+                0x08008fb0                convSetBoost
  .text.convSetMinBoostVolt
-                0x08008fe0       0x50 build/obj/conv_ctrl.o
-                0x08008fe0                convSetMinBoostVolt
+                0x08009000       0x50 build/obj/conv_ctrl.o
+                0x08009000                convSetMinBoostVolt
  .text.convSetMaxBoostFill
-                0x08009030       0x30 build/obj/conv_ctrl.o
-                0x08009030                convSetMaxBoostFill
+                0x08009050       0x30 build/obj/conv_ctrl.o
+                0x08009050                convSetMaxBoostFill
  .text.convSetBoostCurr
-                0x08009060       0x30 build/obj/conv_ctrl.o
-                0x08009060                convSetBoostCurr
+                0x08009080       0x30 build/obj/conv_ctrl.o
+                0x08009080                convSetBoostCurr
  .text.convSetBuckCurr
-                0x08009090       0x30 build/obj/conv_ctrl.o
-                0x08009090                convSetBuckCurr
+                0x080090b0       0x30 build/obj/conv_ctrl.o
+                0x080090b0                convSetBuckCurr
  .text.convSetBuckGain
-                0x080090c0       0x30 build/obj/conv_ctrl.o
-                0x080090c0                convSetBuckGain
+                0x080090e0       0x30 build/obj/conv_ctrl.o
+                0x080090e0                convSetBuckGain
  .text.convSetBoostGain
-                0x080090f0       0x30 build/obj/conv_ctrl.o
-                0x080090f0                convSetBoostGain
+                0x08009110       0x30 build/obj/conv_ctrl.o
+                0x08009110                convSetBoostGain
  .text.adcSingle
-                0x08009120       0xd0 build/obj/conv_ctrl.o
- .text.adcTemp  0x080091f0       0x20 build/obj/conv_ctrl.o
-                0x080091f0                adcTemp
+                0x08009140       0xd0 build/obj/conv_ctrl.o
+ .text.adcTemp  0x08009210       0x20 build/obj/conv_ctrl.o
+                0x08009210                adcTemp
  .text.adcBatteryVolt
-                0x08009210       0x20 build/obj/conv_ctrl.o
-                0x08009210                adcBatteryVolt
- .text.adcBuckVolt
                 0x08009230       0x20 build/obj/conv_ctrl.o
-                0x08009230                adcBuckVolt
- .text.adcSolarVolt
+                0x08009230                adcBatteryVolt
+ .text.adcBuckVolt
                 0x08009250       0x20 build/obj/conv_ctrl.o
-                0x08009250                adcSolarVolt
- .text.adcBuckCurr
+                0x08009250                adcBuckVolt
+ .text.adcSolarVolt
                 0x08009270       0x20 build/obj/conv_ctrl.o
-                0x08009270                adcBuckCurr
- .text.adcBoostCurr
+                0x08009270                adcSolarVolt
+ .text.adcBuckCurr
                 0x08009290       0x20 build/obj/conv_ctrl.o
-                0x08009290                adcBoostCurr
- .text.initLed  0x080092b0       0x40 build/obj/led_ctrl.o
-                0x080092b0                initLed
- .text.setLed   0x080092f0       0x50 build/obj/led_ctrl.o
-                0x080092f0                setLed
+                0x08009290                adcBuckCurr
+ .text.adcBoostCurr
+                0x080092b0       0x20 build/obj/conv_ctrl.o
+                0x080092b0                adcBoostCurr
+ .text.initLed  0x080092d0       0x40 build/obj/led_ctrl.o
+                0x080092d0                initLed
+ .text.setLed   0x08009310       0x50 build/obj/led_ctrl.o
+                0x08009310                setLed
  .text.initLight
-                0x08009340       0x10 build/obj/light_ctrl.o
-                0x08009340                initLight
+                0x08009360       0x10 build/obj/light_ctrl.o
+                0x08009360                initLight
  .text.setLight
-                0x08009350       0x40 build/obj/light_ctrl.o
-                0x08009350                setLight
+                0x08009370       0x40 build/obj/light_ctrl.o
+                0x08009370                setLight
  .text.initMoto
-                0x08009390       0x10 build/obj/moto_ctrl.o
-                0x08009390                initMoto
- .text.setMoto  0x080093a0      0x130 build/obj/moto_ctrl.o
-                0x080093a0                setMoto
+                0x080093b0       0x10 build/obj/moto_ctrl.o
+                0x080093b0                initMoto
+ .text.setMoto  0x080093c0      0x130 build/obj/moto_ctrl.o
+                0x080093c0                setMoto
  .text.setSerialEn
-                0x080094d0       0x60 build/obj/serial_ctrl.o
-                0x080094d0                setSerialEn
+                0x080094f0       0x60 build/obj/serial_ctrl.o
+                0x080094f0                setSerialEn
  .text.serialSend
-                0x08009530       0x30 build/obj/serial_ctrl.o
-                0x08009530                serialSend
+                0x08009550       0x30 build/obj/serial_ctrl.o
+                0x08009550                serialSend
  .text.serialReceive
-                0x08009560       0x30 build/obj/serial_ctrl.o
-                0x08009560                serialReceive
- .text.initI2c  0x08009590       0x40 build/obj/i2c_ctrl.o
-                0x08009590                initI2c
+                0x08009580       0x30 build/obj/serial_ctrl.o
+                0x08009580                serialReceive
+ .text.initI2c  0x080095b0       0x40 build/obj/i2c_ctrl.o
+                0x080095b0                initI2c
  .text.setI2cSlaveEn
-                0x080095d0      0x100 build/obj/i2c_ctrl.o
-                0x080095d0                setI2cSlaveEn
- .text.i2cRxCb  0x080096d0       0x80 build/obj/i2c_ctrl.o
- .text.i2cTxCb  0x08009750       0x10 build/obj/i2c_ctrl.o
+                0x080095f0      0x100 build/obj/i2c_ctrl.o
+                0x080095f0                setI2cSlaveEn
+ .text.i2cRxCb  0x080096f0       0x80 build/obj/i2c_ctrl.o
+ .text.i2cTxCb  0x08009770       0x10 build/obj/i2c_ctrl.o
  .text.execThread
-                0x08009760      0x220 build/obj/i2c_ctrl.o
+                0x08009780      0x220 build/obj/i2c_ctrl.o
  .text.setI2cEn
-                0x08009980       0x70 build/obj/i2c_ctrl.o
-                0x08009980                setI2cEn
- .text.i2cIo    0x080099f0       0x90 build/obj/i2c_ctrl.o
-                0x080099f0                i2cIo
+                0x080099a0       0x70 build/obj/i2c_ctrl.o
+                0x080099a0                setI2cEn
+ .text.i2cIo    0x08009a10       0x90 build/obj/i2c_ctrl.o
+                0x08009a10                i2cIo
  .text.pawn_trigger
-                0x08009a80       0x20 build/obj/pawn_binding.o
-                0x08009a80                pawn_trigger
+                0x08009aa0       0x20 build/obj/pawn_binding.o
+                0x08009aa0                pawn_trigger
  .text.pawn_setRtc
-                0x08009aa0       0x40 build/obj/pawn_binding.o
-                0x08009aa0                pawn_setRtc
+                0x08009ac0       0x40 build/obj/pawn_binding.o
+                0x08009ac0                pawn_setRtc
  .text.pawn_rtc
-                0x08009ae0       0x40 build/obj/pawn_binding.o
-                0x08009ae0                pawn_rtc
+                0x08009b00       0x40 build/obj/pawn_binding.o
+                0x08009b00                pawn_rtc
  .text.pawn_msleep
-                0x08009b20       0x50 build/obj/pawn_binding.o
-                0x08009b20                pawn_msleep
+                0x08009b40       0x50 build/obj/pawn_binding.o
+                0x08009b40                pawn_msleep
  .text.pawn_setSerialEn
-                0x08009b70       0x30 build/obj/pawn_binding.o
-                0x08009b70                pawn_setSerialEn
+                0x08009b90       0x30 build/obj/pawn_binding.o
+                0x08009b90                pawn_setSerialEn
  .text.pawn_serialSend
-                0x08009ba0       0x90 build/obj/pawn_binding.o
-                0x08009ba0                pawn_serialSend
+                0x08009bc0       0x90 build/obj/pawn_binding.o
+                0x08009bc0                pawn_serialSend
  .text.pawn_serialReceive
-                0x08009c30       0x70 build/obj/pawn_binding.o
-                0x08009c30                pawn_serialReceive
+                0x08009c50       0x70 build/obj/pawn_binding.o
+                0x08009c50                pawn_serialReceive
  .text.pawn_setI2cSlaveEn
-                0x08009ca0       0x30 build/obj/pawn_binding.o
-                0x08009ca0                pawn_setI2cSlaveEn
+                0x08009cc0       0x30 build/obj/pawn_binding.o
+                0x08009cc0                pawn_setI2cSlaveEn
  .text.pawn_setI2cEn
-                0x08009cd0       0x30 build/obj/pawn_binding.o
-                0x08009cd0                pawn_setI2cEn
+                0x08009cf0       0x30 build/obj/pawn_binding.o
+                0x08009cf0                pawn_setI2cEn
  .text.pawn_i2cIo
-                0x08009d00       0xd0 build/obj/pawn_binding.o
-                0x08009d00                pawn_i2cIo
+                0x08009d20       0xd0 build/obj/pawn_binding.o
+                0x08009d20                pawn_i2cIo
  .text.pawn_usbWrite
-                0x08009dd0       0x50 build/obj/pawn_binding.o
-                0x08009dd0                pawn_usbWrite
+                0x08009df0       0x50 build/obj/pawn_binding.o
+                0x08009df0                pawn_usbWrite
  .text.pawn_setLed
-                0x08009e20       0x20 build/obj/pawn_binding.o
-                0x08009e20                pawn_setLed
- .text.pawn_setMoto
                 0x08009e40       0x20 build/obj/pawn_binding.o
-                0x08009e40                pawn_setMoto
- .text.pawn_convSetBuck
+                0x08009e40                pawn_setLed
+ .text.pawn_setMoto
                 0x08009e60       0x20 build/obj/pawn_binding.o
-                0x08009e60                pawn_convSetBuck
- .text.pawn_convSetBoost
+                0x08009e60                pawn_setMoto
+ .text.pawn_convSetBuck
                 0x08009e80       0x20 build/obj/pawn_binding.o
-                0x08009e80                pawn_convSetBoost
- .text.pawn_convSetMinBoostVolt
+                0x08009e80                pawn_convSetBuck
+ .text.pawn_convSetBoost
                 0x08009ea0       0x20 build/obj/pawn_binding.o
-                0x08009ea0                pawn_convSetMinBoostVolt
- .text.pawn_convSetMaxBoostFill
+                0x08009ea0                pawn_convSetBoost
+ .text.pawn_convSetMinBoostVolt
                 0x08009ec0       0x20 build/obj/pawn_binding.o
-                0x08009ec0                pawn_convSetMaxBoostFill
- .text.pawn_convSetBoostCurr
+                0x08009ec0                pawn_convSetMinBoostVolt
+ .text.pawn_convSetMaxBoostFill
                 0x08009ee0       0x20 build/obj/pawn_binding.o
-                0x08009ee0                pawn_convSetBoostCurr
- .text.pawn_convSetBuckCurr
+                0x08009ee0                pawn_convSetMaxBoostFill
+ .text.pawn_convSetBoostCurr
                 0x08009f00       0x20 build/obj/pawn_binding.o
-                0x08009f00                pawn_convSetBuckCurr
- .text.pawn_convSetBuckGain
+                0x08009f00                pawn_convSetBoostCurr
+ .text.pawn_convSetBuckCurr
                 0x08009f20       0x20 build/obj/pawn_binding.o
-                0x08009f20                pawn_convSetBuckGain
- .text.pawn_convSetBoostGain
+                0x08009f20                pawn_convSetBuckCurr
+ .text.pawn_convSetBuckGain
                 0x08009f40       0x20 build/obj/pawn_binding.o
-                0x08009f40                pawn_convSetBoostGain
- .text.pawn_adcTemp
+                0x08009f40                pawn_convSetBuckGain
+ .text.pawn_convSetBoostGain
                 0x08009f60       0x20 build/obj/pawn_binding.o
-                0x08009f60                pawn_adcTemp
- .text.pawn_adcBatteryVolt
+                0x08009f60                pawn_convSetBoostGain
+ .text.pawn_adcTemp
                 0x08009f80       0x20 build/obj/pawn_binding.o
-                0x08009f80                pawn_adcBatteryVolt
- .text.pawn_adcBuckVolt
+                0x08009f80                pawn_adcTemp
+ .text.pawn_adcBatteryVolt
                 0x08009fa0       0x20 build/obj/pawn_binding.o
-                0x08009fa0                pawn_adcBuckVolt
- .text.pawn_adcSolarVolt
+                0x08009fa0                pawn_adcBatteryVolt
+ .text.pawn_adcBuckVolt
                 0x08009fc0       0x20 build/obj/pawn_binding.o
-                0x08009fc0                pawn_adcSolarVolt
- .text.pawn_adcBuckCurr
+                0x08009fc0                pawn_adcBuckVolt
+ .text.pawn_adcSolarVolt
                 0x08009fe0       0x20 build/obj/pawn_binding.o
-                0x08009fe0                pawn_adcBuckCurr
- .text.pawn_adcBoostCurr
+                0x08009fe0                pawn_adcSolarVolt
+ .text.pawn_adcBuckCurr
                 0x0800a000       0x20 build/obj/pawn_binding.o
-                0x0800a000                pawn_adcBoostCurr
+                0x0800a000                pawn_adcBuckCurr
+ .text.pawn_adcBoostCurr
+                0x0800a020       0x20 build/obj/pawn_binding.o
+                0x0800a020                pawn_adcBoostCurr
  .text.aux_Monitor
-                0x0800a020       0x10 build/obj/pawn_ctrl.o
-                0x0800a020                aux_Monitor
+                0x0800a040       0x10 build/obj/pawn_ctrl.o
+                0x0800a040                aux_Monitor
  .text.pawnExec
-                0x0800a030       0xe0 build/obj/pawn_ctrl.o
- .text.pawn_io  0x0800a110       0x30 build/obj/pawn_ctrl.o
+                0x0800a050       0xe0 build/obj/pawn_ctrl.o
+ .text.pawn_io  0x0800a130       0x30 build/obj/pawn_ctrl.o
  .text.pawn_setIo
-                0x0800a140       0x40 build/obj/pawn_ctrl.o
+                0x0800a160       0x40 build/obj/pawn_ctrl.o
  .text.pawnInit
-                0x0800a180       0x40 build/obj/pawn_ctrl.o
-                0x0800a180                pawnInit
+                0x0800a1a0       0x40 build/obj/pawn_ctrl.o
+                0x0800a1a0                pawnInit
  .text.pawnSetIo
-                0x0800a1c0       0x50 build/obj/pawn_ctrl.o
-                0x0800a1c0                pawnSetIo
- .text.pawnIo   0x0800a210       0x50 build/obj/pawn_ctrl.o
-                0x0800a210                pawnIo
+                0x0800a1e0       0x50 build/obj/pawn_ctrl.o
+                0x0800a1e0                pawnSetIo
+ .text.pawnIo   0x0800a230       0x50 build/obj/pawn_ctrl.o
+                0x0800a230                pawnIo
  .text.pawnSetMem
-                0x0800a260       0x60 build/obj/pawn_ctrl.o
-                0x0800a260                pawnSetMem
+                0x0800a280       0x60 build/obj/pawn_ctrl.o
+                0x0800a280                pawnSetMem
  .text.pawnWriteFlash
-                0x0800a2c0       0xc0 build/obj/pawn_ctrl.o
-                0x0800a2c0                pawnWriteFlash
- .text.pawnRun  0x0800a380       0x30 build/obj/pawn_ctrl.o
-                0x0800a380                pawnRun
+                0x0800a2e0       0xc0 build/obj/pawn_ctrl.o
+                0x0800a2e0                pawnWriteFlash
+ .text.pawnRun  0x0800a3a0       0x30 build/obj/pawn_ctrl.o
+                0x0800a3a0                pawnRun
  .text.pawnIsRunning
-                0x0800a3b0       0x30 build/obj/pawn_ctrl.o
-                0x0800a3b0                pawnIsRunning
+                0x0800a3d0       0x30 build/obj/pawn_ctrl.o
+                0x0800a3d0                pawnIsRunning
  .text.pawnStop
-                0x0800a3e0       0x30 build/obj/pawn_ctrl.o
-                0x0800a3e0                pawnStop
+                0x0800a400       0x30 build/obj/pawn_ctrl.o
+                0x0800a400                pawnStop
  .text.pawnResult
-                0x0800a410       0x10 build/obj/pawn_ctrl.o
-                0x0800a410                pawnResult
+                0x0800a430       0x10 build/obj/pawn_ctrl.o
+                0x0800a430                pawnResult
  .text.pawnError
-                0x0800a420       0x10 build/obj/pawn_ctrl.o
-                0x0800a420                pawnError
+                0x0800a440       0x10 build/obj/pawn_ctrl.o
+                0x0800a440                pawnError
  .text.execThread
-                0x0800a430       0x30 build/obj/pawn_ctrl.o
+                0x0800a450       0x30 build/obj/pawn_ctrl.o
  .text.amx_Align16
-                0x0800a460       0x10 build/obj/amx.o
-                0x0800a460                amx_Align16
+                0x0800a480       0x10 build/obj/amx.o
+                0x0800a480                amx_Align16
  .text.amx_Align32
-                0x0800a470       0x10 build/obj/amx.o
-                0x0800a470                amx_Align32
+                0x0800a490       0x10 build/obj/amx.o
+                0x0800a490                amx_Align32
  .text.amx_Callback
-                0x0800a480       0xd0 build/obj/amx.o
-                0x0800a480                amx_Callback
+                0x0800a4a0       0xd0 build/obj/amx.o
+                0x0800a4a0                amx_Callback
  .text.VerifyPcode
-                0x0800a550      0x860 build/obj/amx.o
+                0x0800a570      0x860 build/obj/amx.o
  .text.amx_Init
-                0x0800adb0      0x200 build/obj/amx.o
-                0x0800adb0                amx_Init
+                0x0800add0      0x200 build/obj/amx.o
+                0x0800add0                amx_Init
  .text.amx_Cleanup
-                0x0800afb0       0x10 build/obj/amx.o
-                0x0800afb0                amx_Cleanup
+                0x0800afd0       0x10 build/obj/amx.o
+                0x0800afd0                amx_Cleanup
  .text.amx_exec_list
-                0x0800afc0       0x30 build/obj/amx.o
-                0x0800afc0                amx_exec_list
+                0x0800afe0       0x30 build/obj/amx.o
+                0x0800afe0                amx_exec_list
  .text.amx_Exec
-                0x0800aff0     0x2440 build/obj/amx.o
-                0x0800aff0                amx_Exec
+                0x0800b010     0x2440 build/obj/amx.o
+                0x0800b010                amx_Exec
  .text.amx_SetDebugHook
-                0x0800d430       0x20 build/obj/amx.o
-                0x0800d430                amx_SetDebugHook
+                0x0800d450       0x20 build/obj/amx.o
+                0x0800d450                amx_SetDebugHook
  .text.amx_StrLen
-                0x0800d450       0xb0 build/obj/amx.o
-                0x0800d450                amx_StrLen
+                0x0800d470       0xb0 build/obj/amx.o
+                0x0800d470                amx_StrLen
  .text.amx_GetString
-                0x0800d500      0x160 build/obj/amx.o
-                0x0800d500                amx_GetString
- .text.main     0x0800d660       0x40 build/obj/main.o
-                0x0800d660                main
+                0x0800d520      0x160 build/obj/amx.o
+                0x0800d520                amx_GetString
+ .text.main     0x0800d680       0x40 build/obj/main.o
+                0x0800d680                main
  *(.rodata)
- .rodata        0x0800d6a0       0x10 build/obj/chsys.o
- .rodata        0x0800d6b0       0x58 build/obj/chdebug.o
- *fill*         0x0800d708        0x8 00
- .rodata        0x0800d710       0x34 build/obj/chvt.o
- *fill*         0x0800d744        0xc 00
- .rodata        0x0800d750       0x24 build/obj/chschd.o
- *fill*         0x0800d774        0xc 00
- .rodata        0x0800d780       0x94 build/obj/chthreads.o
- *fill*         0x0800d814        0xc 00
- .rodata        0x0800d820       0x48 build/obj/chdynamic.o
- *fill*         0x0800d868        0x8 00
- .rodata        0x0800d870      0x148 build/obj/chsem.o
- *fill*         0x0800d9b8        0x8 00
- .rodata        0x0800d9c0       0xac build/obj/chmtx.o
- *fill*         0x0800da6c        0x4 00
- .rodata        0x0800da70       0x90 build/obj/chevents.o
- .rodata        0x0800db00       0x2c build/obj/chqueues.o
- *fill*         0x0800db2c        0x4 00
- .rodata        0x0800db30       0x34 build/obj/chheap.o
- *fill*         0x0800db64        0xc 00
- .rodata        0x0800db70       0x34 build/obj/chmempools.o
- *fill*         0x0800dba4        0xc 00
- .rodata        0x0800dbb0      0x110 build/obj/adc.o
- .rodata        0x0800dcc0       0xec build/obj/i2c.o
- *fill*         0x0800ddac        0x4 00
- .rodata        0x0800ddb0       0xb0 build/obj/pwm.o
- .rodata        0x0800de60       0x60 build/obj/serial.o
- .rodata        0x0800dec0      0x124 build/obj/usb.o
- *fill*         0x0800dfe4        0xc 00
- .rodata        0x0800dff0       0x3c build/obj/serial_usb.o
- *fill*         0x0800e02c        0x4 00
- .rodata        0x0800e030       0x54 build/obj/rtc.o
- *fill*         0x0800e084        0xc 00
- .rodata        0x0800e090       0x34 build/obj/stm32_dma.o
- *fill*         0x0800e0c4        0xc 00
- .rodata        0x0800e0d0       0x14 build/obj/adc_lld.o
+ .rodata        0x0800d6c0       0x10 build/obj/chsys.o
+ .rodata        0x0800d6d0       0x58 build/obj/chdebug.o
+ *fill*         0x0800d728        0x8 00
+ .rodata        0x0800d730       0x34 build/obj/chvt.o
+ *fill*         0x0800d764        0xc 00
+ .rodata        0x0800d770       0x24 build/obj/chschd.o
+ *fill*         0x0800d794        0xc 00
+ .rodata        0x0800d7a0       0x94 build/obj/chthreads.o
+ *fill*         0x0800d834        0xc 00
+ .rodata        0x0800d840       0x48 build/obj/chdynamic.o
+ *fill*         0x0800d888        0x8 00
+ .rodata        0x0800d890      0x148 build/obj/chsem.o
+ *fill*         0x0800d9d8        0x8 00
+ .rodata        0x0800d9e0       0xac build/obj/chmtx.o
+ *fill*         0x0800da8c        0x4 00
+ .rodata        0x0800da90       0x90 build/obj/chevents.o
+ .rodata        0x0800db20       0x2c build/obj/chqueues.o
+ *fill*         0x0800db4c        0x4 00
+ .rodata        0x0800db50       0x34 build/obj/chheap.o
+ *fill*         0x0800db84        0xc 00
+ .rodata        0x0800db90       0x34 build/obj/chmempools.o
+ *fill*         0x0800dbc4        0xc 00
+ .rodata        0x0800dbd0      0x110 build/obj/adc.o
+ .rodata        0x0800dce0       0xec build/obj/i2c.o
+ *fill*         0x0800ddcc        0x4 00
+ .rodata        0x0800ddd0       0xb0 build/obj/pwm.o
+ .rodata        0x0800de80       0x60 build/obj/serial.o
+ .rodata        0x0800dee0      0x124 build/obj/usb.o
+ *fill*         0x0800e004        0xc 00
+ .rodata        0x0800e010       0x3c build/obj/serial_usb.o
+ *fill*         0x0800e04c        0x4 00
+ .rodata        0x0800e050       0x54 build/obj/rtc.o
+ *fill*         0x0800e0a4        0xc 00
+ .rodata        0x0800e0b0       0x34 build/obj/stm32_dma.o
  *fill*         0x0800e0e4        0xc 00
- .rodata        0x0800e0f0      0x170 build/obj/i2c_lld.o
- .rodata        0x0800e260       0x14 build/obj/pwm_lld.o
- *fill*         0x0800e274        0xc 00
- .rodata        0x0800e280       0x10 build/obj/usb_lld.o
- .rodata        0x0800e290      0x1f0 build/obj/shell.o
- .rodata        0x0800e480        0x8 build/obj/chprintf.o
- *fill*         0x0800e488        0x8 00
- .rodata        0x0800e490      0x10c build/obj/usb_ctrl.o
- *fill*         0x0800e59c        0x4 00
- .rodata        0x0800e5a0        0x4 build/obj/i2c_ctrl.o
- *fill*         0x0800e5a4        0xc 00
- .rodata        0x0800e5b0        0x4 build/obj/pawn_ctrl.o
- *fill*         0x0800e5b4        0xc 00
- .rodata        0x0800e5c0      0x104 /home/z80/programs/code-sourcery/2011.03-42/bin/../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/lib/thumb2/libc.a(lib_a-ctype_.o)
-                0x0800e5c0                _ctype_
+ .rodata        0x0800e0f0       0x14 build/obj/adc_lld.o
+ *fill*         0x0800e104        0xc 00
+ .rodata        0x0800e110      0x170 build/obj/i2c_lld.o
+ .rodata        0x0800e280       0x14 build/obj/pwm_lld.o
+ *fill*         0x0800e294        0xc 00
+ .rodata        0x0800e2a0       0x10 build/obj/usb_lld.o
+ .rodata        0x0800e2b0      0x1e4 build/obj/shell.o
+ *fill*         0x0800e494        0xc 00
+ .rodata        0x0800e4a0        0x8 build/obj/chprintf.o
+ *fill*         0x0800e4a8        0x8 00
+ .rodata        0x0800e4b0      0x10c build/obj/usb_ctrl.o
+ *fill*         0x0800e5bc        0x4 00
+ .rodata        0x0800e5c0        0x4 build/obj/i2c_ctrl.o
+ *fill*         0x0800e5c4        0xc 00
+ .rodata        0x0800e5d0        0x4 build/obj/pawn_ctrl.o
+ *fill*         0x0800e5d4        0xc 00
+ .rodata        0x0800e5e0      0x104 /home/z80/programs/code-sourcery/2011.03-42/bin/../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/lib/thumb2/libc.a(lib_a-ctype_.o)
+                0x0800e5e0                _ctype_
  *(.rodata.*)
- *fill*         0x0800e6c4        0xc 00
- .rodata.vmt    0x0800e6d0       0x24 build/obj/serial.o
- *fill*         0x0800e6f4        0xc 00
- .rodata.zero_status
-                0x0800e700        0x4 build/obj/usb.o
- *fill*         0x0800e704        0xc 00
- .rodata.active_status
-                0x0800e710        0x4 build/obj/usb.o
+ *fill*         0x0800e6e4        0xc 00
+ .rodata.vmt    0x0800e6f0       0x24 build/obj/serial.o
  *fill*         0x0800e714        0xc 00
- .rodata.halted_status
+ .rodata.zero_status
                 0x0800e720        0x4 build/obj/usb.o
  *fill*         0x0800e724        0xc 00
- .rodata.vmt    0x0800e730       0x24 build/obj/serial_usb.o
- *fill*         0x0800e754        0xc 00
+ .rodata.active_status
+                0x0800e730        0x4 build/obj/usb.o
+ *fill*         0x0800e734        0xc 00
+ .rodata.halted_status
+                0x0800e740        0x4 build/obj/usb.o
+ *fill*         0x0800e744        0xc 00
+ .rodata.vmt    0x0800e750       0x24 build/obj/serial_usb.o
+ *fill*         0x0800e774        0xc 00
  .rodata._stm32_dma_streams
-                0x0800e760       0x54 build/obj/stm32_dma.o
-                0x0800e760                _stm32_dma_streams
- *fill*         0x0800e7b4        0xc 00
+                0x0800e780       0x54 build/obj/stm32_dma.o
+                0x0800e780                _stm32_dma_streams
+ *fill*         0x0800e7d4        0xc 00
  .rodata.default_config
-                0x0800e7c0        0xc build/obj/serial_lld.o
- *fill*         0x0800e7cc        0x4 00
+                0x0800e7e0        0xc build/obj/serial_lld.o
+ *fill*         0x0800e7ec        0x4 00
  .rodata.cfgtab.6475
-                0x0800e7d0       0x14 build/obj/pal_lld.o
- *fill*         0x0800e7e4        0xc 00
+                0x0800e7f0       0x14 build/obj/pal_lld.o
+ *fill*         0x0800e804        0xc 00
  .rodata.ep0config
-                0x0800e7f0       0x1c build/obj/usb_lld.o
- *fill*         0x0800e80c        0x4 00
+                0x0800e810       0x1c build/obj/usb_lld.o
+ *fill*         0x0800e82c        0x4 00
  .rodata.pal_default_config
-                0x0800e810       0x3c build/obj/board.o
-                0x0800e810                pal_default_config
- *fill*         0x0800e84c        0x4 00
+                0x0800e830       0x3c build/obj/board.o
+                0x0800e830                pal_default_config
+ *fill*         0x0800e86c        0x4 00
  .rodata.vcom_device_descriptor_data
-                0x0800e850       0x14 build/obj/usb_ctrl.o
- *fill*         0x0800e864        0xc 00
+                0x0800e870       0x14 build/obj/usb_ctrl.o
+ *fill*         0x0800e884        0xc 00
  .rodata.vcom_device_descriptor
-                0x0800e870        0x8 build/obj/usb_ctrl.o
- *fill*         0x0800e878        0x8 00
+                0x0800e890        0x8 build/obj/usb_ctrl.o
+ *fill*         0x0800e898        0x8 00
  .rodata.vcom_configuration_descriptor_data
-                0x0800e880       0x44 build/obj/usb_ctrl.o
- *fill*         0x0800e8c4        0xc 00
- .rodata.vcom_configuration_descriptor
-                0x0800e8d0        0x8 build/obj/usb_ctrl.o
- *fill*         0x0800e8d8        0x8 00
- .rodata.vcom_string0
-                0x0800e8e0        0x4 build/obj/usb_ctrl.o
+                0x0800e8a0       0x44 build/obj/usb_ctrl.o
  *fill*         0x0800e8e4        0xc 00
+ .rodata.vcom_configuration_descriptor
+                0x0800e8f0        0x8 build/obj/usb_ctrl.o
+ *fill*         0x0800e8f8        0x8 00
+ .rodata.vcom_string0
+                0x0800e900        0x4 build/obj/usb_ctrl.o
+ *fill*         0x0800e904        0xc 00
  .rodata.vcom_string1
-                0x0800e8f0       0x28 build/obj/usb_ctrl.o
- *fill*         0x0800e918        0x8 00
+                0x0800e910       0x1c build/obj/usb_ctrl.o
+ *fill*         0x0800e92c        0x4 00
  .rodata.vcom_string2
-                0x0800e920       0x38 build/obj/usb_ctrl.o
- *fill*         0x0800e958        0x8 00
+                0x0800e930       0x30 build/obj/usb_ctrl.o
  .rodata.vcom_string3
                 0x0800e960        0x8 build/obj/usb_ctrl.o
  *fill*         0x0800e968        0x8 00
@@ -3855,6 +3855,7 @@ _pal_lld_setgroupmode                             build/obj/pal_lld.o
                                                   build/obj/light_ctrl.o
                                                   build/obj/led_ctrl.o
                                                   build/obj/conv_ctrl.o
+                                                  build/obj/usb_ctrl.o
                                                   build/obj/dfu_ctrl.o
                                                   build/obj/pal.o
 _port_init                                        build/obj/chcore_v7m.o

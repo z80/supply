@@ -36,7 +36,7 @@
  * Board identifier.
  */
 #define BOARD_OLIMEX_STM32_P103
-#define BOARD_NAME              "Olimex STM32-P103"
+#define BOARD_NAME              "Supply"
 
 /*
  * Board frequencies.
@@ -145,12 +145,12 @@
 /*
  * USB bus activation macro, required by the USB driver.
  */
-#define usb_lld_connect_bus(usbp) palSetPad(GPIOA, GPIOA_USB_DISC)
+#define usb_lld_connect_bus(usbp) { palSetPadMode(GPIOA, GPIOA_USB_DISC, PAL_MODE_OUTPUT_PUSHPULL); palSetPad(GPIOA, GPIOA_USB_DISC); }
 
 /*
  * USB bus de-activation macro, required by the USB driver.
  */
-#define usb_lld_disconnect_bus(usbp) palClearPad(GPIOA, GPIOA_USB_DISC)
+#define usb_lld_disconnect_bus(usbp) { palSetPadMode(GPIOA, GPIOA_USB_DISC, PAL_MODE_OUTPUT_PUSHPULL); palClearPad(GPIOA, GPIOA_USB_DISC); }
 
 #if !defined(_FROM_ASM_)
 #ifdef __cplusplus
