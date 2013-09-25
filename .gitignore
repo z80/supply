@@ -17,3 +17,12 @@
 
 _temp
 
+# Project files
+main-board/software/pawn/build
+main-board/software/pawn/build.app
+main-board/software/dfu/build
+main-board/software/dfu/build.app
+
+
+
+
