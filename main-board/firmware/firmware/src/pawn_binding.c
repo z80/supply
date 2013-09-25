@@ -41,6 +41,11 @@ cell pawn_rtc( AMX * amx, const cell * params )
     return rtc.tv_sec;
 }
 
+cell pawn_msleep( AMX * amx, const cell * params )
+{
+	chThdSleepMilliseconds( (int)( params[1] ) );
+}
+
 cell pawn_setSerialEn( AMX * amx, const cell * params )
 {
 	(void)amx;

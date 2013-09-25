@@ -9,6 +9,7 @@ cell pawn_trigger( AMX * amx, const cell * params );
 // RTC control.
 cell pawn_setRtc( AMX * amx, const cell * params );
 cell pawn_rtc( AMX * amx, const cell * params );
+cell pawn_msleep( AMX * amx, const cell * params );
 
 // UART control.
 cell pawn_setSerialEn( AMX * amx, const cell * params );
