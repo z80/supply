@@ -43,7 +43,9 @@ cell pawn_rtc( AMX * amx, const cell * params )
 
 cell pawn_msleep( AMX * amx, const cell * params )
 {
+	(void)amx;
 	chThdSleepMilliseconds( (int)( params[1] ) );
+	return 0;
 }
 
 cell pawn_setSerialEn( AMX * amx, const cell * params )
