@@ -21,11 +21,17 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#include "libusb.h"
+
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
+#ifndef WIN32
+    #include <unistd.h>
+#endif
 #include <string.h>
-#include <getopt.h>
+#ifndef WIN32
+    #include <getopt.h>
+#endif
 #include <libusb.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -37,12 +43,15 @@
 #include "dfuse.h"
 #include "quirks.h"
 //#ifdef HAVE_CONFIG_H
-#include "config.h"
+//#include "config.h"
 //#endif
 
 #ifdef HAVE_USBPATH_H
 #include <usbpath.h>
 #endif
+
+
+#define VERSION "1"
 
 /* ugly hack for Win32 */
 #ifndef O_BINARY
@@ -575,6 +584,7 @@ static void print_version(void)
 
 }
 
+/*
 static struct option opts[] = {
 	{ "help", 0, 0, 'h' },
 	{ "version", 0, 0, 'V' },
@@ -595,6 +605,7 @@ static struct option opts[] = {
 	{ "reset", 0, 0, 'R' },
 	{ "dfuse-address", 1, 0, 's' },
 };
+*/
 
 enum mode {
 	MODE_NONE,
@@ -626,10 +637,13 @@ int main(int argc, char **argv)
 	int dfuse = 0;
 	unsigned int dfuse_address = 0; /* FIXME allow address to be zero? */
 
+    struct libusb_device_descriptor desc;
+
 	host_page_size = getpagesize();
 	memset(dif, 0, sizeof(*dif));
 	file.name = NULL;
 
+    /*
 	while (1) {
 		int c, option_index = 0;
 		c = getopt_long(argc, argv, "hVvled:p:c:i:a:t:U:D:Rs:", opts,
@@ -658,7 +672,7 @@ int main(int argc, char **argv)
 			device_id_filter = optarg;
 			break;
 		case 'p':
-			/* Parse device path */
+			// Parse device path
 			dif->path = optarg;
 			dif->flags |= DFU_IFF_PATH;
 			ret = resolve_device_path(dif);
@@ -673,17 +687,17 @@ int main(int argc, char **argv)
 			}
 			break;
 		case 'c':
-			/* Configuration */
+			// Configuration
 			dif->configuration = atoi(optarg);
 			dif->flags |= DFU_IFF_CONFIG;
 			break;
 		case 'i':
-			/* Interface */
+			// Interface
 			dif->interface = atoi(optarg);
 			dif->flags |= DFU_IFF_IFACE;
 			break;
 		case 'a':
-			/* Interface Alternate Setting */
+			// Interface Alternate Setting
 			dif->altsetting = strtoul(optarg, &end, 0);
 			if (*end)
 				alt_name = optarg;
@@ -732,7 +746,7 @@ int main(int argc, char **argv)
 	}
 
 	if (device_id_filter) {
-		/* Parse device ID */
+		// Parse device ID
 		parse_vendprod(&dif->vendor, &dif->product, device_id_filter);
 		printf("Filter on vendor = 0x%04x product = 0x%04x\n",
 		       dif->vendor, dif->product);
@@ -741,6 +755,7 @@ int main(int argc, char **argv)
 		if (dif->product)
 			dif->flags |= DFU_IFF_PRODUCT;
 	}
+    */
 
 	ret = libusb_init(&ctx);
 	if (ret) {
@@ -748,6 +763,7 @@ int main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 
+    /*
 	if (verbose > 1) {
 		libusb_set_debug(ctx, 255);
 	}
@@ -755,7 +771,7 @@ int main(int argc, char **argv)
 	if (mode == MODE_LIST) {
 		list_dfu_interfaces(ctx);
 		exit(0);
-	}
+	}*/
 
 	dfu_init(5000);
 
@@ -1097,7 +1113,7 @@ status_again:
 		printf("Limited transfer size to %i\n", transfer_size);
 	}
 	/* DFU specification */
-	struct libusb_device_descriptor desc;
+	//struct libusb_device_descriptor desc;
 	if (libusb_get_device_descriptor(dif->dev, &desc)) {
 		fprintf(stderr, "Error: Failed to get device descriptor\n");
 		exit(1);

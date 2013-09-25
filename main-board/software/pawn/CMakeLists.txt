@@ -9,6 +9,7 @@ endif ( WIN32 )
 add_subdirectory( "./3dparty" )
 add_subdirectory( "./mcuctrl" )
 add_subdirectory( "./dfu" )
+add_subdirectory( "./dfucmd" )
 add_subdirectory( "./tests" )
 install( DIRECTORY "./pawn_include/" DESTINATION "pawn" )
 
