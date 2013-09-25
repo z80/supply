@@ -2226,10 +2226,10 @@ destructors     0x080000ec        0x0
  .text.amx_GetString
                 0x08008150       0x80 build/obj/amx.o
                 0x08008150                amx_GetString
- .text.main     0x080081d0       0x32 build/obj/main.o
+ .text.main     0x080081d0       0x36 build/obj/main.o
                 0x080081d0                main
  *(.rodata)
- *fill*         0x08008202        0xe 00
+ *fill*         0x08008206        0xa 00
  .rodata        0x08008210        0x4 build/obj/shell.o
  *fill*         0x08008214        0xc 00
  .rodata        0x08008220      0x104 /home/z80/programs/code-sourcery/2011.03-42/bin/../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/lib/thumb2/libc.a(lib_a-ctype_.o)
@@ -2779,7 +2779,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_info    0x0001e0ea      0xeea build/obj/amxcore.o
  .debug_info    0x0001efd4       0xd2 build/obj/main.o
 
-.debug_line     0x00000000     0xc1bc
+.debug_line     0x00000000     0xc1bd
  .debug_line    0x00000000      0x14c build/obj/crt0.o
  .debug_line    0x0000014c       0x66 build/obj/vectors.o
  .debug_line    0x000001b2       0x5b build/obj/chcore.o
@@ -2858,7 +2858,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_line    0x0000aa94      0x36f build/obj/pawn_ctrl.o
  .debug_line    0x0000ae03      0xf32 build/obj/amx.o
  .debug_line    0x0000bd35      0x34b build/obj/amxcore.o
- .debug_line    0x0000c080      0x13c build/obj/main.o
+ .debug_line    0x0000c080      0x13d build/obj/main.o
 
 .debug_loc      0x00000000     0xdfca
  .debug_loc     0x00000000       0x92 build/obj/crt0.o
@@ -4933,6 +4933,7 @@ pawnResult                                        build/obj/pawn_ctrl.o
                                                   build/obj/i2c_ctrl.o
                                                   build/obj/usb_ctrl.o
 pawnRun                                           build/obj/pawn_ctrl.o
+                                                  build/obj/main.o
                                                   build/obj/i2c_ctrl.o
                                                   build/obj/usb_ctrl.o
 pawnSetIo                                         build/obj/pawn_ctrl.o

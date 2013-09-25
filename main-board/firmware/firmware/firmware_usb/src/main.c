@@ -33,7 +33,7 @@ int main(void)
     pawnInit();
     initUsb();
 
-    //pawnRun();
+    pawnRun();
     while ( 1 )
     {
         processShell();
