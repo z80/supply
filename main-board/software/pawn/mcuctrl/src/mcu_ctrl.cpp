@@ -1,5 +1,6 @@
 
 #include "mcu_ctrl.h"
+#include <string>
 #include <sstream>
 #include <boost/regex.hpp>
 
@@ -91,6 +92,43 @@ bool McuCtrl::stop()
     bool res = this->write( out.str() );
     return res;
 }
+
+bool McuCtrl::setIo( const std::basic_string<unsigned char> & args )
+{
+    std::ostringstream out;
+    out << "pawnSetIo ";
+    for ( unsigned i=0; i<args.size(); i++ )
+    {
+        out << static_cast<int>( args[i] );
+        if ( i < (args.size() - 1) )
+            out << " ";
+    }
+    out << "\r\n";
+    bool res = ( this->write( out.str() ) >= out.str().size() );
+    return res;
+}
+
+bool McuCtrl::io( int cnt, std::basic_string<unsigned char> & args )
+{
+    std::ostringstream out;
+    out << "pawnIo\r\n";
+    std::string stri;
+    int sz = this->read( stri );
+    bool res =( this->write( out.str() ) >= out.str().size() );
+    if ( !res )
+        return false;
+    stri.clear();
+    this->read( stri );
+    // Looking for a cnt numbers in string received.
+    int ind = stri.find( "\r\n" );
+    if ( ind >= 0 )
+    {
+
+    }
+    return res;
+}
+
+
 
 
 

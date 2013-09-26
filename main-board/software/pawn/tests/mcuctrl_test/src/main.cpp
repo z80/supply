@@ -20,11 +20,23 @@ int main( int argc, char * argv[] )
         return 2;
     }
 
+    res = c.stop();
+    if ( !res )
+    {
+        std::cout << "Pawn stop failed";
+        return -1;
+    }
     std::string result;
     res = c.flash( argv[1], result );
     std::cout << "Result: " << ( res ? "true" : "false" );
     if ( !res )
         return 3;
+    res = c.start();
+    if ( !res )
+    {
+        std::cout << "Pawn start failed\r\n";
+        return -2;
+    }
     return 0;
 }
 
