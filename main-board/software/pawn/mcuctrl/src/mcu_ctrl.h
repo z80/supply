@@ -11,6 +11,8 @@ public:
     ~McuCtrl();
 
     bool flash( const std::string & fileName, std::string & result );
+    bool start();
+    bool stop();
 
     /*
     bool inputs( unsigned long * data, int len = 2 );

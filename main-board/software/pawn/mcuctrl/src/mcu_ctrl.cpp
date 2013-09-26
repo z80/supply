@@ -41,8 +41,13 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
             if ( !this->write( out.str() ) )
             {
                 this->close();
-                this->open();
-                if ( !write( out.c_str() ) )
+                if ( !this->open() )
+                {
+                    fclose( fp );
+                    result = "failed to reopen USB device after close";
+                    return false;
+                }
+                if ( !write( out.str() ) )
                 {
                     fclose( fp );
                     result = "failed to write data to USB";
@@ -70,6 +75,24 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
 
     return true;
 }
+
+bool McuCtrl::start()
+{
+    std::ostringstream out;
+    out << "pawnRun\r\n";
+    bool res = this->write( out.str() );
+    return res;
+}
+
+bool McuCtrl::stop()
+{
+    std::ostringstream out;
+    out << "pawnStop\r\n";
+    bool res = this->write( out.str() );
+    return res;
+}
+
+
 
 /*
 bool McuCtrl::inputs( unsigned long * data, int len )
