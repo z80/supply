@@ -33,13 +33,13 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
         for ( int i=0; i<cnt; i++ )
         {
             std::ostringstream out;
-            out << "pawnSetMem ";
+            out << "setMem ";
             out << i;
             out << " ";
             out << static_cast<int>( data[i] );
             out << "\r\n";
             // qDebug() << out.str().c_str();
-            if ( !this->write( out.str() ) )
+            if ( this->write( out.str() ) < out.str().size() )
             {
                 this->close();
                 if ( !this->open() )
@@ -48,27 +48,39 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
                     result = "failed to reopen USB device after close";
                     return false;
                 }
-                if ( !write( out.str() ) )
+                if ( write( out.str() ) < out.str().size() )
                 {
                     fclose( fp );
                     result = "failed to write data to USB";
                     return false;
                 }
             }
-                ;
-            //msleep( 30 );
         }
         std::ostringstream out;
-        out << "pawnWriteFlash ";
+        out << "wrFl ";
         out << flashPage++;
         out << "\r\n";
         // qDebug() << out.str().c_str();
         this->write( out.str() );
-        //msleep( 30 );
 
         // Read back result.
-        // ......
-
+        std::string stri;
+        bool res = readString( stri );
+        if ( !res )
+        {
+            fclose( fp );
+            result = "can\'t read flash page write result";
+            return false;
+        }
+        std::istringstream in( stri );
+        int v;
+        in >> v;
+        if ( v != 0 )
+        {
+            fclose( fp );
+            result = "flash write result isn\'t 0";
+            return false;
+        }
     }
     while ( cnt >= SZ );
 
@@ -80,7 +92,7 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
 bool McuCtrl::start()
 {
     std::ostringstream out;
-    out << "pawnRun\r\n";
+    out << "run\r\n";
     bool res = this->write( out.str() );
     return res;
 }
@@ -88,15 +100,48 @@ bool McuCtrl::start()
 bool McuCtrl::stop()
 {
     std::ostringstream out;
-    out << "pawnStop\r\n";
+    out << "stop\r\n";
     bool res = this->write( out.str() );
     return res;
 }
 
-bool McuCtrl::setIo( const std::basic_string<unsigned char> & args )
+bool McuCtrl::isRunning()
 {
     std::ostringstream out;
-    out << "pawnSetIo ";
+    out << "isRun\r\n";
+    bool res = this->write( out.str() );
+    if ( !res )
+        return false;
+
+    std::string stri;
+    res = readString( stri );
+    if ( !res )
+        return false;
+    std::istringstream in ( stri );
+    int v;
+    in >> v;
+    return ( v != 0 );
+}
+
+bool McuCtrl::setIo( int ind, unsigned char value )
+{
+    std::ostringstream out;
+    out << "setIo ";
+    out << ind;
+    out << " ";
+    out << static_cast<int>( value );
+    bool res = ( this->write( out.str() ) >= out.str().size() );
+    if ( !res )
+        return false;
+    return true;
+}
+
+bool McuCtrl::setIo( int ind, const std::basic_string<unsigned char> & args )
+{
+    std::ostringstream out;
+    out << "setIo ";
+    out << ind;
+    out << " ";
     for ( unsigned i=0; i<args.size(); i++ )
     {
         out << static_cast<int>( args[i] );
@@ -108,27 +153,56 @@ bool McuCtrl::setIo( const std::basic_string<unsigned char> & args )
     return res;
 }
 
-bool McuCtrl::io( int cnt, std::basic_string<unsigned char> & args )
+bool McuCtrl::io( int cnt, unsigned char & value )
 {
     std::ostringstream out;
-    out << "pawnIo\r\n";
+    out << "io\r\n";
     std::string stri;
     int sz = this->read( stri );
     bool res =( this->write( out.str() ) >= out.str().size() );
     if ( !res )
         return false;
     stri.clear();
-    this->read( stri );
-    // Looking for a cnt numbers in string received.
-    int ind = stri.find( "\r\n" );
-    if ( ind >= 0 )
-    {
-
-    }
-    return res;
+    this->readString( stri );
+    // Looking for a cnt numbers if string received.
+    std::istringstream in( stri );
+    int v;
+    in >> v;
+    value = static_cast<unsigned char>( value );
+    return true;
 }
 
-
+bool McuCtrl::readString( std::string & stri )
+{
+    const int SZ = 64;
+    std::string striBuf;
+    striBuf.resize( SZ );
+    stri.clear();
+    for ( ;; )
+    {
+        int cnt = this->read( striBuf );
+        if ( cnt <= 0 )
+            break;
+        int endIndex = striBuf.find( "}\r\n" );
+        if ( endIndex != std::string::npos )
+            striBuf = striBuf.substr( 0, endIndex + 2 );
+        stri.append( striBuf );
+        if ( endIndex != std::string::npos )
+        {
+            std::string::const_iterator start = stri.begin();
+            std::string::const_iterator end   = stri.end();
+            boost::regex patt( "\\{([\\d\\s]{1,})\\}" );
+            boost::smatch match;
+            if ( boost::regex_search( start, end, match, patt ) )
+            {
+                stri = match[1];
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
+}
 
 
 

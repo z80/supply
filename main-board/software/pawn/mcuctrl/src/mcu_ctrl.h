@@ -13,8 +13,13 @@ public:
     bool flash( const std::string & fileName, std::string & result );
     bool start();
     bool stop();
-    bool setIo( const std::basic_string<unsigned char> & args );
-    bool io( int cnt, std::basic_string<unsigned char> & args );
+    bool isRunning();
+    bool setIo( int ind, unsigned char value );
+    bool setIo( int ind, const std::basic_string<unsigned char> & args );
+    bool io( int ind, unsigned char & value );
+
+private:
+    bool readString( std::string & stri );
 
     /*
     bool inputs( unsigned long * data, int len = 2 );

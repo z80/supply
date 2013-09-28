@@ -298,41 +298,6 @@ static const SerialUSBConfig serusbcfg = {
 /*===========================================================================*/
 
 #define SHELL_WA_SIZE   THD_WA_SIZE( (1024 * 3) )
-/*
-static void cmd_mem(BaseChannel *chp, int argc, char *argv[]) {
-  size_t n, size;
-
-  (void)argv;
-  if (argc > 0) {
-    chprintf(chp, "Usage: mem\r\n");
-    return;
-  }
-  n = chHeapStatus(NULL, &size);
-  chprintf(chp, "core free memory : %u bytes\r\n", chCoreStatus());
-  chprintf(chp, "heap fragments   : %u\r\n", n);
-  chprintf(chp, "heap free total  : %u bytes\r\n", size);
-}
-
-static void cmd_threads(BaseChannel *chp, int argc, char *argv[]) {
-  static const char *states[] = {THD_STATE_NAMES};
-  Thread *tp;
-
-  (void)argv;
-  if (argc > 0) {
-    chprintf(chp, "Usage: threads\r\n");
-    return;
-  }
-  chprintf(chp, "    addr    stack prio refs     state time\r\n");
-  tp = chRegFirstThread();
-  do {
-    chprintf(chp, "%.8lx %.8lx %4lu %4lu %9s %lu\r\n",
-            (uint32_t)tp, (uint32_t)tp->p_ctx.r13,
-            (uint32_t)tp->p_prio, (uint32_t)(tp->p_refs - 1),
-            states[tp->p_state], (uint32_t)tp->p_time);
-    tp = chRegNextThread(tp);
-  } while (tp != NULL);
-}
-*/
 
 static void cmd_pawnSetIo(BaseChannel *chp, int argc, char *argv[])
 {
@@ -356,7 +321,7 @@ static void cmd_pawnIo(BaseChannel *chp, int argc, char *argv[])
     {
         int ind = atoi( argv[0] );
         uint8_t val = pawnIo( ind );
-	    chprintf( chp, "%d\r\n", val );
+	    chprintf( chp, "{%d}\r\n", val );
     }
     else
         chprintf( chp, "ERROR: more args expected \r\n" );
@@ -401,7 +366,7 @@ static void cmd_pawnWriteFlash(BaseChannel *chp, int argc, char *argv[])
     {
         int n = atoi( argv[0] );
         n = pawnWriteFlash( n );
-        chprintf( chp, "%d\r\n", n );
+        chprintf( chp, "{%d}\r\n", n );
     }
     else
         chprintf( chp, "ERROR: 0 based page index expected\r\n" );
@@ -412,25 +377,23 @@ static void cmd_pawnRun(BaseChannel *chp, int argc, char *argv[])
     (void)argc;
     (void)argv;
     pawnRun();
-    chprintf( chp, "Running...\r\n" );
+    chprintf( chp, "ok\r\n" );
 }
 
 static void cmd_pawnIsRunning(BaseChannel *chp, int argc, char *argv[])
 {
     (void)argc;
     (void)argv;
-    if ( pawnIsRunning() )
-        chprintf( chp, "true\r\n" );
-    else
-        chprintf( chp, "false\r\n" );
+    uint8_t res = pawnIsRunning();
+    chprintf( chp, "{%d}\r\n", res );
 }
 
 static void cmd_pawnStop( BaseChannel *chp, int argc, char *argv[] )
 {
+	(void)chp;
     (void)argc;
     (void)argv;
     pawnStop();
-    chprintf( chp, "stopped\r\n" );
 }
 
 static void cmd_pawnResult( BaseChannel *chp, int argc, char *argv[] )
@@ -438,7 +401,7 @@ static void cmd_pawnResult( BaseChannel *chp, int argc, char *argv[] )
     (void)argc;
     (void)argv;
     int res = pawnResult();
-    chprintf( chp, "%d\r\n", res );
+    chprintf( chp, "{%d}\r\n", res );
 }
 
 static void cmd_pawnError( BaseChannel *chp, int argc, char *argv[] )
@@ -446,7 +409,7 @@ static void cmd_pawnError( BaseChannel *chp, int argc, char *argv[] )
     (void)argc;
     (void)argv;
     int res = pawnError();
-    chprintf( chp, "%d\r\n", res );
+    chprintf( chp, "{%d}\r\n", res );
 }
 
 
