@@ -333,18 +333,18 @@ static void cmd_threads(BaseChannel *chp, int argc, char *argv[]) {
   } while (tp != NULL);
 }
 */
-static uint8_t g_args[16];
 
 static void cmd_pawnSetIo(BaseChannel *chp, int argc, char *argv[])
 {
-    if ( argc > 0 )
+    if ( argc > 1 )
     {
+        int ind     = atoi( argv[0] );
         int i;
-        for ( i=0; i<argc; i++ )
-	{
-	    g_args[i] = atoi( argv[i] );
-	}
-	pawnSetIo( argc, g_args );
+        for ( i=1; i<argc; i++ )
+        {
+            uint8_t val = atoi( argv[i] );
+            pawnSetIo( ind+i-1, val );
+        }
     }
     else
         chprintf( chp, "ERROR: more args expected \r\n" );
@@ -354,11 +354,9 @@ static void cmd_pawnIo(BaseChannel *chp, int argc, char *argv[])
 {
     if ( argc > 0 )
     {
-        int cnt = atoi( argv[0] ); 
-	pawnIo( cnt, g_args );
-	int i;
-	for ( i=0; i<cnt; i++ )
-	    chprintf( chp, "%d\r\n", g_args[i] );
+        int ind = atoi( argv[0] );
+        uint8_t val = pawnIo( ind );
+	    chprintf( chp, "%d\r\n", val );
     }
     else
         chprintf( chp, "ERROR: more args expected \r\n" );
@@ -372,10 +370,10 @@ static void cmd_pawnSetMem(BaseChannel *chp, int argc, char *argv[])
         int at = atoi( argv[0] );
         int i;
         for ( i=1; i<argc; i++ )
-	{
-	    uint8_t v = atoi( argv[i] );
-	    pawnSetMem( 1, at+i-1, &v );
-	}
+        {
+	        uint8_t v = atoi( argv[i] );
+	        pawnSetMem( at+i-1, v );
+	    }
     }
     else
         chprintf( chp, "ERROR: more arguments expected\r\n" );
@@ -403,7 +401,7 @@ static void cmd_pawnWriteFlash(BaseChannel *chp, int argc, char *argv[])
     {
         int n = atoi( argv[0] );
         n = pawnWriteFlash( n );
-	chprintf( chp, "%d\r\n", n );
+        chprintf( chp, "%d\r\n", n );
     }
     else
         chprintf( chp, "ERROR: 0 based page index expected\r\n" );
@@ -459,18 +457,18 @@ static const ShellCommand commands[] =
 {
     // Commands for inputs/outputs.
     //{ "mem",            cmd_mem },
-    //{ "threads",        cmd_threads },
+     //{ "threads",        cmd_threads },
 
-    { "pawnSetIo",      cmd_pawnSetIo }, 
-    { "pawnIo",         cmd_pawnIo }, 
-    { "pawnSetMem",     cmd_pawnSetMem }, 
+    { "setIo",      cmd_pawnSetIo },
+    { "io",         cmd_pawnIo },
+    { "setMem",     cmd_pawnSetMem },
     //{ "pawnMem",        cmd_pawnMem }, 
-    { "pawnWriteFlash", cmd_pawnWriteFlash }, 
-    { "pawnRun",        cmd_pawnRun }, 
-    { "pawnIsRunning",  cmd_pawnIsRunning }, 
-    { "pawnStop",       cmd_pawnStop }, 
-    { "pawnResult",     cmd_pawnResult }, 
-    { "pawnError",      cmd_pawnError }, 
+    { "wrFl",       cmd_pawnWriteFlash },
+    { "run",        cmd_pawnRun },
+    { "isRun",      cmd_pawnIsRunning },
+    { "stop",       cmd_pawnStop },
+    { "res",        cmd_pawnResult },
+    { "err",        cmd_pawnError },
 
     { NULL,             NULL }
 };

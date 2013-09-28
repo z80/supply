@@ -156,29 +156,32 @@ void pawnInit( void )
     chThdCreateStatic( waExec, sizeof(waExec), NORMALPRIO, execThread, NULL );
 }
 
-void pawnSetIo( uint8_t cnt, uint8_t * vals )
+void pawnSetIo( int ind, uint8_t value )
 {
-    uint8_t i;
-    for ( i=0; i<cnt; i++ )
-        g_pawn.ioblock[i] = vals[i];
+    g_pawn.ioblock[ ind ] = value;
 }
 
-void pawnIo( uint8_t cnt, uint8_t * vals )
+uint8_t pawnIo( int ind )
 {
-    uint8_t i;
-    for ( i=0; i<cnt; i++ )
-        vals[i] = g_pawn.ioblock[i];
+    return g_pawn.ioblock[ ind ];
 }
 
-void pawnSetMem( uint8_t cnt, uint16_t at, uint8_t * vals )
+void pawnSetMem( int at, uint8_t value )
 {
-    uint16_t i;
+	uint8_t * mem = (uint8_t *)(g_pawn.memblock);
+	mem[ at ] = value;
+}
+/*
+void pawnSetMem( int at, int cnt )
+{
+    int i;
     uint8_t * mem = (uint8_t *)(g_pawn.memblock);
     for ( i=0; i<cnt; i++ )
-        mem[at+i] = vals[i];
+        mem[at+i] = g_pawn.ioblock[i];
 }
+*/
 
-uint8_t pawnMem( uint16_t at )
+uint8_t pawnMem( int at )
 {
     uint8_t * mem = (uint8_t *)(g_pawn.memblock);
     return mem[ at ]; 

@@ -122,17 +122,17 @@ static msg_t execThread( void *arg )
         switch ( buffer[0] )
         {
         case I2C_CMD_PAWN_SET_IO:
-            pawnSetIo( buffer[1], &buffer[2] );
+            pawnSetIo( buffer[1], buffer[2] );
             outBuffer[0] = I2C_CMD_PAWN_SET_IO;
             break;
         case I2C_CMD_PAWN_IO:
-        	pawnIo( buffer[1], &outBuffer[1] );
+        	uvalue16Out = (uint16_t)buffer[1] + ( ((uint16_t)buffer[2]) << 8 );
+        	outBuffer[1] = pawnIo( uvalue16Out );
         	outBuffer[0] = I2C_CMD_PAWN_IO;
         	break;
         case I2C_CMD_PAWN_SET_MEM:
-        	uvalue8Out = buffer[1];
-        	uvalue16Out = (uint16_t)buffer[2] + ( ((uint16_t)buffer[3]) << 8 );
-        	pawnSetMem( uvalue8Out, uvalue16Out, &buffer[4] );
+        	uvalue16Out = (uint16_t)buffer[1] + ( ((uint16_t)buffer[2]) << 8 );
+        	pawnSetMem( uvalue16Out, buffer[3] );
         	outBuffer[0] = I2C_CMD_PAWN_SET_MEM;
         	break;
         case I2C_CMD_PAWN_WRITE_FLASH:

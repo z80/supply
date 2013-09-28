@@ -6,9 +6,11 @@
 #include <shell.h>
 
 void     pawnInit( void );
-void     pawnSetIo( uint8_t cnt, uint8_t * vals );
-void     pawnIo( uint8_t cnt, uint8_t * vals );
-void     pawnSetMem( uint8_t cnt, uint16_t at, uint8_t * vals );
+void     pawnSetIo( int ind, uint8_t value );
+uint8_t  pawnIo( int ind );
+void     pawnSetMem( int at, uint8_t value );
+//void     pawnSetMem( int at, int cnt );
+uint8_t  pawnMem( int at );
 uint16_t pawnWriteFlash( uint8_t page );
 void     pawnRun( void );
 uint8_t  pawnIsRunning( void );
