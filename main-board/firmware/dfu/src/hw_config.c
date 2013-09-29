@@ -118,7 +118,7 @@ void USB_Cable_Config (FunctionalState NewState)
       s.GPIO_Pin = GPIO_Pin_8;
       s.GPIO_Mode = GPIO_Mode_Out_PP;
       s.GPIO_Speed = GPIO_Speed_10MHz;
-      GPIO_Init( GPIOB, &s );
+      GPIO_Init( GPIOA, &s );
       GPIO_SetBits( GPIOA, GPIO_Pin_8 );
   }
   else
@@ -127,7 +127,7 @@ void USB_Cable_Config (FunctionalState NewState)
       s.GPIO_Pin = GPIO_Pin_8;
       s.GPIO_Mode = GPIO_Mode_Out_PP;
       s.GPIO_Speed = GPIO_Speed_10MHz;
-      GPIO_Init( GPIOB, &s );
+      GPIO_Init( GPIOA, &s );
       GPIO_ResetBits( GPIOA, GPIO_Pin_8 );
       RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, DISABLE );
   }
