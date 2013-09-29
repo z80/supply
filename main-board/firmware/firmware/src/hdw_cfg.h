@@ -91,7 +91,7 @@
 // *****************************************************************
 #define DFU_ADDRESS   ( 0x08000000 - 0x800 * (128 - 10) )
 #define TRIGGER_PORT  GPIOB
-#define TRIGGER_PAD   1
+#define TRIGGER_PAD   15
 
 // *****************************************************************
 //                        Serial parameters.
