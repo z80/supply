@@ -1,4 +1,6 @@
 
+set( LIB_NAME usbctrl )
+
 set( Boost_USE_STATIC_LIBS True )
 set( Boost_USE_MULTITHREADED True )
 find_package( Boost COMPONENTS regex REQUIRED )
@@ -23,12 +25,12 @@ elseif ( WIN32 )
 endif ( UNIX )
 set( src ${src} ${s} )
 
-add_library( mcuctrl STATIC ${src} )
+add_library( ${LIB_NAME} STATIC ${src} )
 if ( UNIX )
-    target_link_libraries( mcuctrl ${LIBUSB_1_LIBRARIES} ${Boost_LIBRARIES} ) #${QT_LIBRARIES} )
+    target_link_libraries( ${LIB_NAME} ${LIBUSB_1_LIBRARIES} ${Boost_LIBRARIES} ) #${QT_LIBRARIES} )
 elseif ( WIN32 )
-    find_library( libusb NAMES libusb-1.0.lib PATHS "${LIBUSB_LIB_PATH}" ) 
-    target_link_libraries( mcuctrl ${libusb} ${Boost_LIBRARIES} ) #${QT_LIBRARIES} )
+    find_library( ${LIB_NAME} NAMES libusb-1.0.lib PATHS "${LIBUSB_LIB_PATH}" ) 
+    target_link_libraries( ${LIB_NAME} ${libusb} ${Boost_LIBRARIES} ) #${QT_LIBRARIES} )
 endif ( UNIX )
 
 

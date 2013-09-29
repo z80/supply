@@ -3,7 +3,7 @@ set( Boost_USE_MULTITHREADED True )
 find_package( Boost COMPONENTS regex REQUIRED )
 
 include_directories( "./src" 
-                     "${ROOT}/mcuctrl/src"
+                     "${ROOT}/usbctrl/src"
                      ${Boost_INCLUDE_DIRS} )
 
 file( GLOB src     "./src/*.cpp" )
@@ -12,7 +12,7 @@ message( STATUS "SRC = ${src}" )
 message( STATUS "HEADERS = ${headers}" )
 
 add_executable( mcuctrl_test ${src} )
-set( libs mcuctrl  ${Boost_LIBRARIES} )
+set( libs usbctrl  ${Boost_LIBRARIES} )
 message( STATUS "LIBS0 = ${libs}" )
 set( defs QXMPP_STATIC )
 set( libs ${libs} )
