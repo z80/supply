@@ -130,6 +130,7 @@ bool McuCtrl::setIo( int ind, unsigned char value )
     out << ind;
     out << " ";
     out << static_cast<int>( value );
+    out << "\r\n";
     bool res = ( this->write( out.str() ) >= out.str().size() );
     if ( !res )
         return false;
@@ -153,22 +154,22 @@ bool McuCtrl::setIo( int ind, const std::basic_string<unsigned char> & args )
     return res;
 }
 
-bool McuCtrl::io( int cnt, unsigned char & value )
+bool McuCtrl::io( int ind, unsigned char & value )
 {
     std::ostringstream out;
-    out << "io\r\n";
-    std::string stri;
-    int sz = this->read( stri );
+    out << "io ";
+    out << ind;
+    out << "\r\n";
     bool res =( this->write( out.str() ) >= out.str().size() );
     if ( !res )
         return false;
-    stri.clear();
+    std::string stri;
     this->readString( stri );
     // Looking for a cnt numbers if string received.
     std::istringstream in( stri );
     int v;
     in >> v;
-    value = static_cast<unsigned char>( value );
+    value = static_cast<unsigned char>( v );
     return true;
 }
 
