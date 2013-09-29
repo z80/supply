@@ -584,7 +584,7 @@ static void print_version(void)
 
 }
 
-/*
+
 static struct option opts[] = {
 	{ "help", 0, 0, 'h' },
 	{ "version", 0, 0, 'V' },
@@ -605,7 +605,7 @@ static struct option opts[] = {
 	{ "reset", 0, 0, 'R' },
 	{ "dfuse-address", 1, 0, 's' },
 };
-*/
+
 
 enum mode {
 	MODE_NONE,
@@ -623,7 +623,7 @@ int main(int argc, char **argv)
 	int num_ifs;
 	unsigned int transfer_size = 0;
 	unsigned int host_page_size;
-	enum mode mode = MODE_NONE;
+    enum mode mode = MODE_DOWNLOAD; //MODE_NONE;
 	struct dfu_status status;
 	struct usb_dfu_func_descriptor func_dfu = {0}, func_dfu_rt = {0};
 	libusb_context *ctx;
@@ -641,9 +641,14 @@ int main(int argc, char **argv)
 
 	host_page_size = getpagesize();
 	memset(dif, 0, sizeof(*dif));
-	file.name = NULL;
+    /*if ( argc < 2 )
+    {
+        fprintf( stderr, "unable to get file name from command line\n");
+        exit( 1 );
+    }
+    file.name = argv[1];*/
 
-    /*
+
 	while (1) {
 		int c, option_index = 0;
 		c = getopt_long(argc, argv, "hVvled:p:c:i:a:t:U:D:Rs:", opts,
@@ -755,7 +760,6 @@ int main(int argc, char **argv)
 		if (dif->product)
 			dif->flags |= DFU_IFF_PRODUCT;
 	}
-    */
 
 	ret = libusb_init(&ctx);
 	if (ret) {
