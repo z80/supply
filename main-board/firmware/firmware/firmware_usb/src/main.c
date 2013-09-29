@@ -22,7 +22,7 @@ int main(void)
     halInit();
     chSysInit();
 
-    //checkDfu();
+    checkDfu();
 
     initLed();
     initLight();

@@ -21,7 +21,7 @@ void checkDfu( void )
 	// And it causes always DFU mode.
 	chThdSleepMilliseconds( 500 );
 	// Check if it is pulled down.
-	if ( trigger() )
+	if ( !trigger() )
 		// If not pulled down no need to try DFU.
 		return;
 	// Invoke DFU only if there seems to be a valid firmware.
