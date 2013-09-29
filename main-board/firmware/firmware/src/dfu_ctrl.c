@@ -17,7 +17,9 @@ int  trigger( void )
 
 void checkDfu( void )
 {
-	// First of all little delay. Otherwise pad value is measured to be zero.
+	// To switch port to input.
+	trigger();
+	// Little delay afterwards. Otherwise pad value is measured to be zero.
 	// And it causes always DFU mode.
 	chThdSleepMilliseconds( 500 );
 	// Check if it is pulled down.

@@ -1881,9 +1881,9 @@ destructors     0x080000ec        0x0
  .text.trigger  0x08005730       0x20 build/obj/dfu_ctrl.o
                 0x08005730                trigger
  .text.checkDfu
-                0x08005750       0x38 build/obj/dfu_ctrl.o
+                0x08005750       0x3c build/obj/dfu_ctrl.o
                 0x08005750                checkDfu
- *fill*         0x08005788        0x8 00
+ *fill*         0x0800578c        0x4 00
  .text.get_descriptor
                 0x08005790       0x34 build/obj/usb_ctrl.o
  *fill*         0x080057c4        0xc 00
@@ -2777,7 +2777,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_info    0x0001e0bf      0xeea build/obj/amxcore.o
  .debug_info    0x0001efa9       0xd2 build/obj/main.o
 
-.debug_line     0x00000000     0xc1ad
+.debug_line     0x00000000     0xc1ae
  .debug_line    0x00000000      0x14c build/obj/crt0.o
  .debug_line    0x0000014c       0x66 build/obj/vectors.o
  .debug_line    0x000001b2       0x5b build/obj/chcore.o
@@ -2844,19 +2844,19 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_line    0x00008747      0x273 build/obj/chprintf.o
  .debug_line    0x000089ba      0x47b build/obj/stm32f10x_flash.o
  .debug_line    0x00008e35      0x1a2 build/obj/misc.o
- .debug_line    0x00008fd7      0x1d3 build/obj/dfu_ctrl.o
- .debug_line    0x000091aa      0x49e build/obj/usb_ctrl.o
- .debug_line    0x00009648      0x49e build/obj/conv_ctrl.o
- .debug_line    0x00009ae6      0x18c build/obj/led_ctrl.o
- .debug_line    0x00009c72      0x1b7 build/obj/light_ctrl.o
- .debug_line    0x00009e29      0x1b9 build/obj/moto_ctrl.o
- .debug_line    0x00009fe2      0x323 build/obj/serial_ctrl.o
- .debug_line    0x0000a305      0x3b3 build/obj/i2c_ctrl.o
- .debug_line    0x0000a6b8      0x3ff build/obj/pawn_binding.o
- .debug_line    0x0000aab7      0x33b build/obj/pawn_ctrl.o
- .debug_line    0x0000adf2      0xf32 build/obj/amx.o
- .debug_line    0x0000bd24      0x34b build/obj/amxcore.o
- .debug_line    0x0000c06f      0x13e build/obj/main.o
+ .debug_line    0x00008fd7      0x1d4 build/obj/dfu_ctrl.o
+ .debug_line    0x000091ab      0x49e build/obj/usb_ctrl.o
+ .debug_line    0x00009649      0x49e build/obj/conv_ctrl.o
+ .debug_line    0x00009ae7      0x18c build/obj/led_ctrl.o
+ .debug_line    0x00009c73      0x1b7 build/obj/light_ctrl.o
+ .debug_line    0x00009e2a      0x1b9 build/obj/moto_ctrl.o
+ .debug_line    0x00009fe3      0x323 build/obj/serial_ctrl.o
+ .debug_line    0x0000a306      0x3b3 build/obj/i2c_ctrl.o
+ .debug_line    0x0000a6b9      0x3ff build/obj/pawn_binding.o
+ .debug_line    0x0000aab8      0x33b build/obj/pawn_ctrl.o
+ .debug_line    0x0000adf3      0xf32 build/obj/amx.o
+ .debug_line    0x0000bd25      0x34b build/obj/amxcore.o
+ .debug_line    0x0000c070      0x13e build/obj/main.o
 
 .debug_loc      0x00000000     0xdf1c
  .debug_loc     0x00000000       0x92 build/obj/crt0.o
