@@ -545,7 +545,7 @@ Discarded input sections
  .data          0x00000000        0x0 build/obj/dfu_ctrl.o
  .bss           0x00000000        0x0 build/obj/dfu_ctrl.o
  .text.checkDfu
-                0x00000000       0x44 build/obj/dfu_ctrl.o
+                0x00000000       0x38 build/obj/dfu_ctrl.o
  .text          0x00000000        0x0 build/obj/usb_ctrl.o
  .data          0x00000000        0x0 build/obj/usb_ctrl.o
  .bss           0x00000000        0x0 build/obj/usb_ctrl.o
@@ -2694,7 +2694,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_abbrev  0x00006925      0x354 build/obj/amxcore.o
  .debug_abbrev  0x00006c79       0x68 build/obj/main.o
 
-.debug_info     0x00000000    0x1f070
+.debug_info     0x00000000    0x1f07b
  .debug_info    0x00000000      0x315 build/obj/crt0.o
  .debug_info    0x00000315       0xb5 build/obj/vectors.o
  .debug_info    0x000003ca       0x8b build/obj/chcore.o
@@ -2761,21 +2761,21 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_info    0x000152cf      0x3fc build/obj/chprintf.o
  .debug_info    0x000156cb      0x82f build/obj/stm32f10x_flash.o
  .debug_info    0x00015efa      0x596 build/obj/misc.o
- .debug_info    0x00016490      0x1df build/obj/dfu_ctrl.o
- .debug_info    0x0001666f     0x1453 build/obj/usb_ctrl.o
- .debug_info    0x00017ac2     0x10aa build/obj/conv_ctrl.o
- .debug_info    0x00018b6c      0x178 build/obj/led_ctrl.o
- .debug_info    0x00018ce4      0x183 build/obj/light_ctrl.o
- .debug_info    0x00018e67      0x191 build/obj/moto_ctrl.o
- .debug_info    0x00018ff8      0xa74 build/obj/serial_ctrl.o
- .debug_info    0x00019a6c      0xd27 build/obj/i2c_ctrl.o
- .debug_info    0x0001a793      0xbae build/obj/pawn_binding.o
- .debug_info    0x0001b341      0xc9a build/obj/pawn_ctrl.o
- .debug_info    0x0001bfdb     0x20d9 build/obj/amx.o
- .debug_info    0x0001e0b4      0xeea build/obj/amxcore.o
- .debug_info    0x0001ef9e       0xd2 build/obj/main.o
+ .debug_info    0x00016490      0x1ea build/obj/dfu_ctrl.o
+ .debug_info    0x0001667a     0x1453 build/obj/usb_ctrl.o
+ .debug_info    0x00017acd     0x10aa build/obj/conv_ctrl.o
+ .debug_info    0x00018b77      0x178 build/obj/led_ctrl.o
+ .debug_info    0x00018cef      0x183 build/obj/light_ctrl.o
+ .debug_info    0x00018e72      0x191 build/obj/moto_ctrl.o
+ .debug_info    0x00019003      0xa74 build/obj/serial_ctrl.o
+ .debug_info    0x00019a77      0xd27 build/obj/i2c_ctrl.o
+ .debug_info    0x0001a79e      0xbae build/obj/pawn_binding.o
+ .debug_info    0x0001b34c      0xc9a build/obj/pawn_ctrl.o
+ .debug_info    0x0001bfe6     0x20d9 build/obj/amx.o
+ .debug_info    0x0001e0bf      0xeea build/obj/amxcore.o
+ .debug_info    0x0001efa9       0xd2 build/obj/main.o
 
-.debug_line     0x00000000     0xc17f
+.debug_line     0x00000000     0xc1ac
  .debug_line    0x00000000      0x14c build/obj/crt0.o
  .debug_line    0x0000014c       0x66 build/obj/vectors.o
  .debug_line    0x000001b2       0x5b build/obj/chcore.o
@@ -2842,19 +2842,19 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_line    0x00008747      0x273 build/obj/chprintf.o
  .debug_line    0x000089ba      0x47b build/obj/stm32f10x_flash.o
  .debug_line    0x00008e35      0x1a2 build/obj/misc.o
- .debug_line    0x00008fd7      0x1a6 build/obj/dfu_ctrl.o
- .debug_line    0x0000917d      0x49e build/obj/usb_ctrl.o
- .debug_line    0x0000961b      0x49e build/obj/conv_ctrl.o
- .debug_line    0x00009ab9      0x18c build/obj/led_ctrl.o
- .debug_line    0x00009c45      0x1b7 build/obj/light_ctrl.o
- .debug_line    0x00009dfc      0x1b9 build/obj/moto_ctrl.o
- .debug_line    0x00009fb5      0x323 build/obj/serial_ctrl.o
- .debug_line    0x0000a2d8      0x3b3 build/obj/i2c_ctrl.o
- .debug_line    0x0000a68b      0x3ff build/obj/pawn_binding.o
- .debug_line    0x0000aa8a      0x33b build/obj/pawn_ctrl.o
- .debug_line    0x0000adc5      0xf32 build/obj/amx.o
- .debug_line    0x0000bcf7      0x34b build/obj/amxcore.o
- .debug_line    0x0000c042      0x13d build/obj/main.o
+ .debug_line    0x00008fd7      0x1d3 build/obj/dfu_ctrl.o
+ .debug_line    0x000091aa      0x49e build/obj/usb_ctrl.o
+ .debug_line    0x00009648      0x49e build/obj/conv_ctrl.o
+ .debug_line    0x00009ae6      0x18c build/obj/led_ctrl.o
+ .debug_line    0x00009c72      0x1b7 build/obj/light_ctrl.o
+ .debug_line    0x00009e29      0x1b9 build/obj/moto_ctrl.o
+ .debug_line    0x00009fe2      0x323 build/obj/serial_ctrl.o
+ .debug_line    0x0000a305      0x3b3 build/obj/i2c_ctrl.o
+ .debug_line    0x0000a6b8      0x3ff build/obj/pawn_binding.o
+ .debug_line    0x0000aab7      0x33b build/obj/pawn_ctrl.o
+ .debug_line    0x0000adf2      0xf32 build/obj/amx.o
+ .debug_line    0x0000bd24      0x34b build/obj/amxcore.o
+ .debug_line    0x0000c06f      0x13d build/obj/main.o
 
 .debug_loc      0x00000000     0xdf1c
  .debug_loc     0x00000000       0x92 build/obj/crt0.o
@@ -3050,7 +3050,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
                 0x00002818       0x1b build/obj/main.o
 
 .debug_pubtypes
-                0x00000000     0x500e
+                0x00000000     0x501c
  .debug_pubtypes
                 0x00000000       0x44 build/obj/crt0.o
  .debug_pubtypes
@@ -3184,31 +3184,31 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_pubtypes
                 0x00003d3d       0x8c build/obj/misc.o
  .debug_pubtypes
-                0x00003dc9       0x5b build/obj/dfu_ctrl.o
+                0x00003dc9       0x69 build/obj/dfu_ctrl.o
  .debug_pubtypes
-                0x00003e24      0x3e7 build/obj/usb_ctrl.o
+                0x00003e32      0x3e7 build/obj/usb_ctrl.o
  .debug_pubtypes
-                0x0000420b      0x2d9 build/obj/conv_ctrl.o
+                0x00004219      0x2d9 build/obj/conv_ctrl.o
  .debug_pubtypes
-                0x000044e4       0x4d build/obj/led_ctrl.o
+                0x000044f2       0x4d build/obj/led_ctrl.o
  .debug_pubtypes
-                0x00004531       0x58 build/obj/light_ctrl.o
+                0x0000453f       0x58 build/obj/light_ctrl.o
  .debug_pubtypes
-                0x00004589       0x5a build/obj/moto_ctrl.o
+                0x00004597       0x5a build/obj/moto_ctrl.o
  .debug_pubtypes
-                0x000045e3      0x27a build/obj/serial_ctrl.o
+                0x000045f1      0x27a build/obj/serial_ctrl.o
  .debug_pubtypes
-                0x0000485d      0x26a build/obj/i2c_ctrl.o
+                0x0000486b      0x26a build/obj/i2c_ctrl.o
  .debug_pubtypes
-                0x00004ac7       0xdf build/obj/pawn_binding.o
+                0x00004ad5       0xdf build/obj/pawn_binding.o
  .debug_pubtypes
-                0x00004ba6      0x1e4 build/obj/pawn_ctrl.o
+                0x00004bb4      0x1e4 build/obj/pawn_ctrl.o
  .debug_pubtypes
-                0x00004d8a      0x144 build/obj/amx.o
+                0x00004d98      0x144 build/obj/amx.o
  .debug_pubtypes
-                0x00004ece      0x107 build/obj/amxcore.o
+                0x00004edc      0x107 build/obj/amxcore.o
  .debug_pubtypes
-                0x00004fd5       0x39 build/obj/main.o
+                0x00004fe3       0x39 build/obj/main.o
 
 .debug_aranges  0x00000000     0x17a8
  .debug_aranges
@@ -3540,7 +3540,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_str     0x00004028      0x173 build/obj/misc.o
                                 0x34c (size before relaxing)
  .debug_str     0x0000419b       0x5e build/obj/dfu_ctrl.o
-                                0x185 (size before relaxing)
+                                0x18f (size before relaxing)
  .debug_str     0x000041f9      0x1d0 build/obj/usb_ctrl.o
                                 0x98d (size before relaxing)
  .debug_str     0x000043c9      0x110 build/obj/conv_ctrl.o
@@ -4646,6 +4646,7 @@ chThdSleep                                        build/obj/chthreads.o
                                                   build/obj/main.o
                                                   build/obj/pawn_binding.o
                                                   build/obj/usb_ctrl.o
+                                                  build/obj/dfu_ctrl.o
 chThdSleepUntil                                   build/obj/chthreads.o
 chThdTerminate                                    build/obj/chthreads.o
 chThdWait                                         build/obj/chthreads.o

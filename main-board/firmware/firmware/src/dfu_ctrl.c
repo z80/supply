@@ -17,13 +17,15 @@ int  trigger( void )
 
 void checkDfu( void )
 {
-	// Tune DFU pin as input
-	palSetPadMode( TRIGGER_PORT, TRIGGER_PAD, PAL_MODE_INPUT );
+	// First of all little delay. Otherwise pad value is measured to be zero.
+	// And it causes always DFU mode.
+	chThdSleepMilliseconds( 500 );
 	// Check if it is pulled down.
-	if ( palReadPad( TRIGGER_PORT, TRIGGER_PAD ) )
+	if ( trigger() )
 		// If not pulled down no need to try DFU.
 		return;
 	// Invoke DFU only if there seems to be a valid firmware.
+	// And it is determined using the very first word of firmware at that address.
 	if ( ((*(__IO uint32_t*)DFU_ADDRESS) & 0x2FFE0000 ) == 0x20000000 )
 	{
 	    uint32_t JumpAddress;
