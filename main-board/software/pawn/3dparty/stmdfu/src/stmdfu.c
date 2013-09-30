@@ -119,8 +119,8 @@ void stmdfu_write_image(dfu_device * dfudev, char * file)
 	
 	printf("made idle\n");
 	
-	writesize = dfusefile->images[0]->imgelement[0]->element_size / 2048;
-	writesize = (writesize + 1) * 2048;
+    writesize = dfusefile->images[0]->imgelement[0]->element_size / 1024;
+    writesize = (writesize + 1) * 1024;
 	
 	dfu_write_flash(dfudev, dfusefile->images[0]->imgelement[0]->data, writesize);
 	
