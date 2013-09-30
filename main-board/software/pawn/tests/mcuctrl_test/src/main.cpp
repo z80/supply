@@ -29,13 +29,13 @@ int main( int argc, char * argv[] )
         std::cout << "Script isn\'t running at the moment. Trying to turn it on.\r\n";
         c.start();
     }
-    res = c.setIo( 0, 1 );
-    res = c.setIo( 1, 2 );
-    res = c.setIo( 2, 3 );
+    //res = c.setIo( 0, 1 );
+    //res = c.setIo( 1, 2 );
+    //res = c.setIo( 2, 3 );
 
     for ( ;; )
     {
-        const int SZ = 8;
+        const int SZ = 2;
         unsigned char io[SZ];
         std::ostringstream out;
         for ( int i=0; i<SZ; i++ )
