@@ -22,25 +22,25 @@ protocol used in the STM32 Bootloader, AN3156.
 */
 int32_t dfu_read_flash(dfu_device * device, uint8_t * membuf, uint32_t length)
 {
-	int32_t read_2048;
+	int32_t read_1024;
 	dfu_status status;
 	int i;
 	int rv;
-	uint8_t finalpage[2048];
+	uint8_t finalpage[1024];
 	int finalread;
 	
-	read_2048 = ceil(length / 2048.);
+	read_1024 = ceil(length / 1024.);
 	
 	//flash reads must be 2k, which is the flash block size on stm32
 	//read all but the final page
-	for (i=0; i<(read_2048-1); i++)
+	for (i=0; i<(read_1024-1); i++)
 	{
 		#if STMDFU_DEBUG_PRINTFS
-		printf("read_2048: <%d>\n", i);
+		printf("read_1024: <%d>\n", i);
 		#endif
-		if (0 > dfu_upload(device, i+2, &membuf[i*2048], 2048))
+		if (0 > dfu_upload(device, i+2, &membuf[i*1024], 1024))
 		{
-			printf("read_2048 error\n");
+			printf("read_1024 error\n");
 		}
 		
 		if (0 > dfu_get_status(device, &status))
@@ -63,11 +63,11 @@ int32_t dfu_read_flash(dfu_device * device, uint8_t * membuf, uint32_t length)
 	
 	//read the final page
 	#if STMDFU_DEBUG_PRINTFS
-	printf("final read_2048: <%d>\n", (read_2048-1));
+	printf("final read_1024: <%d>\n", (read_1024-1));
 	#endif
-	if (0 > dfu_upload(device, i+2, finalpage, 2048))
+	if (0 > dfu_upload(device, i+2, finalpage, 1024))
 	{
-		printf("read_2048 error\n");
+		printf("read_1024 error\n");
 	}
 	
 	if (0 > dfu_get_status(device, &status))
@@ -90,11 +90,11 @@ int32_t dfu_read_flash(dfu_device * device, uint8_t * membuf, uint32_t length)
 	//fill up the user's buffer with bytes from
 	//the final page, ignoring bytes beyond the length
 	//of the user's request
-	finalread = length - ((read_2048-1)*2048);
+	finalread = length - ((read_1024-1)*1024);
 	
 	for (i=0; i<finalread; i++)
 	{
-		membuf[((read_2048-1)*2048)+i] = finalpage[i];
+		membuf[((read_1024-1)*1024)+i] = finalpage[i];
 	}
 
 	return 1;
@@ -160,23 +160,23 @@ int32_t dfu_get(dfu_device * device, uint8_t * data)
 */
 int32_t dfu_write_flash(dfu_device * device, uint8_t * membuf, uint32_t length)
 {
-	int write_2048;
+	int write_1024;
 	int i, j;
 	dfu_status status;
 	int rv;
-	uint8_t finalpage[2048];
+	uint8_t finalpage[1024];
 	int finalwrite;
 	
 	//round up the number of writes to the next 2kB page
-	write_2048 = ceil(length / 2048.);
+	write_1024 = ceil(length / 1024.);
 	
 	//write all but the final page
-	for (i=0; i<(write_2048-1); i++)
+	for (i=0; i<(write_1024-1); i++)
 	{
 		#if STMDFU_DEBUG_PRINTFS
-		printf("write_2048: <%d>\n", i);
+		printf("write_1024: <%d>\n", i);
 		#endif
-		rv = dfu_download(device, i+2, &membuf[i*2048], 2048);
+		rv = dfu_download(device, i+2, &membuf[i*1024], 1024);
 		
 		if (0 > rv)
 		{
@@ -218,23 +218,23 @@ int32_t dfu_write_flash(dfu_device * device, uint8_t * membuf, uint32_t length)
 	
 	//write the final page
 	//we fill the final page with whatever good data
-	//is left in membuf, and pad it to 2048 with 0xff
-	finalwrite = length - ((write_2048-1)*2048);
+	//is left in membuf, and pad it to 1024 with 0xff
+	finalwrite = length - ((write_1024-1)*1024);
 	
 	for (i=0; i<finalwrite; i++)
 	{
-		finalpage[i] = membuf[((write_2048-1)*2048)+i];
+		finalpage[i] = membuf[((write_1024-1)*1024)+i];
 	}
 	
-	for (i=finalwrite; i<2048; i++)
+	for (i=finalwrite; i<1024; i++)
 	{
 		finalpage[i] = 0xff;
 	}
 	
 	#if STMDFU_DEBUG_PRINTFS
-	printf("final write_2048: <%d>\n", (write_2048-1));
+	printf("final write_1024: <%d>\n", (write_1024-1));
 	#endif
-	rv = dfu_download(device, (write_2048-1)+2, finalpage, 2048);
+	rv = dfu_download(device, (write_1024-1)+2, finalpage, 1024);
 	
 	if (0 > rv)
 	{
