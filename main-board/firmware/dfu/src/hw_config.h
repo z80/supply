@@ -19,7 +19,7 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Flash memory address from where user application will be loaded */
-#define ApplicationAddress 0x08002800
+#define ApplicationAddress 0x08000000
 
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
