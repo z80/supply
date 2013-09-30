@@ -15,7 +15,7 @@ static int boostMaxPwm = BOOST_MAX_PWM;
 static int boostPwm    = 0;
 static int boostVolt   = 0;
 static int boostCurr   = 65535;
-static int boostGain   = 1000; // Gain is 10%
+static int boostGain   = 100; // Gain is 1%
 
 // Was 4.9V but with diode decreased on voltage drop on diode which is 0.65V.
 // So now solar setpoint is 4.2V.
@@ -73,15 +73,15 @@ static void convAdcReadyCb( ADCDriver * adcp, adcsample_t * buffer, size_t n )
             if ( buffer[ BOOST_VOLT_IND ] < boostVolt )
             {
                 boostPwm += boostGain;
-		if ( boostPwm > boostMaxPwm )
-		    boostPwm = boostMaxPwm;
+                if ( boostPwm > boostMaxPwm )
+                    boostPwm = boostMaxPwm;
                 pwmEnableChannelI(&CONV_PWM, PWM_BOOST_CHAN, PWM_PERCENTAGE_TO_WIDTH( &CONV_PWM, boostPwm ) );
             }
             else if ( buffer[ BOOST_VOLT_IND ] > boostVolt )
             {
                 boostPwm -= boostGain;
-		if ( boostPwm < 0 )
-		    boostPwm = 0;
+                if ( boostPwm < 0 )
+                    boostPwm = 0;
                 pwmEnableChannelI(&CONV_PWM, PWM_BOOST_CHAN, PWM_PERCENTAGE_TO_WIDTH( &CONV_PWM, boostPwm ) );
             }
         }
