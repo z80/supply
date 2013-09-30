@@ -32,23 +32,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_info   0001f07b  00000000  00000000  0001f649  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000c1ac  00000000  00000000  0003e6c4  2**0
+  8 .debug_line   0000c1ab  00000000  00000000  0003e6c4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    0000df1c  00000000  00000000  0004a870  2**0
+  9 .debug_loc    0000df1c  00000000  00000000  0004a86f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_pubnames 00002833  00000000  00000000  0005878c  2**0
+ 10 .debug_pubnames 00002833  00000000  00000000  0005878b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_pubtypes 0000501c  00000000  00000000  0005afbf  2**0
+ 11 .debug_pubtypes 0000501c  00000000  00000000  0005afbe  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_aranges 000017a8  00000000  00000000  0005ffdb  2**0
+ 12 .debug_aranges 000017a8  00000000  00000000  0005ffda  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 000016a8  00000000  00000000  00061783  2**0
+ 13 .debug_ranges 000016a8  00000000  00000000  00061782  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    000058b5  00000000  00000000  00062e2b  2**0
+ 14 .debug_str    000058b5  00000000  00000000  00062e2a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .comment      0000002a  00000000  00000000  000686e0  2**0
+ 15 .comment      0000002a  00000000  00000000  000686df  2**0
                   CONTENTS, READONLY
- 16 .ARM.attributes 00000031  00000000  00000000  0006870a  2**0
+ 16 .ARM.attributes 00000031  00000000  00000000  00068709  2**0
                   CONTENTS, READONLY
  17 .debug_frame  000042cc  00000000  00000000  0006873c  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -439,7 +439,7 @@ SYMBOL TABLE:
 08004b80 g     F .text	0000001c usb_lld_start_out
 08006000 g     F .text	0000004c setSerialEn
 08006430 g     F .text	0000000e pawn_setSerialEn
-08005cb0 g     F .text	00000034 initConv
+08005cb0 g     F .text	00000040 initConv
 080015e0 g     F .text	00000020 chSemWait
 08001410 g     F .text	00000048 chThdExitS
 08002ee0 g     F .text	00000004 rtcInit

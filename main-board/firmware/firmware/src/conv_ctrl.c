@@ -176,8 +176,10 @@ void initConv( void )
     	                            PAL_PORT_BIT( CONV_ADC_BOOST_VOLT_PIN ) | 
     	                            PAL_PORT_BIT( CONV_ADC_SOLAR_VOLT_PIN ) | 
     	                            PAL_PORT_BIT( CONV_ADC_BOOST_CURR_PIN ) | 
-				                    PAL_PORT_BIT( CONV_ADC_BUCK_CURR_PIN )  |
-    	                            PAL_PORT_BIT( CONV_ADC_TEMP_PIN ),
+				                    PAL_PORT_BIT( CONV_ADC_BUCK_CURR_PIN ),
+                                    0, PAL_MODE_INPUT_ANALOG );
+
+    palSetGroupMode( CONV_ADC_PORT_TEMP, PAL_PORT_BIT( CONV_ADC_TEMP_PIN ),
                                     0, PAL_MODE_INPUT_ANALOG );
 }
 
