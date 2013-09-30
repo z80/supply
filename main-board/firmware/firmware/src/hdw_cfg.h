@@ -89,7 +89,7 @@
 // *****************************************************************
 //                        DFU location parameters.
 // *****************************************************************
-#define DFU_ADDRESS   ( 0x08000000 - 0x800 * (128 - 10) )
+#define DFU_ADDRESS   ( 0x0801D800 )
 #define TRIGGER_PORT  GPIOB
 #define TRIGGER_PAD   15
 

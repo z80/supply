@@ -1289,7 +1289,7 @@ LOAD /home/z80/programs/code-sourcery/2011.03-42/bin/../lib/gcc/arm-none-eabi/4.
 END GROUP
 LOAD /home/z80/programs/code-sourcery/2011.03-42/bin/../lib/gcc/arm-none-eabi/4.5.2/thumb2/crtend.o
 LOAD /home/z80/programs/code-sourcery/2011.03-42/bin/../lib/gcc/arm-none-eabi/4.5.2/thumb2/crtn.o
-                0x20002800                _estack = 0x20002800
+                0x20005000                _estack = 0x20005000
                 0x00000000                _Min_Heap_Size = 0x0
                 0x00000080                _Min_Stack_Size = 0x80
 
