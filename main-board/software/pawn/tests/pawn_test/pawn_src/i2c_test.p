@@ -43,7 +43,8 @@ main()
  
     for ( ;; )
     {
-        wr[0] = 0x28 | (1<<7);
+        addr = 30;
+        wr[0] = 0x03;
         res = i2cIo( addr, wr, 1, 
                            rd, 6, timeout );
         setIo( 0, res );
