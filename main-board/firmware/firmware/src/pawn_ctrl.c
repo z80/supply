@@ -197,7 +197,7 @@ uint16_t pawnWriteFlash( uint8_t page )
     if ( st != FLASH_COMPLETE )
     {
         FLASH_Lock();
-        return st;
+        return 50+st;
     }
     uint32_t * memD   = (uint32_t *)( g_pawn.memblock );
     uint32_t   i;
@@ -208,7 +208,7 @@ uint16_t pawnWriteFlash( uint8_t page )
         if ( st != FLASH_COMPLETE )
         {
 	        FLASH_Lock();
-	        return 10+st;
+	        return 100+st;
 	    }
     }
     // to be done.

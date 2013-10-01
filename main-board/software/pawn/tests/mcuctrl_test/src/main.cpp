@@ -35,7 +35,7 @@ int main( int argc, char * argv[] )
 
     for ( ;; )
     {
-        const int SZ = 2;
+        const int SZ = 7;
         unsigned char io[SZ];
         std::ostringstream out;
         for ( int i=0; i<SZ; i++ )

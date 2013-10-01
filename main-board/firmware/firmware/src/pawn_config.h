@@ -15,7 +15,7 @@
 // Here 128 is total pages cnt, 10 is DFU firmware at the very end of FLASH size.
 #define PAWN_PAGES_CNT     ( 128 - PAWN_START_PAGE - 10 )
 // Start of FLASH memory
-#define PAWN_FLASH_START   0x8000000
+#define PAWN_FLASH_START   0x08000000
 // Chibios PAWN thread stack depth.
 #define PAWN_THREAD_STACK_DEPTH 4096
 

@@ -24,11 +24,12 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
     data.resize( SZ );
     int cnt = 0;
     FILE * fp = fopen( fileName.c_str(), "r" );
+    if ( !fp )
+        return false;
     int flashPage = 0;
     do
     {
-        if ( !fp )
-            return false;
+        msleep( 100 );
         cnt = fread( const_cast<unsigned char *>( data.data() ), 1, SZ, fp );
         for ( int i=0; i<cnt; i++ )
         {
@@ -45,13 +46,13 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
                 if ( !this->open() )
                 {
                     fclose( fp );
-                    result = "failed to reopen USB device after close";
+                    result = "failed to reopen USB device after close\r\n";
                     return false;
                 }
                 if ( write( out.str() ) < out.str().size() )
                 {
                     fclose( fp );
-                    result = "failed to write data to USB";
+                    result = "failed to write data to USB\r\n";
                     return false;
                 }
             }
@@ -61,15 +62,20 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
         out << flashPage++;
         out << "\r\n";
         // qDebug() << out.str().c_str();
-        this->write( out.str() );
+        bool res = ( this->write( out.str() ) >= out.str().size() );
+        if ( !res )
+        {
+            result = "Write FLASH command didn\'t pass to device\r\n";
+            return false;
+        }
 
         // Read back result.
         std::string stri;
-        bool res = readString( stri );
+        res = readString( stri );
         if ( !res )
         {
             fclose( fp );
-            result = "can\'t read flash page write result";
+            result = "can\'t read flash page write result\r\n";
             return false;
         }
         std::istringstream in( stri );
@@ -78,7 +84,7 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
         if ( v != 0 )
         {
             fclose( fp );
-            result = "flash write result isn\'t 0";
+            result = "flash write result isn\'t 0\r\n";
             return false;
         }
     }
@@ -93,7 +99,7 @@ bool McuCtrl::start()
 {
     std::ostringstream out;
     out << "run\r\n";
-    bool res = this->write( out.str() );
+    bool res = ( this->write( out.str() ) >= out.str().size() );
     return res;
 }
 
@@ -101,7 +107,7 @@ bool McuCtrl::stop()
 {
     std::ostringstream out;
     out << "stop\r\n";
-    bool res = this->write( out.str() );
+    bool res = ( this->write( out.str() ) >= out.str().size() );
     return res;
 }
 
@@ -109,7 +115,7 @@ bool McuCtrl::isRunning()
 {
     std::ostringstream out;
     out << "isRun\r\n";
-    bool res = this->write( out.str() );
+    bool res = ( this->write( out.str() ) >= out.str().size() );
     if ( !res )
         return false;
 

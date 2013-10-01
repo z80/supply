@@ -30,6 +30,8 @@ int main( int argc, char * argv[] )
     res = c.flash( argv[1], result );
     std::cout << "Result: " << ( res ? "true" : "false" );
     if ( !res )
+        std::cout << result;
+    if ( !res )
         return 3;
     res = c.start();
     if ( !res )
