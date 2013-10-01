@@ -2165,10 +2165,12 @@ destructors     0x080000ec        0x0
                 0x08006760                pawnInit
  *fill*         0x0800678c        0x4 00
  .text.pawnSetIo
-                0x08006790       0x10 build/obj/pawn_ctrl.o
+                0x08006790        0xc build/obj/pawn_ctrl.o
                 0x08006790                pawnSetIo
- .text.pawnIo   0x080067a0       0x10 build/obj/pawn_ctrl.o
+ *fill*         0x0800679c        0x4 00
+ .text.pawnIo   0x080067a0        0xc build/obj/pawn_ctrl.o
                 0x080067a0                pawnIo
+ *fill*         0x080067ac        0x4 00
  .text.pawnSetMem
                 0x080067b0       0x10 build/obj/pawn_ctrl.o
                 0x080067b0                pawnSetMem
@@ -2491,7 +2493,7 @@ destructors     0x080000ec        0x0
                 0x20000968                . = ALIGN (0x4)
                 0x20000968                PROVIDE (_edata, .)
 
-.bss            0x20000968     0x27e0 load address 0x08009650
+.bss            0x20000968     0x43f8 load address 0x08009650
                 0x20000968                . = ALIGN (0x4)
                 0x20000968                PROVIDE (_bss_start, .)
  *(.bss)
@@ -2602,17 +2604,17 @@ destructors     0x080000ec        0x0
  .bss.semaphore
                 0x200017f8        0xc build/obj/pawn_ctrl.o
  *fill*         0x20001804        0x4 00
- .bss.waExec    0x20001808     0x10b0 build/obj/pawn_ctrl.o
- .bss.g_pawn    0x200028b8      0x88c build/obj/pawn_ctrl.o
-                0x200028b8                g_pawn
- .bss.ret.6687  0x20003144        0x4 build/obj/pawn_ctrl.o
-                0x20003148                . = ALIGN (0x4)
+ .bss.waExec    0x20001808      0xcb0 build/obj/pawn_ctrl.o
+ .bss.g_pawn    0x200024b8     0x28a4 build/obj/pawn_ctrl.o
+                0x200024b8                g_pawn
+ .bss.ret.6687  0x20004d5c        0x4 build/obj/pawn_ctrl.o
+                0x20004d60                . = ALIGN (0x4)
  *(COMMON)
-                0x20003148                . = ALIGN (0x4)
-                0x20003148                PROVIDE (_bss_end, .)
-                0x20003148                PROVIDE (end, .)
-                0x20003148                _end = .
-                0x20003148                __heap_base__ = _end
+                0x20004d60                . = ALIGN (0x4)
+                0x20004d60                PROVIDE (_bss_end, .)
+                0x20004d60                PROVIDE (end, .)
+                0x20004d60                _end = .
+                0x20004d60                __heap_base__ = _end
                 0x20005000                __heap_end__ = __ram_end__
 OUTPUT(build/ch.elf elf32-littlearm)
 
