@@ -123,7 +123,7 @@ cell pawn_i2cIo( AMX * amx, const cell * params )
     {
     	dataIo = amx_Address( amx, params[4] );
     	for ( i=0; i<readCnt; i++ )
-    		dataIo[i] = (cell)i2cReadBuffer;
+    		dataIo[i] = (cell)i2cReadBuffer[i];
     }
     return status;
 }

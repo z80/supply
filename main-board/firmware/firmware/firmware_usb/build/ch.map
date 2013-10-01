@@ -2078,9 +2078,8 @@ destructors     0x080000ec        0x0
                 0x080064e0                pawn_setI2cEn
  *fill*         0x080064ec        0x4 00
  .text.pawn_i2cIo
-                0x080064f0       0x4c build/obj/pawn_binding.o
+                0x080064f0       0x50 build/obj/pawn_binding.o
                 0x080064f0                pawn_i2cIo
- *fill*         0x0800653c        0x4 00
  .text.pawn_usbWrite
                 0x08006540       0x2c build/obj/pawn_binding.o
                 0x08006540                pawn_usbWrite
