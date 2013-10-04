@@ -46,7 +46,7 @@ void initI2c( void )
 	palSetPadMode( PORT_ADDR, PAD_ADDR_0, PAL_MODE_INPUT );
 	palSetPadMode( PORT_ADDR, PAD_ADDR_1, PAL_MODE_INPUT );
 
-	uint8_t addr = BASE_ADDR +
+	uint8_t addr = I2C_BASE_ADDR +
 			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_0 ) ) ? 1 : 0 ) +
 			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_1 ) ) ? 2 : 0 );
 
@@ -64,7 +64,7 @@ void initI2c( void )
 		    break;;
 	}
     // Creating thread.
-    chThdCreateStatic( waExec, sizeof(waExec), NORMALPRIO, execThread, NULL );
+    //chThdCreateStatic( waExec, sizeof(waExec), NORMALPRIO, execThread, NULL );
 }
 
 static void i2cRxCb( I2CDriver * i2cp )
@@ -117,7 +117,7 @@ void processI2c( void )
         {
         case I2C_CMD_VERSION:
         	outBuffer[0] = I2C_CMD_VERSION;
-        	outBuffer[1] = VERSION;
+        	outBuffer[1] = FIRMWARE_VERSION;
         	break;
 
         case I2C_CMD_SET_LED:
@@ -127,7 +127,7 @@ void processI2c( void )
 
         case I2C_CMD_SET_MOTO:
         	setMoto( buffer[1] );
-        	outBuffer[0] = I2c_CMD_SET_MOTO;
+        	outBuffer[0] = I2C_CMD_SET_MOTO;
         	break;
 
         case I2C_CMD_SET_PWM_PERIOD:

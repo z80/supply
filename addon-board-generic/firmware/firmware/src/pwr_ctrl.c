@@ -1,6 +1,7 @@
 
 #include "pwr_ctrl.h"
 #include "hal.h"
+#include "hdw_cfg.h"
 
 static void extCallback( EXTDriver * extp, expchannel_t channel );
 

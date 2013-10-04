@@ -1,7 +1,7 @@
 
 #include "595_ctrl.h"
 #include "hal.h"
-#include "hdw_ctrl.h"
+#include "hdw_cfg.h"
 
 static void delay( void )
 {
@@ -74,13 +74,13 @@ void setLed( int arg )
 
 void setMoto( int arg )
 {
-	shiftReg &= ~(MOTO_1 | MOTO_2 | MOTO_3 | MOTO_4 | MOTO_5 | MOTO_6 | MOTO_7 | MOTO 8 | MOTO_EN_1 | MOTO_EN_2);
+	shiftReg &= ~(MOTO_1 | MOTO_2 | MOTO_3 | MOTO_4 | MOTO_5 | MOTO_6 | MOTO_7 | MOTO_8 | MOTO_EN_1 | MOTO_EN_2);
 	if ( arg & 1 )
 		shiftReg |= MOTO_1;
 	if ( arg & 2 )
 		shiftReg |= MOTO_2;
 	if ( arg & 4 )
-		shiftReg |= LED_3;
+		shiftReg |= MOTO_3;
 	if ( arg & 8 )
 		shiftReg |= MOTO_4;
 	if ( arg & 16 )

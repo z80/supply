@@ -1,7 +1,7 @@
 
 #include "165_ctrl.h"
 #include "hal.h"
-#include "hdw_ctrl.h"
+#include "hdw_cfg.h"
 
 static void delay( void )
 {

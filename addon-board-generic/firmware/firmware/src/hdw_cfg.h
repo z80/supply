@@ -59,13 +59,13 @@
 //          ADC control pins.
 // *****************************************************************
 #define PORT_ADC       GPIOA
-#define PIN_ADC_1      1
-#define PIN_ADC_2      2
-#define PIN_ADC_3      3
-#define PIN_ADC_4      4
-#define PIN_ADC_5      5
-#define PIN_ADC_6      6
-#define PIN_ADC_7      7
+#define PAD_ADC_1      1
+#define PAD_ADC_2      2
+#define PAD_ADC_3      3
+#define PAD_ADC_4      4
+#define PAD_ADC_5      5
+#define PAD_ADC_6      6
+#define PAD_ADC_7      7
 
 
 // *****************************************************************
@@ -109,10 +109,10 @@
 //          I2C control.
 // *****************************************************************
 #define I2C_OUT_BUFFER_SZ  32
-#define I2C_IN_BUFFER_SIZE 32
+#define I2C_IN_BUFFER_SZ   32
 #define EXEC_QUEUE_SIZE    2
 #define PORT_I2C GPIOB
-#define PAD_SCK  6
+#define PAD_SCL  6
 #define PAD_SDA  7
 
 #define PORT_ADDR  GPIOB

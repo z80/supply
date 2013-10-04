@@ -1,6 +1,6 @@
 
-#ifndef __I2C_SLAVE_CTRL_H_
-#define __I2C_SLAVE_CTRL_H_
+#ifndef __I2C_CTRL_H_
+#define __I2C_CTRL_H_
 
 #include "ch.h"
 

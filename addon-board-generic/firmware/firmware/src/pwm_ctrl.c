@@ -1,7 +1,7 @@
 
 #include "pwm_ctrl.h"
 #include "hal.h"
-#include "hdw_ctrl.h"
+#include "hdw_cfg.h"
 
 // PWM_8 -> TIM2_CH1
 // PWM_1 -> TIM2_CH2
