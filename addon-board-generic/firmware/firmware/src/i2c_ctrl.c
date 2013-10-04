@@ -13,7 +13,7 @@ static InputQueue inputQueue;
 #define QUEUE_SZ (I2C_IN_BUFFER_SZ * EXEC_QUEUE_SIZE)
 static uint8_t queue[ I2C_IN_BUFFER_SZ * EXEC_QUEUE_SIZE ];
 
-static const I2CConfig i2cfg1 =
+static const I2CConfig i2cfg =
 {
     OPMODE_I2C,
     100000,
@@ -32,46 +32,36 @@ void initI2c( void )
 {
     // Initialize mailbox.
     chIQInit( &inputQueue, queue, I2C_IN_BUFFER_SZ * EXEC_QUEUE_SIZE, NULL );
+
+    static msg_t status;
+	static systime_t tmo;
+	tmo = MS2ST( I2C_TIMEOUT );
+
+	palSetPadMode( PORT_I2C, PAD_SCL, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
+	palSetPadMode( PORT_I2C, PAD_SDA, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
+
+	palSetPadMode( PORT_ADDR, PAD_ADDR_0, PAL_MODE_INPUT );
+	palSetPadMode( PORT_ADDR, PAD_ADDR_1, PAL_MODE_INPUT );
+
+	uint8_t addr = BASE_ADDR +
+			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_0 ) ) ? 1 : 0 ) +
+			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_1 ) ) ? 2 : 0 );
+
+	while ( 1 )
+	{
+		i2cStart( &I2CD1, &i2cfg );
+
+		status = i2cSlaveIoTimeout( &I2CD1,    addr,
+									inBuffer,  I2C_IN_BUFFER_SZ,
+									outBuffer, I2C_OUT_BUFFER_SZ,
+									i2cRxCb,
+									i2cTxCb,
+									tmo );
+		if ( !status )
+		    break;;
+	}
     // Creating thread.
     chThdCreateStatic( waExec, sizeof(waExec), NORMALPRIO, execThread, NULL );
-}
-
-int setI2cSlaveEn( uint8_t en, uint8_t addr )
-{
-	if ( en )
-	{
-		static msg_t status;
-		static systime_t tmo;
-		tmo = MS2ST( I2C_TIMEOUT );
-
-		palSetPadMode( GPIOB, 6, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-		palSetPadMode( GPIOB, 7, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-		while ( 1 )
-		{
-			i2cStart( &I2CD1, &i2cfg1 );
-
-			addr = ( addr != 0 ) ? addr : I2C_ADDRESS;
-			status = i2cSlaveIoTimeout( &I2CD1,    addr,
-										inBuffer,  I2C_IN_BUFFER_SZ,
-										outBuffer, I2C_OUT_BUFFER_SZ,
-										i2cRxCb,
-										i2cTxCb,
-										tmo );
-			if ( status )
-			{
-				i2cStop( &I2CD1 );
-				return status;
-			}
-			return 0;
-		}
-	}
-	else
-	{
-	    i2cStop( &I2CD1 );
-	    palSetPadMode( GPIOB, 6, PAL_MODE_INPUT );
-	    palSetPadMode( GPIOB, 7, PAL_MODE_INPUT );
-	    return 0;
-	}
 }
 
 static void i2cRxCb( I2CDriver * i2cp )
@@ -179,47 +169,6 @@ static msg_t execThread( void *arg )
 
 
 
-void setI2cEn( uint8_t en )
-{
-	if ( en )
-	{
-        palSetPadMode( GPIOB, 10, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-        palSetPadMode( GPIOB, 11, PAL_MODE_STM32_ALTERNATE_OPENDRAIN );
-
-        i2cStart( &I2CD2, &i2cfg1 );
-	}
-	else
-	{
-        i2cStop( &I2CD2 );
-
-        palSetPadMode( GPIOB, 10, PAL_MODE_INPUT );
-        palSetPadMode( GPIOB, 11, PAL_MODE_INPUT );
-	}
-}
-
-int i2cIo( uint8_t addr,
-		   uint8_t * outBuffer, int outSz,
-		   uint8_t * inBuffer,  int inSz, int timeoutMs )
-{
-	msg_t status;
-	systime_t tmo;
-	tmo = MS2ST( timeoutMs );
-
-	if ( outSz > 0 )
-	{
-        status = i2cMasterTransmitTimeout( &I2CD2,    addr,
-                                           outBuffer, outSz,
-                                           inBuffer,  inSz,
-                                           tmo );
-	}
-	else
-	{
-        status = i2cMasterReceiveTimeout( &I2CD2,   addr,
-                                          inBuffer, inSz,
-                                          tmo );
-	}
-	return status;
-}
 
 
 

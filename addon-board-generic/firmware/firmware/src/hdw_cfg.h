@@ -98,6 +98,32 @@
 #define PWM_CLOCK_FREQ 8000000
 
 
+// *****************************************************************
+//          Power control.
+// *****************************************************************
+#define PORT_WAKEUP GPIOC
+#define PAD_WAKEUP  14
+
+
+// *****************************************************************
+//          I2C control.
+// *****************************************************************
+#define I2C_OUT_BUFFER_SZ  32
+#define I2C_IN_BUFFER_SIZE 32
+#define EXEC_QUEUE_SIZE    2
+#define PORT_I2C GPIOB
+#define PAD_SCK  6
+#define PAD_SDA  7
+
+#define PORT_ADDR  GPIOB
+#define PAD_ADDR_0 14
+#define PAD_ADDR_1 15
+
+#define I2C_BASE_ADDR 1
+
+#define I2C_TIMEOUT 500
+
+
 
 // *****************************************************************
 //          Firmware version.
