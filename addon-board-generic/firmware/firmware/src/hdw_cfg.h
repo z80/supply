@@ -123,6 +123,17 @@
 
 #define I2C_TIMEOUT 500
 
+// *****************************************************************
+//          I2C commands.
+// *****************************************************************
+#define I2C_CMD_VERSION           1
+#define I2C_CMD_SET_LED           2
+#define I2C_CMD_SET_MOTO          3
+#define I2C_CMD_SET_PWM_PERIOD    4
+#define I2C_CMD_SET_PWM           5
+#define I2C_CMD_INPUT             6
+#define I2C_CMD_ADC               7
+#define I2C_CMD_SLEEP             8
 
 
 // *****************************************************************

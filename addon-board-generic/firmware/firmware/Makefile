@@ -84,8 +84,6 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/syscalls.c \
        ./src/595_ctrl.c \
        ./src/165_ctrl.c \
-       ./src/led_ctrl.c \
-       ./src/moto_ctrl.c \
        ./src/i2c_ctrl.c \
        ./src/adc_ctrl.c \
        ./src/pwm_ctrl.c \
