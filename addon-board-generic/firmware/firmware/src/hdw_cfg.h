@@ -95,6 +95,9 @@
 #define PORT_PWM_8  GPIOA
 #define PAD_PWM_8   0
 
+#define PWM_CLOCK_FREQ 8000000
+
+
 
 // *****************************************************************
 //          Firmware version.

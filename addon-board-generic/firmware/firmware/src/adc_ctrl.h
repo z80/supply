@@ -5,6 +5,7 @@
 #include "ch.h"
 
 void initAdc( void );
+void finitAdc( void );
 int  measureAdc( int index );
 
 

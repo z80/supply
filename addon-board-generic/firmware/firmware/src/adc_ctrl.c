@@ -16,6 +16,11 @@ void initAdc( void )
     adcStart( &ADCD1, NULL );
 }
 
+void finitAdc( void )
+{
+    adcStop( &ADCD1 );
+}
+
 static int adcSingle( uint32_t mask1, uint32_t mask2 );
 
 int  measureAdc( int index )

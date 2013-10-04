@@ -5,7 +5,8 @@
 #include "ch.h"
 
 void initPwm( void );
-void setPwmPeriod( int period );
+void finitPwm( void );
+void setPwmPeriod( int period_ms );
 void setPwm( uint32_t mask, int value );
 
 
