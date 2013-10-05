@@ -56,6 +56,7 @@ static PWMConfig pwmcfg = {
 #endif
 };
 
+/*
 icucnt_t last_width, last_period;
 
 static void icuwidthcb(ICUDriver *icup) {
@@ -70,11 +71,11 @@ static void icuperiodcb(ICUDriver *icup) {
 
 static ICUConfig icucfg = {
   ICU_INPUT_ACTIVE_HIGH,
-  10000,                                    /* 10kHz ICU clock frequency.   */
+  10000,                                    // 10kHz ICU clock frequency.
   icuwidthcb,
   icuperiodcb
 };
-
+*/
 /*
  * Application entry point.
  */
@@ -100,8 +101,8 @@ int main(void) {
    */
   pwmStart(&PWMD1, &pwmcfg);
   palSetPadMode(IOPORT1, 8, PAL_MODE_STM32_ALTERNATE_PUSHPULL);
-  icuStart(&ICUD4, &icucfg);
-  icuEnable(&ICUD4);
+  /*icuStart(&ICUD4, &icucfg);
+  icuEnable(&ICUD4);*/
   chThdSleepMilliseconds(2000);
 
   /*
@@ -134,8 +135,8 @@ int main(void) {
    */
   pwmDisableChannel(&PWMD1, 0);
   pwmStop(&PWMD1);
-  icuDisable(&ICUD4);
-  icuStop(&ICUD4);
+  //icuDisable(&ICUD4);
+  //icuStop(&ICUD4);
   //palSetPad(IOPORT3, GPIOC_LED);
 
   /*
