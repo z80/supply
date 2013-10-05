@@ -550,7 +550,7 @@ destructors     0x080000ec        0x0
  *(SORT(.fini_array.*))
                 0x080000ec                PROVIDE (__fini_array_end, .)
 
-.text           0x080000f0     0x19ec
+.text           0x080000f0     0x19dc
  *(.text.startup.*)
  *(.text)
  *(.text.*)
@@ -764,81 +764,81 @@ destructors     0x080000ec        0x0
                 0x08001090       0x90 build/obj/hal_lld.o
                 0x08001090                hal_lld_init
  .text.stm32_clock_init
-                0x08001120       0xc0 build/obj/hal_lld.o
+                0x08001120       0xb0 build/obj/hal_lld.o
                 0x08001120                stm32_clock_init
  .text.icu_lld_serve_interrupt
-                0x080011e0       0x80 build/obj/icu_lld.o
+                0x080011d0       0x80 build/obj/icu_lld.o
  .text.VectorB8
-                0x08001260       0x20 build/obj/icu_lld.o
-                0x08001260                VectorB8
+                0x08001250       0x20 build/obj/icu_lld.o
+                0x08001250                VectorB8
  .text.icu_lld_init
-                0x08001280       0x20 build/obj/icu_lld.o
-                0x08001280                icu_lld_init
+                0x08001270       0x20 build/obj/icu_lld.o
+                0x08001270                icu_lld_init
  .text.VectorA4
-                0x080012a0       0x30 build/obj/pwm_lld.o
-                0x080012a0                VectorA4
+                0x08001290       0x30 build/obj/pwm_lld.o
+                0x08001290                VectorA4
  .text.VectorAC
-                0x080012d0       0x90 build/obj/pwm_lld.o
-                0x080012d0                VectorAC
+                0x080012c0       0x90 build/obj/pwm_lld.o
+                0x080012c0                VectorAC
  .text.pwm_lld_init
-                0x08001360       0x20 build/obj/pwm_lld.o
-                0x08001360                pwm_lld_init
+                0x08001350       0x20 build/obj/pwm_lld.o
+                0x08001350                pwm_lld_init
  .text.pwm_lld_start
-                0x08001380      0x2c0 build/obj/pwm_lld.o
-                0x08001380                pwm_lld_start
+                0x08001370      0x2c0 build/obj/pwm_lld.o
+                0x08001370                pwm_lld_start
  .text.pwm_lld_stop
-                0x08001640       0x70 build/obj/pwm_lld.o
-                0x08001640                pwm_lld_stop
+                0x08001630       0x70 build/obj/pwm_lld.o
+                0x08001630                pwm_lld_stop
  .text.pwm_lld_enable_channel
-                0x080016b0       0xa0 build/obj/pwm_lld.o
-                0x080016b0                pwm_lld_enable_channel
+                0x080016a0       0xa0 build/obj/pwm_lld.o
+                0x080016a0                pwm_lld_enable_channel
  .text.pwm_lld_disable_channel
-                0x08001750       0x60 build/obj/pwm_lld.o
-                0x08001750                pwm_lld_disable_channel
+                0x08001740       0x60 build/obj/pwm_lld.o
+                0x08001740                pwm_lld_disable_channel
  .text._pal_lld_init
-                0x080017b0       0xb0 build/obj/pal_lld.o
-                0x080017b0                _pal_lld_init
+                0x080017a0       0xb0 build/obj/pal_lld.o
+                0x080017a0                _pal_lld_init
  .text._pal_lld_setgroupmode
-                0x08001860       0xe0 build/obj/pal_lld.o
-                0x08001860                _pal_lld_setgroupmode
+                0x08001850       0xe0 build/obj/pal_lld.o
+                0x08001850                _pal_lld_setgroupmode
  .text.__early_init
-                0x08001940       0x10 build/obj/board.o
-                0x08001940                __early_init
+                0x08001930       0x10 build/obj/board.o
+                0x08001930                __early_init
  .text.boardInit
-                0x08001950       0x10 build/obj/board.o
-                0x08001950                boardInit
- .text.pwmpcb   0x08001960       0x10 build/obj/main.o
- .text.pwmc1cb  0x08001970       0x10 build/obj/main.o
- .text.main     0x08001980       0xf0 build/obj/main.o
-                0x08001980                main
+                0x08001940       0x10 build/obj/board.o
+                0x08001940                boardInit
+ .text.pwmpcb   0x08001950       0x10 build/obj/main.o
+ .text.pwmc1cb  0x08001960       0x10 build/obj/main.o
+ .text.main     0x08001970       0xf0 build/obj/main.o
+                0x08001970                main
  *(.rodata)
- .rodata        0x08001a70       0x10 build/obj/chsys.o
+ .rodata        0x08001a60       0x10 build/obj/chsys.o
  *(.rodata.*)
  .rodata.cfgtab.5814
-                0x08001a80       0x14 build/obj/pal_lld.o
- *fill*         0x08001a94        0xc 00
+                0x08001a70       0x14 build/obj/pal_lld.o
+ *fill*         0x08001a84        0xc 00
  .rodata.pal_default_config
-                0x08001aa0       0x3c build/obj/board.o
-                0x08001aa0                pal_default_config
+                0x08001a90       0x3c build/obj/board.o
+                0x08001a90                pal_default_config
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.gcc*)
 
-.vfp11_veneer   0x08001adc        0x0
+.vfp11_veneer   0x08001acc        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08001adc        0x0
+.v4_bx          0x08001acc        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x08001adc        0x0
-                0x08001adc                PROVIDE (__exidx_start, .)
+.ARM.exidx      0x08001acc        0x0
+                0x08001acc                PROVIDE (__exidx_start, .)
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08001adc                PROVIDE (__exidx_end, .)
+                0x08001acc                PROVIDE (__exidx_end, .)
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
@@ -846,11 +846,11 @@ destructors     0x080000ec        0x0
 .eh_frame
  *(.eh_frame)
 
-.textalign      0x08001adc        0x4
-                0x08001ae0                . = ALIGN (0x8)
- *fill*         0x08001adc        0x4 00
-                0x08001ae0                _etext = .
-                0x08001ae0                _textdata = _etext
+.textalign      0x08001acc        0x4
+                0x08001ad0                . = ALIGN (0x8)
+ *fill*         0x08001acc        0x4 00
+                0x08001ad0                _etext = .
+                0x08001ad0                _textdata = _etext
 
 .stacks         0x20000000      0x800
                 0x20000000                . = ALIGN (0x8)
@@ -867,7 +867,7 @@ destructors     0x080000ec        0x0
                 0x20000800                __process_stack_end__ = .
                 0x20000800                __main_thread_stack_end__ = .
 
-.data           0x20000800       0x30 load address 0x08001ae0
+.data           0x20000800       0x30 load address 0x08001ad0
                 0x20000800                . = ALIGN (0x4)
                 0x20000800                PROVIDE (_data, .)
  *(.data)
@@ -879,7 +879,7 @@ destructors     0x080000ec        0x0
                 0x20000830                . = ALIGN (0x4)
                 0x20000830                PROVIDE (_edata, .)
 
-.bss            0x20000830      0x188 load address 0x08001b10
+.bss            0x20000830      0x188 load address 0x08001b00
                 0x20000830                . = ALIGN (0x4)
                 0x20000830                PROVIDE (_bss_start, .)
  *(.bss)
