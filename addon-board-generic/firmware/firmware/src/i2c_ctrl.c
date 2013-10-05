@@ -46,9 +46,10 @@ void initI2c( void )
 	palSetPadMode( PORT_ADDR, PAD_ADDR_0, PAL_MODE_INPUT );
 	palSetPadMode( PORT_ADDR, PAD_ADDR_1, PAL_MODE_INPUT );
 
+	// Here reversly high level corresponds to 0 and low level to digit.
 	uint8_t addr = I2C_BASE_ADDR +
-			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_0 ) ) ? 1 : 0 ) +
-			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_1 ) ) ? 2 : 0 );
+			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_0 ) ) ? 0 : 1 ) +
+			       ( ( palReadPad( PORT_ADDR, PAD_ADDR_1 ) ) ? 0 : 2 );
 
 	while ( 1 )
 	{
@@ -105,10 +106,10 @@ void processI2c( void )
         sz = chIQReadTimeout( &inputQueue, buffer, I2C_IN_BUFFER_SZ, TIME_INFINITE );
 
         static uint16_t uvalue16Out;
-        static uint8_t  uvalue8Out;
+        //static uint8_t  uvalue8Out;
 
         static uint16_t * puvalue16In;
-        static int i;
+        //static int i;
 
 
         puvalue16In = (uint16_t *)(&buffer[1]);

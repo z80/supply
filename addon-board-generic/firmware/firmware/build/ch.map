@@ -491,13 +491,10 @@ Discarded input sections
  .bss.buffer.6113
                 0x00000000       0x20 build/obj/i2c_ctrl.o
  .bss.sz.6112   0x00000000        0x4 build/obj/i2c_ctrl.o
- .bss.puvalue16In.6116
+ .bss.puvalue16In.6115
                 0x00000000        0x4 build/obj/i2c_ctrl.o
  .bss.uvalue16Out.6114
                 0x00000000        0x2 build/obj/i2c_ctrl.o
- .bss.i.6117    0x00000000        0x4 build/obj/i2c_ctrl.o
- .bss.uvalue8Out.6115
-                0x00000000        0x1 build/obj/i2c_ctrl.o
  .text          0x00000000        0x0 build/obj/adc_ctrl.o
  .data          0x00000000        0x0 build/obj/adc_ctrl.o
  .bss           0x00000000        0x0 build/obj/adc_ctrl.o
@@ -1316,7 +1313,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_abbrev  0x000042b2      0x188 build/obj/pwr_ctrl.o
  .debug_abbrev  0x0000443a       0x97 build/obj/main.o
 
-.debug_info     0x00000000    0x1223e
+.debug_info     0x00000000    0x1221e
  .debug_info    0x00000000      0x31a build/obj/crt0.o
  .debug_info    0x0000031a       0xb5 build/obj/vectors.o
  .debug_info    0x000003cf       0x8b build/obj/chcore.o
@@ -1381,13 +1378,13 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_info    0x0000f034      0xc34 build/obj/syscalls.o
  .debug_info    0x0000fc68      0x24e build/obj/595_ctrl.o
  .debug_info    0x0000feb6      0x1ca build/obj/165_ctrl.o
- .debug_info    0x00010080      0xb5d build/obj/i2c_ctrl.o
- .debug_info    0x00010bdd      0x9dd build/obj/adc_ctrl.o
- .debug_info    0x000115ba      0x66b build/obj/pwm_ctrl.o
- .debug_info    0x00011c25      0x502 build/obj/pwr_ctrl.o
- .debug_info    0x00012127      0x117 build/obj/main.o
+ .debug_info    0x00010080      0xb3d build/obj/i2c_ctrl.o
+ .debug_info    0x00010bbd      0x9dd build/obj/adc_ctrl.o
+ .debug_info    0x0001159a      0x66b build/obj/pwm_ctrl.o
+ .debug_info    0x00011c05      0x502 build/obj/pwr_ctrl.o
+ .debug_info    0x00012107      0x117 build/obj/main.o
 
-.debug_line     0x00000000     0x7cc5
+.debug_line     0x00000000     0x7cd9
  .debug_line    0x00000000      0x14e build/obj/crt0.o
  .debug_line    0x0000014e       0x68 build/obj/vectors.o
  .debug_line    0x000001b6       0x5d build/obj/chcore.o
@@ -1452,11 +1449,11 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_line    0x00006b50      0x1e0 build/obj/syscalls.o
  .debug_line    0x00006d30      0x209 build/obj/595_ctrl.o
  .debug_line    0x00006f39      0x1d8 build/obj/165_ctrl.o
- .debug_line    0x00007111      0x353 build/obj/i2c_ctrl.o
- .debug_line    0x00007464      0x2d1 build/obj/adc_ctrl.o
- .debug_line    0x00007735      0x230 build/obj/pwm_ctrl.o
- .debug_line    0x00007965      0x200 build/obj/pwr_ctrl.o
- .debug_line    0x00007b65      0x160 build/obj/main.o
+ .debug_line    0x00007111      0x367 build/obj/i2c_ctrl.o
+ .debug_line    0x00007478      0x2d1 build/obj/adc_ctrl.o
+ .debug_line    0x00007749      0x230 build/obj/pwm_ctrl.o
+ .debug_line    0x00007979      0x200 build/obj/pwr_ctrl.o
+ .debug_line    0x00007b79      0x160 build/obj/main.o
 
 .debug_loc      0x00000000     0x2b86
  .debug_loc     0x00000000       0x20 build/obj/crt0.o
@@ -1888,7 +1885,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_ranges  0x00000a80       0x20 build/obj/pwr_ctrl.o
  .debug_ranges  0x00000aa0       0x18 build/obj/main.o
 
-.debug_str      0x00000000     0x30db
+.debug_str      0x00000000     0x30d0
  .debug_str     0x00000000      0x1f1 build/obj/crt0.o
                                 0x230 (size before relaxing)
  .debug_str     0x000001f1       0x51 build/obj/vectors.o
@@ -2017,15 +2014,15 @@ OUTPUT(build/ch.elf elf32-littlearm)
                                 0x164 (size before relaxing)
  .debug_str     0x00002f31       0x21 build/obj/165_ctrl.o
                                 0x142 (size before relaxing)
- .debug_str     0x00002f52       0x82 build/obj/i2c_ctrl.o
-                                0x5fc (size before relaxing)
- .debug_str     0x00002fd4       0x50 build/obj/adc_ctrl.o
+ .debug_str     0x00002f52       0x77 build/obj/i2c_ctrl.o
+                                0x5f1 (size before relaxing)
+ .debug_str     0x00002fc9       0x50 build/obj/adc_ctrl.o
                                 0x507 (size before relaxing)
- .debug_str     0x00003024       0x5f build/obj/pwm_ctrl.o
+ .debug_str     0x00003019       0x5f build/obj/pwm_ctrl.o
                                 0x32e (size before relaxing)
- .debug_str     0x00003083       0x46 build/obj/pwr_ctrl.o
+ .debug_str     0x00003078       0x46 build/obj/pwr_ctrl.o
                                 0x26b (size before relaxing)
- .debug_str     0x000030c9       0x12 build/obj/main.o
+ .debug_str     0x000030be       0x12 build/obj/main.o
                                 0x119 (size before relaxing)
 
 .comment        0x00000000       0x2a
