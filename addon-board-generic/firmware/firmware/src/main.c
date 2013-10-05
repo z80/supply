@@ -95,7 +95,7 @@ int main(void)
     initAdc();
     initPwm();
     initPwr();
-    //initI2c();
+    initI2c();
 
     //processI2c();
 
