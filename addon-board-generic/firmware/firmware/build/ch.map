@@ -618,7 +618,7 @@ Memory Configuration
 
 Name             Origin             Length             Attributes
 flash            0x08000000         0x00008000
-ram              0x20000000         0x00005000
+ram              0x20000000         0x00002800
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
@@ -699,8 +699,8 @@ END GROUP
                 0x00000400                __main_stack_size__ = 0x400
                 0x00000400                __process_stack_size__ = 0x400
                 0x20000000                __ram_start__ = 0x20000000
-                0x00005000                __ram_size__ = 0x5000
-                0x20005000                __ram_end__ = (__ram_start__ + __ram_size__)
+                0x00002800                __ram_size__ = 0x2800
+                0x20002800                __ram_end__ = (__ram_start__ + __ram_size__)
                 0x00000000                . = 0x0
                 0x00000000                _text = .
 
@@ -1203,7 +1203,7 @@ destructors     0x080000ec        0x0
                 0x20000e8c                PROVIDE (end, .)
                 0x20000e8c                _end = .
                 0x20000e8c                __heap_base__ = _end
-                0x20005000                __heap_end__ = __ram_end__
+                0x20002800                __heap_end__ = __ram_end__
 OUTPUT(build/ch.elf elf32-littlearm)
 
 .debug_abbrev   0x00000000     0x44c6

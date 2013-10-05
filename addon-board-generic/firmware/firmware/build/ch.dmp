@@ -202,7 +202,7 @@ SYMBOL TABLE:
 08000ff0 g     F .text	0000002c halInit
 20000800 g       .bss	00000000 _bss_start
 08000200  w    F .text	00000002 UsageFaultVector
-20005000 g       *ABS*	00000000 __heap_end__
+20002800 g       *ABS*	00000000 __heap_end__
 08000200  w    F .text	00000002 DebugMonitorVector
 08000580 g     F .text	00000030 dbg_check_unlock
 08000200  w    F .text	00000002 Vector40
@@ -250,7 +250,7 @@ SYMBOL TABLE:
 08000200  w    F .text	00000002 VectorE4
 08001e90 g     F .text	0000001c VectorC0
 08000350 g     F .text	00000014 _port_switch
-00005000 g       *ABS*	00000000 __ram_size__
+00002800 g       *ABS*	00000000 __ram_size__
 08000250 g     F .text	00000020 SVCallVector
 080000f0  w    F .text	00000002 __late_init
 08000780 g     F .text	00000018 chDbgPanic
@@ -306,7 +306,7 @@ SYMBOL TABLE:
 20000400 g       .stacks	00000000 __main_stack_end__
 08001310 g     F .text	00000048 Vector78
 080007d0 g     F .text	00000020 dequeue
-20005000 g       *ABS*	00000000 __ram_end__
+20002800 g       *ABS*	00000000 __ram_end__
 20000800 g       .bss	00000000 _edata
 20000e8c g       *ABS*	00000000 _end
 080008e0 g     F .text	0000006c chVTResetI
