@@ -99,8 +99,8 @@ int main(void) {
   /*
    * Initializes the PWM driver 1 and ICU driver 4.
    */
-  pwmStart(&PWMD1, &pwmcfg);
-  palSetPadMode(IOPORT1, 8, PAL_MODE_STM32_ALTERNATE_PUSHPULL);
+  pwmStart(&PWMD3, &pwmcfg);
+  palSetPadMode(GPIOA, 6, PAL_MODE_STM32_ALTERNATE_PUSHPULL);
   /*icuStart(&ICUD4, &icucfg);
   icuEnable(&ICUD4);*/
   chThdSleepMilliseconds(2000);
@@ -108,33 +108,33 @@ int main(void) {
   /*
    * Starts the PWM channel 0 using 75% duty cycle.
    */
-  pwmEnableChannel(&PWMD1, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD1, 7500));
+  pwmEnableChannel(&PWMD3, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 7500));
   chThdSleepMilliseconds(5000);
 
   /*
    * Changes the PWM channel 0 to 50% duty cycle.
    */
-  pwmEnableChannel(&PWMD1, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD1, 5000));
+  pwmEnableChannel(&PWMD3, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 5000));
   chThdSleepMilliseconds(5000);
 
   /*
    * Changes the PWM channel 0 to 25% duty cycle.
    */
-  pwmEnableChannel(&PWMD1, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD1, 2500));
+  pwmEnableChannel(&PWMD3, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 2500));
   chThdSleepMilliseconds(5000);
 
   /*
    * Changes PWM period to half second the duty cycle becomes 50%
    * implicitly.
    */
-  pwmChangePeriod(&PWMD1, 5000);
+  pwmChangePeriod(&PWMD3, 5000);
   chThdSleepMilliseconds(5000);
 
   /*
    * Disables channel 0 and stops the drivers.
    */
-  pwmDisableChannel(&PWMD1, 0);
-  pwmStop(&PWMD1);
+  pwmDisableChannel(&PWMD3, 0);
+  pwmStop(&PWMD3);
   //icuDisable(&ICUD4);
   //icuStop(&ICUD4);
   //palSetPad(IOPORT3, GPIOC_LED);
