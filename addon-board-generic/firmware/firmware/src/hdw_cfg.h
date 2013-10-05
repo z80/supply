@@ -95,7 +95,7 @@
 #define PORT_PWM_8  GPIOA
 #define PAD_PWM_8   0
 
-#define PWM_CLOCK_FREQ 100000
+#define PWM_CLOCK_FREQ 1000000
 
 
 // *****************************************************************
