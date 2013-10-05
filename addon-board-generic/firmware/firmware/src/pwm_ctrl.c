@@ -29,6 +29,7 @@ void initPwm( void )
 	// Remapping TIM3 ch1 and ch2.
 	//AFIO->MAPR = (AFIO->MAPR & ~AFIO_MAPR_TIM3_REMAP ) | AFIO_MAPR_TIM3_REMAP_1; // Activated PB3 but deactivated
 
+	/*
 	palSetPadMode( PORT_PWM_1, PAD_PWM_1, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
 	palSetPadMode( PORT_PWM_2, PAD_PWM_2, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
 	palSetPadMode( PORT_PWM_3, PAD_PWM_3, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
@@ -37,13 +38,16 @@ void initPwm( void )
 	palSetPadMode( PORT_PWM_6, PAD_PWM_6, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
 	palSetPadMode( PORT_PWM_7, PAD_PWM_7, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
 	palSetPadMode( PORT_PWM_8, PAD_PWM_8, PAL_MODE_STM32_ALTERNATE_PUSHPULL );
+	*/
 }
 
 void finitPwm( void )
 {
+	/*
 	pwmStop( &PWMD2 );
 	pwmStop( &PWMD3 );
 	pwmStop( &PWMD4 );
+	*/
 }
 
 void setPwmPeriod( int period_us )
@@ -51,6 +55,7 @@ void setPwmPeriod( int period_us )
     // PWM_CLOCK_FREQ / 1000000 * period_us;
     int cnt = PWM_CLOCK_FREQ / 1000000 * period_us;
 
+    /*
     PWMConfig pwmCfg2 =
     {
         PWM_CLOCK_FREQ, // 1000kHz PWM clock frequency.
@@ -68,7 +73,9 @@ void setPwmPeriod( int period_us )
 	#endif
     };
 	pwmStart( &PWMD2, &pwmCfg2 );
+    */
 
+    /*
     PWMConfig pwmCfg3 =
     {
         PWM_CLOCK_FREQ, // 1000kHz PWM clock frequency.
@@ -86,7 +93,8 @@ void setPwmPeriod( int period_us )
 	#endif
     };
 	pwmStart( &PWMD3, &pwmCfg3 );
-
+    */
+	/*
     PWMConfig pwmCfg4 =
     {
         PWM_CLOCK_FREQ, // 1000kHz PWM clock frequency.
@@ -104,7 +112,7 @@ void setPwmPeriod( int period_us )
 	#endif
     };
 	pwmStart( &PWMD4, &pwmCfg4 );
-
+    */
 }
 
 void setPwm( uint32_t mask, int value )
@@ -120,10 +128,10 @@ void setPwm( uint32_t mask, int value )
 	//	pwmEnableChannel( &PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH( &PWMD4, value ) );
 	//if ( mask & (1<<4) )
 	//	pwmEnableChannel( &PWMD4, 4, PWM_PERCENTAGE_TO_WIDTH( &PWMD4, value ) );
-	if ( mask & (1<<5) )
-		pwmEnableChannel( &PWMD3, 4, PWM_PERCENTAGE_TO_WIDTH( &PWMD3, value ) );
-	if ( mask & (1<<6) )
-		pwmEnableChannel( &PWMD3, 3, PWM_PERCENTAGE_TO_WIDTH( &PWMD3, value ) );
+	//if ( mask & (1<<5) )
+	//	pwmEnableChannel( &PWMD3, 4, PWM_PERCENTAGE_TO_WIDTH( &PWMD3, value ) );
+	//if ( mask & (1<<6) )
+	//	pwmEnableChannel( &PWMD3, 3, PWM_PERCENTAGE_TO_WIDTH( &PWMD3, value ) );
 	//if ( mask & (1<<7) )
 	//	pwmEnableChannel( &PWMD2, 1, PWM_PERCENTAGE_TO_WIDTH( &PWMD2, value ) );
 }
