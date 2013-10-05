@@ -20,22 +20,26 @@ int main(void)
     //init165();
     init595();
     //initAdc();
-    //initPwm();
+    initPwm();
     //initPwr();
     //initI2c();
 
     //processI2c();
 
+    setPwmPeriod( 1000000 );
+    setPwm( 255, 1000 );
+
     while ( 1 )
     {
     	setLed( 1 );
-    	setMoto( 1 );
+    	//setMoto( 1 );
     	chThdSleepMilliseconds( 200 );
 
     	setLed( 2 );
-    	setMoto( 2 );
+    	//setMoto( 2 );
     	chThdSleepMilliseconds( 200 );
 
+    	/*
     	setLed( 1 );
     	setMoto( 4 );
     	chThdSleepMilliseconds( 200 );
@@ -59,6 +63,7 @@ int main(void)
     	setLed( 2 );
     	setMoto( 128 );
     	chThdSleepMilliseconds( 200 );
+    	*/
     }
     return 0;
 }
