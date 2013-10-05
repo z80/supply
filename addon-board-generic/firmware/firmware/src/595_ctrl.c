@@ -91,9 +91,9 @@ void setMoto( int arg )
 		shiftReg |= MOTO_7;
 	if ( arg & 128 )
 		shiftReg |= MOTO_8;
-	if ( shiftReg | ( MOTO_1 | MOTO_2 | MOTO_3 | MOTO_4 ) )
+	if ( shiftReg & ( MOTO_1 | MOTO_2 | MOTO_3 | MOTO_4 ) )
 		shiftReg |= MOTO_EN_1;
-	if ( shiftReg | ( MOTO_5 | MOTO_6 | MOTO_7 | MOTO_8 ) )
+	if ( shiftReg & ( MOTO_5 | MOTO_6 | MOTO_7 | MOTO_8 ) )
 		shiftReg |= MOTO_EN_2;
 	set595( shiftReg );
 }

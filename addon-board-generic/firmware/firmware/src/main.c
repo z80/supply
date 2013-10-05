@@ -29,9 +29,35 @@ int main(void)
     while ( 1 )
     {
     	setLed( 1 );
+    	setMoto( 1 );
     	chThdSleepMilliseconds( 200 );
 
     	setLed( 2 );
+    	setMoto( 2 );
+    	chThdSleepMilliseconds( 200 );
+
+    	setLed( 1 );
+    	setMoto( 4 );
+    	chThdSleepMilliseconds( 200 );
+
+    	setLed( 2 );
+    	setMoto( 8 );
+    	chThdSleepMilliseconds( 200 );
+
+    	setLed( 1 );
+    	setMoto( 16 );
+    	chThdSleepMilliseconds( 200 );
+
+    	setLed( 2 );
+    	setMoto( 32 );
+    	chThdSleepMilliseconds( 200 );
+
+    	setLed( 1 );
+    	setMoto( 64 );
+    	chThdSleepMilliseconds( 200 );
+
+    	setLed( 2 );
+    	setMoto( 128 );
     	chThdSleepMilliseconds( 200 );
     }
     return 0;

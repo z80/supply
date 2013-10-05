@@ -539,7 +539,6 @@ Discarded input sections
  .text          0x00000000        0x0 build/obj/595_ctrl.o
  .data          0x00000000        0x0 build/obj/595_ctrl.o
  .bss           0x00000000        0x0 build/obj/595_ctrl.o
- .text.setMoto  0x00000000      0x100 build/obj/595_ctrl.o
  .text.setServoEn
                 0x00000000       0x40 build/obj/595_ctrl.o
  .text          0x00000000        0x0 build/obj/165_ctrl.o
@@ -721,7 +720,7 @@ destructors     0x080000ec        0x0
  *(SORT(.fini_array.*))
                 0x080000ec                PROVIDE (__fini_array_end, .)
 
-.text           0x080000f0     0x25ac
+.text           0x080000f0     0x275c
  *(.text.startup.*)
  *(.text)
  *(.text.*)
@@ -1062,50 +1061,52 @@ destructors     0x080000ec        0x0
                 0x08002290                set595
  .text.setLed   0x08002320       0x60 build/obj/595_ctrl.o
                 0x08002320                setLed
- .text.main     0x08002380       0x30 build/obj/main.o
-                0x08002380                main
+ .text.setMoto  0x08002380      0x110 build/obj/595_ctrl.o
+                0x08002380                setMoto
+ .text.main     0x08002490       0xd0 build/obj/main.o
+                0x08002490                main
  *(.rodata)
- .rodata        0x080023b0       0x10 build/obj/chsys.o
- .rodata        0x080023c0       0x58 build/obj/chdebug.o
- *fill*         0x08002418        0x8 00
- .rodata        0x08002420       0x34 build/obj/chvt.o
- *fill*         0x08002454        0xc 00
- .rodata        0x08002460       0x24 build/obj/chschd.o
- *fill*         0x08002484        0xc 00
- .rodata        0x08002490       0x94 build/obj/chthreads.o
- *fill*         0x08002524        0xc 00
- .rodata        0x08002530       0xac build/obj/chmtx.o
- *(.rodata.*)
- *fill*         0x080025dc        0x4 00
- .rodata._stm32_dma_streams
-                0x080025e0       0x54 build/obj/stm32_dma.o
-                0x080025e0                _stm32_dma_streams
+ .rodata        0x08002560       0x10 build/obj/chsys.o
+ .rodata        0x08002570       0x58 build/obj/chdebug.o
+ *fill*         0x080025c8        0x8 00
+ .rodata        0x080025d0       0x34 build/obj/chvt.o
+ *fill*         0x08002604        0xc 00
+ .rodata        0x08002610       0x24 build/obj/chschd.o
  *fill*         0x08002634        0xc 00
+ .rodata        0x08002640       0x94 build/obj/chthreads.o
+ *fill*         0x080026d4        0xc 00
+ .rodata        0x080026e0       0xac build/obj/chmtx.o
+ *(.rodata.*)
+ *fill*         0x0800278c        0x4 00
+ .rodata._stm32_dma_streams
+                0x08002790       0x54 build/obj/stm32_dma.o
+                0x08002790                _stm32_dma_streams
+ *fill*         0x080027e4        0xc 00
  .rodata.cfgtab.6050
-                0x08002640       0x14 build/obj/pal_lld.o
- *fill*         0x08002654        0xc 00
+                0x080027f0       0x14 build/obj/pal_lld.o
+ *fill*         0x08002804        0xc 00
  .rodata.pal_default_config
-                0x08002660       0x3c build/obj/board.o
-                0x08002660                pal_default_config
+                0x08002810       0x3c build/obj/board.o
+                0x08002810                pal_default_config
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.gcc*)
 
-.vfp11_veneer   0x0800269c        0x0
+.vfp11_veneer   0x0800284c        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0800269c        0x0
+.v4_bx          0x0800284c        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x0800269c        0x0
-                0x0800269c                PROVIDE (__exidx_start, .)
+.ARM.exidx      0x0800284c        0x0
+                0x0800284c                PROVIDE (__exidx_start, .)
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0800269c                PROVIDE (__exidx_end, .)
+                0x0800284c                PROVIDE (__exidx_end, .)
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
@@ -1113,11 +1114,11 @@ destructors     0x080000ec        0x0
 .eh_frame
  *(.eh_frame)
 
-.textalign      0x0800269c        0x4
-                0x080026a0                . = ALIGN (0x8)
- *fill*         0x0800269c        0x4 00
-                0x080026a0                _etext = .
-                0x080026a0                _textdata = _etext
+.textalign      0x0800284c        0x4
+                0x08002850                . = ALIGN (0x8)
+ *fill*         0x0800284c        0x4 00
+                0x08002850                _etext = .
+                0x08002850                _textdata = _etext
 
 .stacks         0x20000000      0x800
                 0x20000000                . = ALIGN (0x8)
@@ -1134,7 +1135,7 @@ destructors     0x080000ec        0x0
                 0x20000800                __process_stack_end__ = .
                 0x20000800                __main_thread_stack_end__ = .
 
-.data           0x20000800        0x0 load address 0x080026a0
+.data           0x20000800        0x0 load address 0x08002850
                 0x20000800                . = ALIGN (0x4)
                 0x20000800                PROVIDE (_data, .)
  *(.data)
@@ -1145,7 +1146,7 @@ destructors     0x080000ec        0x0
                 0x20000800                . = ALIGN (0x4)
                 0x20000800                PROVIDE (_edata, .)
 
-.bss            0x20000800      0x68c load address 0x080026a0
+.bss            0x20000800      0x68c load address 0x08002850
                 0x20000800                . = ALIGN (0x4)
                 0x20000800                PROVIDE (_bss_start, .)
  *(.bss)
@@ -1348,7 +1349,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_info    0x00011b8b      0x502 build/obj/pwr_ctrl.o
  .debug_info    0x0001208d       0xfc build/obj/main.o
 
-.debug_line     0x00000000     0x7cbc
+.debug_line     0x00000000     0x7d23
  .debug_line    0x00000000      0x14e build/obj/crt0.o
  .debug_line    0x0000014e       0x68 build/obj/vectors.o
  .debug_line    0x000001b6       0x5d build/obj/chcore.o
@@ -1411,13 +1412,13 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_line    0x00006870      0x142 build/obj/board.o
  .debug_line    0x000069b2      0x19e build/obj/evtimer.o
  .debug_line    0x00006b50      0x1e0 build/obj/syscalls.o
- .debug_line    0x00006d30      0x207 build/obj/595_ctrl.o
- .debug_line    0x00006f37      0x1d8 build/obj/165_ctrl.o
- .debug_line    0x0000710f      0x353 build/obj/i2c_ctrl.o
- .debug_line    0x00007462      0x2d1 build/obj/adc_ctrl.o
- .debug_line    0x00007733      0x22b build/obj/pwm_ctrl.o
- .debug_line    0x0000795e      0x200 build/obj/pwr_ctrl.o
- .debug_line    0x00007b5e      0x15e build/obj/main.o
+ .debug_line    0x00006d30      0x209 build/obj/595_ctrl.o
+ .debug_line    0x00006f39      0x1d8 build/obj/165_ctrl.o
+ .debug_line    0x00007111      0x353 build/obj/i2c_ctrl.o
+ .debug_line    0x00007464      0x2d1 build/obj/adc_ctrl.o
+ .debug_line    0x00007735      0x22b build/obj/pwm_ctrl.o
+ .debug_line    0x00007960      0x200 build/obj/pwr_ctrl.o
+ .debug_line    0x00007b60      0x1c3 build/obj/main.o
 
 .debug_loc      0x00000000     0x2b7a
  .debug_loc     0x00000000       0x20 build/obj/crt0.o
@@ -2959,6 +2960,7 @@ setLed                                            build/obj/595_ctrl.o
                                                   build/obj/main.o
                                                   build/obj/i2c_ctrl.o
 setMoto                                           build/obj/595_ctrl.o
+                                                  build/obj/main.o
                                                   build/obj/i2c_ctrl.o
 setPwm                                            build/obj/pwm_ctrl.o
                                                   build/obj/i2c_ctrl.o
