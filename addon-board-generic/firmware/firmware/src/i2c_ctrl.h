@@ -6,7 +6,7 @@
 
 void initI2c( void );
 void finitI2c( void );
-void processI2C( void );
+void processI2c( void );
 
 #endif
 

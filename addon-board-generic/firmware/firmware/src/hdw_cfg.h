@@ -108,8 +108,8 @@
 // *****************************************************************
 //          I2C control.
 // *****************************************************************
-#define I2C_OUT_BUFFER_SZ  32
-#define I2C_IN_BUFFER_SZ   32
+#define I2C_OUT_BUFFER_SZ  8
+#define I2C_IN_BUFFER_SZ   8
 #define EXEC_QUEUE_SIZE    2
 #define PORT_I2C GPIOB
 #define PAD_SCL  6

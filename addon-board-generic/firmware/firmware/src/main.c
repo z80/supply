@@ -82,7 +82,7 @@ int main(void) {
 #include "adc_ctrl.h"
 #include "i2c_ctrl.h"
 
-static void delay( void );
+//static void delay( void );
 
 
 int main(void)
@@ -97,8 +97,9 @@ int main(void)
     initPwr();
     initI2c();
 
-    //processI2c();
+    processI2c();
 
+    /*
     setPwmPeriod( 1000000 );
     setPwm( 255, 1000 );
 
@@ -109,16 +110,17 @@ int main(void)
     	//setMoto( 1 );
     	chThdSleepMilliseconds( 200 );
     }
+    */
     return 0;
 }
 
-static void delay( void )
+/*static void delay( void )
 {
     #define CNT 10000
 	volatile int i;
 	for ( i=0; i<CNT; i++ )
 		;
-}
+}*/
 
 
 
