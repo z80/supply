@@ -221,6 +221,14 @@ int i2cIo( uint8_t addr,
 	return status;
 }
 
+void setWakeup( int arg )
+{
+	if ( arg )
+	    palSetPad( PORT_WAKEUP, PAD_WAKEUP );
+	else
+		palClearPad( PORT_WAKEUP, PAD_WAKEUP );
+	palSetPadMode( PORT_WAKEUP, PAD_WAKEUP, PAL_MODE_OUTPUT_PUSHPULL );
+}
 
 
 

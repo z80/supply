@@ -39,6 +39,8 @@ AMX_NATIVE const g_nativetable[] =
     pawn_setI2cEn,
     pawn_i2cIo,
 
+    pawn_setWakeup,
+
     pawn_usbWrite,
 
     pawn_io,

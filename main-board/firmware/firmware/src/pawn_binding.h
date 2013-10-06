@@ -23,6 +23,9 @@ cell pawn_setI2cSlaveEn( AMX * amx, const cell * params );
 cell pawn_setI2cEn( AMX * amx, const cell * params );
 cell pawn_i2cIo( AMX * amx, const cell * params );
 
+// I2C wakeup pad control.
+cell pawn_setWakeup( AMX * amx, const cell * params );
+
 // USB control.
 cell pawn_usbWrite( AMX * amx, const cell * params );
 

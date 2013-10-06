@@ -24,21 +24,19 @@ cell pawn_setRtc( AMX * amx, const cell * params )
 {
 	(void)amx;
     RTCTime rtc;
-    rtc.tv_sec  = params[1];
-    rtc.tv_msec = params[2];
+    rtc.tv_sec  = params[1] / 1000;
+    rtc.tv_msec = params[1] - (rtc.tv_sec);
     rtcSetTime( &RTCD1, &rtc );
     return 0;
 }
 
 cell pawn_rtc( AMX * amx, const cell * params )
 {
+	(void)amx;
+	(void)params;
     RTCTime rtc;
     rtcGetTime( &RTCD1, &rtc );
-    cell * msec;
-    msec = amx_Address( amx, params[1] );
-    if ( msec )
-    	*msec = rtc.tv_msec;
-    return rtc.tv_sec;
+    return rtc.tv_sec * 1000 + rtc.tv_msec;
 }
 
 cell pawn_msleep( AMX * amx, const cell * params )
@@ -126,6 +124,13 @@ cell pawn_i2cIo( AMX * amx, const cell * params )
     		dataIo[i] = (cell)i2cReadBuffer[i];
     }
     return status;
+}
+
+cell pawn_setWakeup( AMX * amx, const cell * params )
+{
+	(void)amx;
+	setWakeup( params[1] );
+	return 0;
 }
 
 cell pawn_usbWrite( AMX * amx, const cell * params )

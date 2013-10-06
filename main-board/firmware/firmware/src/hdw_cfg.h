@@ -124,6 +124,8 @@
 #define I2C_CMD_PAWN_RESULT      9
 #define I2C_CMD_PAWN_ERROR       10
 
+#define PORT_WAKEUP              GPIOB
+#define PAD_WAKEUP               1
 
 
 #define FIRMWARE_VERSION         1

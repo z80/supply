@@ -14,29 +14,30 @@ native setI2cSlaveEn( en = 1, addr = 1 ) = -8;
 
 native setI2cEn( en = 1 ) = -9;
 native i2cIo( addr, dataSend[], sendCnt = sizeof dataSend, dataReceive[], receiveCnt = sizeof dataReceive, timeoutMs = 1000 ) = -10;
-native usbWrite( stri[] ) = -11;
+native setWakeup( arg ) = -11;
+native usbWrite( stri[] ) = -12;
 
-native io( at ) = -12;
-native setIo( at, value ) = -13;
+native io( at ) = -13;
+native setIo( at, value ) = -14;
 
-native setLed( mask ) = -14;
-native setMoto( mask ) = -15;
+native setLed( mask ) = -15;
+native setMoto( mask ) = -16;
 
-native convSetBuck( mv ) = -16;
-native convSetBoost( mv ) = -17;
-native convSetMinBoostVolt( mv ) = -18;
-native convSetMaxBoostFill( percentOverTen ) = -19;
-native convSetBoostCurr( ma ) = -20;
-native convSetBuckCurr( ma ) = -21;
-native convSetBuckGain( percentOverTen ) = -22;
-native convSetBoostGain( percentOverTen ) = -23;
+native convSetBuck( mv ) = -17;
+native convSetBoost( mv ) = -18;
+native convSetMinBoostVolt( mv ) = -19;
+native convSetMaxBoostFill( percentOverTen ) = -20;
+native convSetBoostCurr( ma ) = -21;
+native convSetBuckCurr( ma ) = -22;
+native convSetBuckGain( percentOverTen ) = -23;
+native convSetBoostGain( percentOverTen ) = -24;
 
-native adcTemp() = -24;
-native adcBatteryVolt() = -25;
-native adcBuckVolt() = -26;
-native adcSolarVolt() = -27;
-native adcBuckCurr() = -28;
-native adcBoostCurr() = -29;
+native adcTemp() = -25;
+native adcBatteryVolt() = -26;
+native adcBuckVolt() = -27;
+native adcSolarVolt() = -28;
+native adcBuckCurr() = -29;
+native adcBoostCurr() = -30;
 
 
 

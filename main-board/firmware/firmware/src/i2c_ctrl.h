@@ -12,6 +12,8 @@ int  i2cIo( uint8_t addr,
 	        uint8_t * outBuffer, int outSz,
             uint8_t * inBuffer,  int inSz, int timeoutMs );
 
+void setWakeup( int arg );
+
 #endif
 
 
