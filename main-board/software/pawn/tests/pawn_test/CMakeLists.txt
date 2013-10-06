@@ -35,7 +35,7 @@ add_definitions( -DNDEBUG )
 add_definitions( -DAMX_NATIVETABLE=g_nativetable )
 
 install( TARGETS pawn_test DESTINATION "./pawn" )
-install( DIRECTORY ./pawn_src/ DESTINATION "./pawn" )
+#install( DIRECTORY ./pawn_src/ DESTINATION "./pawn" )
 
 
 

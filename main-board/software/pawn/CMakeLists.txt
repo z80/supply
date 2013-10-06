@@ -10,7 +10,10 @@ add_subdirectory( "./3dparty" )
 add_subdirectory( "./usbctrl" )
 add_subdirectory( "./usbcmd" )
 add_subdirectory( "./tests" )
-install( DIRECTORY "./pawn_include/" DESTINATION "pawn" )
+install( directory "./pawn_include/" destination "pawn" )
+install( directory "./pawn_include/tests/" destination "pawn" )
+
+
 
 
 

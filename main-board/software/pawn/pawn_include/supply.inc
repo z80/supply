@@ -1,5 +1,9 @@
 
 
+#if !defined __SUPPLY_INC_
+#define __SUPPLY_INC_
+
+
 native trigger() = -1;
 
 native setRtc( sec, msec ) = -2;
@@ -39,7 +43,7 @@ native adcSolarVolt() = -28;
 native adcBuckCurr() = -29;
 native adcBoostCurr() = -30;
 
-
+#endif
 
 
 

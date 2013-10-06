@@ -1,5 +1,8 @@
 
-#include "supply.inc"
+#if !defined __ADDON_INC_
+#define __ADDON_INC_
+
+#include <supply>
 
 const BASE_ADDR    = 1
 const BASE_TIMEOUT = 500
@@ -25,7 +28,8 @@ addSetLed( index, arg )
     new res
     new wr[2];
     wr[0] = CMD_SET_LED;
-    res = i2cIo( addr, CMD_SLEEP, 2, _, 0, BASE_TIMEOUT );
+    wr[1] = arg;
+    res = i2cIo( addr, wr, 2, wr, 0, BASE_TIMEOUT );
     return res;
 }
 
@@ -35,7 +39,8 @@ addSetMoto( index, arg )
     new res
     new wr[2];
     wr[0] = CMD_SET_MOTO;
-    res = i2cIo( addr, CMD_SLEEP, 2, _, 0, BASE_TIMEOUT );
+    wr[1] = arg;
+    res = i2cIo( addr, wr, 2, wr, 0, BASE_TIMEOUT );
     return res;
 }
 
@@ -65,9 +70,12 @@ addSleep( index )
     new res
     new wr[2];
     wr[0] = CMD_SLEEP;
-    res = i2cIo( addr, CMD_SLEEP, 2, _, 0, BASE_TIMEOUT );
+    res = i2cIo( addr, wr, 2, wr, 0, BASE_TIMEOUT );
     return res;
 }
+
+#endif
+
 
 
 
