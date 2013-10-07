@@ -307,33 +307,45 @@ static int adcSingle( uint32_t mask1, uint32_t mask2 )
 
 int adcTemp( void )
 {
-    return adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN8 ) );
+    int res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN8 ) );
+    res = Adc2T( res );
+    return res;
 }
 
 int adcBatteryVolt( void )
 {
-	return adcSingle( ADC_SMPR2_SMP_AN3( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN3 ) );
+	int res = adcSingle( ADC_SMPR2_SMP_AN3( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN3 ) );
+	res = Adc2mV( res );
+	return res;
 }
 
 int adcBuckVolt( void )
 {
-	return adcSingle( ADC_SMPR2_SMP_AN4( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN4 ) );
+	int res = adcSingle( ADC_SMPR2_SMP_AN4( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN4 ) );
+	res = Adc2mV( res );
+	return res;
 }
 
 int adcSolarVolt( void )
 {
-	return adcSingle( ADC_SMPR2_SMP_AN5( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN5 ) );
+	int res = adcSingle( ADC_SMPR2_SMP_AN5( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN5 ) );
+	res = Adc2mV( res );
+	return res;
 }
 
 int adcBuckCurr( void )
 {
-	return adcSingle( ADC_SMPR2_SMP_AN7( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN7 ) );
+	int res = adcSingle( ADC_SMPR2_SMP_AN7( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN7 ) );
+	res = Adc2mA( res );
+	return res;
 }
 
 
 int adcBoostCurr( void )
 {
-	return adcSingle( ADC_SMPR2_SMP_AN6( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN6 ) );
+	int res = adcSingle( ADC_SMPR2_SMP_AN6( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN6 ) );
+	res = Adc2mA( res );
+	return res;
 }
 
 

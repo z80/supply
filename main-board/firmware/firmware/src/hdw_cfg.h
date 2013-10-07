@@ -37,13 +37,24 @@
 #define BOOST_CURR_IND     3
 #define BUCK_CURR_IND      4
 
-#define mV2Adc(mV)         ( (int)mV * 10 * 4095 / ( 3300 * 78 ) )
-#define Adc2mV(adc)        ( (int)adc * 3300 * 78 / ( 10 * 4095 ) )
+// Schematic constants used for convertion back and forth.
+#define Vcc                3300  // Vcc voltage in millivolts
+#define Rsense             200   // Sensor resistance 200mOhm
+#define Ggain              5     // Current amplifier gain, here Ggain = ( 1 + R2 / R1), R2 = 30kOhm, R1 = 10kOhm
+#define AMP_R1             10    // Voltage divider R below test point in kOhms
+#define AMP_R2             68    // Voltage divider R above test point in kOhms
 
-#define mA2Adc(mA)         (mA)
-#define Adc2mA(adc)        (adc)
+#define mV2Adc(mV)         ( (int)(mV) * AMP_R1 * 4095 / ( Vcc * (AMP_R1 + AMP_R2) ) )
+#define Adc2mV(adc)        ( (int)(adc) * Vcc * (AMP_R1 + AMP_R2) / ( AMP_R1 * 4095 ) )
 
-#define Adc2T(adc)         (adc)
+// I = ( Vcc * ((int)adc - 2047 ) * 1000) / (4095 * Ggain * Rsense)
+// ( Vcc * ((int)adc - 2047 ) * 1000) = 4095 * I * Ggain * Rsense
+// adc - 2047 = 4095 * I * Gain * Rsense / ( 1000 * Vcc );
+// adc = 4095 * I * Gain * Rsense / ( 1000 * Vcc ) + 2047;
+#define mA2Adc(mA)         ( (4095 * Ggain * Rsense * (int)(mA)) / ( 1000 * Vcc ) + 2047)
+#define Adc2mA(adc)        ( ( Vcc * 1000 * ((int)(adc) - 2047 )) / (4095 * Ggain * Rsense) )
+
+#define Adc2T(adc)         ( ( (Vcc * (int)(adc)) / 4095 - 500 ) )    // This converts Adc to T*10.
 
 
 
