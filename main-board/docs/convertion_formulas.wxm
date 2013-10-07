@@ -1,0 +1,53 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+kill( all );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Vcc: 3300;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Rsense: 200;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Ggain: 5;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+adc: 2047 + 2048;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+numer: true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+I: Vcc * ( adc - 2047 ) * 1000/ 4095 / Ggain / Rsense;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+0.080 * 0.2 * 5 / 3.3 * 4095;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill( all );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+numer: false;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq: I = ( Vcc * (adc - 2047 ) * 1000) / (4095 * Ggain * Rsense);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve( [eq], [adc] );
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
