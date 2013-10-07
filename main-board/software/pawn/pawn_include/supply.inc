@@ -6,8 +6,8 @@
 
 native trigger() = -1;
 
-native setRtc( sec, msec ) = -2;
-native rtc( &msec ) = -3;
+native setRtc( msec ) = -2;
+native rtc() = -3;
 native msleep( ms ) = -4;
 
 native setSerialEn( en, baud ) = -5;
