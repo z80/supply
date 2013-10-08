@@ -35,5 +35,5 @@ elseif ( WIN32 )
     target_link_libraries( ${DFU_STM} ${libusb} ${Boost_LIBRARIES} )
 endif ( UNIX )
 
-install( TARGETS ${DFU_FROM_BIN} ${DFU_STM} DESTINATION "./" )
+install( TARGETS ${DFU_FROM_BIN} ${DFU_STM} DESTINATION "./bin" )
 

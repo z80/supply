@@ -12,7 +12,7 @@ message( STATUS "HEADERS = ${headers}" )
 add_executable( ${EXEC_NAME} ${src} )
 set( libs usbctrl )
 target_link_libraries( ${EXEC_NAME} ${libs} )
-install( TARGETS ${EXEC_NAME} DESTINATION "./" )
+install( TARGETS ${EXEC_NAME} DESTINATION "./bin" )
 
 
 

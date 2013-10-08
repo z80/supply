@@ -12,7 +12,7 @@ import sys
 
 PAWNCC        = "./bin/pawncc"
 COMPILED_SCRIPT_FILE_NAME = "./instructions.amx"
-PAWNCC_SUFFIX = "-i./include -oinstructions -S2000 -O3 -v"
+PAWNCC_SUFFIX = [ "-i./include", "-oinstructions", "-S2000", "-O3", "-v" ]
 USBCTRL       = [ "./bin/usbctrl", "./instructions.amx" ]
 DFU_EXEC      = [ "./bin/dfu_stm", "flash" ]
 HELP_FILE     = "./doc/index.html"
@@ -62,7 +62,8 @@ class Gui( Frame ):
             path = "-i" + path
             print "Path: "
             print path
-            cmd = [ PAWNCC, fileName, path, PAWNCC_SUFFIX ]
+            cmd = [ PAWNCC, fileName, path ]
+            cmd = cmd + PAWNCC_SUFFIX
             # Execute compilation.
             try:
                 p = subprocess.Popen( cmd, stdout=subprocess.PIPE )

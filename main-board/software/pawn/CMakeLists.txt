@@ -9,10 +9,11 @@ endif ( WIN32 )
 add_subdirectory( "./3dparty" )
 add_subdirectory( "./usbctrl" )
 add_subdirectory( "./usbcmd" )
-add_subdirectory( "./tests" )
-install( directory "./pawn_include/" destination "pawn" )
-install( directory "./pawn_include/tests/" destination "pawn" )
-
+add_subdirectory( "./module.py" )
+#add_subdirectory( "./tests" )
+install( DIRECTORY "./pawn_include/"       DESTINATION "include" )
+install( DIRECTORY "./pawn_include/tests/" DESTINATION "tests" )
+install( DIRECTORY "./gui.py/"             DESTINATION "./" )
 
 
 

@@ -18,10 +18,10 @@ IF(UNIX)
   SET(PAWNCC_SRCS ${PAWNCC_SRCS} ../linux/binreloc.c)
 ENDIF(UNIX)
 add_executable( pawncc ${PAWNCC_SRCS} )
-install( TARGETS pawncc DESTINATION "./pawn" )
+install( TARGETS pawncc DESTINATION "./bin" )
 
 
 # Simple Pawn disassembler
 set( PAWNDISASM_SRCS pawndisasm.c )
 add_executable(pawndisasm ${PAWNDISASM_SRCS})
-install( TARGETS pawndisasm DESTINATION "./pawn" )
+install( TARGETS pawndisasm DESTINATION "./bin" )
