@@ -19,7 +19,7 @@ target_link_libraries( ${LIB_NAME}
                                    ${Boost_LIBRARIES} 
                                    ${PYTHON_LIBRARIES}
                                    usbctrl )
-
+install( TARGETS ${LIB_NAME} DESTINATION "./" )
 
 
 
