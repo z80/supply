@@ -15,17 +15,39 @@ main()
     }
 
     setI2cEn( 1 );
-    setLed( 2 );
-    msleep( 1000 );
+    setLed( 0 );
+    msleep( 500 );
 
     for ( ;; )
     {
         setLed( 1 );
+        addSetLed( 0, 0 );
+        addSetLed( 1, 0 );
+        msleep( 200 );
+
+        setLed( 0 );
         addSetLed( 0, 1 );
-        msleep( 500 );
+        addSetLed( 1, 0 );
+        msleep( 200 );
+
+        setLed( 0 );
+        addSetLed( 0, 0 );
+        addSetLed( 1, 1 );
+        msleep( 200 );
+
+        setLed( 0 );
+        addSetLed( 0, 0 );
+        addSetLed( 1, 2 );
+        msleep( 200 );
+
+        setLed( 0 );
+        addSetLed( 0, 2 );
+        addSetLed( 1, 0 );
+        msleep( 200 );
 
         setLed( 2 );
-        addSetLed( 0, 2 );
-        msleep( 500 );
+        addSetLed( 0, 0 );
+        addSetLed( 1, 0 );
+        msleep( 200 );
     }
 }
