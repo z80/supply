@@ -18,7 +18,8 @@ add_library( ${LIB_NAME} SHARED ${src} )
 target_link_libraries( ${LIB_NAME} 
                                    ${Boost_LIBRARIES} 
                                    ${PYTHON_LIBRARIES}
-                                   usbctrl )
+                                   i2cctrl )
+SET_TARGET_PROPERTIES( ${LIB_NAME} PROPERTIES PREFIX "" )
 install( TARGETS ${LIB_NAME} DESTINATION "./" )
 
 

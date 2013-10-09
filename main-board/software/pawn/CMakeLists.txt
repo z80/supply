@@ -13,9 +13,9 @@ add_subdirectory( "./module.py.usb" )
 add_subdirectory( "./i2cctrl" )
 add_subdirectory( "./module.py.i2c" )
 #add_subdirectory( "./tests" )
-install( DIRECTORY "./pawn_include/"       DESTINATION "include" )
-install( DIRECTORY "./pawn_include/tests/" DESTINATION "tests" )
-install( DIRECTORY "./gui.py/"             DESTINATION "./" )
+install( DIRECTORY "./pawn_include/include/" DESTINATION "include" )
+install( DIRECTORY "./pawn_include/tests/"   DESTINATION "tests" )
+install( DIRECTORY "./gui.py/"               DESTINATION "./" )
 
 
 
