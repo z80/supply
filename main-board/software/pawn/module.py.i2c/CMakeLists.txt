@@ -1,5 +1,5 @@
 
-set( LIB_NAME supplyctrlusb )
+set( LIB_NAME supplyctrli2c )
 
 set( Boost_USE_STATIC_LIBS   True )
 set( Boost_USE_MULTITHREADED True )
@@ -9,7 +9,7 @@ find_package(PythonLibs REQUIRED)
 aux_source_directory( "./src" src )
 
 include_directories( "./src" 
-                     "${ROOT}/usbctrl/src"
+                     "${ROOT}/i2cctrl/src"
                      ${GLOB_BIN_DIR}
                      ${Boost_INCLUDE_DIRS}
 		     ${PYTHON_INCLUDE_DIRS} )

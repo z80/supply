@@ -1,5 +1,5 @@
 
-#include "ctrlboard.h"
+#include "mcuctrl.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,11 +32,15 @@ public:
     int fd;
 
     static const int SUPPLY_ADDRESS;
+    static const int DELAY;
+    static const int TRIES_CNT;
 };
 
-const int McuCtrl::SUPPLY_ADDRESS = 1;
+const int McuCtrl::PD::SUPPLY_ADDRESS = 1;
+const int McuCtrl::PD::DELAY          = 5;
+const int McuCtrl::PD::TRIES_CNT      = 100;
 
-McuCtrl::CtrlBoard()
+McuCtrl::McuCtrl()
 {
     pd = new PD();
     pd->fd = -1;
@@ -85,6 +89,8 @@ bool McuCtrl::read( unsigned char addr, unsigned char * data, int cnt )
 
 bool McuCtrl::setIo( int index, unsigned char value )
 {
+    if ( !ensureOpen() )
+        return false;
     unsigned char data[3];
     data[0] = I2C_CMD_PAWN_SET_IO;
     data[1] = static_cast<unsigned char>( index );
@@ -94,15 +100,40 @@ bool McuCtrl::setIo( int index, unsigned char value )
 
 bool McuCtrl::io( int index, unsigned char & value )
 {
-    unsigned char data[2];
+    if ( !ensureOpen() )
+        return false;
+    unsigned char data[3];
     data[0] = I2C_CMD_PAWN_IO;
     data[1] = static_cast<unsigned char>( index );
+    data[2] = 0;
     bool res = McuCtrl::write( PD::SUPPLY_ADDRESS, data, sizeof(data) );
-    res = McuCtrl::read( PD::SUPPLY_ADDRESS, data, sizeof(data) );
-    if ( !res )
+    // Several attempts to get data.
+    for ( int i=0; i<PD::TRIES_CNT; i++ )
+    {
+        res = McuCtrl::read( PD::SUPPLY_ADDRESS, data, sizeof(data) );
+        if ( !res )
+            return false;
+        if ( data[0] == I2C_CMD_PAWN_IO )
+            break;
+        usleep( 1000 * PD::DELAY );
+    }
+    if ( data[0] != I2C_CMD_PAWN_IO )
         return false;
     value = static_cast<int>( data[1] );
     return true;
+}
+
+bool McuCtrl::reopen()
+{
+    McuCtrl::close();
+    return McuCtrl::open();
+}
+
+bool McuCtrl::ensureOpen()
+{
+    if ( McuCtrl::isOpen() )
+        return true;
+    return McuCtrl::open();
 }
 
 

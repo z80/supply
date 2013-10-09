@@ -16,8 +16,11 @@ public:
 
     bool setIo( int index, unsigned char value );
     bool io( int index, unsigned char & value );
+    bool reopen();
 
 private:
+    bool ensureOpen();
+
     class PD;
     PD * pd;
 };

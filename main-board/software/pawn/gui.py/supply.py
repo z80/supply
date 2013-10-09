@@ -66,7 +66,7 @@ class Gui( Frame ):
             cmd = cmd + PAWNCC_SUFFIX
             # Execute compilation.
             try:
-                p = subprocess.Popen( cmd, stdout=subprocess.PIPE )
+                p = subprocess.Popen( cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT )
                 out, err = p.communicate()
             except OSError:
                 out = "Error: failed to execute compiled instructions load procedure!"
