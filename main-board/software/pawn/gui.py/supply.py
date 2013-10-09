@@ -100,7 +100,7 @@ class Gui( Frame ):
 
     def openFile( self, fileName ):
         if sys.platform=='win32':
-            subprocess.Popen(['start', fileNamed], shell= True)
+            subprocess.Popen(['start', fileName], shell= True)
 
         elif sys.platform=='darwin':
             subprocess.Popen(['open', fileName])
