@@ -13,7 +13,7 @@ import sys
 PAWNCC        = "./bin/pawncc"
 COMPILED_SCRIPT_FILE_NAME = "./instructions.amx"
 PAWNCC_SUFFIX = [ "-i./include", "-oinstructions", "-S2000", "-O3", "-v" ]
-USBCTRL       = [ "./bin/usbctrl", "./instructions.amx" ]
+USBCTRL       = [ "./bin/usbcmd", "./instructions.amx" ]
 DFU_EXEC      = [ "./bin/dfu_stm", "flash" ]
 HELP_FILE     = "./doc/index.html"
 
@@ -78,7 +78,7 @@ class Gui( Frame ):
             out = "Error: it seems there is no compiled script file for supply board."
         else:
             cmd = USBCTRL
-            p = subprocess.Popen( cmd, stdout=subprocess.PIPE )
+            p = subprocess.Popen( cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT )
             out, err = p.communicate()
         self.txt.insert( END, out )
         
@@ -90,7 +90,7 @@ class Gui( Frame ):
             cmd = DFU_EXEC
             cmd.append( fileName )
             try:
-                p = subprocess.Popen( cmd, stdout=subprocess.PIPE )
+                p = subprocess.Popen( cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT )
                 out, err = p.communicate()
             except OSError:
                 out = "Error: Failed to execure device firmware upgrade"
