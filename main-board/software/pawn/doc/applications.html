@@ -16,61 +16,106 @@
 		variability of applications. Besides that it's functionality can be expanded using 
 		abitrary number of <b>extension boards</b>. The following interfaces are available 
 		at the moment.
-		<ul>
-			<li>
-				2 full (or 4 half) briges. Each can provide up to 600mA current constantly or 
-				1200mA for a short time. (Extension boards have 4 full (8 half) bridges each.)
-			</li>
+			<ul>
+				<li>
+					2 full (or 4 half) briges. Each can provide up to 600mA current constantly or 
+					1200mA for a short time. (Extension boards have 4 full (8 half) bridges each.) 
+					This functionality is scalable. One may use more motor controllers by attaching 
+					more extension boards.
+				</li>
+				
+				<li>
+					Bright LED power source. Bright LED could be connected directly to appropriate 
+					pins without current limiting resistors.
+				</li>
+				
+				<li>
+					Trigger button input. This socket could be used for button connection. Board can 
+					read button state and do something in the case of button is pressed.
+				</li>
+				
+				<li>
+					I2C master bus. Using it it is possible to control standard I2C devices like 
+					accelerometers, magnetometers, humidity sensors, EEPROM chips and so on.
+				</li>
+				
+				<li>
+					I2C slave bus port. The board is equipt with I2C slave bus port. It could be attached to 
+					another I2C bus and get commands through it.
+				</li>
+				
+				<li>
+					Constant non controllable 3.3V step down converter which powers internal on board logic and 
+					could also be used for powering external devices.
+				</li>
+				
+				<li>
+					Programmable step down voltage converter. It could be used to make any voltage lower then 
+					supply voltage. Available current range is 1650mA. Greater current is also available but 
+					in this case current limiting functionality should be turned off.
+				</li>
+				
+				<li>
+					Programmable step up voltage converter. It is capable to boost supply voltage to a value up to 20V.
+					Similary to step down converter it's currrent range is limited to 1650mA and greater current is also 
+					available if current limiting os off.
+				</li>
+				
+				<li>
+					PWM driver. Each extension board has 8 PWM outputs. Sockets are designed to be compatible with 
+					analog servo motor socket standard. So system is capable to drive 8 X extension boards number servo 
+					motors.
+				</li>
+				
+				<li>
+					Analog to digital converter. Each extension board is equipt with 8 ADC inputs with range from 0V to 
+					3.3V. Number of analog voltage measuring inputs could be multiplied by using more extension boards.
+				</li>
+				
+				<li>
+					Each extension board has 8 digital input pins. As usual this functionality could be scaled by using more 
+					extension boards.
+				</li>
+				
+				
+			</ul>
+		</li>
+		
+		<li>
+			Board can be user as a universal voltage converter with relatively high output current. As far as it has both 
+			step up and step down converters on board it is capable to convert any voltage to any and provide it as an output.
+		</li>
+		
+		<li>
+			The board can serve as universal battery charger. It can take unstabilized voltage from any voltage source and 
+			return stabilized voltage in the range from 0V to 20V with possible limiting of input current to 1) not burn weak 
+			supply and 2) use advanced battery charge algorithms with both current and voltage control.
+		</li>
+		
+		<li>
+			It can be used as extension board for popular Raspberry PI credit card sized computer. In this case the board is stacked 
+			on Raspberry PI IO socket and occupies 6 pins. This has several bonus issues besides of just providing Raspberry with 
+			hardware resources like motor control.
+				<ul>
+					<li>
+						The board is capable to power Raspberry PI computer with stabilized 5V through it's step down 
+						voltage converter.
+					</li>
+					
+					<li>
+						Raspberry PI current consumption is relatively high (for model B it is from 700mA to 1200mA).  The 
+						boards gives an opportunity to save much power by keeping Raspberry PI off most of the time and 
+						turning it on only when it is needed or by schedule..
+					</li>
+					
+					<li>
+						It is even possible to feed Raspberry PI computer with relatively small solar cell panel. In this case 
+						the board can collect solar energy and accumulate it in a battery. And when necessary it can turn 
+						Raspbery PI on and feed it from a battery using energy collected.
+					</li>
+				</ul>
+		</li>
 			
-			<li>
-				Bright LED power source. Bright LED could be connected directly to appropriate 
-				pins without current limiting resistors.
-			</li>
-			
-			<li>
-				Trigger button input. This socket could be used for button connection. Board can 
-				read button state and do something in the case of button is pressed.
-			</li>
-			
-			<li>
-				I2C master bus. Using it it is possible to control standard I2C devices like 
-				accelerometers, magnetometers, humidity sensors, EEPROM chips and so on.
-			</li>
-			
-			<li>
-				I2C slave bus port. The board is equipt with I2C slave bus port. It could be attached to 
-				another I2C bus and get commands through it.
-			</li>
-			
-			<li>
-				Constant non controllable 3.3V step down converter which powers internal on board logic and 
-				could also be used for powering external devices.
-			</li>
-			
-			<li>
-				Programmable step down voltage converter. It could be used to make any voltage lower then 
-				supply voltage. Available current range is 1650mA. Greater current is also available but 
-				in this case current limiting functionality should be turned off.
-			</li>
-			
-			<li>
-				Programmable step up voltage converter. It is capable to boost supply voltage to a value up to 20V.
-				Similary to step down converter it's currrent range is limited to 1650mA and greater current is also 
-				available if current limiting os off.
-			</li>
-			
-			<li>
-				PWM driver. Each extension board has 8 PWM outputs. Sockets are designed to be compatible with 
-				analog servo motor socket standard. So system is capable to drive 8 X extension boards number servo 
-				motors.
-			</li>
-			
-			<li>
-				Analog to digital converter. Each extension board is equipt with 8 ADC inputs with range from 0V to 
-				3.3V. Number of analog voltage measuring inputs could be multiplied by using more extension boards.
-			</li>
-		</ul>
-		</i>
 	</ul>
 
     </div>
