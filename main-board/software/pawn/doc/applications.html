@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="main">
+	<h3>Supply board applications</h3>
+	
+        <ul>
+		<li>
+		It can be used as a computer to hardware communication board.
+		<b>supply</b> board itself has a number of interfaces which provide a huge 
+		variability of applications. Besides that it's functionality can be expanded using 
+		abitrary number of <b>extension boards</b>. The following interfaces are available 
+		at the moment.
+		<ul>
+			<li>
+				2 full (or 4 half) briges. Each can provide up to 600mA current constantly or 
+				1200mA for a short time. (Extension boards have 4 full (8 half) bridges each.)
+			</li>
+			
+			<li>
+				Bright LED power source. Bright LED could be connected directly to appropriate 
+				pins without current limiting resistors.
+			</li>
+			
+			<li>
+				Trigger button input. This socket could be used for button connection. Board can 
+				read button state and do something in the case of button is pressed.
+			</li>
+			
+			<li>
+				I2C master bus. Using it it is possible to control standard I2C devices like 
+				accelerometers, magnetometers, humidity sensors, EEPROM chips and so on.
+			</li>
+			
+			<li>
+				I2C slave bus port. The board is equipt with I2C slave bus port. It could be attached to 
+				another I2C bus and get commands through it.
+			</li>
+			
+			<li>
+				Constant non controllable 3.3V step down converter which powers internal on board logic and 
+				could also be used for powering external devices.
+			</li>
+			
+			<li>
+				Programmable step down voltage converter. It could be used to make any voltage lower then 
+				supply voltage. Available current range is 1650mA. Greater current is also available but 
+				in this case current limiting functionality should be turned off.
+			</li>
+			
+			<li>
+				Programmable step up voltage converter. It is capable to boost supply voltage to a value up to 20V.
+				Similary to step down converter it's currrent range is limited to 1650mA and greater current is also 
+				available if current limiting os off.
+			</li>
+			
+			<li>
+				PWM driver. Each extension board has 8 PWM outputs. Sockets are designed to be compatible with 
+				analog servo motor socket standard. So system is capable to drive 8 X extension boards number servo 
+				motors.
+			</li>
+			
+			<li>
+				Analog to digital converter. Each extension board is equipt with 8 ADC inputs with range from 0V to 
+				3.3V. Number of analog voltage measuring inputs could be multiplied by using more extension boards.
+			</li>
+		</ul>
+		</i>
+	</ul>
+
+    </div>
+
+</body>
+
+</html>
+

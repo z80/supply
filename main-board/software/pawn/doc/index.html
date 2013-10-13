@@ -6,60 +6,147 @@
 
 <body>
 
-	<div class="main">
+    <div class="main">
 
-			<p align="center"><b>Microcontroller built in functions list!</b></p>
+        <p align="center"><b>Microcontroller built in functions list!</b></p>
             <p><b>trigger()</b>
-                This function returns boolean result. It returns <i>true</i> if trigger socket is shorted to ground and <i>false</i> otherwise.
+                    This function returns boolean result. It returns <i>true</i> if trigger socket is shorted to ground and <i>false</i> otherwise.
             </p>
 
-			<p>setRtc( ms )
-                Sets real time clock time to specified number of milliseconds.
-            </p>
+        <p><b>setRtc( ms )</b>
+                    Sets real time clock time to specified number of milliseconds.
+        </p>
 
-			<p>rtc()</p>
+    <p><b>rtc()</b>
+                Returns current time in milliseconds.
+        </p>
 
-            <p>msleep( ms )</p>
+        <p><b>msleep( ms )</b>
+                Stops script execution for provided number of milliseconds.
+        </p>
 
-            <p>setSerialEn( en, baud )</p>
-            <p>serialSend( data[], cnt )</p>
-            <p>serialReceive( data[], maxCnt )</p>
+        <p><b>setSerialEn( en, baud )</b>
+                Turns serial port on or off. If second argument is provided it represends desired baud rate.
+        </p>
+            
+        <p><b>serialSend( data[], cnt )</b>
+                Sends serial data through serial port. Data array and number of bytes to send should be provided.
+        </p>
+    
+        <p><b>serialReceive( data[], maxCnt )</b>
+        Receives data through serial port. Data array and maximum bytes number should be provided.
+        </p>
 
-            <p>setI2cSlaveEn( en, addr )</p>
+        <p><b>setI2cSlaveEn( en, addr )</b>
+            Turns I2C slave on or off. Optional second argument is desired I2C address.
+        </p>
 
-            <p>setI2cEn( en )</p>
-            <p>i2cIo( addr, dataSend[], cntSend, dataReceive[], cntReceive, timeoutMs )</p>
+        <p><b>setI2cEn( en )</b>
+            Turns on oar off I2C master device.
+        </p>
+        
+        
+            <p><b>i2cIo( addr, dataSend[], cntSend, dataReceive[], cntReceive, timeoutMs )</b>
+            Data exchange through I2C master. Destination address should be provided as <i>addr</i>, 
+            dataSend - array of data to be sent, <i>cntSend</i> - bytes number to sent, <i>dataReseive</i> - array 
+            to receive data to, <i>cntReceive</i> - maximum number of bytes to receive, <i>timeoutMs</i> - timeout 
+            in milliseconds.
+        </p>
 
-            <p>setWakeup( en )</p>
+            <p><b>setWakeup( en )</b>
+            Set <i>wakeup</i> pin value to either logical HIGH or LOW. To wakeup addon boards from 
+            hybernation transfer from LOW to HIGH should happen.
+        </p>
 
-            <p>usbWrite( stri[] )</p>
+        <p><b>busbWrite( stri[] )</b>
+            Write text string to USB.
+        </p>
 
-            <p>io( at )</p>
-            <p>setIo( at, val )</p>
+        <p><b>io( at )</b>
+            Returns IO array value at specifued with function argument position.
+        </p>
+        
+        <p><b>setIo( at, val )</b>
+            Sets IO array at specified position to value provided.
+        </p>
 
-            <p>setLed( mask )</p>
-            <p>setMoto( mask )</p>
+        <p><b>setLed( mask )</b>
+            Turns LEDs on or off depending on <i>mask</i> provided. Bit 0 
+            corresponds to the first LED, bit 1 - to the second one.
+        </p>
+        
+        <p><b>setMoto( mask )</b>
+            Turns motor controller channels on or off according to <i>mask</i> provided 
+            similarly to <i>setLed( mask)</i> command.
+        </p>
 
-            <p>convSetBuck( mv )</p>
-            <p>convSetBoost( mv )</p>
-            <p>convSetMinBoostVolt( mv )</p>
-            <p>convSetMaxBoostFill( percentOverTen )</p>
-            <p>convSetBoostCurr( ma )</p>
-            <p>convSetBuckCurr( ma )</p>
-            <p>convSetBuckGain( percentOverTen )</p>
-            <p>convSetBoostGain( percentOverTen )</p>
+        <p><b>convSetBuck( mv )</b>
+            Set buck voltage converter output voltage value in millivolts.
+        </p>
+        
+        <p><b>convSetBoost( mv )</b>
+            Set boost voltage converter output value in millivolts.
+        </p>
+        
+        <p><b>convSetMinBoostVolt( mv )</b>
+            Set minimum valur of boost voltage converter input. If input goes below this limit boost convertion 
+            decreases output.
+        </p>
+        
+        <p><b>convSetMaxBoostFill( percentOverTen )</b>
+            Set PWM maximum fill for boost converter in %/10. By default it is 70%, e.i. 700. For regular applications 
+            there is no need in changing this parameter. Do it only if you do know what you do it for.
+        </p>
+        
+        <p><b>convSetBoostCurr( ma )</b>
+            Set input curtent limit for boost converter in millivolts. If current consumption is close to this limit 
+            converter decreases its output voltage value.
+        </p>
+        
+        <p><b>convSetBuckCurr( ma )</b>
+            Set input current limit for buck converter in millivolts. If input current value is close to this 
+            value converter decreases output voltage.
+        </p>
+        
+        <p><b>convSetBuckGain( percentOverTen )</b>
+            Set buck  converter gain value in percents over 10. Default value for buck coverter is 10%, e.i. 100. If load 
+            current isn't very high output voltage could be not very precise. In this case it might be useful to set smaller 
+            gain value.
+        </p>
+        
+        <p><b>convSetBoostGain( percentOverTen )</b>
+            Set boost converter gain value in percents over 10. It is similar to <i>convSetBuckGain( percentOverTen )</i>. 
+            If load isn't very big voltage set precission could be not very big. And in order to increase output voltage precission 
+            it might be useful to set smaller gain value.
+        </p>
 
-            <p>adcTemp()</p>
-            <p>adcBatteryVolt()</p>
-            <p>adcBuckVolt()</p>
-            <p>adcSolarVolt()</p>
-            <p>adcBuckCurr()</p>
-            <p>adcBoostCurr()</p>
+        <p><b>adcTemp()</b>
+            Returns temperature sensor output in Celsius over 10.
+        </p>
+        
+        <p><b>adcBatteryVolt()</b>
+            Returns input voltage  value in millivolts.
+        </p>
+        
+        <p><b>adcBuckVolt()</b>
+            Returns measured buck voltage converter output in millivolts. It might be useful to compare 
+            this value to setpoint set with <i>convSetBuck( mv )</i>.
+        </p>
+        
+        
+        <p><b>adcSolarVolt()</b>
+            Returns boost converter input voltage in millivolts.
+        </p>
+        
+        <p><b>adcBuckCurr()</b>
+            Returs buck voltage converter input current in millivolts.
+        </p>
+        
+        <p><b>adcBoostCurr()</b>
+            Returns boost voltage converter input current in millivolts.
+        </p>
 
-		dasfsdfsdfs
-
-		dsdasd
-	</div>
+    </div>
 
 </body>
 
