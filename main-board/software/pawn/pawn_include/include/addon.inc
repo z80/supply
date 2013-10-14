@@ -65,10 +65,10 @@ addSetPwm( index, mask, percentOver100 )
     new wr[6];
     wr[0] = CMD_SET_PWM;
     wr[1] = mask
-    wr[1] = (percentOver100 / 16777216) & 0xFF;
-    wr[2] = (percentOver100 / 65536) & 0xFF;
-    wr[3] = (percentOver100 / 256) & 0xFF;
-    wr[4] = percentOver100 & 0xFF;
+    wr[2] = (percentOver100 / 16777216) & 0xFF;
+    wr[3] = (percentOver100 / 65536) & 0xFF;
+    wr[4] = (percentOver100 / 256) & 0xFF;
+    wr[5] = percentOver100 & 0xFF;
     res = i2cIo( addr, wr, 6, wr, 0, BASE_TIMEOUT );
     return res;
 }
