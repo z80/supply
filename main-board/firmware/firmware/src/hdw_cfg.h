@@ -104,6 +104,7 @@
 #define TRIGGER_PORT  GPIOB
 #define TRIGGER_PAD   15
 
+
 // *****************************************************************
 //                        Serial parameters.
 // *****************************************************************
@@ -140,6 +141,8 @@
 
 
 #define FIRMWARE_VERSION         1
+
+#define PAWN_START_DELAY         3
 
 #endif
 

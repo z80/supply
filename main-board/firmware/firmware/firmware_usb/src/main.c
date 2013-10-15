@@ -2,6 +2,7 @@
 #include "ch.h"
 #include "hal.h"
 
+#include "hdw_cfg.h"
 #include "dfu_ctrl.h"
 #include "led_ctrl.h"
 #include "light_ctrl.h"
@@ -32,6 +33,23 @@ int main(void)
 
     pawnInit();
     initUsb();
+
+    // Informative countdown before running machine.
+    int i;
+    for ( i=0; i<PAWN_START_DELAY; i++ )
+    {
+        setLed( 3 );
+        chThdSleepMilliseconds( 250 );
+
+        setLed( 2 );
+        chThdSleepMilliseconds( 250 );
+
+        setLed( 1 );
+        chThdSleepMilliseconds( 250 );
+
+        setLed( 0 );
+        chThdSleepMilliseconds( 250 );
+    }
 
     pawnRun();
     while ( 1 )

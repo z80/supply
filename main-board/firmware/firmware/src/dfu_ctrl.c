@@ -21,7 +21,7 @@ void checkDfu( void )
 	trigger();
 	// Little delay afterwards. Otherwise pad value is measured to be zero.
 	// And it causes always DFU mode.
-	chThdSleepMilliseconds( 500 );
+	chThdSleepMilliseconds( 100 );
 	// Check if it is pulled down.
 	if ( !trigger() )
 		// If not pulled down no need to try DFU.
