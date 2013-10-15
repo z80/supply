@@ -18,5 +18,9 @@ void     pawnStop( void );
 int      pawnResult( void );
 int      pawnError( void );
 
+// This functio is run only at main() and only to check whether
+// it should run Pawn or not.
+uint8_t  pawnDontRun( void );
+
 #endif
 

@@ -51,7 +51,8 @@ int main(void)
         chThdSleepMilliseconds( 250 );
     }
 
-    pawnRun();
+    if ( !pawnDontRun() )
+        pawnRun();
     while ( 1 )
     {
         processShell();

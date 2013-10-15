@@ -11,7 +11,8 @@
 typedef struct
 {
     AMX amx;
-    char isRunning;
+    uint8_t isRunning;
+    uint8_t dontRun;
     int result, error;
     uint32_t    memblock[ PAWN_MEM_SIZE ];
     uint8_t     ioblock[ PAWN_IO_SIZE ];
@@ -152,6 +153,7 @@ static BinarySemaphore semaphore;
 
 void pawnInit( void )
 {
+	g_pawn.dontRun = 0;
     // Initialize mailbox.
     chBSemInit( &semaphore, TRUE );
     // Creating thread.
@@ -226,7 +228,7 @@ void pawnRun( void )
 uint8_t pawnIsRunning( void )
 {
     chSysLock();
-        char res = g_pawn.isRunning;
+        uint8_t res = g_pawn.isRunning;
     chSysUnlock();
     return res;
 }
@@ -236,6 +238,7 @@ void pawnStop( void )
     chSysLock();
         amx_SetDebugHook( &(g_pawn.amx), aux_Monitor );
     chSysUnlock();
+    g_pawn.dontRun = 1;
 }
 
 int pawnResult( void )
@@ -246,6 +249,11 @@ int pawnResult( void )
 int pawnError( void )
 {
     return g_pawn.error;
+}
+
+uint8_t  pawnDontRun( void )
+{
+	return g_pawn.dontRun;
 }
 
 
