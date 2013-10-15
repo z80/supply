@@ -21,12 +21,19 @@ waitTrigger()
 main()
 {
     new led = 0;
+    waitTrigger();
     setI2cEn( 1 );
+    addSetPwmPeriod( 0, 20000 );
+
     for ( ;; )
     {
         waitTrigger();
-        addSetLed( 0, led );
-        led = ( led + 1 ) % 4;
+        //addSetLed( 0, led );
+        addSetPwm( 0, 255, 500 );
+        //led = ( led + 1 ) % 4;
+
+        waitTrigger();
+        addSetPwm( 0, 255, 1000 );
     }
 
     /*
