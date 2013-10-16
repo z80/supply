@@ -20,7 +20,7 @@ target_link_libraries( ${LIB_NAME}
                                    ${PYTHON_LIBRARIES}
                                    i2cctrl )
 SET_TARGET_PROPERTIES( ${LIB_NAME} PROPERTIES PREFIX "" )
-install( TARGETS ${LIB_NAME} DESTINATION "./" )
+install( TARGETS ${LIB_NAME} DESTINATION "./python" )
 
 
 
