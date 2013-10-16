@@ -1,5 +1,6 @@
 
 import sys
+from time import sleep
 from supplyctrlusb import *
 
 class A:
@@ -17,17 +18,14 @@ class A:
     	res = self.io.setIo( 0, arg )
 	return res
 
-    def setByArgv( self, argv ):
-        if ( len( argv ) > 1 ):
-	    val = int( argv[1] )
-	    res = self.setPwm( val )
-	    print "Result is: " + str( res )
-	else:
-	    print "ERROR: Not valid command line."
-
-#print "\n".join( [sys.argv] )
 
 a = A()
-a.setByArgv( sys.argv )
+t = 0.1
+
+for k in range( 5 ):
+    for i in range( 50, 200, 10 ):
+        a.setPwm( i )
+        sleep( t )
+
 
 
