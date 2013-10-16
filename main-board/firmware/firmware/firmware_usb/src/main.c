@@ -34,21 +34,17 @@ int main(void)
     pawnInit();
     initUsb();
 
+    // Call it here once to be able to communicate.
     // Informative countdown before running machine.
     int i;
-    for ( i=0; i<PAWN_START_DELAY; i++ )
+    for ( i=0; i<PAWN_START_DELAY; i+=PAWN_START_STEP )
     {
         setLed( 3 );
-        chThdSleepMilliseconds( 250 );
-
-        setLed( 2 );
-        chThdSleepMilliseconds( 250 );
-
-        setLed( 1 );
-        chThdSleepMilliseconds( 250 );
+        processShell();
+        chThdSleepMilliseconds( PAWN_START_STEP/2 );
 
         setLed( 0 );
-        chThdSleepMilliseconds( 250 );
+        chThdSleepMilliseconds( PAWN_START_STEP/2 );
     }
 
     if ( !pawnDontRun() )
