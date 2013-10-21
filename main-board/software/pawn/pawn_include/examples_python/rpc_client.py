@@ -45,8 +45,8 @@ class Application(Frame):
         Frame.__init__(self, master)
         self.pack()
         self.createWidgets()
-        self.proxy = xmlrpclib.ServerProxy( "http://10.8.0.3:8765/" )
-        print "proxy = {0}".format( self.proxy )
+        self.proxy = xmlrpclib.ServerProxy( "http://localhost:8765/" )
+        print "proxy = ", self.proxy
 
 
 root = Tk()
