@@ -75,12 +75,52 @@ addSetPwm( index, mask, percentOver100 )
 
 addInput( index )
 {
-    return 0;
+    new addr = BASE_ADDR + index;
+    new res;
+    new wr[2];
+    wr[0] = CMD_INPUT;
+    wr[1] = 0
+    new rd[4]
+    res = i2cIo( addr, wr, 2, wr, 0, BASE_TIMEOUT );
+    if ( res > 0 )
+        return -res
+    new counter = BASE_TIMEOUT
+    for ( ;; )
+    {
+        res = i2cIo( addr, wr, 0, rd, 4, BASE_TIMEOUT );
+        if ( res > 0 )
+            return -res
+        if ( rd[0] == CMD_INPUT )
+            return rd[1]
+        counter -= 1
+        if ( counter <= 0 )
+            return -127
+    }
 }
 
 addAdc( index, adcIndex )
 {
-    return 0;
+    new addr = BASE_ADDR + index;
+    new res;
+    new wr[2];
+    wr[0] = CMD_ADC;
+    wr[1] = adcIndex
+    new rd[4]
+    res = i2cIo( addr, wr, 2, wr, 0, BASE_TIMEOUT );
+    if ( res > 0 )
+        return -res
+    new counter = BASE_TIMEOUT
+    for ( ;; )
+    {
+        res = i2cIo( addr, wr, 0, rd, 4, BASE_TIMEOUT );
+        if ( res > 0 )
+            return -res
+        if ( rd[0] == CMD_ADC )
+            return rd[1] + rd[2] * 256
+        counter -= 1
+        if ( counter <= 0 )
+            return -127
+    }
 }
 
 addSleep( index )

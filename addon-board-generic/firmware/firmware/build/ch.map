@@ -1539,7 +1539,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_info    0x00011dea      0x504 build/obj/pwr_ctrl.o
  .debug_info    0x000122ee       0xbc build/obj/main.o
 
-.debug_line     0x00000000     0x7d0e
+.debug_line     0x00000000     0x7d0d
  .debug_line    0x00000000      0x149 build/obj/crt0.o
  .debug_line    0x00000149       0x63 build/obj/vectors.o
  .debug_line    0x000001ac       0x58 build/obj/chcore.o
@@ -1604,11 +1604,11 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_line    0x00006bec      0x1dd build/obj/syscalls.o
  .debug_line    0x00006dc9      0x20f build/obj/595_ctrl.o
  .debug_line    0x00006fd8      0x1dc build/obj/165_ctrl.o
- .debug_line    0x000071b4      0x341 build/obj/i2c_ctrl.o
- .debug_line    0x000074f5      0x2da build/obj/adc_ctrl.o
- .debug_line    0x000077cf      0x23a build/obj/pwm_ctrl.o
- .debug_line    0x00007a09      0x201 build/obj/pwr_ctrl.o
- .debug_line    0x00007c0a      0x104 build/obj/main.o
+ .debug_line    0x000071b4      0x340 build/obj/i2c_ctrl.o
+ .debug_line    0x000074f4      0x2da build/obj/adc_ctrl.o
+ .debug_line    0x000077ce      0x23a build/obj/pwm_ctrl.o
+ .debug_line    0x00007a08      0x201 build/obj/pwr_ctrl.o
+ .debug_line    0x00007c09      0x104 build/obj/main.o
 
 .debug_loc      0x00000000     0x57f1
  .debug_loc     0x00000000       0x92 build/obj/crt0.o
