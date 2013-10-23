@@ -3,13 +3,14 @@
 import xmlrpclib
 from Tkinter import *
 from time import sleep
-#from supplyctrlusb import *
+from supplyctrlusb import *
 
-#proxy = xmlrpclib.ServerProxy( "http://localhost:8000/" )
-#print "3 is even: %s" % str(proxy.is_even(3))
-#print "100 is even: %s" % str(proxy.is_even(100))
-
-
+# Data obtained with pages count 580
+# 16 32 3 255 <183> 254 <122 0   63>  255 <183> 254 51 16 32 3 0 0 0 0 0 0 0 0 0 0 0 8 37 15 232 16 0 0 0 0 0 0 0 0 16 0 0 0 0 0 0 0 0 0 0 28 133 101 101 0 160 0 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+# Data obtained with pages count 581
+# 16 32 3 255 <151> 254 <138 255 201> 255 <151> 254 51 16 32 3 0 0 0 0 0 0 0 0 0 0 0 8 37 15 232 16 0 0 0 0 0 0 0 0 16 0 0 0 0 0 0 0 0 0 0 28 133 101 101 0 160 0 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+# After zerowing attempt.
+# 16 32 3 255 124 254 35 255 189 255 124 254 51 16 32 3 0 0 0 0 0 0 0 0 0 0 0 8 37 15 232 16 
 
 class Application(Frame):
     
@@ -24,10 +25,13 @@ class Application(Frame):
         io.setIo( 2, devAddr )
         io.setIo( 3, cnt )
         # Start reading data
+        pp = io.io( 0 )
+        print "pp = " + str( pp )
         io.setIo( 0, 1 )
         # Waiting for completion
         for t in range( self.TRIES ):
             finished = io.io( 0 )
+            print "finished = " + str( finished)
             if ( finished == 0 ):
                 res = io.io( 1 )
                 print "res = " + str( res )
@@ -37,17 +41,17 @@ class Application(Frame):
                 for i in range(cnt):
                     v = io.io( 2+i )
                     d.append( v )
-                print "data", data
+                print "data", d
                 return ( res, d )
-            sleep( self )
+            sleep( self.DELAY )
         print "Read timeout"
             
     def write( self, i2cAddr, devAddr, data ):
-        print "write " + str(i2cAddr) + ", " + str(devAddr) + ", " + str(cnt)
         io = self.io
         io.setIo( 1, i2cAddr )
         io.setIo( 2, devAddr )
         cnt = len( data )
+        print "write " + str(i2cAddr) + ", " + str(devAddr) + ", " + str(cnt)
         io.setIo( 3, cnt )
         for i in range( cnt ):
             io.setIo( 4+i, data[i] )
@@ -56,6 +60,7 @@ class Application(Frame):
         # Waiting for completion
         for t in range( self.TRIES ):
             finished = io.io( 0 )
+            print "finished = " + str( finished)
             if ( finished == 0 ):
                 res = io.io( 1 )
                 print "res = " + str( res )
@@ -75,10 +80,10 @@ class Application(Frame):
         print "bytesCnt = " + str( cnt )
         
         # Return before real device interaction.
-        return
+        #~ return
         
         for i in range( 0, cnt, self.FRAME ):
-            res, data = self.read( i2cAddr, devAddr, cnt )
+            res, data = self.read( i2cAddr, devAddr+i, self.FRAME )
             if res > 0:
                 print "res = " + str( res )
                 return
@@ -103,24 +108,36 @@ class Application(Frame):
         print "data = ", data
         
         # Return before executing critical changes.
-        return
+        #~ return
 
         for i in range( 0, cnt, self.FRAME ):
             d = []
             for k in range( self.FRAME ):
                 d.append( data[i+k] )
-            res, data = self.write( i2cAddr, devAddr, d )
+            res = self.write( i2cAddr, devAddr+i, d )
             if res > 0:
                 print "res = " + str( res )
                 return
             print "Ready"
+        
+    def toString( self ):
+        stri = self.text.get( 1.0, END )
+        d = stri.split()
+        stri = ""
+        cnt = len( d )
+        print "Characters cnt = " + str( cnt )
+        for i in range( cnt ):
+            ch = chr( int( d[i] ) )
+            print "ch[" + str( i ) + "] = " + str( ch )
+            stri += ch
+        print stri
 
     def createWidgets(self):
         self.lblI2cAddr = Label( self, text='I2C addr:' )
         self.lblI2cAddr.grid( row=0, column=0, rowspan=1, columnspan=1 )
         
         self.i2cAddr = Entry( self )
-        self.i2cAddr.insert( 0, "1010000" )
+        self.i2cAddr.insert( 0, "11110" )
         self.i2cAddr.grid( row=0, column=1, rowspan=1, columnspan=1 )
 
         self.lblDevAddr = Label( self, text='Dev addr:' )
@@ -134,7 +151,7 @@ class Application(Frame):
         self.lblCnt.grid( row=0, column=4, rowspan=1, columnspan=1 )
 
         self.bytesCnt = Entry( self )
-        self.bytesCnt.insert( 0, "8" )
+        self.bytesCnt.insert( 0, "128" )
         self.bytesCnt.grid( row=0, column=5, rowspan=1, columnspan=1 )
 
 
@@ -148,6 +165,10 @@ class Application(Frame):
         
         self.text = Text( self )
         self.text.grid( row=2, column=0, rowspan=5, columnspan=6 )
+    
+        self.toTextBtn = Button( self, text = 'To string' )
+        self.toTextBtn["command"] = self.toString
+        self.toTextBtn.grid( row=8, column = 3 )
         
         
 
@@ -155,7 +176,13 @@ class Application(Frame):
         Frame.__init__(self, master)
         self.pack()
         self.createWidgets()
-        #self.io = Supply()
+        self.io = Supply()
+        pp = self.io.io( 0 )
+        print "initial pp = " + str( pp )
+    
+    #~ for a in range( 24, 127 ):
+        #~ res, d = self.read( a, 0, 4 )
+        #~ print "                                      addr = " + str( a ) + ", res = " + str( res )
 
 
 root = Tk()
