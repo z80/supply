@@ -154,66 +154,14 @@ void processI2c( void )
 
         case I2C_CMD_ADC:
         	uvalue16Out = measureAdc( buffer[1] );
-        	buffer[1] = (uint8_t)(uvalue16Out & 0x00FF);
-        	buffer[2] = (uint8_t)(uvalue16Out >> 8);
-        	buffer[0] = I2C_CMD_ADC;
+        	outBuffer[1] = (uint8_t)(uvalue16Out & 0x00FF);
+        	outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
+        	outBuffer[0] = I2C_CMD_ADC;
         	break;
 
         case I2C_CMD_SLEEP:
         	sleep();
             break;
-
-        /*
-        case I2C_CMD_PAWN_SET_IO:
-            pawnSetIo( buffer[1], buffer[2] );
-            outBuffer[0] = I2C_CMD_PAWN_SET_IO;
-            break;
-        case I2C_CMD_PAWN_IO:
-        	uvalue16Out = (uint16_t)buffer[1] + ( ((uint16_t)buffer[2]) << 8 );
-        	outBuffer[1] = pawnIo( uvalue16Out );
-        	outBuffer[0] = I2C_CMD_PAWN_IO;
-        	break;
-        case I2C_CMD_PAWN_SET_MEM:
-        	uvalue16Out = (uint16_t)buffer[1] + ( ((uint16_t)buffer[2]) << 8 );
-        	pawnSetMem( uvalue16Out, buffer[3] );
-        	outBuffer[0] = I2C_CMD_PAWN_SET_MEM;
-        	break;
-        case I2C_CMD_PAWN_WRITE_FLASH:
-        	puvalue16In = (uint16_t *)(&buffer[1]);
-        	uvalue16Out = pawnWriteFlash( puvalue16In[0] );
-        	outBuffer[1] = (uint8_t)(uvalue16Out & 0xFF);
-        	outBuffer[2] = (uint8_t)(uvalue16Out >> 8);
-        	outBuffer[0] = I2C_CMD_PAWN_WRITE_FLASH;
-        	break;
-        case I2C_CMD_PAWN_RUN:
-        	pawnRun();
-        	outBuffer[0] = I2C_CMD_PAWN_RUN;
-        	break;
-        case I2C_CMD_PAWN_IS_RUNNING:
-        	uvalue8Out = pawnIsRunning();
-        	outBuffer[1] = uvalue8Out;
-        	outBuffer[0] = I2C_CMD_PAWN_IS_RUNNING;
-        	break;
-        case I2C_CMD_PAWN_STOP:
-        	pawnStop();
-        	outBuffer[0] = I2C_CMD_PAWN_STOP;
-        	break;
-        case I2C_CMD_PAWN_RESULT:
-        	i = pawnResult();
-        	outBuffer[1] = (uint8_t)( i & 0xFF );
-        	outBuffer[2] = (uint8_t)( (i >> 8) & 0xFF );
-        	outBuffer[3] = (uint8_t)( (i >> 16) & 0xFF );
-        	outBuffer[4] = (uint8_t)( (i >> 24) & 0xFF );
-        	outBuffer[0] = I2C_CMD_PAWN_RESULT;
-        case I2C_CMD_PAWN_ERROR:
-        	i = pawnError();
-        	outBuffer[1] = (uint8_t)( i & 0xFF );
-        	outBuffer[2] = (uint8_t)( (i >> 8) & 0xFF );
-        	outBuffer[3] = (uint8_t)( (i >> 16) & 0xFF );
-        	outBuffer[4] = (uint8_t)( (i >> 24) & 0xFF );
-        	outBuffer[0] = I2C_CMD_PAWN_ERROR;
-            break;
-        */
         }
     }
     // return 0;
