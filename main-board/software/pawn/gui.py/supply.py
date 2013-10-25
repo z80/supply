@@ -40,8 +40,8 @@ class Gui( Frame ):
         self.flashBtn = Button( self, text="Load script", command=self.flashFirmware )
         self.flashBtn.grid( row=0, column=1, rowspan=1, columnspan=1, sticky=W+N )
 
-        self.dfuBtn = Button( self, text="Firmware upgrade", command=self.dfuFirmware )
-        self.dfuBtn.grid( row=0, column=2, rowspan=1, columnspan=1, sticky=W+N )
+        #~ self.dfuBtn = Button( self, text="Firmware upgrade", command=self.dfuFirmware )
+        #~ self.dfuBtn.grid( row=0, column=2, rowspan=1, columnspan=1, sticky=W+N )
 
         self.helpBtn = Button( self, text="Help", command=self.openHelp )
         self.helpBtn.grid( row=0, column=3, rowspan=1, columnspan=1, sticky=W+N )
@@ -116,7 +116,7 @@ class Gui( Frame ):
 def main():
     root = Tk()
     ex = Gui( root )
-    root.geometry( "350x300+300+300" )
+    root.geometry( "1024x600+300+300" )
     root.mainloop()  
 
 

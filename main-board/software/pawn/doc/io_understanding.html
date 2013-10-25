@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <h3>IO understanding</h3>
+        
+        <p>
+                Understanding of board to computer data exchange.
+        </p>
+        <p>
+            Data exchange is made very similarly to one used for interaction with various chips. A chip usually have a set of registers. Write to each register is recognized by a chip and implements a particular reaction on this event on its side. Some registers are readable and a chip user is capable to read chip state from its registers.
+        </p>
+        <p>
+            For the board situation is very similar. There is an array of bytes. Both the board and a computer can write elements of this array and read from it. It is implemented as a couple of functions: 
+        </p>
+        <pre>
+            void setId( index, value ), 
+            int io( index ).
+        </pre>
+        <p>
+            These functions present on both sides: in board script and in a computer. So interaction is identical from both sides.
+        </p>
+        <p>
+            There is no difference if the board is attached to a regular computer through USB or to Raspberry Pi through its extension socket. There is always exactly two interaction functions and they work in one and the same way ragardless of what communication interface is used.
+        </p>
+
+        <p>
+            Example, LED blinking.
+        </p>
+        <pre>
+Computer script in Python:
+        # Necessary modules import.
+        import sys
+        from time import sleep
+        from supplyctrli2c import *
+        
+        # Interaction object creation
+        io = Supply()
+        # Infinite loop with delays.
+        while 1:
+                # Set 0-th IO array element to be 0
+                io.setIo( 0, 0 )
+                # Some delay
+                sleep( 0.1 )
+
+                # Set 0-th IO array element to be 3
+                io.setIo( 0, 3 )
+                sleep( 0.1 )
+        </pre>
+        
+        <p>
+            Board script:
+        </p>
+        <pre>
+        // Including header file with function descriptions.
+        #include <supply>
+        main()
+        {
+                // Infinite loop
+                for( ;; )
+                {
+                        // Obtain value of 0-th IO array element.
+                        new v = io( 0 )
+                        // Set LEDs using that value.
+                        setLed( v )
+                }
+        }
+        </pre>
+    
+        <p>
+            Example, board to computer ADC and digital input readback.
+        </p>
+        <p>
+            Computer script in Python:
+        </p>
+        <pre>
+        #Modules import
+        import sys
+        from time import sleep
+        from supplyctrlusb import *
+
+        # Interaction object creation.
+        io = Supply()
+
+        while 1:
+                # Digital input port value
+                inp = io.io( 0 )
+                # ADC 0 channel value. It is whider then 8 bit so it 
+                # is combined from two neighbor bytes.
+                adc = io.io( 1 ) + io.io( 2 ) * 255
+                # Text output.
+                print "inp = " + str(inp) + ", adc = ", str(adc)
+        </pre>
+
+        <p>
+            Board script:
+        </p>
+        <pre>
+        // Including main board function definitions.
+        #include <supply>
+        // Here addon board is used. Including its functions definitions header.
+        // All addon board functiond have "add" prefix. Example: addAdc( boardIndex, adcIndex), 
+        // addInput( boardIndex ) and so on.
+        #include <addon>
+        main()
+        {
+            for ( ;; )
+            {
+                // Get value at digital input from addon board number 0.
+                new val = addInput( 0 )
+                // Set IO array 0-th element with this value.
+                setIo( 0, val )
+
+                // Get from addon board number 0 ADC channel 0 value.
+                val = addAdc( 0, 0 )
+                // Set 1-st IO array element with lower 8 bit of ADC value obtained.
+                setIo( 1, val & 255 )
+                // Set 2-d IO array element with higher 8 bit of ADC value.
+                setIo( 2, val >> 8 )
+                // Delay of 500 milliseconds.
+                msleep( 500 )
+            }
+        }
+        </pre>
+        
+    </div>
+
+</body>
+
+</html>
+

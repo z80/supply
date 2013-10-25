@@ -7,201 +7,201 @@
 <body>
 
     <div class="main">
-	<h3>Supply board</h3>
-	
-	<p>
-		This is a multipurpose board for large variety of applications from 
-		being a power supply with variable voltage and current to orientation in 
-		space and robot controller. Key features are the following.
-		<ul>
-			<li>
-				The first and primary feature is the board is scriptable. One may write a script file, 
-				compile and execute wihtin the board. It's behavior is completely determined by 
-				that script.
-			</li>
-			
-			<li>
-				It can be coupled with <b>Raspberry Pi</b> computer provide it with power and receive 
-				command from it.
-			</li>
-			
-			<li>
-				Board has powerful step up and step down voltage converters with input current control. 
-				All converter parameters are configurable from internal script. It allows using it in such 
-				applications as smart battery charging. 
-			</li>
-			
-			<li>
-				It is also possible to implement voltage turn on/off according to a schedule specified.
-			</li>
-			
-			<li>
-				It provides an ability to collect low power energy (like from solar pannel of acceptable size)
-				save it in a battery and power <b>Raspberry Pi</b>. E.i. make it not dependable on power 
-				network and on any external power sources. As it can turn it only when needed it doesn't cause 
-				a battery to discharge. It gives and ability to run <b>Raspberry Pi</b> anywhere where there is 
-				a sun light at least for several hours per day.
-			</li>
-			
-			<li>
-				The board has a set of measuring devices:
-				<ul>
-					<li>
-						Accelerometer.
-					</li>
-					<li>
-						Compass
-					</li>
-					<li>
-						Digital thermometer.
-					</li>
-					<li>
-						Analog thermometer.
-					</li>
-				</ul>
-				It allows using the board in such applications as spatial orientation and conditions logging.
-			</li>
-			
-			<li>
-				The board is equipt with motor controller (2 full/4 half brigres) for DC motor control. This allows 
-				using it for example for robot movement control.
-			</li>
-			
-			<p>
-				<img src="images/supply_desc.png"></img>
-			</p>
-			
-			<li>
-				The follwing communicational interfaces are available.
-				<ul>
-					<li>
-						USB
-					</li>
-					<li>
-						I2C master bus
-					</li>
-					<li>
-						I2C slave device
-					</li>
-					<li>
-						Serial port
-					</li>
-					<li>
-						Raspberry Pi power and communication port.
-					</li>
-					<li>
-						Addon board connection port.
-					</li>
-				</ul>
-				These allows connections to a computer, to serial devices and to I2C devices simultateously. 
-				<b>Raspberry Pi</b> computer and <b>addon boards</b> could be stacked on the board.
-				<p>
-					<img src="images/supply_on_pi.png"></img>
-				</p>
-			</li>
-			
-			<li>
-				Presense of Raspberry Pi power and communication port allows.
-				<ul>
-					<li>
-						Turn Raspberry Pi computer on and off according to a schedule providing mean power 
-						consumption close to zero.
-					</li>
-					<li>
-						Provides the system full computational power of regular computer allowing any applications 
-						up to video processing and WEB applications support.
-					</li>
-					<li>
-						Control connected hardware directly from Raspberry Pi.
-					</li>
-				</ul>
-			</li>
-			
-			
-			
-		</ul>
-	</p>
-	
-	<p>
-		<img src="images/supply.png"></img>
-	</p>
-	
-	<p>Board functionality can be extended by using addon boards. These addon boards are stacked on the main board</p>
-	<p>
-		<img src="images/addon_on_supply_on_pi.png"></img>
-		<img src="images/2_addons_on_supply_on_pi.png"></img>
-	</p>
-	
-	<h3>Addon board</h3>
-	
-	<p>
-		For multiplying finctionality of main supply board there is an addon board. At the moment there is 
-		only one type of addon boards.
-	</p>
-	
-	<p>
-		<img src="images/addon_desc.png"></img>
-	</p>
-	
-	<p>
-		Addon boards are stacked on the main board. By meand of this it's functionality can be 
-		multiplied.
-	</p>
-	
-	<p>
-		Addon board has the following devices.
-		<ul>
-			<li>
-				Servo/PWM controller with 8 independent outputs. Sockets are compatible with 
-				servo standard socket.
-			</li>
-			<li>
-				DC motor control port with 4 full (or 8 half) bridges. This allows 4 bidirectional DC motors or 
-				up to 8 unidirectional per each addon board connected.
-			</li>
-			<li>
-				8 analog inputs with range from 0V to 3.3V. Measurement precission is 12 bits.
-			</li>
-			<li>
-				8 digital input pins. Application example is button press detection.
-			</li>
-		</ul>
-	</p>
-	
-	<p>
-		Important notice is that all boards (main one and addon) have LEDs for debug purposes. This makes it 
-		convenient to debug internal script and communication with computer.
-	</p>
-	
-	<h3>
-		Computer to board communication.
-	</h3>
-	<p>
-		There are several ways to communicate with the board.
-	</p>
-	<ul>
-		<li>
-			C++ library
-		</li>
-		<li>
-			Python USB communication module.
-		</li>
-		<li>
-			Python I2C communication module. Specially for the case of stacked Raspberry PI computer.
-		</li>
-	</ul>
+    <h3>Supply board</h3>
+    
+    <p>
+        This is a multipurpose board for large variety of applications from 
+        being a power supply with variable voltage and current to orientation in 
+        space and robot controller. Key features are the following.
+        <ul>
+            <li>
+                The first and primary feature is the board is scriptable. One may write a script file, 
+                compile and execute wihtin the board. It's behavior is completely determined by 
+                that script.
+            </li>
+            
+            <li>
+                It can be coupled with <b>Raspberry Pi</b> computer provide it with power and receive 
+                command from it.
+            </li>
+            
+            <li>
+                Board has powerful step up and step down voltage converters with input current control. 
+                All converter parameters are configurable from internal script. It allows using it in such 
+                applications as smart battery charging. 
+            </li>
+            
+            <li>
+                It is also possible to implement voltage turn on/off according to a schedule specified.
+            </li>
+            
+            <li>
+                It provides an ability to collect low power energy (like from solar pannel of acceptable size)
+                save it in a battery and power <b>Raspberry Pi</b>. E.i. make it not dependable on power 
+                network and on any external power sources. As it can turn it only when needed it doesn't cause 
+                a battery to discharge. It gives and ability to run <b>Raspberry Pi</b> anywhere where there is 
+                a sun light at least for several hours per day.
+            </li>
+            
+            <li>
+                The board has a set of measuring devices:
+                <ul>
+                    <li>
+                        Accelerometer.
+                    </li>
+                    <li>
+                        Compass
+                    </li>
+                    <li>
+                        Digital thermometer.
+                    </li>
+                    <li>
+                        Analog thermometer.
+                    </li>
+                </ul>
+                It allows using the board in such applications as spatial orientation and conditions logging.
+            </li>
+            
+            <li>
+                The board is equipt with motor controller (2 full/4 half brigres) for DC motor control. This allows 
+                using it for example for robot movement control.
+            </li>
+            
+            <p>
+                <img src="images/supply_desc.png"></img>
+            </p>
+            
+            <li>
+                The follwing communicational interfaces are available.
+                <ul>
+                    <li>
+                        USB
+                    </li>
+                    <li>
+                        I2C master bus
+                    </li>
+                    <li>
+                        I2C slave device
+                    </li>
+                    <li>
+                        Serial port
+                    </li>
+                    <li>
+                        Raspberry Pi power and communication port.
+                    </li>
+                    <li>
+                        Addon board connection port.
+                    </li>
+                </ul>
+                These allows connections to a computer, to serial devices and to I2C devices simultateously. 
+                <b>Raspberry Pi</b> computer and <b>addon boards</b> could be stacked on the board.
+                <p>
+                    <img src="images/supply_on_pi.png"></img>
+                </p>
+            </li>
+            
+            <li>
+                Presense of Raspberry Pi power and communication port allows.
+                <ul>
+                    <li>
+                        Turn Raspberry Pi computer on and off according to a schedule providing mean power 
+                        consumption close to zero.
+                    </li>
+                    <li>
+                        Provides the system full computational power of regular computer allowing any applications 
+                        up to video processing and WEB applications support.
+                    </li>
+                    <li>
+                        Control connected hardware directly from Raspberry Pi.
+                    </li>
+                </ul>
+            </li>
+            
+            
+            
+        </ul>
+    </p>
+    
+    <p>
+        <img src="images/supply.png"></img>
+    </p>
+    
+    <p>Board functionality can be extended by using addon boards. These addon boards are stacked on the main board</p>
+    <p>
+        <img src="images/addon_on_supply_on_pi.png"></img>
+        <img src="images/2_addons_on_supply_on_pi.png"></img>
+    </p>
+    
+    <h3>Addon board</h3>
+    
+    <p>
+        For multiplying finctionality of main supply board there is an addon board. At the moment there is 
+        only one type of addon boards.
+    </p>
+    
+    <p>
+        <img src="images/addon_desc.png"></img>
+    </p>
+    
+    <p>
+        Addon boards are stacked on the main board. By meand of this it's functionality can be 
+        multiplied.
+    </p>
+    
+    <p>
+        Addon board has the following devices.
+        <ul>
+            <li>
+                Servo/PWM controller with 8 independent outputs. Sockets are compatible with 
+                servo standard socket.
+            </li>
+            <li>
+                DC motor control port with 4 full (or 8 half) bridges. This allows 4 bidirectional DC motors or 
+                up to 8 unidirectional per each addon board connected.
+            </li>
+            <li>
+                8 analog inputs with range from 0V to 3.3V. Measurement precission is 12 bits.
+            </li>
+            <li>
+                8 digital input pins. Application example is button press detection.
+            </li>
+        </ul>
+    </p>
+    
+    <p>
+        Important notice is that all boards (main one and addon) have LEDs for debug purposes. This makes it 
+        convenient to debug internal script and communication with computer.
+    </p>
+    
+    <h3>
+        Computer to board communication.
+    </h3>
+    <p>
+        There are several ways to communicate with the board.
+    </p>
+    <ul>
+        <li>
+            C++ library
+        </li>
+        <li>
+            Python USB communication module.
+        </li>
+        <li>
+            Python I2C communication module. Specially for the case of stacked Raspberry PI computer.
+        </li>
+    </ul>
 
-	<h3>
-		Board programming with script.
-	</h3>
-	<p>
-		Board is fully programmable. It has built in virtual machine which executes bytecode from internal FLASH 
-		memory. A simple GUI application is provided for compiling script files and uploading them into the board.
-	</p>
-	
-	<p>
-		<img src="images/gui.png"></img>
-	</p>
+    <h3>
+        Board programming with script.
+    </h3>
+    <p>
+        Board is fully programmable. It has built in virtual machine which executes bytecode from internal FLASH 
+        memory. A simple GUI application is provided for compiling script files and uploading them into the board.
+    </p>
+    
+    <p>
+        <img src="images/gui.png"></img>
+    </p>
     </div>
 
 </body>
