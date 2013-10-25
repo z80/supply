@@ -1,5 +1,7 @@
 add_subdirectory( "./pawn" )
-add_subdirectory( "./stmdfu" )
+if ( UNIX )
+    add_subdirectory( "./stmdfu" )
+endif ( UNIX )
 
 
 

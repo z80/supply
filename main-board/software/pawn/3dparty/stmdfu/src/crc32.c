@@ -24,6 +24,10 @@ DfuSe uses a CRC to verify the contents of the DfuSe file.
 
 #define CRCPOLYNOMIAL 0xedb88320
 
+#ifdef WIN32
+    typedef unsigned long u_int32_t;
+#endif
+
 /* crc_tab[] -- this crcTable is being build by chksum_crc32GenTab().
  *		so make sure, you call it before using the other
  *		functions!
