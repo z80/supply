@@ -8,7 +8,7 @@ from SimpleXMLRPCServer import SimpleXMLRPCServer
 #import supplyctrli2c
 import supplyctrlusb
 
-#~ io = supplyctrlusb.Supply()
+io = supplyctrlusb.Supply()
 
 def setMoto( v1, v2, v3, v4 ):
     print "setMoto", v1, v2, v3, v4
@@ -47,11 +47,11 @@ def setCamPos( x, y ):
         y = 255
         
     res = io.setIo( 3, x )
-    if not res:
-        return 1
+    #if not res:
+    #    return 1
     res = io.setIo( 4, y )
-    if ( not res ):
-        return 2
+    #if ( not res ):
+    #    return 2
     io.setIo( 0, 1 )
     return 0
     

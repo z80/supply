@@ -15,7 +15,11 @@ main()
 
         setLed( 0 );
         setMoto( 0 );
-        msleep( 3000 );
+        msleep( 500 );
+
+        setLight( 1 );
+        msleep( 1000 );
+        setLight( 0 );
 
         setMoto( 1 );
         msleep( 500 );
