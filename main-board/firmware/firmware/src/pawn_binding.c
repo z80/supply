@@ -5,6 +5,7 @@
 
 #include "dfu_ctrl.h"
 #include "led_ctrl.h"
+#include "light_ctrl.h"
 #include "moto_ctrl.h"
 #include "conv_ctrl.h"
 #include "serial_ctrl.h"
@@ -151,6 +152,13 @@ cell pawn_setLed( AMX * amx, const cell * params )
     (void)amx;
     setLed( (int)params[1] );
     return 0;
+}
+
+cell pawn_setLight( AMX * amx, const cell * params )
+{
+	(void)amx;
+	setLight( (int)params[1] );
+	return 0;
 }
 
 cell pawn_setMoto( AMX * amx, const cell * params )

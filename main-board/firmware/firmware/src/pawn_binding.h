@@ -32,6 +32,9 @@ cell pawn_usbWrite( AMX * amx, const cell * params );
 // LED control.
 cell pawn_setLed( AMX * amx, const cell * params );
 
+// Light control.
+cell pawn_setLight( AMX * amx, const cell * params );
+
 // Motor control.
 cell pawn_setMoto( AMX * amx, const cell * params );
 

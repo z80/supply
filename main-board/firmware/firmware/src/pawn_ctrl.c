@@ -48,6 +48,7 @@ AMX_NATIVE const g_nativetable[] =
     pawn_setIo, 
 
     pawn_setLed, 
+    pawn_setLight,
     pawn_setMoto, 
     pawn_convSetBuck, 
     pawn_convSetBoost, 
