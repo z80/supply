@@ -24,14 +24,18 @@ main()
     setI2cEn( 1 )
     addSetPwmPeriod( 0, period )
     setIo( 0, 0 )
+    setIo( 1, 0 )
+    setIo( 2, 0 )
+    setIo( 3, 127 )
+    setIo( 4, 127 )
 
     for ( ;; )
     {
-        waitTrigger();
-        convSetBuckCurr( 1500 )
-        convSetBuck( 5000 )
-        msleep( 15000 )
-        setI2cSlaveEn( 1 )
+        //waitTrigger();
+        //convSetBuckCurr( 1500 )
+        //convSetBuck( 5000 )
+        //msleep( 15000 )
+        //setI2cSlaveEn( 1 )
     
         while ( trigger() == 0 )
         {
@@ -60,8 +64,8 @@ main()
                 addSetPwm( 0, 64, servoY )
             }
         }
-        setI2cSlaveEn( 0 )
-        convSetBuck( 0 )
+        //setI2cSlaveEn( 0 )
+        //convSetBuck( 0 )
     }    
 }
 

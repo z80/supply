@@ -25,23 +25,24 @@ native io( at ) = -13;
 native setIo( at, value ) = -14;
 
 native setLed( mask ) = -15;
-native setMoto( mask ) = -16;
+native setLight( en ) = -16;
+native setMoto( mask ) = -17;
 
-native convSetBuck( mv ) = -17;
-native convSetBoost( mv ) = -18;
-native convSetMinBoostVolt( mv ) = -19;
-native convSetMaxBoostFill( percentOverTen ) = -20;
-native convSetBoostCurr( ma ) = -21;
-native convSetBuckCurr( ma ) = -22;
-native convSetBuckGain( percentOverTen ) = -23;
-native convSetBoostGain( percentOverTen ) = -24;
+native convSetBuck( mv ) = -18;
+native convSetBoost( mv ) = -19;
+native convSetMinBoostVolt( mv ) = -20;
+native convSetMaxBoostFill( percentOverTen ) = -21;
+native convSetBoostCurr( ma ) = -22;
+native convSetBuckCurr( ma ) = -23;
+native convSetBuckGain( percentOverTen ) = -24;
+native convSetBoostGain( percentOverTen ) = -25;
 
-native adcTemp() = -25;
-native adcBatteryVolt() = -26;
-native adcBuckVolt() = -27;
-native adcSolarVolt() = -28;
-native adcBuckCurr() = -29;
-native adcBoostCurr() = -30;
+native adcTemp() = -26;
+native adcBatteryVolt() = -27;
+native adcBuckVolt() = -28;
+native adcSolarVolt() = -29;
+native adcBuckCurr() = -30;
+native adcBoostCurr() = -31;
 
 #endif
 
