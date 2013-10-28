@@ -4,7 +4,7 @@
 
 waitTrigger()
 {
-    msleep( 100 );
+    msleep( 2000 );
     while( !trigger() )
     {
         setLed( 1 );
@@ -30,18 +30,18 @@ main()
     setIo( 2, 0 )
     setIo( 3, 127 )
     setIo( 4, 127 )
+    convSetBuckCurr( 3500 )
 
     new led = 0
 
     for ( ;; )
     {
         waitTrigger();
-        convSetBuckCurr( 3500 )
-        convSetBuck( 5000 )
+        convSetBuck( 5300 )
         msleep( 15000 )
         setI2cSlaveEn( 1 )
     
-        while ( trigger() == 0 )
+        while ( !trigger() )
         {
             setLed( led )
             led = led + 1
