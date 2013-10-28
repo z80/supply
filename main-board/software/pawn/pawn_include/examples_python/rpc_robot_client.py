@@ -68,7 +68,7 @@ class Application( Frame ):
         Frame.__init__( self, master )
         self.grid()
         self.createWidgets()
-        self.proxy = xmlrpclib.ServerProxy( "http://localhost:8765/" )
+        self.proxy = xmlrpclib.ServerProxy( "http://192.168.0.196:8765/" )
         print "proxy = ", self.proxy
 
 
