@@ -2,6 +2,24 @@
 #include <supply>
 #include <addon>
 
+waitTrigger()
+{
+    msleep( 100 );
+    while( !trigger() )
+    {
+        setLed( 1 );
+        msleep( 100 );
+        setLed( 2 );
+        msleep( 100 );
+    }
+
+    setLed( 3 );
+    msleep( 1000 );
+    setLed( 0 );
+}
+
+
+
 main()
 {
     new period = 20000
@@ -17,11 +35,11 @@ main()
 
     for ( ;; )
     {
-        //waitTrigger();
-        //convSetBuckCurr( 1500 )
-        //convSetBuck( 5000 )
-        //msleep( 15000 )
-        //setI2cSlaveEn( 1 )
+        waitTrigger();
+        convSetBuckCurr( 3500 )
+        convSetBuck( 5000 )
+        msleep( 15000 )
+        setI2cSlaveEn( 1 )
     
         while ( trigger() == 0 )
         {
@@ -50,8 +68,8 @@ main()
                 addSetPwm( 0, 64, servoY )
             }
         }
-        //setI2cSlaveEn( 0 )
-        //convSetBuck( 0 )
+        setI2cSlaveEn( 0 )
+        convSetBuck( 0 )
     }    
 }
 
