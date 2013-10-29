@@ -1,0 +1,73 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Tue 29 Oct 2013 09:08:04 PM MSK
+
+BeginCmp
+TimeStamp = /526FE9DB;
+Reference = P1;
+ValeurCmp = TST;
+IdModule  = 1PIN_SMD;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE9E8;
+Reference = P2;
+ValeurCmp = TST;
+IdModule  = 1PIN_SMD;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FEC96;
+Reference = P3;
+ValeurCmp = TST;
+IdModule  = 1PIN_SMD;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE87D;
+Reference = Q1;
+ValeurCmp = bc857;
+IdModule  = SOT23EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE85F;
+Reference = Q2;
+ValeurCmp = irlml2244;
+IdModule  = SOT23GDS;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE943;
+Reference = R1;
+ValeurCmp = 10;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE950;
+Reference = R2;
+ValeurCmp = 30;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE88D;
+Reference = R3;
+ValeurCmp = 9;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE86E;
+Reference = R4;
+ValeurCmp = 9;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /526FE893;
+Reference = R5;
+ValeurCmp = 9;
+IdModule  = SM0805;
+EndCmp
+
+EndListe
