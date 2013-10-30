@@ -19,6 +19,7 @@ install( DIRECTORY "./pawn_include/include/"         DESTINATION "include" )
 install( DIRECTORY "./pawn_include/examples/"        DESTINATION "examples" )
 install( DIRECTORY "./pawn_include/examples_python/" DESTINATION "python" )
 install( DIRECTORY "./gui.py/"                       DESTINATION "./" )
+install( DIRECTORY "./doc/"                          DESTINATION "./doc" )
 
 
 
