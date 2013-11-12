@@ -162,15 +162,12 @@ int UsbIo::read( std::string & stri )
 				return res;
 		}
 		len += actual_length;
-        //if ( ( len > 0) && ( stri.at( len-1 ) == '\n' ) )
         if ( ( len > 0 ) && ( stri.find( "<\r\n", 0 ) != std::string::npos ) )
 			break;
         timeout--;
+        // On timeout return what we have for the moment.
         if ( timeout <= 0 )
-        {
-            len = static_cast<int>( TIMEOUT );
             break;
-        }
         msleep( 1 );
 	}
 	stri.resize( len );

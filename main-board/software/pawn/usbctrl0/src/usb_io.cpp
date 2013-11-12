@@ -65,7 +65,7 @@ void UsbIo::PD::clearOutput()
 UsbIo::UsbIo()
 {
     pd = new PD();
-    pd->handle = 0;
+    pd->handle  = 0;
     pd->timeout = PD::TIMEOUT;
     usb_init();
 }
@@ -84,7 +84,7 @@ bool UsbIo::open( const std::string & arg )
                              PD::VENDOR_ID, NULL,
                              PD::PRODUCT_ID, NULL,
                              NULL, NULL, NULL );
-    bool result = (pd->handle != 0);
+    bool result = (pd->handle == 0);
     if ( !result )
     	return false;
 
@@ -137,9 +137,10 @@ int UsbIo::read( std::string & stri )
 	{
 		char * data = const_cast<char *>( stri.data() ) + len;
 		int actual_length = usb_bulk_read( pd->handle, 
-						                   PD::EP_IN, data, stri.size(), 
+						                   PD::EP_IN, data, stri.size() - len, 
 						                   pd->timeout );
-		if ( actual_length >= 0 )
+        // If error reading.
+		if ( actual_length < 0 )
 		{
 			if ( len > 0 )
 			{
@@ -150,15 +151,12 @@ int UsbIo::read( std::string & stri )
 				return actual_length;
 		}
 		len += actual_length;
-        //if ( ( len > 0) && ( stri.at( len-1 ) == '\n' ) )
         if ( ( len > 0 ) && ( stri.find( "<\r\n", 0 ) != std::string::npos ) )
 			break;
         timeout--;
+        // On timeout return what we have for the moment.
         if ( timeout <= 0 )
-        {
-            len = static_cast<int>( TIMEOUT );
             break;
-        }
         msleep( 1 );
 	}
 	stri.resize( len );
