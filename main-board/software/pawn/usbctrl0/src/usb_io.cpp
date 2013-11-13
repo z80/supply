@@ -39,7 +39,7 @@ public:
 
 const int UsbIo::PD::VENDOR_ID  = 0x0483;
 const int UsbIo::PD::PRODUCT_ID = 0x5740;
-const int UsbIo::PD::TIMEOUT    = 500;
+const int UsbIo::PD::TIMEOUT    = 50;
 
 const int UsbIo::PD::EP_OUT = 0x03;
 const int UsbIo::PD::EP_IN  = 0x81;
@@ -59,6 +59,7 @@ void UsbIo::PD::clearOutput()
         actual_length = usb_bulk_read( handle,
                                        EP_IN, (char *)( data ), //static_cast<char *>( data ), 
                                        STRI_MIN_LEN, 1 );
+        char * err = usb_strerror();
    } while ( actual_length > 0 );
 }
 
@@ -84,11 +85,14 @@ bool UsbIo::open( const std::string & arg )
                              PD::VENDOR_ID, NULL,
                              PD::PRODUCT_ID, NULL,
                              NULL, NULL, NULL );
-    bool result = (pd->handle == 0);
+    bool result = (res == 0);
     if ( !result )
     	return false;
 
-    pd->clearOutput();
+    res = usb_set_configuration( pd->handle, 1 );
+    res = usb_claim_interface( pd->handle, 1 );
+
+    //pd->clearOutput();
 	return result;
 }
 
@@ -118,8 +122,10 @@ int UsbIo::write( const std::string & stri )
         actual_length = usb_bulk_write( pd->handle, 
                                         PD::EP_OUT, &(data[cnt]), stri.size(), 
                                         pd->timeout );
-        cnt += actual_length;
-        if ( actual_length >= 0 )
+        char * err = usb_strerror();
+        if ( actual_length > 0 )
+            cnt += actual_length;
+        if ( cnt >= stri.size() )
             break;
         msleep( PD::DELAY_MS );
         attempts++;
@@ -151,7 +157,7 @@ int UsbIo::read( std::string & stri )
 				return actual_length;
 		}
 		len += actual_length;
-        if ( ( len > 0 ) && ( stri.find( "<\r\n", 0 ) != std::string::npos ) )
+        if ( ( len > 0 ) && ( stri.find( ">\r\n", 0 ) != std::string::npos ) )
 			break;
         timeout--;
         // On timeout return what we have for the moment.
