@@ -35,7 +35,7 @@ public:
 
 const int UsbIo::PD::VENDOR_ID  = 0x0483;
 const int UsbIo::PD::PRODUCT_ID = 0x5740;
-const int UsbIo::PD::TIMEOUT    = 50;
+const int UsbIo::PD::TIMEOUT    = 5;
 
 const int UsbIo::PD::EP_OUT = 0x03;
 const int UsbIo::PD::EP_IN  = 0x81;
