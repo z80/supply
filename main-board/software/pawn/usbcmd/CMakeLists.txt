@@ -10,7 +10,11 @@ message( STATUS "SRC = ${src}" )
 message( STATUS "HEADERS = ${headers}" )
 
 add_executable( ${EXEC_NAME} ${src} )
-set( libs usbctrl )
+if ( UNIX )
+    set( libs usbctrl )
+elseif ( WIN32 )
+    set( libs usbctrl0 )
+endif ( UNIX )
 target_link_libraries( ${EXEC_NAME} ${libs} )
 install( TARGETS ${EXEC_NAME} DESTINATION "./bin" )
 

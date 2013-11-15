@@ -68,7 +68,8 @@ bool McuCtrl::flash( const std::string & fileName, std::string & result )
             result = "Write FLASH command didn\'t pass to device\r\n";
             return false;
         }
-
+        // Here some delay is needed to give FLASH an opportunity to finish.
+        this->msleep( 100 );
         // Read back result.
         std::string stri;
         res = readString( stri );
