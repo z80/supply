@@ -29,13 +29,14 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:curlim-cache
 EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "29 oct 2013"
+Date "16 nov 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -227,4 +228,12 @@ F 3 "~" H 4350 4300 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	4350 4400 4350 4300
+Wire Notes Line
+	3800 3350 2900 3750
+Wire Notes Line
+	3800 3350 3750 3350
+Wire Notes Line
+	3800 3350 3750 3400
+Text Notes 2150 3750 0    60   ~ 0
+No need in this \none. Without it \nthe board should \nwork well.
 $EndSCHEMATC
