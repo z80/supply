@@ -30,6 +30,7 @@ Source: "..\build.app\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs 
 
 [Icons]
 Name: "{group}\grambo-pi"; Filename: "{app}\supply.py"; WorkingDir: "{app}"
+Name: "{group}\ide";       Filename: "{app}\ide.bat";   WorkingDir: "{app}"
 Name: "{group}\{cm:ProgramOnTheWeb,grambo-pi}"; Filename: "http://grambo-pi.com/"
 Name: "{group}\{cm:UninstallProgram,grambo-pi}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\grambo-pi"; Filename: "{app}\supply.py"; WorkingDir: "{app}"; Tasks: desktopicon
@@ -38,8 +39,8 @@ Name: "{commondesktop}\grambo-pi"; Filename: "{app}\supply.py"; WorkingDir: "{ap
 ;Filename: "{app}\winusb_driver\installer_x86.exe"; Description: "x86 Device driver install."; Check: not Is64BitInstallMode
 ;Filename: "{app}\winusb_driver\installer_x64.exe"; Description: "x64 Device driver install."; Check: Is64BitInstallMode
 
-Filename: "{app}\vcredist_x86.exe"; Description: "x86 runtime envirinment install. It's necessary to install it at least once."; Check: not Is64BitInstallMode
-Filename: "{app}\vcredist_x86.exe"; Description: "x86 runtime envirinment install. It's necessary to install it at least once."; Check: Is64BitInstallMode
+Filename: "{app}\bin\vcredist_x86.exe"; Description: "x86 runtime envirinment install. It's necessary to install it at least once."; Check: not Is64BitInstallMode
+Filename: "{app}\bin\vcredist_x86.exe"; Description: "x86 runtime envirinment install. It's necessary to install it at least once."; Check: Is64BitInstallMode
 
 
 
