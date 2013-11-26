@@ -26,11 +26,11 @@ def whenstart(scratch):
 def hi( scratch ):
   print 'Hi, Scratch!'
 
-@update( 'servo7' )
+@update( 'servo6' )
 def update_b( scratch, value ):
-    print 'servo7 = ', value
+    print 'servo6 = ', value
     setCamPos( value )
     
     
-run( console=False )
+run( host='10.8.0.2', console=False )
 
