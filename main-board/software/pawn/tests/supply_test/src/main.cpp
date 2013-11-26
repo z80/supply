@@ -14,8 +14,8 @@ int main( int argc, char * argv[] )
         std::cout << "Failed to open device";
         return 2;
     }
-    c.stop();
-    res = c.isRunning();
+    //c.stop();
+    //res = c.isRunning();
     if ( !res )
     {
         std::cout << "Script isn\'t running at the moment. Trying to turn it on.\r\n";
