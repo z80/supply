@@ -12,7 +12,11 @@ message( STATUS "SRC = ${src}" )
 message( STATUS "HEADERS = ${headers}" )
 
 add_executable( supply_test ${src} )
-set( libs usbctrl0 )
+if ( WIN32 )
+    set( libs usbctrl0 )
+else ( WIN32 )
+    set( libs usbctrl )
+endif ( WIN32 )
 target_link_libraries( supply_test ${libs} )
 install( TARGETS supply_test DESTINATION "./" )
 
