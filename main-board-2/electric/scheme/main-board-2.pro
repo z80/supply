@@ -1,4 +1,4 @@
-update=Thu 05 Dec 2013 10:06:23 PM MSK
+update=06/12/2013 13:44:41
 version=1
 last_client=eeschema
 [cvpcb]
@@ -91,3 +91,4 @@ LibName34=74hc595
 LibName35=lsm303dlhc
 LibName36=my_comps
 LibName37=tc1047a
+LibName38=l298
