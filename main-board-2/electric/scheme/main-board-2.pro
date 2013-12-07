@@ -1,6 +1,6 @@
-update=Sat 07 Dec 2013 09:49:48 PM MSK
+update=Sat 07 Dec 2013 11:00:33 PM MSK
 version=1
-last_client=cvpcb
+last_client=pcbnew
 [general]
 version=1
 [eeschema]
@@ -50,16 +50,21 @@ LibName35=lsm303dlhc
 LibName36=my_comps
 LibName37=tc1047a
 LibName38=l298
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
 [pcbnew]
 version=1
-LastNetListRead=
+LastNetListRead=main-board-2.net
 UseCmpFile=1
-PadDrill=1.000000000000
-PadDrillOvalY=1.000000000000
-PadSizeH=1.500000000000
-PadSizeV=1.500000000000
-PcbTextSizeV=1.500000000000
-PcbTextSizeH=1.500000000000
+PadDrill=0.000000000000
+PadDrillOvalY=0.000000000000
+PadSizeH=1.000000000000
+PadSizeV=1.000000000000
+PcbTextSizeV=1.000000000000
+PcbTextSizeH=1.000000000000
 PcbTextThickness=0.300000000000
 ModuleTextSizeV=1.000000000000
 ModuleTextSizeH=1.000000000000
@@ -67,9 +72,10 @@ ModuleTextSizeThickness=0.150000000000
 SolderMaskClearance=0.000000000000
 SolderMaskMinWidth=0.000000000000
 DrawSegmentWidth=0.200000000000
-BoardOutlineThickness=0.100000000000
+BoardOutlineThickness=0.150000000000
 ModuleOutlineThickness=0.150000000000
 [pcbnew/libraries]
+LibDir=
 LibName1=sockets
 LibName2=connect
 LibName3=discret
@@ -96,9 +102,4 @@ LibName23=/home/z80/projects/supply.git/main-board-2/electric/libs/my_foots
 LibName24=/home/z80/projects/supply.git/main-board-2/electric/libs/pin_array_10x1
 LibName25=/home/z80/projects/supply.git/main-board-2/electric/libs/pin_array_11x1
 LibName26=/home/z80/projects/supply.git/main-board-2/electric/libs/sot223-gdsd
-LibDir=
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
+LibName27=/home/z80/projects/supply.git/main-board-2/electric/libs/my_reset_pin
