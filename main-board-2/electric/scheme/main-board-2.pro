@@ -1,11 +1,6 @@
-update=Sat 07 Dec 2013 09:30:00 PM MSK
+update=Sat 07 Dec 2013 09:49:48 PM MSK
 version=1
-last_client=pcbnew
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
+last_client=cvpcb
 [general]
 version=1
 [eeschema]
@@ -75,7 +70,6 @@ DrawSegmentWidth=0.200000000000
 BoardOutlineThickness=0.100000000000
 ModuleOutlineThickness=0.150000000000
 [pcbnew/libraries]
-LibDir=
 LibName1=sockets
 LibName2=connect
 LibName3=discret
@@ -94,3 +88,17 @@ LibName15=pga_sockets
 LibName16=valves
 LibName17=/home/z80/projects/supply.git/main-board-2/electric/libs/l298
 LibName18=/home/z80/projects/supply.git/main-board-2/electric/libs/klemma2
+LibName19=/home/z80/projects/supply.git/main-board-2/electric/libs/IRFL024
+LibName20=/home/z80/projects/supply.git/main-board-2/electric/libs/lga28
+LibName21=/home/z80/projects/supply.git/main-board-2/electric/libs/lqfp48
+LibName22=/home/z80/projects/supply.git/main-board-2/electric/libs/m3-screw-hole
+LibName23=/home/z80/projects/supply.git/main-board-2/electric/libs/my_foots
+LibName24=/home/z80/projects/supply.git/main-board-2/electric/libs/pin_array_10x1
+LibName25=/home/z80/projects/supply.git/main-board-2/electric/libs/pin_array_11x1
+LibName26=/home/z80/projects/supply.git/main-board-2/electric/libs/sot223-gdsd
+LibDir=
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
