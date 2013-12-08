@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Sun 08 Dec 2013 12:47:17 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Sun 08 Dec 2013 10:47:46 PM MSK
 
 BeginCmp
 TimeStamp = /52A11470;
@@ -260,23 +260,16 @@ IdModule  = my_reset_pin;
 EndCmp
 
 BeginCmp
-TimeStamp = /52A0D55D;
+TimeStamp = /52A4BFA0;
 Reference = P10;
-ValeurCmp = screw-3;
-IdModule  = m3-screw-hole;
+ValeurCmp = rst;
+IdModule  = my_reset_pin;
 EndCmp
 
 BeginCmp
 TimeStamp = /52A0D5BE;
 Reference = P11;
 ValeurCmp = screw-1;
-IdModule  = m3-screw-hole;
-EndCmp
-
-BeginCmp
-TimeStamp = /52A0D564;
-Reference = P12;
-ValeurCmp = screw-4;
 IdModule  = m3-screw-hole;
 EndCmp
 

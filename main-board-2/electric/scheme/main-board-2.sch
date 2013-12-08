@@ -3491,4 +3491,18 @@ Wire Wire Line
 Wire Wire Line
 	4950 4650 4950 4350
 Connection ~ 4950 4350
+$Comp
+L TST P10
+U 1 1 52A4BFA0
+P 8650 4050
+F 0 "P10" H 8650 4350 40  0000 C CNN
+F 1 "rst" H 8650 4300 30  0000 C CNN
+F 2 "~" H 8650 4050 60  0000 C CNN
+F 3 "~" H 8650 4050 60  0000 C CNN
+	1    8650 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8650 4050 8650 4250
+Connection ~ 8650 4250
 $EndSCHEMATC
