@@ -1,4 +1,4 @@
-update=Sat 07 Dec 2013 11:00:33 PM MSK
+update=Sun 08 Dec 2013 12:14:58 PM MSK
 version=1
 last_client=pcbnew
 [general]
@@ -59,10 +59,10 @@ EquName1=devcms
 version=1
 LastNetListRead=main-board-2.net
 UseCmpFile=1
-PadDrill=0.000000000000
-PadDrillOvalY=0.000000000000
-PadSizeH=1.000000000000
-PadSizeV=1.000000000000
+PadDrill=1.143000000000
+PadDrillOvalY=1.143000000000
+PadSizeH=1.778000000000
+PadSizeV=1.778000000000
 PcbTextSizeV=1.000000000000
 PcbTextSizeH=1.000000000000
 PcbTextThickness=0.300000000000
@@ -103,3 +103,4 @@ LibName24=/home/z80/projects/supply.git/main-board-2/electric/libs/pin_array_10x
 LibName25=/home/z80/projects/supply.git/main-board-2/electric/libs/pin_array_11x1
 LibName26=/home/z80/projects/supply.git/main-board-2/electric/libs/sot223-gdsd
 LibName27=/home/z80/projects/supply.git/main-board-2/electric/libs/my_reset_pin
+LibName28=/home/z80/projects/supply.git/main-board-2/electric/libs/to220
