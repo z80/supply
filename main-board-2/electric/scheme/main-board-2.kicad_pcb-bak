@@ -1343,7 +1343,7 @@
   )
 
   (module SM0805 (layer F.Cu) (tedit 5091495C) (tstamp 52A36708)
-    (at 157.607 177.927 180)
+    (at 161.417 176.149 180)
     (path /52A0D21E)
     (attr smd)
     (fp_text reference R35 (at 0 -0.3175 180) (layer F.SilkS)

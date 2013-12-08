@@ -1266,32 +1266,8 @@ Wire Wire Line
 Connection ~ 10750 18950
 Text Notes 8850 17150 0    60   ~ 0
 Cross board communication socket.\nThere is one at this board. But there should \nbe two neighbour such sockets on all other \nboards to be able to stack them together.
-$Comp
-L TST P10
-U 1 1 52A0D55D
-P 11550 13350
-F 0 "P10" H 11550 13650 40  0000 C CNN
-F 1 "screw-3" H 11550 13600 30  0000 C CNN
-F 2 "~" H 11550 13350 60  0000 C CNN
-F 3 "~" H 11550 13350 60  0000 C CNN
-	1    11550 13350
-	1    0    0    -1  
-$EndComp
-NoConn ~ 11550 13350
-$Comp
-L TST P12
-U 1 1 52A0D564
-P 11800 13350
-F 0 "P12" H 11800 13650 40  0000 C CNN
-F 1 "screw-4" H 11800 13600 30  0000 C CNN
-F 2 "~" H 11800 13350 60  0000 C CNN
-F 3 "~" H 11800 13350 60  0000 C CNN
-	1    11800 13350
-	1    0    0    -1  
-$EndComp
-NoConn ~ 11800 13350
 Text Notes 11300 12800 0    60   ~ 0
-Two unconnected pins for screws.\nThe newest Raspberry Pi contains \nholes for M3 screws.
+Two unconnected pins for screws.\nThe newest Raspberry Pi contains \nholes for M2.5 screws.
 $Comp
 L CONN_4 P2
 U 1 1 52A0D56C
@@ -1372,17 +1348,15 @@ Wire Wire Line
 $Comp
 L TST P11
 U 1 1 52A0D5BE
-P 11550 14000
-F 0 "P11" H 11550 14300 40  0000 C CNN
-F 1 "screw-1" H 11550 14250 30  0000 C CNN
-F 2 "~" H 11550 14000 60  0000 C CNN
-F 3 "~" H 11550 14000 60  0000 C CNN
-	1    11550 14000
+P 11700 13300
+F 0 "P11" H 11700 13600 40  0000 C CNN
+F 1 "screw-1" H 11700 13550 30  0000 C CNN
+F 2 "~" H 11700 13300 60  0000 C CNN
+F 3 "~" H 11700 13300 60  0000 C CNN
+	1    11700 13300
 	1    0    0    -1  
 $EndComp
-NoConn ~ 11550 14000
-Text Notes 11300 13600 0    60   ~ 0
-And four for screws at board corners.
+NoConn ~ 11700 13300
 $Comp
 L C C10
 U 1 1 52A0D5C6
@@ -1453,15 +1427,15 @@ NoConn ~ 2650 7600
 $Comp
 L TST P13
 U 1 1 52A0E1AF
-P 11800 14000
-F 0 "P13" H 11800 14300 40  0000 C CNN
-F 1 "screw-2" H 11800 14250 30  0000 C CNN
-F 2 "~" H 11800 14000 60  0000 C CNN
-F 3 "~" H 11800 14000 60  0000 C CNN
-	1    11800 14000
+P 11950 13300
+F 0 "P13" H 11950 13600 40  0000 C CNN
+F 1 "screw-2" H 11950 13550 30  0000 C CNN
+F 2 "~" H 11950 13300 60  0000 C CNN
+F 3 "~" H 11950 13300 60  0000 C CNN
+	1    11950 13300
 	1    0    0    -1  
 $EndComp
-NoConn ~ 11800 14000
+NoConn ~ 11950 13300
 $Comp
 L CONN_2 P7
 U 1 1 52A0E550
