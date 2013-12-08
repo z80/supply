@@ -97,9 +97,9 @@ Text Label 8850 6650 0    60   ~ 0
 in-moto4
 Text Label 8850 7350 0    60   ~ 0
 in-moto3
-Text Label 14400 8850 0    60   ~ 0
+Text Label 14400 9850 0    60   ~ 0
 in-moto2
-Text Label 14400 9050 0    60   ~ 0
+Text Label 14400 10050 0    60   ~ 0
 in-moto1
 Text Label 14550 3050 0    60   ~ 0
 moto-en
@@ -654,7 +654,7 @@ F 3 "" H 9100 5750 60  0001 C CNN
 	1    9100 5750
 	0    -1   -1   0   
 $EndComp
-Text Label 14400 9850 0    60   ~ 0
+Text Label 14400 9050 0    60   ~ 0
 led1
 Text Label 14400 9450 0    60   ~ 0
 sda-int
@@ -1325,7 +1325,7 @@ Wire Wire Line
 	9500 6650 8800 6650
 Wire Wire Line
 	9500 7350 8800 7350
-Text Label 14400 10050 0    60   ~ 0
+Text Label 14400 8850 0    60   ~ 0
 led2
 Text Label 14850 5550 0    60   ~ 0
 d-
