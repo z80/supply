@@ -97,11 +97,11 @@ Text Label 8850 7350 0    60   ~ 0
 in-moto4
 Text Label 8850 6650 0    60   ~ 0
 in-moto3
-Text Label 14400 9850 0    60   ~ 0
+Text Label 14600 3350 0    60   ~ 0
 in-moto2
-Text Label 14400 10050 0    60   ~ 0
+Text Label 14600 3550 0    60   ~ 0
 in-moto1
-Text Label 14550 3050 0    60   ~ 0
+Text Label 14600 3050 0    60   ~ 0
 moto-en
 Text Label 19250 5150 0    60   ~ 0
 moto-en
@@ -179,7 +179,7 @@ F 3 "" H 21600 4850 60  0001 C CNN
 	1    21600 4850
 	1    0    0    1   
 $EndComp
-Text Label 14400 10250 0    60   ~ 0
+Text Label 14600 4950 0    60   ~ 0
 trigger-button
 $Comp
 L VDD #PWR04
@@ -2183,7 +2183,7 @@ $EndComp
 Wire Wire Line
 	24800 19500 24800 19400
 Connection ~ 24800 19500
-Text Label 14250 4950 0    60   ~ 0
+Text Label 14400 10250 0    60   ~ 0
 usb-connected
 Text Notes 4750 6350 2    60   ~ 0
 RPi power.
@@ -3329,21 +3329,21 @@ Text Label 17650 3700 0    60   ~ 0
 gnd
 Text Label 17650 4000 0    60   ~ 0
 gnd
-Text Label 14600 3350 0    60   ~ 0
+Text Label 14400 10050 0    60   ~ 0
 gpio-1
-Text Label 14600 3550 0    60   ~ 0
-gpio-2
-Text Label 14600 3750 0    60   ~ 0
-gpio-3
-Text Label 14600 3950 0    60   ~ 0
-gpio-4
-Text Label 14600 4150 0    60   ~ 0
-gpio-5
-Text Label 14600 4350 0    60   ~ 0
-gpio-6
-Text Label 14600 4550 0    60   ~ 0
-gpio-7
 Text Label 14600 4750 0    60   ~ 0
+gpio-2
+Text Label 14600 4150 0    60   ~ 0
+gpio-3
+Text Label 14600 3750 0    60   ~ 0
+gpio-4
+Text Label 14400 9850 0    60   ~ 0
+gpio-5
+Text Label 14600 4550 0    60   ~ 0
+gpio-6
+Text Label 14600 4350 0    60   ~ 0
+gpio-7
+Text Label 14600 3950 0    60   ~ 0
 gpio-8
 Text Label 16150 3300 0    60   ~ 0
 gpio-1
