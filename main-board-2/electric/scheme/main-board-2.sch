@@ -2124,7 +2124,7 @@ Text Notes 22750 1400 0    60   ~ 0
 This one is optional \nfor high voltages >20V.
 Text Label 3250 13600 0    60   ~ 0
 trigger-button
-Text Label 14400 7700 0    60   ~ 0
+Text Label 14400 9850 0    60   ~ 0
 addon-pwr-en
 $Comp
 L PWR_FLAG #FLG048
@@ -3329,7 +3329,7 @@ Text Label 17650 3700 0    60   ~ 0
 gnd
 Text Label 17650 4000 0    60   ~ 0
 gnd
-Text Label 14400 10050 0    60   ~ 0
+Text Label 14400 7700 0    60   ~ 0
 gpio-1
 Text Label 14600 4750 0    60   ~ 0
 gpio-2
@@ -3337,7 +3337,7 @@ Text Label 14600 4150 0    60   ~ 0
 gpio-3
 Text Label 14600 3750 0    60   ~ 0
 gpio-4
-Text Label 14400 9850 0    60   ~ 0
+Text Label 14400 10050 0    60   ~ 0
 gpio-5
 Text Label 14600 4550 0    60   ~ 0
 gpio-6
