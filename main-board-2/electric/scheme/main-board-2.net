@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/z80/projects/supply.git/main-board-2/electric/scheme/main-board-2.sch)
-    (date "Mon 09 Dec 2013 02:39:24 PM MSK")
+    (date "Mon 09 Dec 2013 08:52:12 PM MSK")
     (tool "eeschema (2013-07-07 BZR 4022)-stable"))
   (components
     (comp (ref R24)
@@ -1205,10 +1205,10 @@
       (node (ref U6) (pin 2)))
     (net (code 23) (name /in-moto4)
       (node (ref U6) (pin 12))
-      (node (ref stm1) (pin 3)))
+      (node (ref stm1) (pin 4)))
     (net (code 24) (name /in-moto3)
-      (node (ref stm1) (pin 4))
-      (node (ref U6) (pin 10)))
+      (node (ref U6) (pin 10))
+      (node (ref stm1) (pin 3)))
     (net (code 25) (name /moto-en-2)
       (node (ref U6) (pin 11))
       (node (ref R44) (pin 2))

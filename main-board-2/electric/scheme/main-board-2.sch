@@ -93,9 +93,9 @@ F 3 "" H 19700 5850 60  0001 C CNN
 	1    19700 5850
 	1    0    0    -1  
 $EndComp
-Text Label 8850 6650 0    60   ~ 0
-in-moto4
 Text Label 8850 7350 0    60   ~ 0
+in-moto4
+Text Label 8850 6650 0    60   ~ 0
 in-moto3
 Text Label 14400 9850 0    60   ~ 0
 in-moto2
