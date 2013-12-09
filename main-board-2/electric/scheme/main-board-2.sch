@@ -44,7 +44,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title "Main board 2"
-Date "8 dec 2013"
+Date "9 dec 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -3297,14 +3297,6 @@ Text Label 16350 3700 0    60   ~ 0
 gnd
 Text Label 16350 4000 0    60   ~ 0
 gnd
-Text Label 16350 3200 0    60   ~ 0
-batt+
-Text Label 16350 3500 0    60   ~ 0
-batt+
-Text Label 16350 3800 0    60   ~ 0
-batt+
-Text Label 16350 4100 0    60   ~ 0
-batt+
 Wire Wire Line
 	17500 3100 17900 3100
 Wire Wire Line
@@ -3337,14 +3329,6 @@ Text Label 17650 3700 0    60   ~ 0
 gnd
 Text Label 17650 4000 0    60   ~ 0
 gnd
-Text Label 17650 3200 0    60   ~ 0
-batt+
-Text Label 17650 3500 0    60   ~ 0
-batt+
-Text Label 17650 3800 0    60   ~ 0
-batt+
-Text Label 17650 4100 0    60   ~ 0
-batt+
 Text Label 14600 3350 0    60   ~ 0
 gpio-1
 Text Label 14600 3550 0    60   ~ 0
@@ -3505,4 +3489,22 @@ $EndComp
 Wire Wire Line
 	8650 4050 8650 4250
 Connection ~ 8650 4250
+Text Label 21800 2550 0    60   ~ 0
+pwrVs
+Text Label 16350 3200 0    60   ~ 0
+pwrVs
+Text Label 16350 3500 0    60   ~ 0
+pwrVs
+Text Label 16350 3800 0    60   ~ 0
+pwrVs
+Text Label 16350 4100 0    60   ~ 0
+pwrVs
+Text Label 17650 3200 0    60   ~ 0
+pwrVs
+Text Label 17650 3500 0    60   ~ 0
+pwrVs
+Text Label 17650 3800 0    60   ~ 0
+pwrVs
+Text Label 17650 4100 0    60   ~ 0
+pwrVs
 $EndSCHEMATC
