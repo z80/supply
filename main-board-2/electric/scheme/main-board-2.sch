@@ -1268,57 +1268,6 @@ Text Notes 8850 17150 0    60   ~ 0
 Cross board communication socket.\nThere is one at this board. But there should \nbe two neighbour such sockets on all other \nboards to be able to stack them together.
 Text Notes 11300 12800 0    60   ~ 0
 Two unconnected pins for screws.\nThe newest Raspberry Pi contains \nholes for M2.5 screws.
-$Comp
-L CONN_4 P2
-U 1 1 52A0D56C
-P 1350 19950
-F 0 "P2" V 1300 19950 50  0000 C CNN
-F 1 "CONN_4" V 1400 19950 50  0000 C CNN
-F 2 "" H 1350 19950 60  0001 C CNN
-F 3 "" H 1350 19950 60  0001 C CNN
-	1    1350 19950
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	1700 19800 2200 19800
-Wire Wire Line
-	1700 19900 2200 19900
-Wire Wire Line
-	1700 20000 2400 20000
-Wire Wire Line
-	1700 20100 2200 20100
-Wire Wire Line
-	2200 20100 2200 20200
-$Comp
-L GND #PWR032
-U 1 1 52A0D577
-P 2200 20200
-F 0 "#PWR032" H 2200 20200 30  0001 C CNN
-F 1 "GND" H 2200 20130 30  0001 C CNN
-F 2 "" H 2200 20200 60  0001 C CNN
-F 3 "" H 2200 20200 60  0001 C CNN
-	1    2200 20200
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2400 20000 2400 19900
-$Comp
-L VDD #PWR033
-U 1 1 52A0D57E
-P 2400 19900
-F 0 "#PWR033" H 2400 20000 30  0001 C CNN
-F 1 "VDD" H 2400 20010 30  0000 C CNN
-F 2 "" H 2400 19900 60  0001 C CNN
-F 3 "" H 2400 19900 60  0001 C CNN
-	1    2400 19900
-	1    0    0    -1  
-$EndComp
-Text Label 1950 19800 0    60   ~ 0
-batt+
-Text Label 1950 19900 0    60   ~ 0
-+5V
-Text Notes 1050 19650 0    60   ~ 0
-Socket for powering external devices.
 Wire Wire Line
 	14100 7700 15100 7700
 Wire Wire Line

@@ -3329,9 +3329,9 @@ Text Label 17650 3700 0    60   ~ 0
 gnd
 Text Label 17650 4000 0    60   ~ 0
 gnd
-Text Label 14400 7700 0    60   ~ 0
-gpio-1
 Text Label 14400 9650 0    60   ~ 0
+gpio-1
+Text Label 14400 7700 0    60   ~ 0
 gpio-2
 Text Label 14600 4350 0    60   ~ 0
 gpio-3
