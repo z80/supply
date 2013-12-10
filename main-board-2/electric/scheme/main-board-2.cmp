@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Sun 08 Dec 2013 10:47:46 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Tue 10 Dec 2013 11:43:56 PM MSK
 
 BeginCmp
 TimeStamp = /52A11470;
@@ -201,13 +201,6 @@ TimeStamp = /52A0D521;
 Reference = P1;
 ValeurCmp = batt;
 IdModule  = klemma-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /52A0D56C;
-Reference = P2;
-ValeurCmp = CONN_4;
-IdModule  = PIN_ARRAY_4x1;
 EndCmp
 
 BeginCmp
@@ -760,7 +753,7 @@ BeginCmp
 TimeStamp = /52A1E67F;
 Reference = U2;
 ValeurCmp = LM317AT;
-IdModule  = my_TO220;
+IdModule  = my_TO220_VERT;
 EndCmp
 
 BeginCmp
@@ -774,7 +767,7 @@ BeginCmp
 TimeStamp = /52A1E804;
 Reference = U4;
 ValeurCmp = LM317AT;
-IdModule  = my_TO220;
+IdModule  = my_TO220_VERT;
 EndCmp
 
 BeginCmp
