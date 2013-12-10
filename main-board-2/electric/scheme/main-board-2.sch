@@ -44,7 +44,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title "Main board 2"
-Date "9 dec 2013"
+Date "10 dec 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -3329,21 +3329,21 @@ Text Label 17650 3700 0    60   ~ 0
 gnd
 Text Label 17650 4000 0    60   ~ 0
 gnd
-Text Label 14400 7700 0    60   ~ 0
+Text Label 14400 9650 0    60   ~ 0
 gpio-1
-Text Label 14600 4750 0    60   ~ 0
+Text Label 14400 7700 0    60   ~ 0
 gpio-2
-Text Label 14600 4150 0    60   ~ 0
+Text Label 14600 4350 0    60   ~ 0
 gpio-3
-Text Label 14600 3750 0    60   ~ 0
+Text Label 14600 3950 0    60   ~ 0
 gpio-4
 Text Label 14400 10050 0    60   ~ 0
 gpio-5
-Text Label 14600 4550 0    60   ~ 0
+Text Label 14600 4750 0    60   ~ 0
 gpio-6
-Text Label 14600 4350 0    60   ~ 0
+Text Label 14600 4550 0    60   ~ 0
 gpio-7
-Text Label 14600 3950 0    60   ~ 0
+Text Label 14600 4150 0    60   ~ 0
 gpio-8
 Text Label 16150 3300 0    60   ~ 0
 gpio-1
@@ -3408,7 +3408,7 @@ Text Label 17900 4400 0    60   ~ 0
 swd-clk
 Text Label 17900 4500 0    60   ~ 0
 swd-io
-Text Label 14400 9650 0    60   ~ 0
+Text Label 14600 3750 0    60   ~ 0
 gpio-9
 Text Label 16150 4300 0    60   ~ 0
 gpio-9
