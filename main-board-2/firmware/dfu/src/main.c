@@ -36,7 +36,28 @@ uint8_t DeviceStatus[6];
 *******************************************************************************/
 int main(void)
 {
-  NVIC_SetVectorTable( NVIC_VectTab_FLASH, (118 * 1024) );
+  //NVIC_SetVectorTable( NVIC_VectTab_FLASH, (118 * 1024) );
+
+  DFU_Button_Config();
+
+  /* Check if the Key push-button on STM3210x-EVAL Board is pressed */
+  if (DFU_Button_Read() != 0x00)
+  { /* Test if user code is programmed starting from address 0x8003000 */
+    if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FFE0000 ) == 0x20000000)
+    { /* Jump to user application */
+
+      JumpAddress = *(__IO uint32_t*) (ApplicationAddress + 4);
+      Jump_To_Application = (pFunction) JumpAddress;
+      /* Initialize user application's Stack Pointer */
+      __set_MSP(*(__IO uint32_t*) ApplicationAddress);
+      // NVIC_SetVectorTable( NVIC_VectTab_FLASH, 0x3000 ); // This should be done in target shifted firmware :)
+      Jump_To_Application();
+    }
+  } /* Otherwise enters DFU mode to allow user to program his application */
+
+
+
+
   /* Enter DFU mode */
   DeviceState = STATE_dfuERROR;
   DeviceStatus[0] = STATUS_ERRFIRMWARE;
