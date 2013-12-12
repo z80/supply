@@ -113,23 +113,23 @@ void USB_Cable_Config (FunctionalState NewState)
 {
   if ( NewState == ENABLE )
   {
-      RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, ENABLE );
+      RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOB, ENABLE );
       GPIO_InitTypeDef s;
-      s.GPIO_Pin = GPIO_Pin_8;
+      s.GPIO_Pin = GPIO_Pin_15;
       s.GPIO_Mode = GPIO_Mode_Out_PP;
       s.GPIO_Speed = GPIO_Speed_10MHz;
-      GPIO_Init( GPIOA, &s );
-      GPIO_SetBits( GPIOA, GPIO_Pin_8 );
+      GPIO_Init( GPIOB, &s );
+      GPIO_SetBits( GPIOB, GPIO_Pin_15 );
   }
   else
   {
       GPIO_InitTypeDef s;
-      s.GPIO_Pin = GPIO_Pin_8;
+      s.GPIO_Pin = GPIO_Pin_15;
       s.GPIO_Mode = GPIO_Mode_Out_PP;
       s.GPIO_Speed = GPIO_Speed_10MHz;
-      GPIO_Init( GPIOA, &s );
-      GPIO_ResetBits( GPIOA, GPIO_Pin_8 );
-      RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, DISABLE );
+      GPIO_Init( GPIOB, &s );
+      GPIO_ResetBits( GPIOB, GPIO_Pin_15 );
+      RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOB, DISABLE );
   }
 }
 
@@ -146,9 +146,9 @@ void DFU_Button_Config(void)
   /* Configure "DFU enter" button */
   //STM_EVAL_PBInit(Button_KEY, Mode_GPIO);
 
-  RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOB, ENABLE );
+  RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, ENABLE );
   GPIO_InitTypeDef s;
-  s.GPIO_Pin = GPIO_Pin_15;
+  s.GPIO_Pin = GPIO_Pin_8;
   s.GPIO_Mode = GPIO_Mode_IN_FLOATING;
   s.GPIO_Speed = GPIO_Speed_10MHz;
   GPIO_Init( GPIOB, &s );
@@ -163,7 +163,7 @@ void DFU_Button_Config(void)
 *******************************************************************************/
 uint8_t DFU_Button_Read (void)
 {
-  if ( GPIO_ReadInputDataBit( GPIOB, GPIO_Pin_15 ) != Bit_RESET )
+  if ( GPIO_ReadInputDataBit( GPIOA, GPIO_Pin_8 ) != Bit_RESET )
       return 0;
   return 1;
 

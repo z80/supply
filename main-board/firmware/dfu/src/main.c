@@ -36,7 +36,13 @@ uint8_t DeviceStatus[6];
 *******************************************************************************/
 int main(void)
 {
-  NVIC_SetVectorTable( NVIC_VectTab_FLASH, (118 * 1024) );
+  //NVIC_SetVectorTable( NVIC_VectTab_FLASH, (118 * 1024) );
+
+
+
+
+
+
   /* Enter DFU mode */
   DeviceState = STATE_dfuERROR;
   DeviceStatus[0] = STATUS_ERRFIRMWARE;
