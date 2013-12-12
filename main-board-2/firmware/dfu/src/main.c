@@ -42,7 +42,7 @@ int main(void)
 
   /* Check if the Key push-button on STM3210x-EVAL Board is pressed */
   if (DFU_Button_Read() != 0x00)
-  { /* Test if user code is programmed starting from address 0x8003000 */
+  { /* Test if user code is programmed starting from address 0x8002800 */
     if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FFE0000 ) == 0x20000000)
     { /* Jump to user application */
 
