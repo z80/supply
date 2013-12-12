@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Tue 10 Dec 2013 11:43:56 PM MSK
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Thu 12 Dec 2013 01:13:21 PM MSK
 
 BeginCmp
 TimeStamp = /52A11470;
@@ -215,20 +215,6 @@ TimeStamp = /52A0D50E;
 Reference = P4;
 ValeurCmp = CONN_3X2;
 IdModule  = pin_array_3x2;
-EndCmp
-
-BeginCmp
-TimeStamp = /52A32BAB;
-Reference = P5;
-ValeurCmp = reg-short-to-gnd-1;
-IdModule  = 1pin;
-EndCmp
-
-BeginCmp
-TimeStamp = /52A32D31;
-Reference = P6;
-ValeurCmp = reg-short-to-gnd-2;
-IdModule  = 1pin;
 EndCmp
 
 BeginCmp
@@ -743,30 +729,30 @@ IdModule  = LQFP48;
 EndCmp
 
 BeginCmp
-TimeStamp = /52A322E3;
+TimeStamp = /52A983BB;
 Reference = U1;
-ValeurCmp = LM317AEMP;
+ValeurCmp = MY_LM317EMP;
 IdModule  = SOT223;
 EndCmp
 
 BeginCmp
-TimeStamp = /52A1E67F;
+TimeStamp = /52A983AC;
 Reference = U2;
-ValeurCmp = LM317AT;
+ValeurCmp = MY_LM317T;
 IdModule  = my_TO220_VERT;
 EndCmp
 
 BeginCmp
-TimeStamp = /52A32742;
+TimeStamp = /52A98839;
 Reference = U3;
-ValeurCmp = LM317AEMP;
+ValeurCmp = MY_LM317EMP;
 IdModule  = SOT223;
 EndCmp
 
 BeginCmp
-TimeStamp = /52A1E804;
+TimeStamp = /52A98A72;
 Reference = U4;
-ValeurCmp = LM317AT;
+ValeurCmp = MY_LM317T;
 IdModule  = my_TO220_VERT;
 EndCmp
 
