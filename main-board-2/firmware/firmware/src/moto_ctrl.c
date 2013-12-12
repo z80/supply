@@ -54,6 +54,42 @@ void setMoto( int en )
     }
 }
 
+int  trigger( void )
+{
+    palSetPadMode( TRIGGER_PORT, TRIGGER_PAD, PAL_MODE_INPUT );
+    // Check if it is pulled down.
+    if ( palReadPad( TRIGGER_PORT, TRIGGER_PAD ) )
+        // If not pulled down no need to try DFU.
+        return 0;
+    return 1;
+}
+
+void setAddonTrigger( int arg )
+{
+    if ( arg )
+        palSetPad( ADDON_TRIGGER_PORT, ADDON_TRIGGER_PAD );
+    else
+        palClearPad( ADDON_TRIGGER_PORT, ADDON_TRIGGER_PAD );
+    palSetPadMode( ADDON_TRIGGER_PORT, ADDON_TRIGGER_PAD, PAL_MODE_OUTPUT_PUSHPULL );
+}
+
+void setAddonEn( int arg )
+{
+    if ( arg )
+        palSetPad( ADDON_PWR_PORT, ADDON_PWR_PAD );
+    else
+        palClearPad( ADDON_PWR_PORT, ADDON_PWR_PAD );
+    palSetPadMode( ADDON_PWR_PORT, ADDON_PWR_PAD, PAL_MODE_OUTPUT_PUSHPULL );    
+}
+
+void setRpiEn( int arg )
+{
+    if ( arg )
+        palSetPad( RPI_PWR_PORT, RPI_PWR_PAD );
+    else
+        palClearPad( RPI_PWR_PORT, RPI_PWR_PAD );
+    palSetPadMode( RPI_PWR_PORT, RPI_PWR_PAD, PAL_MODE_OUTPUT_PUSHPULL );
+}
 
 
 

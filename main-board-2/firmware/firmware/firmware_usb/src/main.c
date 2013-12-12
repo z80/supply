@@ -3,11 +3,8 @@
 #include "hal.h"
 
 #include "hdw_cfg.h"
-#include "dfu_ctrl.h"
 #include "led_ctrl.h"
-#include "light_ctrl.h"
 #include "moto_ctrl.h"
-#include "conv_ctrl.h"
 #include "i2c_ctrl.h"
 #include "usb_ctrl.h"
 #include "pawn_ctrl.h"
@@ -18,18 +15,12 @@
 //*
 int main(void)
 {
-    //NVIC_SetVectorTable( NVIC_VectTab_FLASH, 0x2800 );
-
     halInit();
     chSysInit();
 
-    checkDfu();
-
     initLed();
-    initLight();
     initMoto();
     initI2c();
-    initConv();
 
     pawnInit();
     initUsb();

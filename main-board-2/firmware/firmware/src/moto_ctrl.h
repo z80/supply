@@ -9,6 +9,12 @@ void initMoto( void );
 void setMoto( int en );
 
 
+int  trigger( void );
+void setAddonTrigger( int arg );
+void setAddonEn( int arg );
+void setRpiEn( int arg );
+
+
 
 
 #endif

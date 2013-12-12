@@ -40,7 +40,9 @@ AMX_NATIVE const g_nativetable[] =
     pawn_setI2cEn,
     pawn_i2cIo,
 
-    pawn_setWakeup,
+    pawn_setAddTrigger,
+    pawn_setAddEn, 
+    pawn_setRpiEn, 
 
     pawn_usbWrite,
 
@@ -48,22 +50,7 @@ AMX_NATIVE const g_nativetable[] =
     pawn_setIo, 
 
     pawn_setLed, 
-    pawn_setLight,
-    pawn_setMoto, 
-    pawn_convSetBuck, 
-    pawn_convSetBoost, 
-    pawn_convSetMinBoostVolt, 
-    pawn_convSetMaxBoostFill, 
-    pawn_convSetBoostCurr, 
-    pawn_convSetBuckCurr, 
-    pawn_convSetBuckGain, 
-    pawn_convSetBoostGain, 
-    pawn_adcTemp, 
-    pawn_adcBatteryVolt, 
-    pawn_adcBuckVolt, 
-    pawn_adcSolarVolt, 
-    pawn_adcBuckCurr, 
-    pawn_adcBoostCurr
+    pawn_setMoto
 };
 
 

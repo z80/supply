@@ -24,7 +24,9 @@ cell pawn_setI2cEn( AMX * amx, const cell * params );
 cell pawn_i2cIo( AMX * amx, const cell * params );
 
 // I2C wakeup pad control.
-cell pawn_setWakeup( AMX * amx, const cell * params );
+cell pawn_setAddTrigger( AMX * amx, const cell * params );
+cell pawn_setAddEn( AMX * amx, const cell * params );
+cell pawn_setRpiEn( AMX * amx, const cell * params );
 
 // USB control.
 cell pawn_usbWrite( AMX * amx, const cell * params );
@@ -38,25 +40,6 @@ cell pawn_setLight( AMX * amx, const cell * params );
 // Motor control.
 cell pawn_setMoto( AMX * amx, const cell * params );
 
-// Converter control.
-cell pawn_convSetBuck( AMX * amx, const cell * params );
-cell pawn_convSetBoost( AMX * amx, const cell * params );
-
-cell pawn_convSetMinBoostVolt( AMX * amx, const cell * params );
-cell pawn_convSetMaxBoostFill( AMX * amx, const cell * params );
-
-cell pawn_convSetBoostCurr( AMX * amx, const cell * params );
-cell pawn_convSetBuckCurr( AMX * amx, const cell * params );
-
-cell pawn_convSetBuckGain( AMX * amx, const cell * params );
-cell pawn_convSetBoostGain( AMX * amx, const cell * params );
-
-cell pawn_adcTemp( AMX * amx, const cell * params );
-cell pawn_adcBatteryVolt( AMX * amx, const cell * params );
-cell pawn_adcBuckVolt( AMX * amx, const cell * params );
-cell pawn_adcSolarVolt( AMX * amx, const cell * params );
-cell pawn_adcBuckCurr( AMX * amx, const cell * params );
-cell pawn_adcBoostCurr( AMX * amx, const cell * params );
 
 #endif
 

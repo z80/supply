@@ -3,11 +3,8 @@
 #include "ch.h"
 #include "hal.h"
 
-#include "dfu_ctrl.h"
 #include "led_ctrl.h"
-#include "light_ctrl.h"
 #include "moto_ctrl.h"
-#include "conv_ctrl.h"
 #include "serial_ctrl.h"
 #include "i2c_ctrl.h"
 #include "usb_ctrl.h"
@@ -127,11 +124,25 @@ cell pawn_i2cIo( AMX * amx, const cell * params )
     return status;
 }
 
-cell pawn_setWakeup( AMX * amx, const cell * params )
+cell pawn_setAddTrigger( AMX * amx, const cell * params )
 {
 	(void)amx;
-	setWakeup( params[1] );
+	setAddonTrigger( params[1] );
 	return 0;
+}
+
+cell pawn_setAddEn( AMX * amx, const cell * params )
+{
+    (void)amx;
+    setAddonEn( params[1] );
+    return 0;
+}
+
+cell pawn_setRpiEn( AMX * amx, const cell * params )
+{
+    (void)amx;
+    setRpiEn( params[1] );
+    return 0;
 }
 
 cell pawn_usbWrite( AMX * amx, const cell * params )
@@ -154,13 +165,6 @@ cell pawn_setLed( AMX * amx, const cell * params )
     return 0;
 }
 
-cell pawn_setLight( AMX * amx, const cell * params )
-{
-	(void)amx;
-	setLight( (int)params[1] );
-	return 0;
-}
-
 cell pawn_setMoto( AMX * amx, const cell * params )
 {
     (void)amx; 
@@ -168,109 +172,6 @@ cell pawn_setMoto( AMX * amx, const cell * params )
     return 0;
 }
 
-cell pawn_convSetBuck( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetBuck( (int)params[1] );
-    return 0;
-}
-
-cell pawn_convSetBoost( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetBoost( (int)params[1] );
-    return 0;
-}
-
-cell pawn_convSetMinBoostVolt( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetMinBoostVolt( (int)params[1] );
-    return 0;
-}
-
-cell pawn_convSetMaxBoostFill( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetMaxBoostFill( (int)params[1] );
-    return 0;
-}
-
-cell pawn_convSetBoostCurr( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetBoostCurr( (int)params[1] );
-    return 0;
-}
-
-cell pawn_convSetBuckCurr( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetBuckCurr( (int)params[1] );
-    return 0;
-}
-
-cell pawn_convSetBuckGain( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetBuckGain( (int)params[1] );
-    return 0;
-}
-
-cell pawn_convSetBoostGain( AMX * amx, const cell * params )
-{
-    (void)amx;
-    convSetBoostGain( (int)params[1] );
-    return 0;
-}
-
-cell pawn_adcTemp( AMX * amx, const cell * params )
-{
-    (void)amx;
-    (void)params;
-    int t = adcTemp();
-    return (cell)t;
-}
-
-cell pawn_adcBatteryVolt( AMX * amx, const cell * params )
-{
-    (void)amx;
-    (void)params;
-    int v = adcBatteryVolt();
-    return (cell)v;
-}
-
-cell pawn_adcBuckVolt( AMX * amx, const cell * params )
-{
-    (void)amx;
-    (void)params;
-    int v = adcBuckVolt();
-    return (cell)v;
-}
-
-cell pawn_adcSolarVolt( AMX * amx, const cell * params )
-{
-    (void)amx;
-    (void)params;
-    int v = adcSolarVolt();
-    return (cell)v;
-}
-
-cell pawn_adcBuckCurr( AMX * amx, const cell * params )
-{
-    (void)amx;
-    (void)params;
-    int i = adcBuckCurr();
-    return (cell)i;
-}
-
-cell pawn_adcBoostCurr( AMX * amx, const cell * params )
-{
-    (void)amx;
-    (void)params;
-    int i = adcBoostCurr();
-    return (cell)i;
-}
 
 
 
