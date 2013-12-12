@@ -1,0 +1,6 @@
+
+This is a firmware whith analyzes "trigger" input on supply board. And if it is tied to ground it initiates DFU firmware.
+
+No, actually it doesn't analyze trigger button. Not it is the following. Regular firmware is located at the very beginning of FLASH. If I displace it never returns from expecting interrupt. So I put it to FLASH start. And regular firmware analyzes trigger at the very beginning itself. And if it is triggered it jumps to FLASH end where DFU is located.
+
+
