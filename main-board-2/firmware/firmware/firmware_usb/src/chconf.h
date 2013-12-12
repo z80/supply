@@ -39,6 +39,9 @@
 #ifndef _CHCONF_H_
 #define _CHCONF_H_
 
+
+#define CORTEX_VTOR_INIT 0x08002800
+
 /*===========================================================================*/
 /**
  * @name Kernel parameters and options
@@ -52,7 +55,7 @@
  *          setting also defines the system tick time unit.
  */
 #if !defined(CH_FREQUENCY) || defined(__DOXYGEN__)
-#define CH_FREQUENCY                    50
+#define CH_FREQUENCY                    20
 #endif
 
 /**
