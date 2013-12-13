@@ -252,15 +252,15 @@ static void updateStops( void )
     {
         for ( j=i+1; j<lastStops; j++ )
         {
+            // Merge
+            stops[i].mask |= stops[j].mask;
             if ( stops[i].time == stops[j].time )
             {
-                // Merge
-                stops[i].mask |= stops[j].mask;
                 // Shift down
                 int k;
                 for ( k=j; k<lastStops-1; k++ )
                 {
-                    stops[j].mask |= stops[j+1].mask;
+                    stops[j].mask = stops[j+1].mask;
                     stops[j].time = stops[j+1].mask;
                 }
 
@@ -273,11 +273,11 @@ static void updateStops( void )
                 break;
         }
     }
-
-
 }
 
 static void gptCb( GPTDriver * gptp );
+static void turnOnByMask( int mask );
+static void turnOffByMask( int mask );
 
 static const GPTConfig gptCfg = 
 {
@@ -287,21 +287,91 @@ static const GPTConfig gptCfg =
 
 static void updateTimer( void )
 {
-    gptStopTimer( TIMER );
+    gptStopTimer( &TIMER );
+
     updateStops();
 
-    stopInd = stopsCnt;
-    gptStartOneShot( TIMER, &gptCfg );
+    if ( stopsCnt > 0 )
+    {
+        stopInd = 0;
+        turnOffByMask( stops[0].mask );
+        gptStart( &TIMER,  &gptCfg );
+        gptStartOneShot( &TIMER, stops[0].time );
+    }
 }
 
 static void gptCb( GPTDriver * gptp )
 {
-    // 1) If loop should be made.
-    if ( stopInd >= stopsCnt )
-    {
+    (void)gptp;
 
+    int mask, t;
+    // 1) If loop should be made.
+    if ( stopInd < stopsCnt )
+    {
+        mask = stops[stopInd].mask ^ stops[stopInd+1].mask;
+        // Turn off all.
+        turnOffByMask( mask );
+
+        t = stops[stopInd+1].time - stops[stopInd].time;
+        stopInd += 1;
+        chSysLockFromIsr();
+            gptStartOneShotI( &TIMER, t );
+        chSysUnlockFromIsr();
+    }
+    else
+    {
+        turnOffByMask( stops[stopInd].mask );
+
+        t = period - stops[stopInd].time;
+        stopInd = 0;
+        chSysLockFromIsr();
+            gptStartOneShotI( &TIMER, t );
+        chSysUnlockFromIsr();
     }
 }
 
+static void turnOnByMask( int mask )
+{
+    if ( mask & (1<<0) )
+        palSetPad( GPIO_1_PORT, GPIO_1_PAD );
+    if ( mask & (1<<1) )
+        palSetPad( GPIO_2_PORT, GPIO_2_PAD );
+    if ( mask & (1<<2) )
+        palSetPad( GPIO_3_PORT, GPIO_3_PAD );
+    if ( mask & (1<<3) )
+        palSetPad( GPIO_4_PORT, GPIO_4_PAD );
+    if ( mask & (1<<4) )
+        palSetPad( GPIO_5_PORT, GPIO_5_PAD );
+    if ( mask & (1<<5) )
+        palSetPad( GPIO_6_PORT, GPIO_6_PAD );
+    if ( mask & (1<<6) )
+        palSetPad( GPIO_7_PORT, GPIO_7_PAD );
+    if ( mask & (1<<7) )
+        palSetPad( GPIO_8_PORT, GPIO_8_PAD );
+    if ( mask & (1<<8) )
+        palSetPad( GPIO_9_PORT, GPIO_9_PAD );
+}
+
+static void turnOffByMask( int mask )
+{
+    if ( mask & (1<<0) )
+        palClearPad( GPIO_1_PORT, GPIO_1_PAD );
+    if ( mask & (1<<1) )
+        palClearPad( GPIO_2_PORT, GPIO_2_PAD );
+    if ( mask & (1<<2) )
+        palClearPad( GPIO_3_PORT, GPIO_3_PAD );
+    if ( mask & (1<<3) )
+        palClearPad( GPIO_4_PORT, GPIO_4_PAD );
+    if ( mask & (1<<4) )
+        palClearPad( GPIO_5_PORT, GPIO_5_PAD );
+    if ( mask & (1<<5) )
+        palClearPad( GPIO_6_PORT, GPIO_6_PAD );
+    if ( mask & (1<<6) )
+        palClearPad( GPIO_7_PORT, GPIO_7_PAD );
+    if ( mask & (1<<7) )
+        palClearPad( GPIO_8_PORT, GPIO_8_PAD );
+    if ( mask & (1<<8) )
+        palClearPad( GPIO_9_PORT, GPIO_9_PAD );
+}
 
 
