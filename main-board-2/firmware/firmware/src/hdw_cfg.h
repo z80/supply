@@ -99,6 +99,44 @@
 #define PAWN_START_DELAY         5000
 #define PAWN_START_STEP          250
 
+
+
+// *****************************************************************
+//                        GPIO parameters.
+// *****************************************************************
+
+#define GPIO_IN     0
+#define GPIO_OUT    1
+#define GPIO_AIN    2
+
+#define GPIO_1_PAD  12
+#define GPIO_1_PORT GPIOB
+
+#define GPIO_2_PAD  0
+#define GPIO_2_PORT GPIOB
+
+#define GPIO_3_PAD  5
+#define GPIO_3_PORT GPIOA
+
+#define GPIO_4_PAD  3
+#define GPIO_4_PORT GPIOA
+
+#define GPIO_5_PAD  14
+#define GPIO_5_PORT GPIOB
+
+#define GPIO_6_PAD  7
+#define GPIO_6_PORT GPIOA
+
+#define GPIO_7_PAD  6
+#define GPIO_7_PORT GPIOA
+
+#define GPIO_8_PAD  4
+#define GPIO_8_PORT GPIOA
+
+#define GPIO_9_PAD  2
+#define GPIO_9_PORT GPIOA
+
+
 #endif
 
 

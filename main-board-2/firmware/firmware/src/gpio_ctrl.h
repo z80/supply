@@ -3,10 +3,11 @@
 #define __GPIO_CTRL_H_
 
 void gpioInit( void );
-void gpioSetMode( int ind, int mode );
+int  gpioSetMode( int mask, int mode );
+int  gpios( int mask );
 int  gpio( int ind );
 void gpioSetPeriod( int us );
-void gpioSetPwm( int ind, int us );
+void gpioSetPwm( int mask, int us );
 
 #endif
 
