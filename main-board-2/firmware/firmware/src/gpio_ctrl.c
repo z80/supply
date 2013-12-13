@@ -308,25 +308,28 @@ static void gptCb( GPTDriver * gptp )
     // 1) If loop should be made.
     if ( stopInd < stopsCnt )
     {
+        // First of all calc and run next duration.
+        t = stops[stopInd+1].time - stops[stopInd].time;
+        chSysLockFromIsr();
+            gptStartOneShotI( &TIMER, t );
+        chSysUnlockFromIsr();
+
         mask = stops[stopInd].mask ^ stops[stopInd+1].mask;
         // Turn off all.
         turnOffByMask( mask );
 
-        t = stops[stopInd+1].time - stops[stopInd].time;
         stopInd += 1;
-        chSysLockFromIsr();
-            gptStartOneShotI( &TIMER, t );
-        chSysUnlockFromIsr();
     }
     else
     {
-        turnOffByMask( stops[stopInd].mask );
-
+        // First of all calc and run next duration.
         t = period - stops[stopInd].time;
-        stopInd = 0;
         chSysLockFromIsr();
             gptStartOneShotI( &TIMER, t );
         chSysUnlockFromIsr();
+
+        turnOffByMask( stops[stopInd].mask );
+        stopInd = 0;
     }
 }
 
