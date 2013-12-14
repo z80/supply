@@ -18,6 +18,8 @@ elseif ( WIN32 )
 endif ( UNIX )
 add_subdirectory( "./tests" )
 install( DIRECTORY "./pawn_include/include/"         DESTINATION "include" )
+install( DIRECTORY "../../../main-board-2/firmware/pawn_header/" 
+                                                     DESTINATION "include" )
 install( DIRECTORY "./pawn_include/examples/"        DESTINATION "examples" )
 install( DIRECTORY "./pawn_include/examples_python/" DESTINATION "python" )
 install( DIRECTORY "./gui.py/"                       DESTINATION "./" )
