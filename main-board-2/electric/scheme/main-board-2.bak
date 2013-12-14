@@ -46,7 +46,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title "Main board 2"
-Date "12 dec 2013"
+Date "14 dec 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -2270,8 +2270,8 @@ Wire Wire Line
 	6000 4100 6000 3100
 Text Label 24500 19150 1    60   ~ 0
 usb-power
-Text Label 6000 3600 1    60   ~ 0
-usb-power
+Text Label 6000 3350 1    60   ~ 0
+batt+
 Wire Wire Line
 	2900 1200 3800 1200
 Wire Wire Line
@@ -3397,10 +3397,10 @@ Short to gnd should be \ndone using electrolytic \ncapacitor hole.
 Text Notes 1850 2750 0    60   ~ 0
 Short to gnd should be \ndone using electrolytic \ncapacitor hole.
 $Comp
-L MY_LM317T U?
+L MY_LM317T U2
 U 1 1 52A983AC
 P 3000 1650
-F 0 "U?" H 2800 1850 40  0000 C CNN
+F 0 "U2" H 2800 1850 40  0000 C CNN
 F 1 "MY_LM317T" H 3000 1850 40  0000 L CNN
 F 2 "TO-220" H 3000 1750 30  0000 C CIN
 F 3 "~" H 3000 1650 60  0000 C CNN
@@ -3408,10 +3408,10 @@ F 3 "~" H 3000 1650 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MY_LM317EMP U?
+L MY_LM317EMP U1
 U 1 1 52A983BB
 P 2500 1250
-F 0 "U?" H 2300 1450 40  0000 C CNN
+F 0 "U1" H 2300 1450 40  0000 C CNN
 F 1 "MY_LM317EMP" H 2500 1450 40  0000 L CNN
 F 2 "SOT-223" H 2500 1350 30  0000 C CIN
 F 3 "~" H 2500 1250 60  0000 C CNN
@@ -3429,10 +3429,10 @@ Wire Wire Line
 	3500 1700 3500 1600
 Connection ~ 3500 1600
 $Comp
-L MY_LM317EMP U?
+L MY_LM317EMP U3
 U 1 1 52A98839
 P 3300 4000
-F 0 "U?" H 3100 4200 40  0000 C CNN
+F 0 "U3" H 3100 4200 40  0000 C CNN
 F 1 "MY_LM317EMP" H 3300 4200 40  0000 L CNN
 F 2 "SOT-223" H 3300 4100 30  0000 C CIN
 F 3 "~" H 3300 4000 60  0000 C CNN
@@ -3445,10 +3445,10 @@ Wire Wire Line
 	3800 4050 3800 3950
 Connection ~ 3800 3950
 $Comp
-L MY_LM317T U?
+L MY_LM317T U4
 U 1 1 52A98A72
 P 3800 4400
-F 0 "U?" H 3600 4600 40  0000 C CNN
+F 0 "U4" H 3600 4600 40  0000 C CNN
 F 1 "MY_LM317T" H 3800 4600 40  0000 L CNN
 F 2 "TO-220" H 3800 4500 30  0000 C CIN
 F 3 "~" H 3800 4400 60  0000 C CNN

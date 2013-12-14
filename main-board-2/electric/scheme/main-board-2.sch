@@ -46,7 +46,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title "Main board 2"
-Date "12 dec 2013"
+Date "14 dec 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -2270,8 +2270,8 @@ Wire Wire Line
 	6000 4100 6000 3100
 Text Label 24500 19150 1    60   ~ 0
 usb-power
-Text Label 6000 3600 1    60   ~ 0
-usb-power
+Text Label 6000 3350 1    60   ~ 0
+batt+
 Wire Wire Line
 	2900 1200 3800 1200
 Wire Wire Line
