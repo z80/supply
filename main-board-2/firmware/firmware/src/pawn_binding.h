@@ -29,16 +29,21 @@ cell pawn_setAddEn( AMX * amx, const cell * params );
 cell pawn_setRpiEn( AMX * amx, const cell * params );
 
 // USB control.
+cell pawn_usbSetEn( AMX * amx, const cell * params );
 cell pawn_usbWrite( AMX * amx, const cell * params );
 
 // LED control.
 cell pawn_setLed( AMX * amx, const cell * params );
 
-// Light control.
-cell pawn_setLight( AMX * amx, const cell * params );
-
 // Motor control.
 cell pawn_setMoto( AMX * amx, const cell * params );
+
+// GPIO control.
+cell pawn_gpioSetMode( AMX * amx, const cell * params );
+cell pawn_gpios( AMX * amx, const cell * params );
+cell pawn_gpio( AMX * amx, const cell * params );
+cell pawn_gpioSetPeriod( AMX * amx, const cell * params );
+cell pawn_gpioSetPwm( AMX * amx, const cell * params );
 
 
 #endif

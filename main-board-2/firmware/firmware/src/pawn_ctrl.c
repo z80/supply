@@ -44,13 +44,20 @@ AMX_NATIVE const g_nativetable[] =
     pawn_setAddEn, 
     pawn_setRpiEn, 
 
+    pawn_usbSetEn, 
     pawn_usbWrite,
 
     pawn_io,
     pawn_setIo, 
 
     pawn_setLed, 
-    pawn_setMoto
+    pawn_setMoto, 
+
+    pawn_gpioSetMode, 
+    pawn_gpios, 
+    pawn_gpio, 
+    pawn_gpioSetPeriod, 
+    pawn_gpioSetPwm
 };
 
 

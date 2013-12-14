@@ -16,7 +16,9 @@ typedef struct
 #define TIMER   GPTD1
 
 static int   pwm[PWM_CNT];
+static int   modes[PWM_CNT];
 static TStop stops[PWM_CNT];
+
 static int   stopInd;
 static int   stopsCnt;
 
@@ -32,10 +34,18 @@ void gpioInit( void )
     int i;
     for ( i=0; i<PWM_CNT; i++ )
         pwm[ i ] = 0;
+
+    adcStart( &ADCD1, NULL );
 }
 
-void gpioSetMode( int mask, int mode )
+int  gpioSetMode( int mask, int mode )
 {
+    int i;
+    for ( i=0; i<PWM_CNT; i++ )
+    {
+        if ( mask & (1<<i) )
+            modes[i] = mode;
+    }
     switch ( mode )
     {
         case GPIO_IN:
@@ -58,7 +68,7 @@ void gpioSetMode( int mask, int mode )
             if ( mask & (1<<8) )
                 palSetPadMode( GPIO_9_PORT, GPIO_9_PAD, PAL_MODE_INPUT );
             return 0;
-        break
+        break;
 
         case GPIO_OUT:
             if ( mask & (1<<0) )
@@ -80,7 +90,7 @@ void gpioSetMode( int mask, int mode )
             if ( mask & (1<<8) )
                 palSetPadMode( GPIO_9_PORT, GPIO_9_PAD, PAL_MODE_OUTPUT_PUSHPULL );
             return 0;
-        break
+        break;
 
         case GPIO_AIN:
             if ( mask & (1<<1) )
@@ -97,7 +107,7 @@ void gpioSetMode( int mask, int mode )
                 palSetPadMode( GPIO_8_PORT, GPIO_8_PAD, PAL_MODE_INPUT_ANALOG );
             if ( mask & (1<<8) )
                 palSetPadMode( GPIO_9_PORT, GPIO_9_PAD, PAL_MODE_INPUT_ANALOG );
-        break
+        break;
     }
     return 1;
 }
@@ -114,12 +124,12 @@ int  gpios( int mask )
                   (1<<GPIO_9_PAD) ) )
     {
         int resA = palReadPort( GPIOA );
-        res = ( ( (1<<GPIO_3_PAD) ? 1 : 0 ) << 2 ) | 
-              ( ( (1<<GPIO_4_PAD) ? 1 : 0 ) << 3 ) | 
-              ( ( (1<<GPIO_6_PAD) ? 1 : 0 ) << 5 ) | 
-              ( ( (1<<GPIO_7_PAD) ? 1 : 0 ) << 6 ) | 
-              ( ( (1<<GPIO_8_PAD) ? 1 : 0 ) << 7 ) | 
-              ( ( (1<<GPIO_9_PAD) ? 1 : 0 ) << 8 );
+        res = ( ( (resA & (1<<GPIO_3_PAD)) ? 1 : 0 ) << 2 ) | 
+              ( ( (resA & (1<<GPIO_4_PAD)) ? 1 : 0 ) << 3 ) | 
+              ( ( (resA & (1<<GPIO_6_PAD)) ? 1 : 0 ) << 5 ) | 
+              ( ( (resA & (1<<GPIO_7_PAD)) ? 1 : 0 ) << 6 ) | 
+              ( ( (resA & (1<<GPIO_8_PAD)) ? 1 : 0 ) << 7 ) | 
+              ( ( (resA & (1<<GPIO_9_PAD)) ? 1 : 0 ) << 8 );
     }
 
     if ( mask & ( (1<<GPIO_1_PAD) | 
@@ -127,17 +137,34 @@ int  gpios( int mask )
                   (1<<GPIO_5_PAD) ) )
     {
         int resB = palReadPort( GPIOB );
-        res |=   ( (1<<GPIO_1_PAD) ? 1 : 0 ) | 
-               ( ( (1<<GPIO_2_PAD) ? 1 : 0 ) << 1 ) | 
-               ( ( (1<<GPIO_5_PAD) ? 1 : 0 ) << 4 );
+        res |=   ( (resB & (1<<GPIO_1_PAD)) ? 1 : 0 ) | 
+               ( ( (resB & (1<<GPIO_2_PAD)) ? 1 : 0 ) << 1 ) | 
+               ( ( (resB & (1<<GPIO_5_PAD)) ? 1 : 0 ) << 4 );
     }
 
     return res;
 }
 
+static int gpioDig( int ind );
+static int gpioAn( int ind );
+
 int  gpio( int ind )
 {
-    int port;
+    if ( ( ind > 0 ) && ( ind < PWM_CNT ) )
+    {
+        if ( modes[ ind ] == GPIO_IN )
+            return gpioDig( ind );
+        else if ( modes[ ind ] == GPIO_AIN )
+            return gpioAn( ind );
+        else
+            return -1;
+    }
+    return -1;
+}
+
+static int gpioDig( int ind )
+{
+    GPIO_TypeDef * port;
     int pad;
 
     switch ( ind )
@@ -183,6 +210,88 @@ int  gpio( int ind )
     return palReadPad( port, pad );
 }
 
+// ADC_SAMPLE_1P5
+// ADC_SAMPLE_7P5
+// ADC_SAMPLE_13P5
+// ADC_SAMPLE_28P5
+// ADC_SAMPLE_41P5
+// ADC_SAMPLE_55P5
+// ADC_SAMPLE_71P5
+// ADC_SAMPLE_239P5
+
+// At 16MHz 3 signals would be measured with frequency 16000 / ( 28.5 * 3 ) = 187kHz.
+// But ADC definitely shouldn't be faster then PWM.
+#define ADC_SAMPLING  ADC_SAMPLE_7P5
+
+static int adcSingle( uint32_t mask1, uint32_t mask2 );
+
+static int gpioAn( int ind )
+{
+    int res;
+    switch ( ind )
+    {
+        case 1:
+            res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN8 ) );
+        break;
+
+        case 2:
+            res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN5 ) );
+        break;
+
+        case 3:
+            res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN3 ) );
+        break;
+
+        case 5:
+            res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN7 ) );
+        break;
+
+        case 6:
+            res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN6 ) );
+        break;
+
+        case 7:
+            res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN4 ) );
+        break;
+
+        case 8:
+            res = adcSingle( ADC_SMPR2_SMP_AN8( ADC_SAMPLING ), ADC_SQR3_SQ1_N( ADC_CHANNEL_IN2 ) );
+        break;
+
+        default:
+            res = -1;
+        break;
+    }
+
+    return res;
+}
+
+static int adcSingle( uint32_t mask1, uint32_t mask2 )
+{
+
+    const ADCConversionGroup adcMeasureCfg =
+    {
+        FALSE,
+        1,
+        NULL,
+        NULL,
+        0, 0,
+        0,
+        mask1, //ADC_SMPR2_SMP_AN8( ADC_SAMPLING ),
+        ADC_SQR1_NUM_CH( 1 ),
+        0,
+        mask2 //ADC_SQR3_SQ1_N( ADC_CHANNEL_IN8 )
+    };
+
+    adcsample_t adcRes;
+
+    adcConvert( &ADCD1, &adcMeasureCfg, &adcRes, 1 );
+
+    //adcStop( &ADCD1 );
+    return adcRes;
+}
+
+
 void gpioSetPeriod( int us )
 {
     period = us;
@@ -196,6 +305,8 @@ void gpioSetPwm( int mask, int us )
         if ( mask & (1<<i) )
             pwm[i] = us;
     }
+
+    updateTimer();
 }
 
 static void updateStops( void )
@@ -209,7 +320,7 @@ static void updateStops( void )
     }
 
     // Sort by time ascending
-    stopsCnt = 9;
+    stopsCnt = PWM_CNT;
     int j;
     for ( i=0; i<PWM_CNT-1; i++ )
     {
@@ -306,7 +417,18 @@ static void gptCb( GPTDriver * gptp )
 
     int mask, t;
     // 1) If loop should be made.
-    if ( stopInd < stopsCnt )
+    if ( stopInd == 0 )
+    {
+        t    = stops[0].time;
+        chSysLockFromIsr();
+            gptStartOneShotI( &TIMER, t );
+        chSysUnlockFromIsr();
+
+        mask = stops[0].mask;
+        turnOnByMask( mask );
+        stopInd = 1;
+    }
+    else if ( stopInd < stopsCnt-1 )
     {
         // First of all calc and run next duration.
         t = stops[stopInd+1].time - stops[stopInd].time;

@@ -8,6 +8,7 @@
 #include "serial_ctrl.h"
 #include "i2c_ctrl.h"
 #include "usb_ctrl.h"
+#include "gpio_ctrl.h"
 
 #include "hdw_cfg.h"
 
@@ -145,6 +146,13 @@ cell pawn_setRpiEn( AMX * amx, const cell * params )
     return 0;
 }
 
+cell pawn_usbSetEn( AMX * amx, const cell * params )
+{
+    (void)amx;
+    //usbSetEn( params[1] );
+    return 0;
+}
+
 cell pawn_usbWrite( AMX * amx, const cell * params )
 {
 	(void)amx;
@@ -167,10 +175,48 @@ cell pawn_setLed( AMX * amx, const cell * params )
 
 cell pawn_setMoto( AMX * amx, const cell * params )
 {
-    (void)amx; 
+    (void)amx;
     setMoto( (int)params[1] );
     return 0;
 }
+
+cell pawn_gpioSetMode( AMX * amx, const cell * params )
+{
+    (void)amx;
+    cell res = gpioSetMode( params[1], params[2] );
+    return res;
+}
+
+cell pawn_gpios( AMX * amx, const cell * params )
+{
+    (void)amx;
+    cell res = gpios( params[1] );
+    return res;
+}
+
+cell pawn_gpio( AMX * amx, const cell * params )
+{
+    (void)amx;
+    cell res = gpio( params[1] );
+    return res;
+}
+
+cell pawn_gpioSetPeriod( AMX * amx, const cell * params )
+{
+    (void)amx;
+    gpioSetPeriod( params[1] );
+    return 0;
+}
+
+cell pawn_gpioSetPwm( AMX * amx, const cell * params )
+{
+    (void)amx;
+    gpioSetPwm( params[1], params[2] );
+    return 0;
+}
+
+
+
 
 
 
