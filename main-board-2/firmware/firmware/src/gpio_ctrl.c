@@ -428,15 +428,15 @@ static void gptCb( GPTDriver * gptp )
         turnOnByMask( mask );
         stopInd = 1;
     }
-    else if ( stopInd < stopsCnt-1 )
+    else if ( stopInd < stopsCnt )
     {
         // First of all calc and run next duration.
-        t = stops[stopInd+1].time - stops[stopInd].time;
+        t = stops[stopInd].time - stops[stopInd-1].time;
         chSysLockFromIsr();
             gptStartOneShotI( &TIMER, t );
         chSysUnlockFromIsr();
 
-        mask = stops[stopInd].mask ^ stops[stopInd+1].mask;
+        mask = stops[stopInd].mask ^ stops[stopInd-1].mask;
         // Turn off all.
         turnOffByMask( mask );
 
@@ -445,7 +445,7 @@ static void gptCb( GPTDriver * gptp )
     else
     {
         // First of all calc and run next duration.
-        t = period - stops[stopInd].time;
+        t = period - stops[stopInd-1].time;
         chSysLockFromIsr();
             gptStartOneShotI( &TIMER, t );
         chSysUnlockFromIsr();

@@ -2014,8 +2014,8 @@ destructors     0x080028ec        0x0
  .text.turnOffByMask
                 0x08008470       0x7c build/obj/gpio_ctrl.o
  *fill*         0x080084ec        0x4 00
- .text.gptCb    0x080084f0      0x134 build/obj/gpio_ctrl.o
- *fill*         0x08008624        0xc 00
+ .text.gptCb    0x080084f0      0x13c build/obj/gpio_ctrl.o
+ *fill*         0x0800862c        0x4 00
  .text.adcSingle.clone.0
                 0x08008630       0x3c build/obj/gpio_ctrl.o
  *fill*         0x0800866c        0x4 00
@@ -2733,7 +2733,7 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_info    0x0001e8cf      0xeea build/obj/amxcore.o
  .debug_info    0x0001f7b9       0xe4 build/obj/main.o
 
-.debug_line     0x00000000     0xc18b
+.debug_line     0x00000000     0xc18c
  .debug_line    0x00000000      0x14c build/obj/crt0.o
  .debug_line    0x0000014c       0x66 build/obj/vectors.o
  .debug_line    0x000001b2       0x5b build/obj/chcore.o
@@ -2805,12 +2805,12 @@ OUTPUT(build/ch.elf elf32-littlearm)
  .debug_line    0x00009942      0x20d build/obj/moto_ctrl.o
  .debug_line    0x00009b4f      0x323 build/obj/serial_ctrl.o
  .debug_line    0x00009e72      0x3b3 build/obj/i2c_ctrl.o
- .debug_line    0x0000a225      0x49f build/obj/gpio_ctrl.o
- .debug_line    0x0000a6c4      0x39c build/obj/pawn_binding.o
- .debug_line    0x0000aa60      0x350 build/obj/pawn_ctrl.o
- .debug_line    0x0000adb0      0xf32 build/obj/amx.o
- .debug_line    0x0000bce2      0x34b build/obj/amxcore.o
- .debug_line    0x0000c02d      0x15e build/obj/main.o
+ .debug_line    0x0000a225      0x4a0 build/obj/gpio_ctrl.o
+ .debug_line    0x0000a6c5      0x39c build/obj/pawn_binding.o
+ .debug_line    0x0000aa61      0x350 build/obj/pawn_ctrl.o
+ .debug_line    0x0000adb1      0xf32 build/obj/amx.o
+ .debug_line    0x0000bce3      0x34b build/obj/amxcore.o
+ .debug_line    0x0000c02e      0x15e build/obj/main.o
 
 .debug_loc      0x00000000     0xe37f
  .debug_loc     0x00000000       0x92 build/obj/crt0.o

@@ -34,23 +34,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_info   0001f89d  00000000  00000000  00017896  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000c18b  00000000  00000000  00037133  2**0
+  8 .debug_line   0000c18c  00000000  00000000  00037133  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    0000e37f  00000000  00000000  000432be  2**0
+  9 .debug_loc    0000e37f  00000000  00000000  000432bf  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_pubnames 00002843  00000000  00000000  0005163d  2**0
+ 10 .debug_pubnames 00002843  00000000  00000000  0005163e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_pubtypes 00005088  00000000  00000000  00053e80  2**0
+ 11 .debug_pubtypes 00005088  00000000  00000000  00053e81  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_aranges 000017d0  00000000  00000000  00058f08  2**0
+ 12 .debug_aranges 000017d0  00000000  00000000  00058f09  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00001778  00000000  00000000  0005a6d8  2**0
+ 13 .debug_ranges 00001778  00000000  00000000  0005a6d9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    00005924  00000000  00000000  0005be50  2**0
+ 14 .debug_str    00005924  00000000  00000000  0005be51  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .comment      0000002a  00000000  00000000  00061774  2**0
+ 15 .comment      0000002a  00000000  00000000  00061775  2**0
                   CONTENTS, READONLY
- 16 .ARM.attributes 00000031  00000000  00000000  0006179e  2**0
+ 16 .ARM.attributes 00000031  00000000  00000000  0006179f  2**0
                   CONTENTS, READONLY
  17 .debug_frame  0000434c  00000000  00000000  000617d0  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -248,7 +248,7 @@ SYMBOL TABLE:
 20001704 l     O .bss	00000004 i.6624
 00000000 l    df *ABS*	00000000 gpio_ctrl.c
 08008470 l     F .text	0000007c turnOffByMask
-080084f0 l     F .text	00000134 gptCb
+080084f0 l     F .text	0000013c gptCb
 08008630 l     F .text	0000003c adcSingle.clone.0
 0800bb20 l     O .text	00000008 gptCfg
 0800bb30 l     O .text	00000020 CSWTCH.15
