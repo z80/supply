@@ -9,6 +9,8 @@ int  gpio( int ind );
 void gpioSetPeriod( int us );
 void gpioSetPwm( int mask, int us );
 
+int gpioPwmActive( void );
+
 #endif
 
 

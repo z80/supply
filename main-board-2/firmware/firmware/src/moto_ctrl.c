@@ -3,22 +3,23 @@
 #include "ch.h"
 #include "hal.h"
 #include "hdw_cfg.h"
+#include "gpio_ctrl.h"
 
-
-
+int moto_en;
+int moto_val;
 
 void initMoto( void )
 {
+    moto_en  = 0;
+    moto_val = 0;
 }
 
 void setMoto( int en )
 {
-    // If motor is on the nfirst turn power and outEn on.
+    moto_val = en;
+    // If motor is on the first turn power and outEn on.
     if ( en )
-    {
-        palSetPad( MOTO_EN_PORT, MOTO_EN_PIN );
-        palSetPadMode( MOTO_EN_PORT, MOTO_EN_PIN, PAL_MODE_OUTPUT_PUSHPULL );
-    }
+        setMotoEn( 1 );
     // When motor output is off power to the motor control chip is also off.
     // To prevent powering through MCU pins turn pins on only if power is on.
     uint16_t pwr = palReadPad( MOTO_EN_PORT, MOTO_EN_PIN );
@@ -49,8 +50,8 @@ void setMoto( int en )
     // If no outs are enabled then turn power off.
     if ( !en )
     {
-        palClearPad( MOTO_EN_PORT, MOTO_EN_PIN );
-        palSetPadMode( MOTO_EN_PORT, MOTO_EN_PIN, PAL_MODE_OUTPUT_PUSHPULL );
+        if ( !gpioPwmActive() )
+            setMotoEn( 0 );
     }
 }
 
@@ -89,6 +90,21 @@ void setRpiEn( int arg )
     else
         palClearPad( RPI_PWR_PORT, RPI_PWR_PAD );
     palSetPadMode( RPI_PWR_PORT, RPI_PWR_PAD, PAL_MODE_OUTPUT_PUSHPULL );
+}
+
+void setMotoEn( int en )
+{
+    if ( en )
+        palSetPad( MOTO_EN_PORT, MOTO_EN_PIN );
+    else
+        palClearPad( MOTO_EN_PORT, MOTO_EN_PIN );
+    palSetPadMode( MOTO_EN_PORT, MOTO_EN_PIN, PAL_MODE_OUTPUT_PUSHPULL );
+    moto_en = en;
+}
+
+int motoActive( void )
+{
+    return moto_val;
 }
 
 

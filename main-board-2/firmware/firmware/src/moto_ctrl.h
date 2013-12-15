@@ -15,6 +15,11 @@ void setAddonEn( int arg );
 void setRpiEn( int arg );
 
 
+// This one is for internal use only and called automatically.
+void setMotoEn( int en );
+// To check if moto should be disabled from the outside.
+int motoActive( void );
+
 
 
 #endif

@@ -3,6 +3,7 @@
 #include "ch.h"
 #include "hal.h"
 #include "hdw_cfg.h"
+#include "moto_ctrl.h"
 
 static int period;
 
@@ -404,10 +405,16 @@ static void updateTimer( void )
 
     if ( stopsCnt > 0 )
     {
+        setMotoEn( 1 );
         stopInd = 0;
         turnOffByMask( stops[0].mask );
         gptStart( &TIMER,  &gptCfg );
         gptStartOneShot( &TIMER, stops[0].time );
+    }
+    else
+    {
+        if ( !motoActive() )
+            setMotoEn( 0 );
     }
 }
 
@@ -497,6 +504,11 @@ static void turnOffByMask( int mask )
         palClearPad( GPIO_8_PORT, GPIO_8_PAD );
     if ( mask & (1<<8) )
         palClearPad( GPIO_9_PORT, GPIO_9_PAD );
+}
+
+int gpioPwmActive( void )
+{
+    return stopsCnt ? 1 : 0;
 }
 
 
