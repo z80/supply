@@ -1,0 +1,59 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = Mon 23 Dec 2013 10:37:20 PM MSK
+
+BeginCmp
+TimeStamp = /52B88C05;
+Reference = C1;
+ValeurCmp = 4u7;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B88C1B;
+Reference = C2;
+ValeurCmp = 220n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B88C11;
+Reference = C3;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B88C0B;
+Reference = C4;
+ValeurCmp = 10u;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B88BFF;
+Reference = lsm1;
+ValeurCmp = LSM303DLHC;
+IdModule  = lga14-0.3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B8919F;
+Reference = P1;
+ValeurCmp = cross board conn;
+IdModule  = PIN_ARRAY-11X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B891BD;
+Reference = P2;
+ValeurCmp = cross board conn;
+IdModule  = PIN_ARRAY-11X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B8934C;
+Reference = P3;
+ValeurCmp = TST;
+IdModule  = m3-screw-hole;
+EndCmp
+
+EndListe
