@@ -17,7 +17,7 @@
                     Sets real time clock time to specified number of milliseconds.
         </p>
 
-    <p><b>rtc()</b>
+        <p><b>rtc()</b>
                 Returns current time in milliseconds.
         </p>
 
@@ -144,6 +144,29 @@
         
         <p><b>adcBoostCurr()</b>
             Returns boost voltage converter input current in millivolts.
+        </p>
+
+        
+
+
+        <p><b>addSetLed( index, arg )</b>
+            Turns on or off LEDs on board <i>index</i> according to <i>mask</i> provided. Two leds correspond to 0 and 1 bits in the <i>mask</i>.
+        </p>
+        <p><b>addSetMoto( index, arg )</b>
+            Turns on or off motor drivers on board <i>index</i> according to <i>arg</i> provided. 8 motor outputs are controlled by 0...7 bits of <i>arg</i>.
+        </p>
+        <p><b>addSetPwmPeriod( index, us )</b>
+            Sets <b>P</b>ulse <b>W</b>idth <b>M</b>odulation period on board <i>index</i> to be equal to <i>us</i> microseconds.
+        </p>
+        <p><b>addSetPwm( index, mask, percentOver100 )</b>
+            Sets PWM active duration pulse on board <i>index</i> at outputs chosen by the <i>mask</i>. Active phase is set using <i>%/100</i> units
+        </p>
+        <p><b>addInput( index )</b>
+            Returns digital inputs state of board <i>index</i> as a bit mask.
+        </p>
+
+        <p><b>addAdc( index, arg )</b>
+            Returns ADC value on board <i>index</i> at <i>arg</i> analog input.
         </p>
 
     </div>
