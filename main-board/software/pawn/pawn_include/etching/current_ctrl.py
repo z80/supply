@@ -1,25 +1,23 @@
 
-#from supplyctrlusb import *
+from supplyctrlusb import *
 
 class CurrentCtrl:
     def __init__( self ):
-#        self.io = Supply()
-        pass
+        self.io = Supply()
         
-    def setVi( self, v=0, i=0 ):
-#        self.io.setIo( 1, v >> 8 )
-#        self.io.setIo( 2, v & 255 )
-#        self.io.setIo( 3, i >> 8 )
-#        self.io.setIo( 4, i & 255 )
-#        self.io.setIo( 0, 1 )
-        pass
+    def setVi( self, v, i ):
+        print "sending {0}, {1}".format( v, i )
+        self.io.setIo( 0, v >> 8 )
+        self.io.setIo( 1, v & 255 )
+        self.io.setIo( 2, i >> 8 )
+        self.io.setIo( 3, i & 255 )
         
     def vi( self ):
-#        v = ( self.io.io( 5 ) << 8 ) \\
-#        self.io.io( 6 )
-#        i = ( self.io.io( 7 ) << 8 ) \\
-#        self.io.io( 8 )
-        v = 345
-        i = 432
+        v = ( self.io.io( 4 ) << 8 ) + self.io.io( 5 )
+        if ( v & 0x8000 ):
+            v = v - 65536
+        i = ( self.io.io( 6 ) << 8 ) + self.io.io( 7 )
+        if ( i & 0x8000 ):
+            i = i - 65536
         return (v, i)
 

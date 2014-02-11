@@ -1,48 +1,49 @@
 
 #include <supply>
 
+#define LED_T 250
+
 new V = 0;
 new I = 0;
+//~ new ledT = 0;
 
 updateIv()
 {
-    new vv = adcBuckVolt();
-    new ii = adcBuckCurr();
-    new b;
-    
-    b = V * 999 + vv;
-    V = b / 1000;
-    setIo( 5, V >> 8 );
-    setIo( 6, V & 255 );
-    
-    b = I * 999 + ii;
-    I = b / 1000;
-    setIo( 7, I >> 8 );
-    setIo( 8, I & 255 );
+    msleep( 10 );
+    V = adcBuckVolt();
+    msleep( 10 );
+    I = adcBuckCurr();
+    setIo( 4, V >> 8 );
+    setIo( 5, V & 255 );
+    setIo( 6, I >> 8 );
+    setIo( 7, I & 255 );
 
-    if ( io( 0 ) )
-    {
-        setIo( 0, 0 );
-        vv = io( 1 ) + ( io( 2 ) << 8 );
-        ii = io( 3 ) + ( io( 3 ) << 8 );
-        convSetBuck( vv );
-        convSetBuckCurr( ii );
-    }
+    new vv = ( io( 0 ) << 8 ) + io( 1 );
+    new ii = ( io( 2 ) << 8 ) + io( 3 );
+    convSetBuck( vv );
+    convSetBuckCurr( ii );
 }
 
 main()
 {
-    // Reset values apply.
     setIo( 0, 0 );
+    setIo( 1, 0 );
+    setIo( 2, 0 );
+    setIo( 3, 0 );
     // Zero voltage and current.
     convSetBuck( 0 );
     convSetBuckCurr( 0 );
     // Minimal gain.
     convSetBuckGain( 1 );
+    
+    new led = 0;
     for ( ;; )
     {
-        msleep( 1 );
+        msleep( 10 );
         updateIv(); 
+        led = (led + 1) % 4;
+        setLed( led );
+        msleep( 130 );
     }
 }
 

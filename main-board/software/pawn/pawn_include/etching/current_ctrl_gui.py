@@ -58,8 +58,8 @@ class Application(Frame):
         
     def updateClock( self ):
         self.master.after( 1000, self.updateClock )
-        print "Timeout"
         v, i = self.io.vi()
+        print "Timeout i = " + str( i ) + ", v = " + str( v )
         self.vPlot.append( v )
         self.iPlot.append( i )
         plt.subplot( 2, 1, 1 )
