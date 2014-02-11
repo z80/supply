@@ -4,6 +4,8 @@ import xmlrpclib
 from Tkinter import *
 import matplotlib.pyplot as plt
 from current_ctrl import *
+import time
+
 
 class Application(Frame):
 
@@ -31,10 +33,9 @@ class Application(Frame):
         self.currSc = Scale( orient='vertical', from_=0, to=200, command=self.postVoltCurr )
         self.currSc.set( 0 )
         self.currSc.grid( row=2, column=1, rowspan=25, columnspan=1 )
-        
-        plt.figure( 1 )
-        plt.subplot( 2, 1, 1 )
-        plt.subplot( 2, 1, 2 )
+
+        self.showBtn = Button( text="show plot", command=self.plotData )
+        self.showBtn.grid( row=27, column=0 )
         
         self.io = CurrentCtrl()
         self.initData()
@@ -62,15 +63,26 @@ class Application(Frame):
         print "Timeout i = " + str( i ) + ", v = " + str( v )
         self.vPlot.append( v )
         self.iPlot.append( i )
+        self.tPlot.append( time.time() - self.baseT )
+
+    def plotData( self ):
+        vv = self.vPlot
+        ii = self.iPlot
+        tt = self.tPlot
+
+        plt.figure( 1 )
         plt.subplot( 2, 1, 1 )
-        plt.plot( self.vPlot )
+        plt.plot( tt, vv )
         plt.subplot( 2, 1, 2 )
-        plt.plot( self.iPlot )
-        
+        plt.plot( tt, ii )
+        plt.show()
+       
         
     def initData( self ):
         self.vPlot = []
         self.iPlot = []
+        self.tPlot  = []
+        self.baseT = time.time()
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
