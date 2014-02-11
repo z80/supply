@@ -25,45 +25,45 @@ static cell pawn_setIo( AMX * amx, const cell * params );
 
 AMX_NATIVE const g_nativetable[] =
 {
-	pawn_trigger,
+	pawn_trigger,				// -1
 
-    pawn_setRtc,
-    pawn_rtc,
-    pawn_msleep,
+    pawn_setRtc,				// -2
+    pawn_rtc, 					// -3
+    pawn_msleep, 				// -4
 
-    pawn_setSerialEn,
-    pawn_serialSend,
-    pawn_serialReceive,
+    pawn_setSerialEn, 			// -5
+    pawn_serialSend, 			// -6
+    pawn_serialReceive, 		// -7
 
-    pawn_setI2cSlaveEn,
+    pawn_setI2cSlaveEn, 		// -8
 
-    pawn_setI2cEn,
-    pawn_i2cIo,
+    pawn_setI2cEn, 				// -9
+    pawn_i2cIo, 				// -10
 
-    pawn_setWakeup,
+    pawn_setWakeup, 			// -11
 
-    pawn_usbWrite,
+    pawn_usbWrite, 				// -12
 
-    pawn_io,
-    pawn_setIo, 
+    pawn_io, 					// -13
+    pawn_setIo,  				// -14
 
-    pawn_setLed, 
-    pawn_setLight,
-    pawn_setMoto, 
-    pawn_convSetBuck, 
-    pawn_convSetBoost, 
-    pawn_convSetMinBoostVolt, 
-    pawn_convSetMaxBoostFill, 
-    pawn_convSetBoostCurr, 
-    pawn_convSetBuckCurr, 
-    pawn_convSetBuckGain, 
-    pawn_convSetBoostGain, 
-    pawn_adcTemp, 
-    pawn_adcBatteryVolt, 
-    pawn_adcBuckVolt, 
-    pawn_adcSolarVolt, 
-    pawn_adcBuckCurr, 
-    pawn_adcBoostCurr
+    pawn_setLed, 				// -15
+    pawn_setLight, 				// -16
+    pawn_setMoto,  				// -17
+    pawn_convSetBuck,  			// -18
+    pawn_convSetBoost,  		// -19
+    pawn_convSetMinBoostVolt,   // -20
+    pawn_convSetMaxBoostFill,   // -21
+    pawn_convSetBoostCurr,      // -22
+    pawn_convSetBuckCurr,       // -23
+    pawn_convSetBuckGain,       // -24
+    pawn_convSetBoostGain,      // -25
+    pawn_adcTemp, 				// -26
+    pawn_adcBatteryVolt, 		// -27
+    pawn_adcBuckVolt, 			// -28
+    pawn_adcSolarVolt, 			// -29
+    pawn_adcBuckCurr, 			// -30
+    pawn_adcBoostCurr 			// -31
 };
 
 

@@ -302,7 +302,7 @@ static int adcSingle( uint32_t mask1, uint32_t mask2 )
         adcStartConversion( &ADCD1, &adcGroup, adcSamples, ADC_BUF_DEPTH );
     else
         adcStop( &ADCD1 );
-    return Adc2T( adcRes );
+    return adcRes;
 }
 
 int adcTemp( void )
